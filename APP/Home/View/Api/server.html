@@ -1,0 +1,263 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script language="javascript" src="__PUBLIC__/stringUtil.js"></script>
+<title>状态修改</title>
+
+<style type="text/css">
+fieldset {border:0px; border-top:dashed 1px grey;}
+legend{font-weight:600;font-size:15px;}
+
+fieldset table{width:100%;background-color:grey;}
+
+fieldset table th,td{background-color:#fff;}
+
+span{width:50px;}
+
+input[type='text']{width:300px;}
+select{width:300px;}
+input[type='button']{width:100px;height:30px;font-size:14px;}
+
+</style>
+
+</head>
+<body>
+
+
+<if condition="$list.state eq 1">
+<fieldset>
+<legend>待付款</legend>
+<form name="theForm" action="{:U('dfk')}" method="post">
+<table border="0" cellpadding=3 cellspacing=1>
+<tr><th width="50%" colspan="2">客户端</th><th>服务端</th></tr>
+<tr><td><span>买家ID：</span></td><td><input value="{$action_user_name}" type="text" id="action_user_name" name="action_user_name"/></td><td></td></tr>
+<tr><td><span>总金额：</span></td><td><input value="{$total}" type="text" id="total" name="total"/></td><td>总金额：{$list.total}+{$list.transport}=<?php echo floatval($list['total'])+floatval($list['transport']);?></td></tr>
+<tr><td><span>任务编号：</span></td><td><input value="{$id}" type="text" id="id" name="id"/></td><td>任务编号：{$list.id}</td></tr>
+<tr><td><span>订单编号：</span></td><td><input value="{$list_id}" type="text" id="list_id" name="list_id"/></td><td>订单编号：{$list.list_id}</td></tr>
+<tr><td><span>付款时间：</span></td><td><?php echo date('Y-m-d H:i:s');?></td><td></td></tr>
+
+<tr><td colspan="3" align="center">
+<input type="button" value=" 付 款  " onclick="sub();">
+<input type="button" value=" 重 置 " onclick="theForm.reset();">
+</td></tr>
+</table>
+
+<script type="text/javascript">
+	function sub(){
+		var action_user_name = document.getElementById('action_user_name').value;
+		var total = document.getElementById('total').value;
+		var id = document.getElementById('id').value;
+		var list_id = document.getElementById('list_id').value;
+		
+		var s_total=<?php echo floatval($list['total'])+floatval($list['transport']);?>;
+		
+		if(action_user_name.isEmpty()){
+			alert('买家ID为空，请填写');
+			document.getElementById('action_user_name').focus();
+			return;
+		}
+		
+		if(total.isEmpty() || total!=s_total){
+			alert('金额填写不准确');
+			document.getElementById('total').focus();
+			return;
+		}
+		
+		if(id.isEmpty() || id!={$list.id}){
+			alert('任务编号填写不准确，请填写');
+			document.getElementById('id').focus();
+			return;
+		}
+		
+		if(list_id.isEmpty() || list_id!={$list.list_id}){
+			alert('订单编号填写不准确，请填写');
+			document.getElementById('list_id').focus();
+			return;
+		}
+		
+		theForm.submit();
+	}
+</script>
+
+</form>
+</fieldset>
+</if>
+
+<if condition="$list.state eq 2">
+<fieldset>
+<legend>待发货</legend>
+<form name="theForm" action="{:U('dfh')}" method="post">
+<table border="0" cellpadding=3 cellspacing=1>
+<tr><th width="50%" colspan="2">客户端</th><th>服务端</th></tr>
+<tr><td><span>快递名称：</span></td><td>
+<select name="transport_name" id="transport_name">
+	<?php 
+		$wl_info = C('WL_INFO');
+										foreach($wl_info as $key=>$val){
+											if($val==$transport_name){
+												echo '<option value="'.$key.'" selected>'.$val.'</option>';
+											}else{
+												echo '<option value="'.$key.'">'.$val.'</option>';
+											}
+										}
+									?>
+</select>
+</td><td>快递名称：{$list.transport_name}</td></tr>
+<tr><td><span>快递编号：</span></td><td><input value="{$transport_id}" type="text" id="transport_id" name="transport_id"/></td><td>快递编号：{$list.transport_id}</td></tr>
+<tr><td><span>任务编号：</span></td><td><input value="{$id}" type="text" id="id" name="id"/></td><td>任务编号：{$list.id}</td></tr>
+<tr><td><span>订单编号：</span></td><td><input value="{$list_id}" type="text" id="list_id" name="list_id"/></td><td>订单编号：{$list.list_id}</td></tr>
+<tr><td><span>发货时间：</span></td><td><?php echo date('Y-m-d H:i:s');?></td><td></td></tr>
+<tr><td colspan="3" align="center">
+<input type="button" value=" 发 货 " onclick="sub();">
+<input type="button" value=" 重 置 " onclick="theForm.reset();">
+</td></tr>
+</table>
+
+<script type="text/javascript">
+	function sub(){
+		var transport_name = document.getElementById('transport_name').value;
+		var transport_id = document.getElementById('transport_id').value;
+		var id = document.getElementById('id').value;
+		var list_id = document.getElementById('list_id').value;
+		
+		
+		var dtrans_name = "{$list.transport_name}";
+		var dtrans_id   = "{$list.transport_id}";
+		
+		if(transport_name.isEmpty()){
+			alert('快递名称填写不准确');
+			document.getElementById('transport_name').focus();
+			return;
+		}
+		
+		if(transport_id.isEmpty()){
+			alert('快递单号填写不准确');
+			document.getElementById('transport_id').focus();
+			return;
+		}
+		
+		if(id.isEmpty() || id!={$list.id}){
+			alert('任务编号填写不准确，请填写');
+			document.getElementById('id').focus();
+			return;
+		}
+		
+		if(list_id.isEmpty() || list_id!={$list.list_id}){
+			alert('订单编号填写不准确，请填写');
+			document.getElementById('list_id').focus();
+			return;
+		}
+		
+		theForm.submit();
+	}
+</script>
+
+</form>
+</fieldset>
+</if>
+
+<if condition="$list.state eq 3">
+<fieldset>
+<legend>待确认</legend>
+<form name="theForm" action="{:U('dqr')}" method="post">
+<table border="0" cellpadding=3 cellspacing=1>
+<tr><th width="50%" colspan="2">客户端</th><th>服务端</th></tr>
+<tr><td><span>任务编号：</span></td><td><input value="{$id}" type="text" id="id" name="id"/></td><td>任务编号:{$list.id}</td></tr>
+<tr><td><span>订单编号：</span></td><td><input value="{$list_id}" type="text" id="list_id" name="list_id"/></td><td>订单编号:{$list.list_id}</td></tr>
+<tr><td><span>确认时间：</span></td><td><?php echo date('Y-m-d H:i:s');?></td><td></td></tr>
+<tr><td colspan="3" align="center">
+<input type="button" value=" 确 认  " onclick="sub();">
+<input type="button" value=" 重 置 " onclick="theForm3.reset();">
+</td></tr>
+</table>
+
+<script type="text/javascript">
+	function sub(){
+		var id = document.getElementById('id').value;
+		var list_id = document.getElementById('list_id').value;
+		
+		if(id.isEmpty() || id!={$list.id}){
+			alert('任务编号填写不准确，请填写');
+			document.getElementById('id').focus();
+			return;
+		}
+		
+		if(list_id.isEmpty() || list_id!={$list.list_id}){
+			alert('订单编号填写不准确，请填写');
+			document.getElementById('list_id').focus();
+			return;
+		}
+		
+		theForm.submit();
+	}
+</script>
+
+</form>
+</fieldset>
+</if>
+
+
+<if condition="$list.state eq 4">
+<fieldset>
+<legend>已确认</legend>
+<form name="theForm" action="{:U('wc')}" method="post">
+<table border="0" cellpadding=3 cellspacing=1>
+<tr><th width="50%" colspan="2">客户端</th><th>服务端</th></tr>
+<tr><td><span>任务编号：</span></td><td><input value="{$id}" type="text" id="id" name="id"/></td><td>任务编号:{$list.id}</td></tr>
+<tr><td><span>订单编号：</span></td><td><input value="{$list_id}" type="text" id="list_id" name="list_id"/></td><td>订单编号:{$list.list_id}</td></tr>
+<tr><td><span>确认时间：</span></td><td><?php echo date('Y-m-d H:i:s');?></td><td></td></tr>
+<tr><td colspan="3" align="center">
+<input type="button" value=" 确 认  " onclick="sub();">
+<input type="button" value=" 重 置 " onclick="theForm3.reset();">
+</td></tr>
+</table>
+
+<script type="text/javascript">
+	function sub(){
+		var id = document.getElementById('id').value;
+		var list_id = document.getElementById('list_id').value;
+		
+		if(id.isEmpty() || id!={$list.id}){
+			alert('任务编号填写不准确，请填写');
+			document.getElementById('id').focus();
+			return;
+		}
+		
+		if(list_id.isEmpty() || list_id!={$list.list_id}){
+			alert('订单编号填写不准确，请填写');
+			document.getElementById('list_id').focus();
+			return;
+		}
+		
+		theForm.submit();
+	}
+</script>
+
+</form>
+</fieldset>
+</if>
+
+<if condition="$list.state egt 5 or $list eq null">
+<fieldset>
+<legend>已完成任务</legend>
+ 指定编号为：{$list_id} 的订单已经完成或者不允许重复操作.<br>
+ 订单编号:<input type="text" name="list_id" id="list_id"/>
+ <br>
+ <input type="button" onclick="query();" value=" 查 询 "/>
+ 
+ <script>
+ function query(){
+	 var list_id = document.getElementById('list_id').value;
+	 if(list_id.isEmpty()){
+		 alert('订单为空，请重新填写');
+		 return ;
+	 }
+	 location.href="{:U('server&list_id=')}"+list_id;
+ }
+ </script>
+</fieldset>
+</if>
+
+</body>
+</html>

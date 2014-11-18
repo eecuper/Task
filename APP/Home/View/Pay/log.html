@@ -1,0 +1,297 @@
+<extend name="pub/base" />
+
+<block name="title">
+资金记录
+</block>
+
+<block name="page_index">
+    <div class="breadcrumbs">
+        <div class="wrap">
+            <a href="javascript:;">
+                    首页
+          </a>
+                &gt;
+                <a href="javascript:;">
+                    资金信息
+                </a>
+                &gt; 资金记录
+        </div>
+    </div>
+</block>
+
+<block name="body">
+<div class="wrap clearfix">
+            <div class="business-left">
+                <div class="wrap">
+                    <div class="business-left-user">
+                        <div class="wrap">
+                            <div class="business-left-user-header"> <a class="business-left-user-header-box" href="#"> <img src="__IMG__/avatar.php" width="77" height="77"> </a> </div>
+                        </div>
+                        <div class="wrap center" style="text-align:center;">
+                            <a href="{:U('User/userInfo')}">{$user.nc}</a> 
+                        </div>
+                        
+                        <div class="wrap center">
+                            <a class="icon-setting visa disabled" href="#"></a>
+                            <a class="icon-setting phone" href="#"></a>
+                            <a class="icon-setting mess" href="#"></a>
+                            <a class="icon-setting money disabled" href="#"></a>
+                        </div>
+                    
+                        <div class="wrap" style="text-align:center;">安全等级 </div> 
+                         
+                        <div class="business-left-outtime">
+                                        <span>会员到期时间：2018-01-01</span>
+                            <a href="#" target="_blank">续费会员 &gt;</a>
+                                    </div>
+                         
+                    
+                        <i class="box-angle lt"></i>
+                        <i class="box-angle rt"></i>
+                        <i class="box-angle bl"></i>
+                        <i class="box-angle br"></i>
+                    </div>         
+                </div>
+                <script>
+                    $(document).ready(function() {
+                        //提交
+                        $('.queren_contact_btn').click(function() {
+                            var qq = $.trim($('.tbl_value_qq_x').val());
+                            var mobile = $.trim($('.tbl_value_mobile_x').val());
+                            var username = $.trim($('#tbl_value_username').val());
+                            if (qq == '') {
+                                alert('请输入QQ号！');
+                                return false;
+                            }
+                            if (mobile == '') {
+                                alert('请输入手机号！');
+                                return false;
+                            }
+                            if (!/^[1-9]{1}[0-9]{4,10}$/.test(qq)) {
+                                alert('QQ号格式错误！');
+                                return false;
+                            }
+                            if (!/^0{0,1}(13[0-9]|14[6|7]|15[0-3]|15[5-9]|18[0-9]|17[0-9])[0-9]{8}$/.test(mobile)) {
+                                alert('手机号格式错误！');
+                                return false;
+                            }
+                            $.post("/task_business/xiugai_info", {
+                                qq: qq,
+                                mobile: mobile,
+                                username: username
+                            },
+                            function(data) {
+
+                                if (data.n == 0) {
+                                    alert(data.m);
+                                } else {
+                                    $('.tbl_value_qq').html(qq);
+                                    $('.tbl_value_mobile').html(mobile);
+                                    $('#tbl_value_qq').val(qq);
+                                    $('#tbl_value_mobile').val(mobile);
+                                    $('.queren_contact_btn').hide();
+                                    $('.quxiao_contact_btn').hide();
+                                    $('.xiugai_contact_btn').show();
+                                }
+
+                            },
+                            "json");
+                        });
+
+                        //修改
+                        $('.xiugai_contact_btn').click(function() {
+                            var qq = $('.tbl_value_qq').text();
+                            var mobile = $('.tbl_value_mobile').text();
+                            $('.tbl_value_qq').html('<input class="tbl_value_qq_x tbl_value_int" type="text" value="' + qq + '" />');
+                            $('.tbl_value_mobile').html('<input class="tbl_value_mobile_x tbl_value_int" type="text" value="' + mobile + '" />');
+                            $(this).hide();
+                            $('.queren_contact_btn').show();
+                            $('.quxiao_contact_btn').show();
+                        });
+
+                        //取消
+                        $('.quxiao_contact_btn').click(function() {
+                            var qq = $('#tbl_value_qq').val();
+                            var mobile = $('#tbl_value_mobile').val();
+                            $('.tbl_value_qq').html(qq);
+                            $('.tbl_value_mobile').html(mobile);
+                            $(this).hide();
+                            $('.queren_contact_btn').hide();
+                            $('.xiugai_contact_btn').show();
+                        });
+                    });
+                </script>
+                <div class="wrap">
+        <div class="business-left-task">       
+            <h3 class="box-title-blue">任务管理</h3>
+            <ul class="menu-list">
+            <li><a href="{:U('task/main')}">我的任务</a></li>
+            <li><a href="{:U('task/order_list')}">我的订单</a></li>
+
+            </ul>
+            <h3 class="box-title-blue">资金信息</h3>
+            <ul class="menu-list">
+                <li><a href="{:U('pay/charge')}">D币充值</a>  
+                </li>
+                <li><a href="{:U('pay/log')}" target="_bank">资金记录</a>  
+                </li>
+            </ul>
+            <h3 class="box-title-blue">账号信息</h3>
+            <ul class="menu-list">
+                <li><a href="{:U('user/info')}" target="_self" class="cur">基本信息</a>
+                    <if condition="$user['manager'] eq C('IS_ADMIN')">
+                    ｜  <a href="{:U('user/users')}" target="_self" class="cur">管理</a>
+                    </if>
+                </li>
+                <li><a href="{:U('User/shop')}" target="_blank" class="cur">绑定店铺</a></li>
+                <li><a href="{:U('pay/card')}">银行卡绑定</a></li>
+                <li><a href="javascript:;">收货地址</a></li>
+            </ul>
+            <h3 class="box-title-blue"><a href="#" target="_blank">消息</a></h3>
+            <ul class="menu-list">
+                <li><a href="javascript:;" target="_self">系统消息</a></li>
+                <li><a href="javascript:;" target="_self">站内消息</a></li>
+            </ul>
+ 
+            <if condition="$user['manager'] eq C('IS_ADMIN')">
+                <h3 class="box-title-blue">管理</h3>
+                <ul class="menu-list">
+                    <li><a href="{:U('task/order_mg')}" target="_self">订单管理</a>  
+                    </li>
+                    <li><a href="{:U('sys/config')}" target="_self">系统配置</a>  
+                    </li>
+                </ul>
+            </if>
+           
+        </div>
+    </div>
+            </div>
+            <div class="business-right">
+                <div class="business-right-comm">
+                    <div class="business-fund">
+                        <h4>
+                            资金记录 
+                        </h4>
+                        <ul class="business-tabs">
+                            <li class="<?php echo ($type_id==null)?'active':''; ?>">
+                                <a href="{:U('log')}">
+                                    <span>
+                                        交易记录
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="{$type_id==3?'active':''}">
+                                <a href="{:U('log?type_id=3')}">
+                                    <span>
+                                        押金记录
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="{$type_id==1?'active':''}">
+                                <a href="{:U('log?type_id=1')}">
+                                    <span>
+                                        佣金记录
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="{$type_id==2?'active':''}">
+                                <a href="{:U('log?type_id=2')}">
+                                    <span>
+                                        充值记录
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="business-fund-main">
+                          <table border="0" class="business-Deposit-record-table" cellspacing="0" cellpadding="0">
+                            <tbody>
+                              <tr>
+                                <th width="120">时间</th>
+                                <th width="90">收入</th>
+                                <th width="90">支出</th>
+                                <th width="90">类型</th>
+                                <th>备注</th>
+                              </tr>
+                              <volist name="logs" id="log">
+                                    <tr>
+                                    <td>{$log['charge_date']|date="Y-m-d H:i",###}</td>
+                                    <td><p class="fontred">
+                                        <?php if(floatval($log['charge'])>0){echo $log['charge'];}?>
+                                    </p></td>
+                                    <td><p class="fontred">
+                                        <?php if(floatval($log['charge'])<0){echo $log['charge'];}?>
+                                    </p></td>
+                                    <td><p class="fontred">{$log.type_id|feeType}</p></td>
+                                    <td><p class="tl">{$log.remark}</p></td>
+                                  </tr>
+                              </volist>
+                              
+                            </tbody>
+                          </table>
+                          <div class="pager">
+                                <div class="page">
+                                   {$_page}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <i class="box-angle lt">
+                    </i>
+                    <i class="box-angle rt">
+                    </i>
+                    <i class="box-angle bl">
+                    </i>
+                    <i class="box-angle br">
+                    </i>
+                </div>
+            </div>
+        </div>
+</block>
+<block name="ext_js">
+<script type="text/javascript">
+    
+        $(function(){
+            $(".fangqi").click(function(){
+               var id  = $(this).attr('id');
+               var url = "{:U('delTask')}/id/"+id;
+               if(confirm('是否确认继续放弃任务?')){
+                    location.href=url;
+               }
+            });
+
+
+            $(".copy").click(function(){
+               var id  = $(this).attr('id');
+               var url = "{:U('cpyTask')}/id/"+id;
+               if(confirm('是否确认继续复制任务【'+id+'】?')){
+                    $.ajax({
+                        type:'get',
+                        url:url,
+                        dataType:'json',
+                        success: function(msg){
+                            if(msg.success){
+                                alert(msg.msg);
+                                location.reload();
+                            }else{
+                                alert('错误：'+msg.msg);
+                            }
+                        }
+                    });
+               }
+            });
+
+        });
+
+
+
+
+</script>
+</block>
+
+<block name="footer">
+    <div class="footer">
+        <div>
+         
+        </div>
+    </div>
+</block>

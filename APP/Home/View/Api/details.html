@@ -1,0 +1,83 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>订单【{$tk['id']}】详情页</title>
+
+
+<style type="text/css">
+  html body{margin:0px; font-size:11pt;}
+  .content-div{margin:0 auto;width:795px;
+               border:1px solid #DDD;
+               overflow: hidden;padding:0px;
+               box-shadow:0px 0px 8px #f00;
+               -moz-box-shadow:0px 0px 8px #f00;
+               -webkit-box-shadow:0px 0px 8px #DDD;
+             }  
+  .content-div ul{position:relative; margin-left:-40px;margin-top:0px;}
+  .content-div ul li{list-style: none;
+                     width:250px;
+                     float:left;
+                     border:solid 1px #DDD;
+                     margin:5px;
+                     height:392px;
+                     box-shadow:0px 0px 1px #f00;
+                     -moz-box-shadow:0px 0px 1px #f00;
+                     -webkit-box-shadow:0px 0px 1px #DDD;
+                   }
+  .key-cate span{padding: 2px;font-size: 10pt;color:#0077B0;}
+</style>
+  
+
+</head>
+
+<body>
+
+  <?php       $names = json_decode($tk['name']);
+              $urls  = json_decode($tk['url']);
+              $pros  = json_decode($tk['pro_id']);
+              $imgs  = json_decode($tk['img']);
+              $cates  = json_decode($tk['key_cate']);
+  ?>
+
+  <div class="content-div">
+
+    <ul>
+       
+      <?php $k=0;?>
+      <volist name="names" id="vo">
+          <if condition="$vo['names'] neq null">
+            <li>
+              <div>
+                 <img src="{$imgs[$k]}" width="100%" height="250" />
+              </div>
+              <div>
+                 标题：<strong>{$names[$k]}</strong>
+              </div>
+              <div>
+                 <span>颜色：{$vo['color']}&nbsp;尺寸：{$vo['size']}&nbsp;单价：{$tk['price']} 数量:{$tk['cnt']}</span>
+              </div>
+              <div style="word-wrap: break-word;">
+                 店铺：{$vo['shop_name']}
+              </div>
+              <div>
+                <span>所在地：{$vo['position']}</span>
+              </div>
+              <div class="key-cate">
+                 搜索词:
+                  <volist name="cates" id="so">
+                    <span>{$so}</span>
+                  </volist>
+              </div>
+            </li>
+          </if>
+          <?php $k++;?>
+      </volist>
+       
+    </ul> 
+
+  </div>
+   
+</body>
+</html>

@@ -1,0 +1,294 @@
+<extend name="pub/base" />
+
+<block name="title">
+订单列表
+</block>
+
+
+<block name="ext_css">
+<link rel="stylesheet" href="__CSS__/business-task-manage.css">
+<style type="text/css">.WPA3-SELECT-PANEL { z-index:2147483647; width:463px; height:292px; margin:0; padding:0; border:1px solid #d4d4d4; background-color:#fff; border-radius:5px; box-shadow:0 0 15px #d4d4d4;}.WPA3-SELECT-PANEL * { position:static; z-index:auto; top:auto; left:auto; right:auto; bottom:auto; width:auto; height:auto; max-height:auto; max-width:auto; min-height:0; min-width:0; margin:0; padding:0; border:0; clear:none; clip:auto; background:transparent; color:#333; cursor:auto; direction:ltr; filter:; float:none; font:normal normal normal 12px "Helvetica Neue", Arial, sans-serif; line-height:16px; letter-spacing:normal; list-style:none; marks:none; overflow:visible; page:auto; quotes:none; -o-set-link-source:none; size:auto; text-align:left; text-decoration:none; text-indent:0; text-overflow:clip; text-shadow:none; text-transform:none; vertical-align:baseline; visibility:visible; white-space:normal; word-spacing:normal; word-wrap:normal; -webkit-box-shadow:none; -moz-box-shadow:none; -ms-box-shadow:none; -o-box-shadow:none; box-shadow:none; -webkit-border-radius:0; -moz-border-radius:0; -ms-border-radius:0; -o-border-radius:0; border-radius:0; -webkit-opacity:1; -moz-opacity:1; -ms-opacity:1; -o-opacity:1; opacity:1; -webkit-outline:0; -moz-outline:0; -ms-outline:0; -o-outline:0; outline:0; -webkit-text-size-adjust:none; font-family:Microsoft YaHei,Simsun;}.WPA3-SELECT-PANEL a { cursor:auto;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-TOP { height:25px;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-CLOSE { float:right; display:block; width:47px; height:25px; background:url(http://combo.b.qq.com/crm/wpa/release/3.3/wpa/views/SelectPanel-sprites.png) no-repeat;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-CLOSE:hover { background-position:0 -25px;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-MAIN { padding:23px 20px 45px;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-GUIDE { margin-bottom:42px; font-family:"Microsoft Yahei"; font-size:16px;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-SELECTS { width:246px; height:111px; margin:0 auto;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-CHAT { float:right; display:block; width:88px; height:111px; background:url(http://combo.b.qq.com/crm/wpa/release/3.3/wpa/views/SelectPanel-sprites.png) no-repeat 0 -80px;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-CHAT:hover { background-position:-88px -80px;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-AIO-CHAT { float:left;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-QQ { display:block; width:76px; height:76px; margin:6px; background:url(http://combo.b.qq.com/crm/wpa/release/3.3/wpa/views/SelectPanel-sprites.png) no-repeat -50px 0;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-QQ-ANONY { background-position:-130px 0;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-LABEL { display:block; padding-top:10px; color:#00a2e6; text-align:center;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-BOTTOM { padding:0 20px; text-align:right;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-INSTALL { color:#8e8e8e;}</style><style type="text/css">.WPA3-CONFIRM { z-index:2147483647; width:285px; height:141px; margin:0; background:url(data:image/png; no-repeat;}.WPA3-CONFIRM { *background-image:url(http://combo.b.qq.com/crm/wpa/release/3.3/wpa/views/panel.png);}.WPA3-CONFIRM * { position:static; z-index:auto; top:auto; left:auto; right:auto; bottom:auto; width:auto; height:auto; max-height:auto; max-width:auto; min-height:0; min-width:0; margin:0; padding:0; border:0; clear:none; clip:auto; background:transparent; color:#333; cursor:auto; direction:ltr; filter:; float:none; font:normal normal normal 12px "Helvetica Neue", Arial, sans-serif; line-height:16px; letter-spacing:normal; list-style:none; marks:none; overflow:visible; page:auto; quotes:none; -o-set-link-source:none; size:auto; text-align:left; text-decoration:none; text-indent:0; text-overflow:clip; text-shadow:none; text-transform:none; vertical-align:baseline; visibility:visible; white-space:normal; word-spacing:normal; word-wrap:normal; -webkit-box-shadow:none; -moz-box-shadow:none; -ms-box-shadow:none; -o-box-shadow:none; box-shadow:none; -webkit-border-radius:0; -moz-border-radius:0; -ms-border-radius:0; -o-border-radius:0; border-radius:0; -webkit-opacity:1; -moz-opacity:1; -ms-opacity:1; -o-opacity:1; opacity:1; -webkit-outline:0; -moz-outline:0; -ms-outline:0; -o-outline:0; outline:0; -webkit-text-size-adjust:none;}.WPA3-CONFIRM * { font-family:Microsoft YaHei,Simsun;}.WPA3-CONFIRM .WPA3-CONFIRM-TITLE { height:40px; margin:0; padding:0; line-height:40px; color:#2b6089; font-weight:normal; font-size:14px; text-indent:80px;}.WPA3-CONFIRM .WPA3-CONFIRM-CONTENT { height:55px; margin:0; line-height:55px; color:#353535; font-size:14px; text-indent:29px;}.WPA3-CONFIRM .WPA3-CONFIRM-PANEL { height:30px; margin:0; padding-right:16px; text-align:right;}.WPA3-CONFIRM .WPA3-CONFIRM-BUTTON { position:relative; display:inline-block!important; display:inline; zoom:1; width:99px; height:30px; margin-left:10px; line-height:30px; color:#000; text-decoration:none; font-size:12px; text-align:center;}.WPA3-CONFIRM .WPA3-CONFIRM-BUTTON-FOCUS { width:78px;}.WPA3-CONFIRM .WPA3-CONFIRM-BUTTON .WPA3-CONFIRM-BUTTON-TEXT { line-height:30px; text-align:center; cursor:pointer;}.WPA3-CONFIRM-CLOSE { position:absolute; top:7px; right:7px; width:10px; height:10px; cursor:pointer;}</style>
+</block>
+
+<block name="page_index">
+	<div class="breadcrumbs">
+		<div class="wrap">
+			<a href="#"> 首页 </a> &gt; 订单列表
+		</div>
+	</div>
+</block>
+
+<block name="body">
+<div class="wrap business-task-manage clearfix">
+	<div class="business-task-manage-content">
+		<div class="makes-task-tit">
+			<p>
+				以下任务买手已经收货并好评，请根据退款信息给买手退款，退款后将退款交易号回填到人气符平台并点击确认已退款</p>
+		</div>
+		<form action="{:U('order_list')}"
+			method="post" id="frm_batch" name="theForm">
+			<div class="content-place">
+				<span class="fl f14">平台：</span> 
+				<select class="J-binding-type" name="web_id" style="width: 100px">
+                    <option value="">全部</option>
+                    <volist name="configs" id="vo"  key="k">
+						<if condition="$vo.type eq 1">
+						 	<option value="{$vo.id}">{$vo.name}</option>
+						</if>
+					</volist>   
+                </select> 
+                <span class="fl f14" style="margin-left: 16px;">店铺：</span> 
+                <select class="J-binding-name" name="shop_id">
+                    <option  value="">全部</option>
+                    <volist name="configs" id="vo"  key="k">
+						<if condition="$vo.type eq 2">
+						 	<option value="{$vo.id}">{$vo.name}</option>
+						</if>
+					</volist>  
+                </select>
+			</div>
+			<div class="content-place">
+				<span class="fl f14">关 键 字：</span> 
+				<select name="search_keys">
+					<option value="tid">任务号</option>
+					<option value="list_id">订单号</option>
+					<option value="action_user_nc">买家账号</option>
+				</select> 
+				<input type="text" class="se-text" name="search_words" value="{$search_words}">
+				<input type="hidden" name="state" value="{$state}"/>
+				<a class="business-mess-sent-btn" onclick="javascript:theForm.submit();"><span>搜&nbsp;&nbsp;索</span></a>
+			</div>
+		</form>
+
+		<ul class="business-tabs">
+			<li class="{$state==0?'active':''}" style="margin-top:0px;"><a
+				href="{:U('order_list')}"><span>全部订单</span></a></li>
+			<li class="{$state==1?'active':''}" style="margin-top:0px;"><a
+				href="{:U('order_list&state=1')}"><span>待付款订单</span></a></li>
+			<li class="{$state==2?'active':''}" style="margin-top:0px;"><a
+				href="{:U('order_list&state=2')}"><span>待发货订单</span></a></li>
+			<li class="{$state==3?'active':''}" style="margin-top:0px;"><a
+				href="{:U('order_list&state=3')}"><span>待确认订单</span></a></li>
+			<li class="{$state==4?'active':''}" style="margin-top:0px;"><a 
+				href="{:U('order_list&state=4')}"><span>已确认订单</span></a></li>
+		</ul>
+
+		<table border="0" class="business-task-manage-table-title"
+			cellspacing="0" cellpadding="0" style="margin-top: 10px;">
+			<tbody>
+				<tr>
+					<td width="58"></td>
+					<td width="270">商品</td>
+
+					<td width="82">买号</td>
+					<td width="120">订单号</td>
+					<td width="95">件数</td>
+					<td width="114">物流信息</td>
+					<td width="98">货款+邮费</td>
+					<!--
+          <td>操作</td>
+		  <td width="10"></td>
+		  -->
+				</tr>
+			</tbody>
+		</table>
+
+
+		<volist name="tks" id="vo" key="k">
+		<table class="business-task-manage-table remove_t{$vo.id}"
+			cellspacing="0" cellpadding="0" style="margin-bottom: 5px;">
+			<tbody>
+				<tr>
+					<th class="w25"></th>
+					<th colspan="8"><a style="float: left;"><i
+							class="plat_small plat_tianmao"></i>{$vo.shop_name}</a> 
+							<span class="fr" style="float: left; margin-left: 10px;">任务{$vo.tid}：订单:
+							 {$vo.list_id} 类型:{$vo.list_type}</span> 
+							<a style="float: left;"
+								href="{:U('order_info&list_id='.$vo['list_id'])}"
+								class="fr mr15 font_blue" target="_blank">查看详情 &gt;</a> <span
+								style="float: right">发布订单时间：{$vo.create_date|date="Y-m-d H:i:s",###}</span></th>
+				</tr>
+
+
+				<tr>
+					<td width="14"></td>
+					<td width="14"></td>
+					<td width="280">
+						<div class="intd-probox">
+							<img src="<?php $imgs = json_decode($vo['img']); echo $imgs[0];?>"
+								class="img">
+							<p class="text"><?php $n = json_decode($vo['name']); echo $n[0];?></p>
+						</div>
+						<div class="clearfix blue-arrange-up-box">
+							<a class="blue-arrange-up J_hide_intd-probox none" data-trade="0">收起</a>
+						</div>
+					</td>
+
+					<td width="72"><p class="w70" style="width: 100%; padding: 0;">&nbsp;{$vo.action_user_name}</p></td>
+					<td width="110"><p class="w115"
+							style="width: 100%; padding: 0;">{$vo.list_id}</p></td>
+					<td width="85"><p class="w70" style="width: 100%;">{$vo.cnt}</p></td>
+
+					<if condition="$vo.state eq 2">
+						<td width="110" style="vertical-align: top;">
+							<div class="w115 J_copy_p" style="width: 100%; padding-left: 5px;" id="transport_{$vo.list_id}">
+								<select name="transport_name">
+									<?php 
+										$wl_info = C('WL_INFO');
+										foreach($wl_info as $key=>$val){
+											if($key==$vo['transport_name']){
+												echo '<option value="'.$key.'" selected>'.$val.'</option>';
+											}else{
+												echo '<option value="'.$key.'">'.$val.'</option>';
+											}
+										}
+									?>
+								</select><br> 
+								<input type="text" class="se-text" name="transport_id" id="trans{$vo.list_id}" value="{$vo.transport_id}">
+								<!-- 
+								<br><br> 
+								<span id="{$vo.list_id}" style="color: grey;padding:5 8px;" class="modify_kd"><a>修改快递</a></span>
+								 -->
+							</div>
+						</td>
+					<else/>
+						<td width="110" style="vertical-align: top;">
+						<div class="w115 J_copy_p" style="width: 100%; padding-left: 5px;">
+							快递名称：<if condition="$vo.transport_id neq null">
+										{:R('base/transPortName',array($vo['transport_name']))}
+									  </if>
+									   <br> 
+							快递单号：{$vo.transport_id}<br>  
+						</div>
+						</td>
+					</if>
+
+					<td width="92"><p class="w70" style="width: 100%;">
+							<span class="font_red">
+								<?php echo (intval($vo['transport'])+intval($vo['money']));?>
+							</span>元
+						</p></td>
+					<!--
+          <td width="77">
+							已退款<br />
+				2014-07-28 09:07					  </td>
+		  -->
+				</tr>
+
+				<tr>
+					<td id="success_tijiao_td_123082" colspan="9"
+						style="background-color: #F5F5F5; text-align: left; maring: 0; padding: 5px 0 5px 30px; border-bottom-color: 1px solid #C9E7F7; position: static;">
+						<span style="height: 28px; line-height: 28px;">状态：
+						
+								<if condition="$vo.state eq 1">
+								 待付款&nbsp;&nbsp;&nbsp;&nbsp;
+									<!-- 可修改为:<a target="_blank" href="{:U('jiedan&id='.$vo['list_id'].'&action_user_id='.$user['id'])}">待付款</a> -->
+								<elseif condition="$vo.state eq 2"/>
+									待发货&nbsp;&nbsp;&nbsp;&nbsp;
+									 可执行:<a class="fh" id="{$vo['list_id']}"  href="javascript:;">&nbsp;&nbsp;发货</a>
+								<elseif condition="$vo.state eq 3"/>
+									待确认&nbsp;&nbsp;&nbsp;&nbsp;
+									<!-- 可修改为:<a  onclick=dqr("{:U('sure&id='.$vo['list_id'])}","trans{$vo.list_id}","{$vo.list_id}");>待确认</a> -->
+								<elseif condition="$vo.state eq 4"/>
+									已确认&nbsp;&nbsp;&nbsp;&nbsp;
+									<!-- 可修改为:<a target="_blank" href="{:U('comp&id='.$vo['list_id'])}">已完成</a> -->
+								<else/>
+									已完成&nbsp;&nbsp;&nbsp;&nbsp;
+									<!-- <a href="{:U('comp&id='.$vo['list_id'])}">返回确认</a> -->
+								</if>
+						</span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		</volist>
+				<div class="pager">
+				<div class="page">
+				{$_page}
+				</div>
+				</div>
+	</div>
+</div>
+</block>
+
+
+<block name="ext_js">
+<script type="text/javascript">
+
+	function dqr(url , tid , id){
+		var transport_id = $("#"+tid).val();
+		if(transport_id.isEmpty()){
+			alert('快递单号为空,请填写');
+			$("#"+id).focus();
+			return;
+		}else{
+			
+			var transport_name = $(".modify_kd").siblings("select").val();
+			var transport_id   = $(".modify_kd").siblings("input").val();
+			var list_id        = id;
+			var url2 = "{:U('modify')}"+'&list_id='+list_id+'&transport_name='+transport_name+'&transport_id='+transport_id;
+			$.ajax({
+				type:'get',
+				url:url2,
+			    dataType:'json',
+			    success: function(msg){
+			    	if(msg.success){
+			    		location.href=url;
+			    	}
+			    }
+			});
+			
+			
+		}
+	}
+	
+	$(function(){
+		$(".modify_kd").click(function(){
+				var transport_name = $(".modify_kd").siblings("select").val();
+				var transport_id   = $(".modify_kd").siblings("input").val();
+				var list_id        = this.id;
+				var url = "{:U('modify')}"+'&list_id='+list_id+'&transport_name='+transport_name+'&transport_id='+transport_id;
+				//location.href=url;
+				$.ajax({
+					type:'get',
+					url:url,
+				    dataType:'json',
+				    success: function(msg){
+				    	alert(msg.msg);
+				    }
+				});
+			}		
+		);
+		 
+	  $(".fh").click(function(){
+		    var div_id = '#transport_'+$(this).attr('id');
+		  	var transport_name = $(div_id+" select[name=transport_name]").val();
+			var transport_id   = $(div_id+" input[name=transport_id]").val();
+
+			$flag=false;
+			if(transport_id.isEmpty()){
+				if(confirm('快递单号为空，是否继续发货？')){
+					$flag = true;
+				}
+			}
+
+			if($flag){
+				var list_id        = this.id;
+				var url = "{:U('modify')}"+'&list_id='+list_id+'&transport_name='+transport_name+'&transport_id='+transport_id;
+				//location.href=url;
+				$.ajax({
+					type:'get',
+					url:url,
+				    dataType:'json',
+				    success: function(msg){
+				    	$("#"+list_id).html('<font color=red>发货成功</font>');
+				    	$("#"+list_id).unbind();
+				    }
+				});
+			}
+	  });	
+		
+	});
+</script>
+</block>

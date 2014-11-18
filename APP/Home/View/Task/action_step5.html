@@ -1,0 +1,335 @@
+<extend name="pub/base" />
+
+<block name="title">
+商家发布任务-支付
+</block>
+
+<block name="ext_css">
+  <style type="text/css">
+    .input2 {
+      border:0px;
+    }
+  </style>
+</block>
+
+<block name="body">
+
+            <div class="wrap publish-checkin clearfix">
+                <div class="checkout-title clearfix">
+                    <img src="__IMG__/publish_title_pub.jpg">
+                    <div class="Process">
+                        <ul class="clearfix">
+                            <li style="width:20%" class="cur">
+                                <em class="Processyes">
+                                    1
+                                </em>
+                                <span>
+                                    选任务类型
+                                </span>
+                            </li>
+                            <li style="width:20%" class="cur">
+                                <em class="Processyes">
+                                    2
+                                </em>
+                                <span>
+                                    填写商品信息
+                                </span>
+                            </li>
+                            <li style="width:20%" class="cur">
+                                <em class="Processyes">
+                                    3
+                                </em>
+                                <span>
+                                    选择刷单数量
+                                </span>
+                            </li>
+                            <li style="width:20%" class="cur">
+                                <em class="Processyes">
+                                    4
+                                </em>
+                                <span>
+                                    选增值服务
+                                </span>
+                            </li>
+                            <li style="width:20%">
+                                <em class="Processyes">
+                                    5
+                                </em>
+                                <span>
+                                    支付
+                                </span>
+                            </li>
+                            <li style="width:20%" class="Processlast">
+                                <em>
+                                    6
+                                </em>
+                                <span>
+                                    发布成功
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="publish-checkin-content">
+                    <h3 class="f18 clearfix">
+                        第五步：支付
+                    </h3>
+                    <div class="business-vip clearfix">
+
+                      <form name="theForm" action="{:U('action_step5')}" method="post">
+                      <input type="hidden" name="id" value="{$tk.id}">
+
+                      <table width="95%" border="1" align="center" cellpadding="0" cellspacing="1">
+                        <tr height="30">
+                          <td width="9%" align="center" bgcolor="#FFFFFF">分类</td>
+                          <td width="17%" align="center" bgcolor="#FFFFFF">费用明细</td>
+                          <td width="14%" align="center" bgcolor="#FFFFFF">小计</td>
+                          <td width="20%" align="center" bgcolor="#FFFFFF">套餐</td>
+                          <td width="17%" align="center" bgcolor="#FFFFFF">优惠价格</td>
+                          <td width="23%" align="center" bgcolor="#FFFFFF">合计</td>
+                        </tr>
+                        <tr height="30">
+                          <td bgcolor="#FFFFFF" align="center">押金</td>
+                          <td bgcolor="#FFFFFF" align="center">{$tk.price}元 x {$tk.cnt}<br></td>
+                          <td bgcolor="#FFFFFF" align="center">{$tk.money}</td>
+                          <td bgcolor="#FFFFFF" align="center">无</td>
+                          <td bgcolor="#FFFFFF" align="center">100%</td>
+                          <td bgcolor="#FFFFFF" align="center">{$tk.money} x 
+                          {$tk.taocan_number} = {$total}<input type="hidden" name="total" value="{$total}"></td>
+                        </tr>
+                        <if condition="$tk.transport gt 0">
+                          <tr height="30">
+                            <td bgcolor="#FFFFFF" align="center">邮费</td>
+                            <td bgcolor="#FFFFFF" align="center">{$tk.transport}元 x 1</td>
+                            <td bgcolor="#FFFFFF" align="center">{$tk['transport']}</td>
+                            <td bgcolor="#FFFFFF" align="center">无</td>
+                            <td bgcolor="#FFFFFF" align="center">100%</td>
+                            <td bgcolor="#FFFFFF" align="center">{$tk.transport} x 
+                            {$tk.taocan_number} = {$tp_total}<input type="hidden" name="tp_total" value="{$tp_total}"></td>
+                          </tr>
+                        </if>
+                      </table>
+                      <table width="95%" border="0" align="center" cellpadding="0" cellspacing="1">
+                        <tr>
+                          <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td align="right">押金合计：<strong>{$tk['yj_pay']}</strong>元</td>
+                        </tr>
+                      </table>
+
+                      <br>
+
+                      <table width="95%"   border="1" align="center" cellpadding="0" cellspacing="1">
+                        <tr height="30">
+                          <td width="9%" align="center" bgcolor="#FFFFFF">分类</td>
+                          <td width="17%" align="center" bgcolor="#FFFFFF">费用明细</td>
+                          <td width="14%" align="center" bgcolor="#FFFFFF">小计</td>
+                          <td width="20%" align="center" bgcolor="#FFFFFF">套餐</td>
+                          <td width="17%" align="center" bgcolor="#FFFFFF">优惠价格</td>
+                          <td width="23%" align="center" bgcolor="#FFFFFF">合计</td>
+                        </tr>
+
+                        <?php 
+                            //判断是否是组合任务
+                            $is_more = encodeMore(json_decode($tk['name']));
+                            $tk_db_more = $is_more?$sysConfig['num_more_db']:0;
+                        ?>
+
+                        <if condition="$tk_db_more">
+                          <tr height="30">
+                            <td bgcolor="#FFFFFF" align="center">组合任务</td>
+                            <td bgcolor="#FFFFFF" align="center">{$sysConfig['num_more_db']}D币 x {$tk.taocan_number}</td>
+                            <td bgcolor="#FFFFFF" align="center">
+                              {$sysConfig['num_more_db']*$tk.taocan_number}
+                            </td>
+                            <td bgcolor="#FFFFFF" align="center">无</td>
+                            <td bgcolor="#FFFFFF" align="center">100%</td>
+                            <td bgcolor="#FFFFFF" align="center">
+                            {$sysConfig['num_more_db']} x {$tk.taocan_number} = 
+                              {$sysConfig['num_more_db']*$tk.taocan_number}
+                            </td>
+                          </tr>
+                        </if>
+
+                        <if condition="$tk.issue_interval eq 1">
+                          <tr height="30">
+                            <td bgcolor="#FFFFFF" align="center">间隔任务</td>
+                            <td bgcolor="#FFFFFF" align="center">{$sysConfig['num_intval_db']}D币 x {$tk.taocan_number}</td>
+                            <td bgcolor="#FFFFFF" align="center">
+                              {$sysConfig['num_intval_db']*$tk.taocan_number}
+                            </td>
+                            <td bgcolor="#FFFFFF" align="center">无</td>
+                            <td bgcolor="#FFFFFF" align="center">100%</td>
+                            <td bgcolor="#FFFFFF" align="center">
+                            {$sysConfig['num_intval_db']} x {$tk.taocan_number} = 
+                              {$sysConfig['num_intval_db']*$tk.taocan_number}
+                            </td>
+                          </tr>
+                        </if>
+
+                         
+                        <if condition="$tk.db_yongjin gt 0">
+                          <tr height="30">
+                            <td bgcolor="#FFFFFF" align="center">佣金</td>
+                            <td bgcolor="#FFFFFF" align="center">{$tk.db_yongjin}D币x {$tk.taocan_number} </td>
+                            <td bgcolor="#FFFFFF" align="center">
+                              {$tk['db_yongjin']*$tk.taocan_number}
+                            </td>
+                            <td bgcolor="#FFFFFF" align="center">无</td>
+                            <td bgcolor="#FFFFFF" align="center">100%</td>
+                            <td bgcolor="#FFFFFF" align="center"> 
+                                {$tk['db_yongjin']}x {$tk.taocan_number} = {$tk['db_yongjin']*$tk.taocan_number}
+                            </td>
+                          </tr>
+                        </if>
+                      </table>
+                      <table width="95%" border="0" align="center" cellpadding="0" cellspacing="1">
+                        <tr>
+                          <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td align="right">佣金合计：<strong>{$tk['db_pay']}</strong>D币
+                            <br>
+                            <span class="font_red pay_msg">
+                            <if condition="$tk.db_pay_flag eq 1">
+                                已经支付
+                            </if>
+                            </span>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td class="pay_msg_success" style="font-weight:600;color:red;" align="center">
+
+                          </td>
+                        </tr>
+
+                      </table>
+                      </form>
+
+                      <br><br>
+            
+                        <div class="publish-btnbox">
+                            <if condition="$tk.db_pay_flag neq 1">
+                                <span class="sk-arrange-gray mo-t back-last">
+                                <!-- onClick="goto_step_sx();" -->
+                                  <a class="sk-arrange-next to-prev"  href="{:U('go?step=4&id='.$tk['id'])}" >
+                                        上一步
+                                  </a>
+                                </span>
+                            </if>
+                            
+                            <if condition="$tk.step neq 6">
+                            <span class="sk-arrange-gray mo-t">
+                              <if condition="$tk.db_pay_flag eq 1">
+                                <a class="sk-arrange-next to-next comp-btn">
+                                     完成
+                                </a>                            
+                              <else/>
+                                <a class="sk-arrange-next to-next zhifu-btn" >
+                                     支付
+                                </a>
+                                <a class="sk-arrange-next to-next comp-btn" style="display:none;float:right;">
+                                     完成
+                                </a>
+                              </if>
+                            </span>
+                        </if>
+                        </div>
+                  </div>
+                </div>
+            </div>
+</block>
+
+<block name="ext_js">
+  <script type="text/javascript">
+
+    $(function(){
+
+      $(".zhifu-btn").click(function(){
+
+         var obj = $(this);
+
+         var user_db = "{$user_db['cg_amount']}";
+         var db_pay  = "{$tk['db_pay']}";
+
+         var user_yj = "{$user_db['cg_deposit']}";
+         var yj_pay  = "{$tk['yj_pay']}";
+
+         var pay_flag = false;
+
+         //d币判断
+         if(!db_pay.isEmpty()){
+            if(parseFloat(db_pay)>parseFloat(user_db)){
+                alert("您的D币余额["+user_db+"]不足["+db_pay+"],请充值后继续支付");
+                pay_flag = false;
+                if(confirm('是否立刻进行D币充值？')){
+                  location.href="{:U('pay/charge?id='.$tk['id'])}";
+                }
+                  return false;
+             }else{
+                pay_flag = true;
+             }
+         }else{
+            db_pay=0;
+            pay_flag=true;
+         } 
+
+         //押金判断
+         if(!yj_pay.isEmpty()){
+            if(parseFloat(yj_pay)>parseFloat(user_yj)){
+                alert("您的押金余额["+user_yj+"]不足["+yj_pay+"],请充值后继续支付");
+                pay_flag = false;
+                if(confirm('是否立刻进行押金充值？')){
+                  location.href="{:U('pay/charge?ctype=yjpay&yj_pay='.$tk['yj_pay'].'&id='.$tk['id'])}";
+                }
+                return false;
+             }else{
+                pay_flag = true;
+             }
+         }else{
+            yj_pay=0;
+            pay_flag=true;
+         }
+         
+         if(pay_flag){
+             var url = "{:U('dbPay?id='.$tk['id'].'&db_pay='.$tk['db_pay'].'&yj_pay='.$tk['yj_pay'])}";
+             //alert(url);
+             //return false;
+             //location.href=url;
+             //return false;
+
+             if(confirm('是否继续支付？')){
+                $.ajax({
+                  type:'get',
+                  url:url,
+                  //data:"id={$tk['id']}&db_pay={$tk['db_pay']}",
+                  dataType:'json',
+                  success: function(msg){
+                    if(msg.success){
+                       obj.css('display','none');
+                       $(".back-last").css('display','none');
+                       $(".comp-btn").css('display','block');
+                       $(".pay_msg").html(msg.msg);
+                       $(".pay_msg_success").html("恭喜你，支付成功！,点击'完成'进行任务发布");
+                    }else{
+                       alert(msg.msg);
+                    }
+                  }
+                });
+             }
+         }
+         return false;
+
+      });
+
+      $(".comp-btn").click(function(){
+         if(confirm('您发布的任务不能修行修改，确定发布？')){
+            theForm.submit();
+         }
+      });
+    });
+
+  </script>
+</block>

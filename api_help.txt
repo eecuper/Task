@@ -1,0 +1,109 @@
+几个接口调用和返回结果显示
+xxx 表示需要提供的参数
+
+注意特殊字符必须处理
+
+使用：客服端只需要获取 xxx 部分填补 url 然后使用WEB访问方式即可
+返回值即页面打印值 1 或者 0 具体判断客户端自行处理。
+问题反馈:mail 404810628@qq.com tel:13867060919
+
+1.待付款
+http://localhost/task/index.php?s=/Api/dfk/action_user_name/xxx/list_id/xxx
+正确返回1  失败返回0
+
+提示注意： 待发货需要在客户端页面操作 该方法弃用 需要额外的快递名称 和 单号
+//2.待发货
+//http://localhost/task/index.php?s=/Api/dfh/list_id/xxx
+//正确返回1  失败返回0
+
+3.待确认
+http://localhost/task/index.php?s=/Api/dqr/list_id/xxx
+正确返回1  失败返回0
+
+4.已确认
+http://localhost/task/index.php?s=/Api/wc/list_id/xxx
+正确返回1  失败返回0
+
+
+
+该字段信息由订单明细表 用户信息表 任务信息表 任务配置表 四表关联查询而得的结果字段
+所以关键字段、编号、名称都已经同时存在
+tid : 任务编号 list_list : 订单编号 
+为主要的唯一标示
+
+详细信息抓取页面字段说明
+list_id : 				订单编号
+tid : 					任务编号
+list_type : 			PC：电脑端清单 MOBILE：手机端清单
+action_user_id : 		买号人编号
+action_create_date : 	买号人名称
+is_send : 0				是否发货
+send_date : 			发货时间
+is_sure : 0				是否确认
+sure_date : 			确认时间
+mark : 					是否评价
+mark_date : 			评价时间
+is_comp : 0				是否完成
+comp_date : 			完成时间
+state : 1 				订单状态 1 代付款 2 待发货 3 待确认 4 确认完成
+list_creat_date : 1410699275 订单创建时间
+list_status : 1         订单状态 1 正常 0 伪删除
+list_remark : 			订单备注
+id : 1                  任务编号
+create_user_id : 2 		任务创建人编号
+is_complete : 1         任务是否完成发布 1发布 0编辑中
+step : 6 				任务当前处于第几个步骤
+create_date : 1410699275 任务创建时间
+status : 1              任务状态 1 正常 0 伪删除
+web_id : 1 				任务平台ID
+shop_id : 1 			任务店铺ID
+msg_id : 10 			任务类型ID
+info : 基础信息		
+name : ["sd","","","",""] 任务名称列表
+url : ["sd.com","","","",""] 任务URL列表
+pro_id : ["3","","","",""]  任务商品ID列表
+color :  				颜色
+size : 					尺寸
+price : 2 			 	单价
+cnt : 3 				每单拍数
+money : 6 				金额
+show_price : 0 			显示价格
+info1 : 淘宝搜索框
+img :           		主图URL 
+key_words : 23   		搜索关键字
+key_cate : ["","","",""] 筛选分类
+info2 : 天猫搜索框
+price_low : 23 			价格搜索 低于
+price_high : 23			价格搜索 高于
+position :  			所在地
+info3 : 收取运费方式
+transport : 0 			邮费 0 / 10 
+post_price : 	 		该列弃用 ， transport 直接值即邮费
+info4 : 订单留言
+msg : ["",""]           留言列表
+info5 : 刷单数量
+taocan : 3              复选框选择的单数
+taocan_number : 3       自定义的单数 最终单数值值赋值在该列  taocan 已经弃用
+issue_pc : 3 			PC单数
+issue_phone : 0 		MOBILE单数
+info6 : 条件设置 
+issue_interval : 1      是否启用任务发布间隔
+issue_interval_time : 30 间隔分钟数
+issue_interval_number : 1 间隔分钟单数
+repurchar_cycle :       延长买家购物周期 （天）
+set_comments : 			是否评价 已经弃用
+set_comments_txt : ["",""] 评价列表
+info7 : 支付
+tp_total : 				邮费 已弃用，直接使用 transport值即可
+total : 18 				总金额
+web_name : 淘宝 		平台名称
+shop_name : c       	店铺名称
+msg_name : 文字好评订单 任务类型
+transport_name :  		物流名称
+transport_id :  	    物流单号
+create_nc : c 			创建人名称
+create_phone : 13867060919 创建人手机
+create_img :  			弃用
+action_nc : 			弃用
+action_phone : 			弃用
+action_img : 			弃用

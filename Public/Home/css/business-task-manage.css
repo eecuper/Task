@@ -1,0 +1,196 @@
+.business-task-manage{ border:1px solid #E0E0E0; background-color:#fff;}
+
+.business-task-manage .autobtn{ background-position:right -150px; padding-right:4px; cursor:pointer;}
+.business-task-manage .autobtn span{ background-position:left -100px;}
+.business-task-manage .autobtn,.business-task-manage .autobtn span{background-image:url(../../images/business/auto-btns.png); background-repeat:no-repeat;  display:inline-block; height:42px; line-height:42px; font-size:18px; color:#fff;}
+.business-task-manage .autobtn span{ padding:0 11px 0 15px;}
+.business-task-manage .autobtn.active{ background-position:right -50px;}
+.business-task-manage .autobtn.active span{ background-position:left 0;}
+.business-task-manage-content{ padding:15px; position:relative;}
+.business-task-manage .button-box{ height:42px; line-height:42px; position:absolute; z-index:99; top:15px; right:10px; left:auto; font-size:14px; color:#dd7d00;}
+.business-task-manage .search-btn{width:67px;height:25px; display:inline-block; background:url(../../images/business/search.gif) no-repeat; float:left;}
+
+.business-task-manage .content-place{ padding-bottom:12px; overflow:hidden;}
+.business-task-manage .content-place span{ height:24px; line-height:24px; padding-right:5px;}
+.business-task-manage .text-t{width:220px; height:24px; border:1px solid #C5C5C5; float:left; margin-right:7px;}
+.business-task-manage .content-place select{ height:22px; float:left; margin-top:2px;margin-right:12px; width:100px;}
+
+.business-task-manage-table{ border-collapse:collapse; border:1px solid #C9E7F7; width:100%; margin-bottom:15px;}
+.business-task-manage-table th{ background-color:#F6FBFE; line-height:35px; text-indent:10px; height:35px; color:#575757;}
+.business-task-manage-table th span{ float:left;margin-right:23px;}
+.business-task-manage-table th span.fr{float:right;}
+.business-task-manage-table th .arrange-down,.business-arrange-down{height:15px; line-height:15px; position:relative; float:right;top:10px; padding-right:15px; display:inline-block; background:url(../../images/business/arrange-down.gif) right center no-repeat; right:15px;color:#00A7E8;}
+
+.business-task-manage-table td{ padding:15px 0; vertical-align:middle; border-bottom:1px solid #E7E7E7; text-align:center;}
+.business-task-manage-table td .img{ height:55px; width:55px; float:left; margin:0 5px;}
+.business-task-manage-table td .text{padding-top:0; line-height:18px; padding-left:10px; overflow:hidden; text-align:left; width:145px; float: left;}
+.business-task-manage-table td .text.brushrefund{width:200px;}
+.business-task-manage-table tr:last-child td{ border-bottom:1px solid #C9E7F7;}
+.business-task-manage-table.mutitype td{ border-bottom:0}
+.business-task-manage-table a{ color:#1f9cd8; cursor: pointer;}
+.business-task-manage-table th a{ color:#585858;}
+.business-task-manage-table th a.qq_mess{top:6px; position:relative;}
+.business-task-manage-table p{ word-wrap:break-word; word-break:break-all; display:block; padding:0 5px; text-align:center;height:82px;overflow:hidden;}
+.business-task-manage-table .w8{width:8px;}
+.business-task-manage-table .w85{width:85px;}
+.business-task-manage-table .w70{width:60px;}
+.business-task-manage-table .w280{width:270px;}
+.business-task-manage-table .w110{width:100px;}
+.business-task-manage-table .w100{width:90px;}
+.business-task-manage-table .w115{width:105px;}
+.business-task-manage-table .w28{width:18px;}
+.business-task-manage-table-title{ height:30px; background-color:#F5F5F5; line-height:30px; text-align:center; width:100%; margin-bottom:10px;}
+.business-task-manage-table td.end{ text-align:center;}
+.business-task-manage-commentbox{padding:15px; text-align:left; border-top:1px solid #E7E7E7; overflow:hidden;}
+
+.business-task-manage-commentbox-mater{ height:36px; padding:5px 37px 15px 0; line-height:36px;}
+.business-task-manage-commentbox-mater em,.business-task-manage-commentbox-mater img{ float:left;}
+.business-task-manage-commentbox-mater img{ vertical-align:middle;width:36px;height:36px;}
+
+.business-task-manage-comment-list{}
+.business-task-manage-comment-list ul{}
+.business-task-manage-comment-list li{width:257px;height:105px; float:left; cursor:pointer; padding:8px 10px 10px; border:1px solid #E7E7E7;line-height:26px; font-size:14px; margin:0 15px 10px 0;}
+.business-task-manage-comment-list li .c-con{color:#555555;}
+.business-task-manage-comment-list li .c-t{ color:#999; height:26px;}
+.business-task-manage-comment-list li.active{border:1px solid #1F9CD8;}
+.business-task-manage-comment-list li .icon-g{ height:26px; line-height:26px; padding-left:18px; background:url(../../images/business/icon-g.png) left center no-repeat; display:none; float:right;}
+.business-task-manage-comment-list li.active .icon-g{ display:inline-block;}
+.business-task-manage-comment-list li.active .J_ts{ display:none;}
+.business-task-manage-comment-list li.cant-unde .J_ts{ color:#999999;}
+
+.business-task-manage-comment-list li.undo span,
+.business-task-manage-comment-list li.undo a,
+.business-task-manage-comment-list li.undo p{ color:#999;}
+
+
+.business-task-manage-table.f-comment td{ padding:2px;}
+.business-task-manage-table.f-comment td .business-task-manage-commentbox:first-child,
+.business-task-manage-table.f-comment td .business-task-manage-commentbox.first-child{ border:0;}
+.business-task-manage .tobest-comment{width:116px;height:26px; display:inline-block; background-image:url(../../images/business/tbest.gif); float:right; margin-top:4px; margin-right:5px; cursor:pointer; background-position:0 0;}
+.business-task-manage .tobest-comment.active{ background-position:0 -26px;}
+
+
+.business-task-manage-gf{ height:50px; line-height:50px; padding:10px; text-align:right; background:#F5F5F5;}
+label input{ vertical-align:middle; margin-top:-3px; margin-right:3px;}
+.business-task-manage-gf .font_oy{ padding:0 10px 0 20px;}
+.intd-probox-box{padding: 20px 0}
+.intd-probox{ padding-bottom:10px; overflow:hidden; float:left; clear:both;}
+.business-task-manage-table th a.font_blue{ color:#1f9cd8;}
+
+.business-task-manage .content-place .business-mess-sent-btn span
+{ height:28px; line-height:28px; padding-right:13px;}
+
+
+
+.business-task-manage-onlytext{ height:160px; line-height:160px; color:#ccc; text-align:center; font-size:20px;}
+
+
+.se-text{ height:19px; border:1px solid #C3C3C3; width:150px; margin-right:15px;}
+.blue-arrange-up-box{ clear:both;}
+
+.business-task-manage-gf.sk{ font-size:14px; height:70px;}
+.business-task-manage-gf.sk p{ height:20px; line-height:20px;}
+
+
+
+
+/* ----- levi 04.19 ---- */
+.business-task-manage-content {
+    padding: 20px 30px;
+}
+
+.business-task-manage-content .wrap {
+    width: auto;
+    overflow: hidden;
+    height: 30px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.business-task-manage-content .wrap p {
+    height: 30px;
+    line-height: 40px;
+    overflow: hidden;
+}
+
+.business-task-manage-content .wrap img {
+    float: left;
+    margin-right: 14px;
+}
+
+.makes-task-tit{height: 30px;line-height: 40px;margin-bottom: 20px; overflow:hidden; border-bottom:1px solid #ddd; padding-bottom: 20px;}
+.makes-task-tit img {
+    float: left;
+}
+
+.business-task-wooo {
+    float: right;
+}
+
+.business-task-wooo .autobtn, .business-task-wooo .autobtn span {
+    height: 28px;
+    line-height: 28px;
+    padding-right: 3px;
+    font-size: 14px;
+}
+
+.business-task-wooo .autobtn.active {
+    background-position: right -350px;
+}
+
+.business-task-wooo .autobtn.active span {
+    background-position: 0 -300px;
+}
+
+.business-task-wooo .autobtn span {
+    padding: 0 8px 0 10px;
+}
+
+.business-task-manage .wooo, .business-task-manage .wooo span {
+    background: none;
+    display: inline;
+    height: auto;
+    font-size: 14px;
+    color: #1f9cd8;
+}
+
+.business-task-manage-table td {
+    position: relative;
+}
+
+
+.intd-probox {
+    text-align: left;
+}
+
+
+.business-task-manage-table td .text.gettaskcomm{
+    width: 230px;
+}
+
+.business-task-manage-table td .img {
+}
+
+#my-bigbar {
+    width: 940px;
+    position: fixed;
+    bottom: 0;
+}
+
+#my-bigbar.oh-my-bigbar {
+    position: static;
+}
+
+/*让position:fixed在IE6下可用! */
+ 
+.fixed-top /* 头部固定 */{position:fixed;bottom:auto;top:0px;}
+.fixed-bottom /* 底部固定 */{position:fixed;bottom:0px;top:auto;}
+.fixed-left /* 左侧固定 */{position:fixed;right:auto;left:0px;}
+.fixed-right /* 右侧固定 */{position:fixed;right:0px;left:auto;}
+/* 上面的是除了IE6的主流浏览器通用的方法 */
+* html,* html body /* 修正IE6振动bug */{background-image:url(about:blank);background-attachment:fixed;}
+* html .fixed-top /* IE6 头部固定 */{position:absolute;bottom:auto;top:expression(eval(document.documentElement.scrollTop));}
+* html .fixed-right /* IE6 右侧固定 */ {position:absolute;right:auto;left:expression(eval(document.documentElement.scrollLeft+document.documentElement.clientWidth-this.offsetWidth)-(parseInt(this.currentStyle.marginLeft,10)||0)-(parseInt(this.currentStyle.marginRight,10)||0));}
+* html .fixed-bottom /* IE6 底部固定  */{position:absolute;bottom:auto;top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0)));}
+* html .fixed-left /* IE6 左侧固定 */{position:absolute;right:auto;left:expression(eval(document.documentElement.scrollLeft));}

@@ -1,0 +1,199 @@
+<extend name="pub/base" />
+
+<block name="title">
+绑定银行卡
+</block>
+
+<block name="ext-css">
+    <style type="text/css">
+        input {border:0px;}
+        select{height:30px;}
+    </style>
+</block>
+
+<block name="page_index">
+    <div class="breadcrumbs">
+        <div class="wrap">
+            <a href="javascript:;">首页</a> &gt; <a href="javascript:;">资金信息</a> &gt;绑定银行
+        </div>
+    </div>
+</block>
+
+<block name="body">
+<div class="wrap clearfix">
+
+<div class="business-right">    
+      <div class="business-right-comm">
+           <div class="business-fund">
+            <h3>银行卡绑定</h3>
+            <div class="business-fund-main">
+                <div class="business-fund-bd">
+                    <div class="business-fundlist" style="display: none;">
+                      
+                       
+                      <div class="fundformbox feeding zhifubaobox"> 
+                                            
+                          <div class="item clearfix">
+                            <label class="tit">姓名:</label>
+                            <div class="inp"> 
+                              <em class="inpbox">         
+                                <input type="text" name="zfbname" id="zfbname" class="txt" regname="zfbname" emptyerr="姓名不能为空">  
+                              </em>
+                              <em class="funtinptip" style="display:table-cell;">支付宝姓名一般为真实姓名，请务必准确填写，否则将无法给你退款</em>
+                            </div>
+                          </div>                 
+                          <div class="item clearfix">
+                            <label class="tit">支付宝账号:</label>
+                            <div class="inp w300"> 
+                              <em class="inpbox">         
+                                <input type="text" name="zfbusername" class="txt placebox" id="zfbusername" regname="alipay" emptyerr="支付宝账号不能为空">  
+                              </em>                           
+                            </div>
+                          </div>  
+                          <p class="item fundbtnp">
+                            <a class="fundbtn" href="javascript:;">提交</a>
+                          </p>
+                      </div>                     
+                    </div>
+                    <div class="business-fundlist" style="display: none;">
+                      <div class="business-notice blacklist-notice tl">
+                        <img src="images/icon-blacklist-notice.gif">  为了便于您提现人气符点及退还做任务的押金，请先绑定支付宝和财付通帐号                      </div> 
+                      <div class="fundformbox feeding caifutongbox">
+                                                <div class="item clearfix linetext">
+                            <label class="tit">原财付通账号:</label>
+                            <div class="inp">15233477@qq.com</div>
+                          </div>
+                                                                                       
+                          <div class="item clearfix">
+                            <label class="tit">姓名:</label>
+                            <div class="inp"> 
+                              <em class="inpbox">         
+                                <input type="text" name="cftname" class="txt" regname="cftname" id="cftname" emptyerr="姓名不能为空">  
+                              </em>
+                              <em class="funtinptip" style="display:table-cell;">财付通姓名一般为真实姓名，请务必准确填写，否则将无法给你退款</em>                                                  
+                            </div>
+                          </div>                         
+                          <div class="item clearfix">
+                            <label class="tit">财付通账号:</label>
+                            <div class="inp w300"> 
+                              <em class="inpbox">         
+                                <input type="text" name="cftusername" class="txt placebox" id="cftusername" regname="tenpay" emptyerr="财付通账号不能为空">  
+                              </em>                           
+                            </div>
+                          </div>  
+                          <p class="item fundbtnp">
+                            <a class="fundbtn" href="javascript:;">提交</a>
+                          </p>
+                      </div>                     
+                    </div> 
+                    <div class="business-fundlist" style="display: block;">
+                      <form name="bindForm" action="{:U('card')}" method="post">
+                        <input type="hidden" name="acc_id" value="{$acc['acc_id']}"/>
+                       
+                        <div class="fundformbox yhkbankbox">
+                          <div class="item clearfix">
+                            <label class="tit">选择银行:</label>
+                              <div class="inp">
+                                  <select class="select" name="acc_type" regname="bankfor" emptyerr="请选择银行" id="bankfor">
+                                    <option value="">请选择银行</option>
+                                    <volist name="configs" id="vo"  key="k">
+                                      <if condition="$vo.type eq 104"> 
+                                          <option value="{$vo['id']}">{$vo.name}</option>
+                                      </if>
+                                    </volist> 
+                                  </select>                            
+                              </div>
+                          </div>                           
+                          <div class="item clearfix">
+                            <label class="tit">银行卡号:</label>
+                            <div class="inp">                          
+                              <em class="inpbox">
+                                  <input type="text" class="txt" name="acc_card" regname="bankforlast" id="bankforlast" emptyerr="支行不能为空">
+                              </em></div>                            
+                          </div>                           
+                          <div class="item clearfix">
+                            <label class="tit">银行预留手机号码:</label>
+                            <div class="inp"> 
+                              <em class="inpbox">         
+                                  <input type="text" class="txt" confirmationpass="bank" id="bank" name="acc_phone" regname="bank" emptyerr="银行卡号不能为空">
+                              </em>                                                 
+                            </div>
+                          </div> 
+                          <div class="item clearfix">
+                            <label class="tit">身份证号:</label>
+                            <div class="inp"> 
+                              <em class="inpbox">         
+                                <input type="text" class="txt placebox" name="acc_cert" confirmation="bank" emptyerr="确认卡号不能为空" confirmationerr="确认卡号不一致,请重新填写">
+                              </em>                                                 
+                            </div>
+                          </div> 
+                                                                                                      
+                          <p class="item">
+                            <a class="business-mess-sent-btn" href="javascript:bindForm.submit();"><span>提&nbsp;&nbsp;交</span></a>
+                          </p>
+                      </div>  
+                      </form>
+                    </div>                                       
+                </div>
+            </div> 
+			
+			<div class="old-bind-box">
+			<h4>
+				已绑定的银行卡
+			</h4>
+			<table class="old-bind-table">
+				<tbody>
+					<tr>
+						<th width="120">银行</th>
+						<th width="250">卡号</th> 
+						<th width="100">手机号码</th>
+						<th width="150">证件号</th>
+						<th >操作</th>
+					</tr>
+					
+					<volist name="acces" id="vo"  key="k">
+						  <tr>
+                <td>{$vo['name']}</td>
+                <td>******{$vo['acc_card']|substr=6,20}</td>
+                <td>******{$vo['acc_phone']|substr=8,20}</td>
+                <td>******{$vo['acc_cert']|substr=10,20}</td>
+                <td><a href="{:U('pay/card?del=1&acc_id='.$vo['acc_id'])}">删除</a></td>
+              </tr>
+					</volist>
+				</tbody>
+			</table>
+		</div> 
+		
+            <div class="business-fund-tips">
+                <h5>温馨提示:</h5>
+                <div class="business-fund-tips-main">
+                <p>1、如果您填写的开户行支行不正确，可能将无法成功提现，由此产生的提现费用将不予返还</p>
+                <p>2、如果您不确定开户行支行名称，可打电话到所在地银行的营业网点询问或上网查询 </p>
+                <p>3、不支持提现至信用卡账号</p>
+                <p>如果有接手的任务还没有全部完成，暂不能修改退款账号，请先完成任务后再修改</p>
+                </div>
+            </div>  
+        </div>
+    </div>
+  
+  </div>
+	
+</div>
+ 
+ 
+</block>
+  
+  
+<block name="ext_js">
+<script type="text/javascript">
+    
+</script>
+</block>
+
+<block name="footer">
+    <div class="footer">
+        <div>
+         
+        </div>
+    </div>
+</block>

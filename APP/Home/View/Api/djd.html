@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script language="javascript" src="__PUBLIC__/stringUtil.js"></script>
+<title>带接单清单</title>
+
+<style type="text/css">
+fieldset {border:0px; border-top:dashed 1px grey;}
+legend{font-weight:600;font-size:15px;}
+
+fieldset table{width:100%;background-color:grey;}
+
+fieldset table th,td{background-color:#fff;}
+
+.page{
+	margin-top:10px;
+	height:40px;
+}
+
+.page a:link, .page a:visited{
+	display: inline-block;
+	text-decoration: none;
+	padding: 3px 10px;
+	border:solid 1px #E8E8E8;
+	font-family: "微软雅黑";
+	color: #000;
+}
+
+.page a:hover{
+	display: inline-block;
+	text-decoration: none;
+	padding: 3px 10px;
+	border:solid 1px #E8E8E8;
+	font-family: "微软雅黑";
+	color:#fff;
+	background-color: #000;
+}
+
+
+</style>
+
+</head>
+<body>
+
+
+<if condition="$list.state eq 1">
+<fieldset>
+<legend>待接单</legend>
+
+<table>
+	<tr>
+		<th>订单编号</th>
+		<th>任务编号</th>
+		<th>接单买号</th>
+		<th>名称1</th>
+		<th>链接1</th>
+		<th>主图1</th>
+	</tr>
+	<volist name="list" id="v">
+		<?php $names = json_decode($v['name']);
+			  $urls  = json_decode($v['url']);
+			  $imgs  = json_decode($v['img']);
+		?>
+		<tr>
+		<td>{$v.list_id}</td>
+		<td>{$v.tid}</td>
+		<td>{$v.action_user_name}</td>
+		<td>{$names[0]}</td>
+		<td>{$urls[0]}</td>
+		<td>{$imgs[0]}</td>
+		</tr>
+	</volist>
+</table>
+
+<div class="page">
+	
+	{$_page}
+
+</div>
+
+</fieldset>
+
+</body>
+</html>

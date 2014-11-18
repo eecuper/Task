@@ -1,0 +1,109 @@
+<extend name="pub/base" />
+
+<block name="title">
+任务详情
+</block>
+
+<block name="ext_css">
+<link rel="stylesheet" href="__CSS__/business-taskmu-detail.css">
+<style type="text/css">.WPA3-SELECT-PANEL { z-index:2147483647; width:463px; height:292px; margin:0; padding:0; border:1px solid #d4d4d4; background-color:#fff; border-radius:5px; box-shadow:0 0 15px #d4d4d4;}.WPA3-SELECT-PANEL * { position:static; z-index:auto; top:auto; left:auto; right:auto; bottom:auto; width:auto; height:auto; max-height:auto; max-width:auto; min-height:0; min-width:0; margin:0; padding:0; border:0; clear:none; clip:auto; background:transparent; color:#333; cursor:auto; direction:ltr; filter:; float:none; font:normal normal normal 12px "Helvetica Neue", Arial, sans-serif; line-height:16px; letter-spacing:normal; list-style:none; marks:none; overflow:visible; page:auto; quotes:none; -o-set-link-source:none; size:auto; text-align:left; text-decoration:none; text-indent:0; text-overflow:clip; text-shadow:none; text-transform:none; vertical-align:baseline; visibility:visible; white-space:normal; word-spacing:normal; word-wrap:normal; -webkit-box-shadow:none; -moz-box-shadow:none; -ms-box-shadow:none; -o-box-shadow:none; box-shadow:none; -webkit-border-radius:0; -moz-border-radius:0; -ms-border-radius:0; -o-border-radius:0; border-radius:0; -webkit-opacity:1; -moz-opacity:1; -ms-opacity:1; -o-opacity:1; opacity:1; -webkit-outline:0; -moz-outline:0; -ms-outline:0; -o-outline:0; outline:0; -webkit-text-size-adjust:none; font-family:Microsoft YaHei,Simsun;}.WPA3-SELECT-PANEL a { cursor:auto;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-TOP { height:25px;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-CLOSE { float:right; display:block; width:47px; height:25px; background:url(http://combo.b.qq.com/crm/wpa/release/3.3/wpa/views/SelectPanel-sprites.png) no-repeat;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-CLOSE:hover { background-position:0 -25px;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-MAIN { padding:23px 20px 45px;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-GUIDE { margin-bottom:42px; font-family:"Microsoft Yahei"; font-size:16px;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-SELECTS { width:246px; height:111px; margin:0 auto;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-CHAT { float:right; display:block; width:88px; height:111px; background:url(http://combo.b.qq.com/crm/wpa/release/3.3/wpa/views/SelectPanel-sprites.png) no-repeat 0 -80px;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-CHAT:hover { background-position:-88px -80px;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-AIO-CHAT { float:left;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-QQ { display:block; width:76px; height:76px; margin:6px; background:url(http://combo.b.qq.com/crm/wpa/release/3.3/wpa/views/SelectPanel-sprites.png) no-repeat -50px 0;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-QQ-ANONY { background-position:-130px 0;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-LABEL { display:block; padding-top:10px; color:#00a2e6; text-align:center;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-BOTTOM { padding:0 20px; text-align:right;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-INSTALL { color:#8e8e8e;}</style><style type="text/css">.WPA3-CONFIRM { z-index:2147483647; width:285px; height:141px; margin:0; background:url(data:image/png; no-repeat;}.WPA3-CONFIRM { *background-image:url(http://combo.b.qq.com/crm/wpa/release/3.3/wpa/views/panel.png);}.WPA3-CONFIRM * { position:static; z-index:auto; top:auto; left:auto; right:auto; bottom:auto; width:auto; height:auto; max-height:auto; max-width:auto; min-height:0; min-width:0; margin:0; padding:0; border:0; clear:none; clip:auto; background:transparent; color:#333; cursor:auto; direction:ltr; filter:; float:none; font:normal normal normal 12px "Helvetica Neue", Arial, sans-serif; line-height:16px; letter-spacing:normal; list-style:none; marks:none; overflow:visible; page:auto; quotes:none; -o-set-link-source:none; size:auto; text-align:left; text-decoration:none; text-indent:0; text-overflow:clip; text-shadow:none; text-transform:none; vertical-align:baseline; visibility:visible; white-space:normal; word-spacing:normal; word-wrap:normal; -webkit-box-shadow:none; -moz-box-shadow:none; -ms-box-shadow:none; -o-box-shadow:none; box-shadow:none; -webkit-border-radius:0; -moz-border-radius:0; -ms-border-radius:0; -o-border-radius:0; border-radius:0; -webkit-opacity:1; -moz-opacity:1; -ms-opacity:1; -o-opacity:1; opacity:1; -webkit-outline:0; -moz-outline:0; -ms-outline:0; -o-outline:0; outline:0; -webkit-text-size-adjust:none;}.WPA3-CONFIRM * { font-family:Microsoft YaHei,Simsun;}.WPA3-CONFIRM .WPA3-CONFIRM-TITLE { height:40px; margin:0; padding:0; line-height:40px; color:#2b6089; font-weight:normal; font-size:14px; text-indent:80px;}.WPA3-CONFIRM .WPA3-CONFIRM-CONTENT { height:55px; margin:0; line-height:55px; color:#353535; font-size:14px; text-indent:29px;}.WPA3-CONFIRM .WPA3-CONFIRM-PANEL { height:30px; margin:0; padding-right:16px; text-align:right;}.WPA3-CONFIRM .WPA3-CONFIRM-BUTTON { position:relative; display:inline-block!important; display:inline; zoom:1; width:99px; height:30px; margin-left:10px; line-height:30px; color:#000; text-decoration:none; font-size:12px; text-align:center;}.WPA3-CONFIRM .WPA3-CONFIRM-BUTTON-FOCUS { width:78px;}.WPA3-CONFIRM .WPA3-CONFIRM-BUTTON .WPA3-CONFIRM-BUTTON-TEXT { line-height:30px; text-align:center; cursor:pointer;}.WPA3-CONFIRM-CLOSE { position:absolute; top:7px; right:7px; width:10px; height:10px; cursor:pointer;}</style>
+</block>
+
+
+
+<block name="page_index">
+	<div class="breadcrumbs">
+		<div class="wrap">
+			<a href="#"> 首页 </a> &gt;  任务详情
+		</div>
+	</div>
+</block>
+
+<block name="body">
+<div class="wrap business-task-detail clearfix">
+	<div class="business-task-detail-left">
+		<div class="business-task-detail-left-content">
+			<input type="hidden" id="trade_id" value="21271"> <input
+				type="hidden" id="binding_type" value="tmall">
+			<h3 class="c-title">任务信息</h3>
+			<div class="business-task-detail-left-da">
+				<p>
+					任务总单数：<em>{$tk.taocan_number}</em>单
+				</p>
+				<div class="pl10">
+					<p>
+						电脑端：<em>{$tk.issue_pc}</em>单
+					</p>
+					<p>
+						手机端：<em>{$tk.issue_phone}</em>单
+					</p>
+
+				</div>
+				<p>&nbsp;</p>
+			</div>
+			<div class="business-task-detail-left-da">
+				<p>
+					支付押金：<em>{$tk.total}</em>元
+				</p>
+				<p>
+					支付D币：<em>{$tk.db_pay}</em>D
+				</p>
+				<p>&nbsp;</p>
+			</div>
+			<div class="business-task-detail-left-da">
+				<p>任务编号：{$tk.id}</p>
+				<p>任务发布时间：{$tk.create_date|date="Y-m-d H:i:s",###}</p>
+				<p>
+					店铺：<i class="plat_small plat_tmall"></i>{$tk.shop_name}
+				</p>
+			</div>
+		</div>
+		<i class="box-angle lt"></i> <i class="box-angle rt"></i> <i
+			class="box-angle bl"></i> <i class="box-angle br"></i>
+	</div>
+	
+	 
+			
+	<div class="business-task-detail-right">
+		<div class="business-task-detail-right-state dengdaifukuang">
+			<div class="business-task-detail-right-state-list">
+				<h4 class="f16">
+					<i></i>属性：
+					<?php $n = json_decode($tk['name']);?>
+				</h4>
+				<p class="main-f">
+					 <?php echo $n[0];?>
+				</p>
+				<p class="main-f">
+					 <?php echo $n[1];?>
+				</p>
+				<p class="main-f">
+					 <?php echo $n[2];?>
+				</p>
+				<p class="main-f">
+					 <?php echo $n[3];?>
+				</p>
+				<p class="main-f">
+					 <?php echo $n[4];?>
+				</p>
+				
+				<h4 class="f16">
+					<i></i>任务状态：
+				</h4>
+				<p class="main-f">
+					<a href="{:U('order_list?state=1&search_words='.$tk['id'])}" target="_self">待付款 (<em>{$taskInfoCnt[0].dfk}</em>)
+					</a>
+					<a href="{:U('order_list?state=2&search_words='.$tk['id'])}" target="_self">待发货 (<em>{$taskInfoCnt[0].dfh}</em>)
+					</a>
+					<a href="{:U('order_list?state=3&search_words='.$tk['id'])}" target="_self">待确认 (<em>{$taskInfoCnt[0].dqr}</em>)
+					</a>
+					<a href="{:U('order_list?state=4&search_words='.$tk['id'])}" target="_self">已经完成 (<em>{$taskInfoCnt[0].wc}</em>)
+					</a>
+				</p>
+			</div>
+		</div>
+		<i class="box-angle lt"></i> <i class="box-angle rt"></i> <i
+			class="box-angle bl"></i> <i class="box-angle br"></i>
+	</div>
+</div>
+</block>

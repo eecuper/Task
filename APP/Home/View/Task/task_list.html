@@ -1,0 +1,145 @@
+<extend name="pub/base" />
+
+<block name="title">
+ 任务列表
+</block>
+
+
+<block name="ext_css">
+<link rel="stylesheet" href="__CSS__/business-task-manage.css">
+</block>
+
+
+<block name="page_index">
+	<div class="breadcrumbs">
+		<div class="wrap">
+			<a href="#"> 首页 </a> &gt;  任务列表
+		</div>
+	</div>
+</block>
+
+<block name="body">
+<div class="wrap business-task-manage clearfix">
+	<div class="business-task-manage-content">
+		<div class="wrap">
+			<p>
+				以下任务为平台发布任务，通过修改来完成任务状态 <br> <br>
+			</p>
+		</div>
+		<form action="{:U('task_list')}"
+			method="post" id="frm_batch" name="theForm">
+			<div class="content-place">
+				<span class="fl f14"> 平台： </span>
+				<select class="J-binding-type" name="web_id" style="width: 100px">
+                    <option value="">全部</option>
+                    <volist name="configs" id="vo"  key="k">
+						<if condition="$vo.type eq 1">
+						 	<option value="{$vo.id}">{$vo.name}</option>
+						</if>
+					</volist>   
+                </select>
+                <span class="fl f14" style="margin-left: 16px;"> 店铺： </span> 
+                <select class="J-binding-name" name="shop_id">
+                    <option  value="">全部</option>
+                    <volist name="configs" id="vo"  key="k">
+						<if condition="$vo.type eq 2">
+						 	<option value="{$vo.id}">{$vo.name}</option>
+						</if>
+					</volist>  
+                </select>
+			</div>
+			<div class="content-place">
+				<div class="business-task-wooo">
+					<!-- 
+					<a href="javascript:void(0);" class="autobtn wooo active"
+						name="data-export"> 批量导出 <em class="task-num"> 8 </em> 条快递信息
+					 -->
+					</a> <a href="javascript:void(0);" class="autobtn active"
+						name="confirm_shipping"> <span> 确认已发货 </span>
+					</a>
+				</div>
+				<!-- 
+				<span class="fl f14"> 关键字： </span> 
+				<select name="search_keys">
+					<option value="list_id">订单号</option>
+					<option value="action_user_nc">买家账号</option>
+				</select> <input type="text" class="se-text" name="search_words" value="">
+				 -->
+				<a class="business-mess-sent-btn" onclick="javascript:theForm.submit();"> <span> 搜&nbsp;&nbsp;索</span></a>
+			</div>
+		</form>
+		<table border="0" class="business-task-manage-table-title"
+			cellspacing="0" cellpadding="0">
+			<tbody>
+				<tr>
+					<td width="58"><label> <input name="checkedAllAll"
+							type="checkbox" checked="checked"> 全选
+					</label></td>
+					<td width="265">商品</td>
+					<td width="86">买号</td>
+					<td width="145">订单号</td>
+					<td width="128">快递方式</td>
+					<td width="120">快递单号</td>
+					<td>操作</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<volist name="tks" id="vo">
+		<table border="0" class="business-task-manage-table" cellspacing="0"
+			cellpadding="0">
+			<tbody>
+				<tr>
+					<th class="w25"><input name="checkedAll" class="J_checkall"
+						type="checkbox" checked="checked"></th>
+					<th colspan="7"><a> <i class="plat_small plat_tianmao">
+						</i>{$vo.web_name}|{$vo.shop_name} 
+					</a> 
+					<if condition="($vo.is_complete neq 1) or ($vo.status neq 1)">
+						<a href="{:U('go&id='.$vo['id'])}" target="_blank" class="fr mr15 font_blue"> 修改任务&gt; </a>
+						<else/>
+						<a href="#" class="fr mr15 font_blue"> 在进行中 &gt; </a>
+					</if>
+					
+					<if condition="($vo.is_complete eq 1) and ($vo.status eq 1)">
+						<a href="{:U('task_info&id='.$vo['id'])}" target="_blank" class="fr mr15 font_blue">
+							查看详情 &gt;</a> 
+						<else/>
+						<a href="#" class="fr mr15 font_blue">尚未发布 &gt; </a>
+					</if>
+					
+							<!-- 
+							<a href="#" target="_blank" class="fr mr15 font_blue">
+							撤销任务 &gt; </a>
+							 -->
+						<span class="fr"> 任务编号：{$vo.id} </span>
+					</th>
+				</tr>
+				
+				{:R('Task/task_list_m',array('tid'=>$vo['id']))}
+				
+			</tbody>
+		</table>
+		</volist>
+		 
+		 
+		 
+		<!-- 
+		<div id="my-bigbar" class="fixed-bottom clearfix">
+			<div class="business-task-manage-gf">
+				<label class="fl"> <input name="checkedAllAll"
+					type="checkbox" checked="checked"> 全选
+				</label> 已选中任务 <span class="task-num font_red"> 8 </span> 条 <a
+					name="data-export" class="autobtn active wooo"> <span>
+						批量导出 <em class="task-num"> 8 </em> 条快递信息
+				</span>
+				</a> <a name="confirm_shipping" class="autobtn active"> <span>
+						确认已发货 <em class="task-num"> 8 </em> 条
+				</span>
+				</a>
+			</div>
+		</div>
+		 -->
+	</div>
+</div>
+</block>

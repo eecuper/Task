@@ -1,0 +1,204 @@
+<extend name="pub/base" />
+
+<block name="title">
+商家发布任务-刷单数量
+</block>
+
+<block name="body">
+<form class="theForm" action="{:U('action_step3')}" method="post">
+<input type="hidden" name="id" value="{$tk.id}">
+<div class="wrap publish-checkin clearfix">
+            
+                <input name="is_check" type="hidden" value="">
+                <input name="is_repeat" type="hidden" value="">
+                <div class="checkout-title clearfix">
+                    <img src="__IMG__/publish_title_pub.jpg">
+                    <div class="Process">
+                        <ul class="clearfix">
+                            <li style="width:20%" class="cur">
+                                <em class="Processyes">
+                                    1
+                                </em>
+                                <span>
+                                    选任务类型
+                                </span>
+                            </li>
+                            <li style="width:20%" class="cur">
+                                <em class="Processyes">
+                                    2
+                                </em>
+                                <span>
+                                    填写商品信息
+                                </span>
+                            </li>
+                            <li style="width:20%">
+                                <em class="Processyes">
+                                    3
+                                </em>
+                                <span>
+                                    选择刷单数量
+                                </span>
+                            </li>
+                            <li style="width:20%">
+                                <em>
+                                    4
+                                </em>
+                                <span>
+                                    设置条件
+                                </span>
+                            </li>
+                            <li style="width:20%">
+                                <em>
+                                    5
+                                </em>
+                                <span>
+                                    支付
+                                </span>
+                            </li>
+                            <li style="width:20%" class="Processlast">
+                                <em>
+                                    6
+                                </em>
+                                <span>
+                                    发布成功
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="publish-checkin-content">
+                    <h3 class="f18 clearfix">
+                        第三步：选择刷单数量
+                        <span class="fr f18">
+                            已选择：
+                            <span class="f14 font_oy">
+                                {$web.name} | {$shop.name}| {$msg.name}
+                            </span>
+                        </span>
+                    </h3>
+                    <div class="publish-st4-box-new-title">
+                        1.请选择服刷单数量
+                    </div>
+                    <div class="ns-task-area">
+                        <p class="J_FV_STATE">
+                        	<?php $i=0; $flag=0; ?>
+                        	<volist name="configs" id="vo"  key="k">
+								<if condition="$vo.type eq 100">
+									<if condition="($i eq 1) or ($vo['val'] eq $tk['taocan'])">
+										<if condition="$vo['val'] eq $tk['taocan']">
+											<?php $flag=1; ?>
+										</if>
+											<label class="J_fdpm_show_la">
+			                                <input name="taocan" type="checkbox" class="tc-name " data-enable="{$vo.val}"
+			                                 value="{$vo.val}" checked>
+			                                {$vo.name}
+			                                </label>
+		                                <else/>
+			                                <label class="J_fdpm_show_la">
+			                                <input name="taocan" type="checkbox" class="tc-name " data-enable="{$vo.val}"
+			                                  value="{$vo.val}">
+			                                {$vo.name}
+		                            		</label>
+	                            	</if>
+								</if>
+							</volist>   
+							
+							
+							
+                            <label class="J_fdpm_show_la">
+                            	<if condition="$flag eq 0">
+									 <input name="taocan" type="checkbox" class="tc-name custom" data-enable="0"
+                                			  value="0" checked>
+                                	<else/>
+                                	 <input name="taocan" type="checkbox" class="tc-name custom" data-enable="0"
+                                			  value="0">
+								</if>
+                               
+                                	自定义
+                            </label>
+	                            <input type="text" name="taocan_number" class="data-enable" value="{$tk.taocan_number}"
+	                            maxlength="3" onKeyUp="this.value=this.value.replace(/\D/g,&#39;&#39;)"
+	                            onafterpaste="this.value=this.value.replace(/\D/g,&#39;&#39;)">
+                            	单
+                            <span style="color:#999;">
+                                (3-500单)
+                            </span>
+                        </p>
+                    </div>
+                <div class="publish-st4-box-new-title">
+                        2.请设置订单分布
+                        <span class="pt15">
+                            注：电脑端、手机端/Pad端订单总数需要为
+                            <!--
+                            <em class="font_red J_total">
+                            	<if condition="$flag eq 0">
+                            		{$tk.taocan_number}
+                            		<else/>
+                            		{$tk.taocan}
+                            	</if>
+                            </em> 
+                             -->
+                            <input type="text" readonly class="text taocan_number" datatype="n" name="taocan_number" value="{$tk.taocan_number}"/>
+                            单
+                        </span>
+                    </div>
+                    <div class="ns-task-area">
+                        <p>
+                            电脑端
+                            <input type="text" name="issue_pc" class="J_allCC" value="{$tk.issue_pc}" datatype="n">
+                            单
+                            <span style="margin-left:20px;">
+                                手机|Pad客户端
+                            </span>
+                            <input type="text" value="{$tk.issue_phone}" class="J_allCC" name="issue_phone" datatype="n">
+                            单（手机订单+电脑端必须同刷单总数一致)
+                            <input type="hidden" reg="empty" class="J_regTotal">
+                        </p>
+                    </div>
+                </div>
+                <div class="publish-btnbox">
+                    <span class="sk-arrange-gray mo-t">
+                    	<!-- onClick="goto_step_th();" -->
+                        <a class="sk-arrange-next to-prev"  href="#" >
+                           <input type="button" onclick='location.href="{:U('go?step=2&id='.$tk['id'])}"' value="上一步"/>	
+                        </a>
+                    </span>
+                    <span class="sk-arrange-gray mo-t">
+                    	<!-- onClick="goto_step_sx();" -->
+                        <a class="sk-arrange-next"  href="#">
+                            <input type="button" onclick="sub();"  value="下一步"/>
+                        </a>
+                    </span>
+                </div>
+                <input type="hidden" value="0" name="item_id[]">
+                <div class="publish-prevthree-conten-tips">
+                    <h5>
+                        温馨提示：
+                    </h5>
+                    <p>
+                        1.选择电脑端后，买手会访问淘宝网刷单，将会优化淘宝自然搜索排序；
+                    </p>
+                    <p>
+                        2.选择手机，将会优化商品在手机淘宝的搜索排序；
+                    </p>
+                </div>
+	</div>
+</form>	        
+</block>
+
+
+<block name="ext_js">
+<script type="text/javascript">
+	function sub(){
+		var total = parseInt($(".taocan_number").val());
+		var pc 	  = $("input[name='issue_pc']").val();
+		var phone = $("input[name='issue_phone']").val();
+		var pp    = parseInt(pc)+parseInt(phone); 
+		if(pp!=total){
+			alert('订单分布设置和刷单数量不一致');
+			return;
+		}
+		$(".theForm").submit();
+	}
+</script>
+</block>

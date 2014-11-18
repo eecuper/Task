@@ -1,0 +1,219 @@
+BODY {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+DIV {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+DL {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+DT {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+DD {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+UL {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+OL {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+LI {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+H1 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+H2 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+H3 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+H4 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+H5 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+FORM {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+INPUT {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+TEXTAREA {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+P {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+TH {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+TD {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+IMG {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+A {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+BODY {
+	BACKGROUND-COLOR: #f2f2f2; MARGIN: 0px auto; FONT-SIZE: 12px
+}
+TABLE {
+	BORDER-SPACING: 0; BORDER-COLLAPSE: collapse
+}
+IMG {
+	BORDER-RIGHT-WIDTH: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px
+}
+OL {
+	LIST-STYLE-POSITION: outside; LIST-STYLE-TYPE: none
+}
+UL {
+	LIST-STYLE-POSITION: outside; LIST-STYLE-TYPE: none
+}
+LI {
+	LIST-STYLE-POSITION: outside; LIST-STYLE-TYPE: none
+}
+A {
+	TEXT-DECORATION: none
+}
+EM {
+	FONT-STYLE: normal
+}
+.top {
+	MARGIN-TOP: 30px; WIDTH: 100%; BACKGROUND: url(../images/topbg.jpg) repeat-x; HEIGHT: 77px
+}
+.top .logo {
+	MARGIN: 0px auto; WIDTH: 1000px; HEIGHT: 70px
+}
+.renqifu_con {
+	MARGIN: 0px auto; WIDTH: 1000px; HEIGHT: 470px
+}
+.imglist {
+	WIDTH: 631px; FLOAT: left; HEIGHT: 400px
+}
+.renqifu_login {
+	WIDTH: 100%; MARGIN-BOTTOM: 10px; HEIGHT: 385px; PADDING-TOP: 65px
+}
+#slider3 .conbox DIV {
+	WIDTH: 631px; HEIGHT: 329px
+}
+.slider {
+	POSITION: relative; WIDTH: 631px; MARGIN-BOTTOM: 10px; HEIGHT: 390px; OVERFLOW: hidden
+}
+.conbox {
+	POSITION: absolute
+}
+.switcher {
+	Z-INDEX: 99; POSITION: absolute; BOTTOM: 20px; FLOAT: right; RIGHT: 100px
+}
+.switcher A {
+	MARGIN: 4px; WIDTH: 14px; BACKGROUND: url(../images/promotionsa.png) no-repeat; FLOAT: left; HEIGHT: 14px; CURSOR: pointer
+}
+.switcher A.cur {
+	WIDTH: 14px; BACKGROUND: url(../images/promotionsas.png) no-repeat; HEIGHT: 14px
+}
+.switcher A:hover {
+	WIDTH: 14px; BACKGROUND: url(../images/promotionsas.png) no-repeat; HEIGHT: 14px
+}
+.sliders {
+	POSITION: relative; WIDTH: 250px; HEIGHT: 283px; OVERFLOW: hidden
+}
+.conboxs {
+	POSITION: absolute
+}
+.switchers {
+	Z-INDEX: 99; POSITION: absolute; FLOAT: right; RIGHT: 13px; TOP: 0px
+}
+.switchers A {
+	MARGIN: 10px 5px; WIDTH: 9px; BACKGROUND: url(../images/switchers.png) no-repeat; FLOAT: left; HEIGHT: 9px
+}
+.switchers A.cur {
+	WIDTH: 9px; BACKGROUND: url(../images/switchersa.png) no-repeat; HEIGHT: 9px
+}
+.switchers A:hover {
+	WIDTH: 9px; BACKGROUND: url(../images/switchersa.png) no-repeat; HEIGHT: 9px
+}
+.sliders2 {
+	POSITION: relative; WIDTH: 250px; HEIGHT: 283px; OVERFLOW: hidden
+}
+.conboxs2 {
+	POSITION: absolute
+}
+.switchers2 {
+	Z-INDEX: 99; POSITION: absolute; FLOAT: right; RIGHT: 13px; TOP: 0px
+}
+.switchers2 A {
+	MARGIN: 10px 5px; WIDTH: 9px; BACKGROUND: url(../images/switchers.png) no-repeat; FLOAT: left; HEIGHT: 9px
+}
+.switchers2 A.cur {
+	WIDTH: 9px; BACKGROUND: url(../images/switchersa.png) no-repeat; HEIGHT: 9px
+}
+.switchers2 A:hover {
+	WIDTH: 9px; BACKGROUND: url(../images/switchersa.png) no-repeat; HEIGHT: 9px
+}
+.clickapply {
+	MARGIN: 18px auto; WIDTH: 1000px; BACKGROUND: url(../images/clickapply.jpg) no-repeat; HEIGHT: 80px
+}
+.clickapply A {
+	MARGIN: 27px 61px 0px 0px; WIDTH: 110px; DISPLAY: inline-block; FLOAT: right; HEIGHT: 35px
+}
+.login {
+	MIN-HEIGHT: 320px; WIDTH: 317px; FLOAT: right; OVERFLOW: hidden
+}
+.logintop {
+	WIDTH: 100%; BACKGROUND: url(../images/logintop.png) no-repeat; HEIGHT: 16px
+}
+.logincen {
+	PADDING-BOTTOM: 5px; MIN-HEIGHT: 200px; PADDING-LEFT: 15px; PADDING-RIGHT: 15px; BACKGROUND: url(../images/logincen.png) repeat-y; OVERFLOW: hidden; PADDING-TOP: 5px
+}
+.loginbott {
+	WIDTH: 100%; BACKGROUND: url(../images/loginbott.png) no-repeat; HEIGHT: 16px
+}
+.logincen H3 {
+	LINE-HEIGHT: 30px; MARGIN: 5px auto; WIDTH: 265px; HEIGHT: 30px; COLOR: #565656; FONT-SIZE: 16px
+}
+.logincen SPAN {
+	BORDER-BOTTOM: #fbe0ac 1px solid; BORDER-LEFT: #fbe0ac 1px solid; LINE-HEIGHT: 30px; MARGIN: 0px auto; PADDING-LEFT: 13px; WIDTH: 250px; DISPLAY: block; BACKGROUND: #fffede; HEIGHT: 30px; COLOR: #f90000; BORDER-TOP: #fbe0ac 1px solid; FONT-WEIGHT: bold; BORDER-RIGHT: #fbe0ac 1px solid
+}
+.logincen .login_input {
+	BORDER-BOTTOM: #b7b7b7 1px solid; BORDER-LEFT: #b7b7b7 1px solid; MARGIN: 10px auto 5px; WIDTH: 263px; HEIGHT: 35px; BORDER-TOP: #b7b7b7 1px solid; BORDER-RIGHT: #b7b7b7 1px solid
+}
+.logincen .login_input INPUT {
+	BORDER-BOTTOM: #e7e7e7 1px solid; BORDER-LEFT: #e7e7e7 1px solid; LINE-HEIGHT: 33px; PADDING-LEFT: 6px; WIDTH: 255px; HEIGHT: 33px; COLOR: #565656; BORDER-TOP: #e7e7e7 1px solid; BORDER-RIGHT: #e7e7e7 1px solid
+}
+.login_button {
+	MARGIN: 10px auto; WIDTH: 265px; HEIGHT: 43px
+}
+.login_button INPUT {
+	BORDER-BOTTOM-STYLE: none; TEXT-ALIGN: center; LINE-HEIGHT: 43px; BORDER-LEFT-STYLE: none; WIDTH: 93px; DISPLAY: block; FONT-FAMILY: "Î¢ÈíÑÅºÚ"; BORDER-TOP-STYLE: none; BACKGROUND: url(../images/login_button.png) no-repeat; FLOAT: left; HEIGHT: 43px; COLOR: #fff; BORDER-RIGHT-STYLE: none; FONT-SIZE: 16px; CURSOR: pointer; FONT-WEIGHT: bold
+}
+.login_button DIV {
+	LINE-HEIGHT: 15px; MARGIN-TOP: 15px; WIDTH: 150px; FLOAT: right; HEIGHT: 15px
+}
+.login_button A {
+	TEXT-ALIGN: center; LINE-HEIGHT: 15px; WIDTH: 74px; DISPLAY: block; FLOAT: left; HEIGHT: 15px; COLOR: #00a7ea
+}
+.login_button P {
+	WIDTH: 2px; DISPLAY: block; BACKGROUND: #808080; FLOAT: left; HEIGHT: 15px
+}
+.code {
+	MARGIN: 10px auto 5px; WIDTH: 265px; HEIGHT: 35px
+}
+.code_input {
+	BORDER-BOTTOM: #b7b7b7 1px solid; BORDER-LEFT: #b7b7b7 1px solid; WIDTH: 80px; FLOAT: left; HEIGHT: 33px; BORDER-TOP: #b7b7b7 1px solid; MARGIN-RIGHT: 20px; BORDER-RIGHT: #b7b7b7 1px solid
+}
+.code_input INPUT {
+	BORDER-BOTTOM: #eee 1px solid; BORDER-LEFT: #eee 1px solid; LINE-HEIGHT: 31px; WIDTH: 78px; FLOAT: left; HEIGHT: 31px; BORDER-TOP: #eee 1px solid; BORDER-RIGHT: #eee 1px solid
+}
+.codes {
+	BORDER-BOTTOM: #e4f9d4 1px solid; TEXT-ALIGN: center; BORDER-LEFT: #e4f9d4 1px solid; LINE-HEIGHT: 35px; FONT-STYLE: italic; WIDTH: 80px; LETTER-SPACING: 3px; FONT-FAMILY: Arial,ËÎÌå; BACKGROUND: #f9fdee; FLOAT: left; HEIGHT: 35px; COLOR: green; BORDER-TOP: #e4f9d4 1px solid; FONT-WEIGHT: bolder; BORDER-RIGHT: #e4f9d4 1px solid
+}
+.footer {
+	TEXT-ALIGN: center; LINE-HEIGHT: 80px; WIDTH: 100%; FONT-FAMILY: "Î¢ÈíÑÅºÚ"; BACKGROUND: #fff; HEIGHT: 80px; COLOR: #383838
+}

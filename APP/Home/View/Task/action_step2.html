@@ -1,0 +1,942 @@
+<extend name="pub/base" />
+
+<block name="title">
+商家发布任务-商品信息
+</block>
+ 
+<block name="body">
+<form class="theForm" action="{:U('action_step2')}" method="post">
+ 
+<input type="hidden" name="id" value="{$tk.id}">
+<div class="wrap checkout clearfix">
+                <input type="hidden" name="trade_id" value="">
+                <input type="hidden" name="trade_number" value="1">
+                <input type="hidden" name="is_search" value="0">
+                <div class="checkout-title clearfix">
+                    <img src="__IMG__/publish_title_pub.jpg">
+                    <div class="Process">
+                        <ul class="clearfix">
+                            <li style="width:20%" class="cur">
+                                <em class="Processyes">
+                                    1
+                                </em>
+                                <span>
+                                   	 选任务类型
+                                </span>
+                            </li>
+                            <li style="width:20%">
+                                <em class="Processyes">
+                                    2
+                                </em>
+                                <span>
+                                    填写商品信息
+                                </span>
+                            </li>
+                            <li style="width:20%">
+                                <em>
+                                    3
+                                </em>
+                                <span>
+                                    选择刷单数量
+                                </span>
+                            </li>
+                            <li style="width:20%">
+                                <em>
+                                    4
+                                </em>
+                                <span>
+                                    设置条件
+                                </span>
+                            </li>
+                            <li style="width:20%">
+                                <em>
+                                    5
+                                </em>
+                                <span>
+                                    支付
+                                </span>
+                            </li>
+                            <li style="width:20%" class="Processlast">
+                                <em>
+                                    6
+                                </em>
+                                <span>
+                                    发布成功
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="checkout-steps J_FIVE_CONTENT">
+                    <div id="step-1" class="step step-complete step-complete-cur">
+                        <div class="step-complete-title">
+                            1.填写商品信息
+                        </div>
+                        <div class="step-complete-main">
+                            <div class="step-complete-main-1">
+                                <div class="step-complete-list">
+                                  <input type="hidden" value="0" name="item_id[]">
+                                    <input type="hidden" value="1" name="search_type[]">
+                                    <input type="hidden" name="item_keyword[]" class="item_keyword">
+                                    <div class="step-complete-Writ">
+                                        <div class="step-complete-Writ-box">
+                                            <div class="step-complete-Writ-box-1">
+	                                            <?php $name = json_decode($tk['name']);
+	                                            	  $url  = json_decode($tk['url']);
+													  $pro_id = json_decode($tk['pro_id']);
+                                                      $img = json_decode($tk['img']);
+	                                            ?>	
+                                            	<div class="step-item">
+                                                    <strong>
+                                                        	商品名称：
+                                                    </strong>
+                                                    <input type="text" name="name[]" class="text w360"
+                                                     value="{$name[0]}" datatype="*" nullmsg="请填写商品名" errormsg="请填写商品名">
+                                                     	【<a href="#" class="show_names">我要发布组合产品</a>】
+                                                </div>
+                                                
+                                                <div class="step-item">
+                                                    <strong>
+                                                        	商品链接：
+                                                    </strong>
+                                                    <input type="text" name="url[]" class="text w550 J_URL_INPUT"  
+                                                    trade="tmall" value="{$url[0]}" datatype="url" nullmsg="请填写商品链接" errormsg="填写商品链接错误">
+                                                    <input type="hidden" value="" name="item_key[]" class="J_ITEM_INPUT">
+                                                    <span class="newtips">	
+                                                    </span>
+                                                </div>
+                                                
+                                                <div class="step-item">
+                                                    <strong>
+                                                        	商品编号ID：
+                                                    </strong>
+                                                    <input type="text" name="pro_id[]" class="text w550 J_URL_INPUT"  
+                                                    trade="tmall" value="{$pro_id[0]}" datatype="*" nullmsg="请填写商品链接" errormsg="填写商品链接错误">
+                                                    <input type="hidden" value="" name="item_key[]" class="J_ITEM_INPUT">
+                                                    <span class="newtips">	
+                                                    </span>
+                                                </div>
+
+                                                <div class="step-item">
+                                                    <strong>
+                                                            商品图片：
+                                                    </strong>
+                                                    <input type="text" class="text w550" name="img[]"  value="{$img[0]}" datatype="*"/>
+                                                    </span>
+                                                </div>     
+                                            </div>
+                                            
+                                            
+                                            
+											<div id="mask"></div>
+											<div id="layer">
+												<div class="bd">
+													<table cellpadding="1" cellspacing="1" >
+														<tr>
+															<th>组合</th><th>名称</th><th>网络地址</th><th>商品ID</th><th>商品图片</th>
+														</tr>
+														<tr>
+															<td>商品名称2</td>
+                                                                <td><input type="text" value="{$name[1]}" class="text w260" name="name[]" placeholder="填写品名称"></td>
+																<td><input type="text" value="{$url[1]}" class="text w260" name="url[]" placeholder="填写商品网页链接" ></td>
+																<td><input type="text" value="{$pro_id[1]}" class="text w260" name="pro_id[]" placeholder="填写商品编号"></td>
+                                                                <td><input type="text" value="{$img[1]}" class="text w260" name="img[]" placeholder="填写商品主图地址"></td>
+														</tr>
+														<tr>
+															<td>商品名称3</td>
+                                                                <td><input type="text" value="{$name[2]}" class="text w260" name="name[]" placeholder="填写品名称"></td>
+																<td><input type="text" value="{$url[2]}" class="text w260" name="url[]" placeholder="填写商品网页链接" ></td>
+																<td><input type="text" value="{$pro_id[2]}" class="text w260" name="pro_id[]" placeholder="填写品编号ID"></td>
+                                                                <td><input type="text" value="{$img[2]}" class="text w260" name="img[]" placeholder="填写商品主图地址"></td>
+														</tr>
+														<tr>
+															<td>商品名称4</td>
+                                                                <td><input type="text" value="{$name[3]}" class="text w260" name="name[]" placeholder="填写品名称"></td>
+																<td><input type="text" value="{$url[3]}" class="text w260" name="url[]" placeholder="填写商品网页链接" ></td>
+																<td><input type="text" value="{$pro_id[3]}" class="text w260" name="pro_id[]" placeholder="填写品编号ID"></td>
+                                                                <td><input type="text" value="{$img[3]}" class="text w260" name="img[]" placeholder="填写商品主图地址"></td>
+														</tr>
+														<tr>
+															<td>商品名称5</td>
+                                                                <td><input type="text" value="{$name[4]}" class="text w260" name="name[]" placeholder="填写品名称"></td>
+																<td><input type="text" value="{$url[4]}" class="text w260" name="url[]" placeholder="填写商品网页链接" ></td>
+																<td><input type="text" value="{$pro_id[4]}" class="text w260" name="pro_id[]" placeholder="填写品编号ID"></td>
+                                                                <td><input type="text" value="{$img[4]}" class="text w260" name="img[]" placeholder="填写商品主图地址"></td>
+														</tr>
+														
+														<tr>
+															<td colspan="5" align="center">
+																<br>
+																<a class="business-mess-sent-btn dis_names">
+                                                                    <span>确&nbsp;&nbsp;定</span>
+                                                                </a>
+                                                                <span>提示:组合任务需支付</span><span class="font_red">{$sysConfig['num_more_db']}</span>D币
+                                                                <br><br>
+															</td>
+														</tr>
+													</table>
+												</div>
+											</div>
+
+
+
+                                            <div class="step-complete-Writ-box-2 clearfix">
+                                                <div class="setprice">
+                                                </div>
+                                                <div class="step-item">
+                                                    <strong>
+                                                        规格：
+                                                    </strong>
+                                                    <input type="text" name="color" placeholder="如：颜色" class="text w50"
+                                                    value="{$tk.color}">
+                                                    <input type="text" name="size" placeholder="如：尺码" class="text w50"
+                                                    value="{$tk.size}">
+                                                    <span class="newtips nonewtips">
+                                                        非必填
+                                                    </span>
+                                                </div>
+                                                <div class="step-item">
+                                                    <strong>
+                                                        单品售价：
+                                                    </strong>
+                                                    <input type="text" name="price" class="text w50 J_MONEY_INPUT J_total_money"
+                                                    reg="price" datatype="f|n" value="{$tk.price}">
+                                                    元
+                                                    <!-- </span> -->
+                                                    <span class="newtips">
+                                                        必填
+                                                    </span>
+                                                    <strong>
+                                                        每单拍：
+                                                    </strong>
+                                                    <input type="text" name="cnt" class="text w50 J_AMOUNT_INPUT J_total_money"
+                                                    reg="number" datatype="n" value="{$tk.cnt}">
+                                                    件
+                                                    <span class="newtips">
+                                                        必填
+                                                    </span>
+                                                    <span class="total_money">
+                                                        下单总金额
+                                                        <em style=" color:red;">
+                                                            {$tk.money}
+                                                        </em>
+                                                        元
+                                                    </span>
+                                                </div>
+                                                <div class="step-item">
+                                                    <strong>
+                                                        搜索页面展示价格：
+                                                    </strong>
+                                                    <input type="text" name="show_price" class="text w50 J_MONEY_INPUT"
+                                                    value="{$tk.show_price}">
+                                                    <span class="newtips nonewtips">
+                                                        非必填，如该商品有满减、促销、多规格等情况，请填写此金额
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="step-complete-Writ-box">
+                                            <p class="stepKey-title">
+                                                <em class="stepKey-title-em">
+                                                    如何找到您的商品：
+                                                </em>
+                                                请添加几个订单来源方式，任务发布时系统将会随机安排买手通过不同的方式模拟真实购物流程
+                                            </p>
+                                            <style type="text/css">
+                                                .stepKey{height: 14px;font-size: 14px;line-height: 14px;padding: 10px
+                                                0;border-top: 1px solid #E0E0E0; color:#1f9cd8;} .stepKey input{margin-right:
+                                                6px;vertical-align:middle;}
+                                            </style>
+                                            
+                                            <div class="stepKey-box stepKey-box-TB">
+                                                <div class="stepKey-box-list-inner">
+                                                    <div class="stepKey-box-list keywords_info">
+                                                        <p class="stepKey-box-list-hd">
+                                                            关键字来源1：
+                                                        </p>
+                                                        <p>
+                                                            <a href="javascript:;" class="fr color1F9">
+                                                                如何选择关键词？
+                                                            </a>
+                                                            让买手在
+                                                            <em class="red taobaourl">
+                                                                taobao.com
+                                                            </em>
+                                                            搜索关键字进入“搜索列表”
+                                                            <input type="text" name="key_words" class="text w130" reg="keyword"
+                                                            value="{$tk.key_words}" datatype="*">
+                                                            <span class="newtips">
+                                                                必填
+                                                            </span>
+                                                        </p>
+                                                        <p class="J_typelist">
+                                                            在当前列表中，告诉买手通过筛选分类找到商品
+                                                            <?php $cate = json_decode($tk['key_cate']); ?>
+                                                            <input type="text" name="key_cate[]"  class="text w70 J_typelist_input"
+                                                            value="{$cate['0']}">
+                                                            <input type="text" name="key_cate[]" class="text w70 J_typelist_input"
+                                                            value="{$cate['1']}">
+                                                            <input type="text" name="key_cate[]" class="text w70 J_typelist_input"
+                                                            value="{$cate['2']}">
+                                                            <input type="text" name="key_cate[]" class="text w70 J_typelist_input"
+                                                            value="{$cate['3']}">
+                                                            <input type="hidden" name="item_category[]" class="item_category">
+                                                            <span class="newtips nonewtips">
+                                                                最多四个分类
+                                                            </span>
+                                                            <span class="newtips nonewtips">
+                                                                非必填
+                                                            </span>
+                                                        </p>
+                                                        <div class="step-table clearfix" style="display:none;">
+                                                            <div class="step-table-pic">
+                                                                <div class="upimgDiv_1">
+                                                                </div>
+                                                            </div>
+                                                            <div class="step-table-text">
+                                                                <span class="step-table-1">
+                                                                    来源关键字
+                                                                    <em class="show-num">
+                                                                        1
+                                                                    </em>
+                                                                    ：
+                                                                    <em class="show-work">
+                                                                    </em>
+                                                                </span>
+                                                                <span class="step-table-2">
+                                                                    所在分类：
+                                                                    <em class="show-cate">
+                                                                    </em>
+                                                                </span>
+                                                                <span class="step-table-3">
+                                                                    价格：
+                                                                    <em class="show-price-l">
+                                                                    </em>
+                                                                    -
+                                                                    <em class="show-price-h">
+                                                                    </em>
+                                                                    元
+                                                                </span>
+                                                                <span class="step-table-4">
+                                                                    所在地：
+                                                                    <em class="show-city">
+                                                                    </em>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="step-complete-Writ-box">
+                                            <p class="stepKey-title">
+                                                <em class="stepKey-title-em">
+                                                    缩小搜索范围：
+                                                </em>
+                                            </p>
+                                            <div class="stepSearch">
+                                                <p class="stepSearch-title">
+                                                    让买手用列表筛选中“
+                                                    <em class="red">
+                                                        价格筛选
+                                                    </em>
+                                                    ”、“
+                                                    <em class="red">
+                                                        商品所在地
+                                                    </em>
+                                                    ”缩小范围
+                                                    <span class="newtips nonewtips">
+                                                        非必填，买手可通过筛选价格或所在地更方便的找到您的商品
+                                                    </span>
+                                                </p>
+                                                <div style="margin-bottom:16px;">
+                                                    <strong>
+                                                        价格：
+                                                    </strong>
+                                                    <input type="text" class="text w70 J_price_low" name="price_low" value="{$tk.price_low}">
+                                                    <span class="stepSearch-right">
+                                                        元 -
+                                                    </span>
+                                                    <input type="text" class="text w70 J_price_high" name="price_high" value="{$tk.price_high}">
+                                                    元
+                                                    <span class="newtips nonewtips">
+                                                        非必填
+                                                    </span>
+                                                    <span class="stepSearch-line">
+                                                        |
+                                                    </span>
+                                                    <strong>
+                                                        商品所在地：
+                                                    </strong>
+                                                    <span class="ie7_areaHack_area">
+                                                        <div class="sel-loc-box">
+                                                            <div class="fake-select sel-loc">
+                                                                <ul class="selected">
+                                                                    <li>
+                                                                        <s class="sel_position">
+                                                                            <s class="i">
+                                                                            </s>
+                                                                        </s>
+                                                                        <input type="hidden" name="position" class="position" value="{$tk.position}">
+                                                                        <a href="javascript:;">
+                                                                            {$tk.position}
+                                                                        </a>
+                                                                    </li>
+                                                                </ul>
+                                                                <div style="display: none;" class="toselect">
+                                                                    <ul class="loc1">
+                                                                        <li >
+                                                                            <a _val="全国" href="javascript:;">
+                                                                                全国
+                                                                            </a>
+                                                                        </li>
+                                                                    </ul>
+                                                                    <ul class="loc2 split">
+                                                                        <li>
+                                                                            <a trace="location" _val="江苏,浙江,上海">
+                                                                                江浙沪
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location" _val="广州,深圳,中山,珠海,佛山,东莞,惠州">
+                                                                                珠三角
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location" _val="香港,澳门,台湾">
+                                                                                港澳台
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location" _val="美国,英国,法国,瑞士,澳洲,新西兰,加拿大,奥地利,韩国,日本,德国,意大利,西班牙,俄罗斯,泰国,印度,荷兰,新加坡,其它国家">
+                                                                                海外
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                北京
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                上海
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                广州
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                深圳
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location" _val="北京,天津">
+                                                                                京津
+                                                                            </a>
+                                                                        </li>
+                                                                    </ul>
+                                                                    <ul class="loc3">
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                杭州
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                温州
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                宁波
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                南京
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                苏州
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                济南
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                青岛
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                大连
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                无锡
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                合肥
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                天津
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                长沙
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                武汉
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                石家庄
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                郑州
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                成都
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                重庆
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                西安
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                昆明
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                南宁
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                福州
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                厦门
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                南昌
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                东莞
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                沈阳
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                长春
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                哈尔滨
+                                                                            </a>
+                                                                        </li>
+                                                                    </ul>
+                                                                    <ul class="loc4 split">
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                河北
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                河南
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                湖北
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                湖南
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                福建
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                江苏
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                江西
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                广东
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                广西
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                海南
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                浙江
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                安徽
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                吉林
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                辽宁
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                黑龙江
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                山东
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                山西
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                陕西
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                新疆
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                云南
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                贵州
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                四川
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                甘肃
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                宁夏
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                西藏
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                香港
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                澳门
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                台湾
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                内蒙古
+                                                                            </a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="step-list-add">&nbsp;
+                                
+                            </p>
+                        </div>
+                    </div>
+                    <div id="step-4" class="step step-complete step-complete-2 step-complete-cur">
+                        <div class="step-complete-title">
+                            2.设置商品收取运费的方式
+                            <em class="complete-two">
+                                必选
+                            </em>
+                        </div>
+                        <div class="step-complete-main">
+                            <a class="fr blue-arrange-down" id="J_reset_step-" href="javascript:;"
+                            style="display:none;">
+                                修改
+                            </a>
+                            <div class="step-complete-show">
+                            </div>
+                            <div class="step-complete-Writ">
+                                <ul class="clearfix">
+                                    <li>
+                                            <if condition="$tk['transport'] eq 0">
+                                            <input type="radio" class="transport" name="transport" value="0" checked="checked">
+                                            <else/>
+                                            <input type="radio" class="transport" name="transport" value="0">
+                                            </if>
+                                            商品本身包邮，买手按照商品实际金额下单
+                                    </li>
+                                    <li class="last">
+                                        	<if condition="$tk['transport'] eq 0">
+                                            <input class="transport" id="youfei" type="radio" name="transport" value="10" >
+                                            <else/>
+                                            <input class="transport" id="youfei" type="radio" name="transport" checked="checked" value="<?php echo floatval($tk['transport'])==0?'10':$tk['transport']; ?>">
+                                            </if>
+                                            商品不包邮，无需买手联系客服。商家每单额外支出
+                                            <em>
+                                                <input type="text" datatype="f|n" style="width:30px;border:solid 1px #ccc;" value="<?php echo floatval($tk['transport'])==0?'10':$tk['transport']; ?>" onblur="changeYF(this.value);" datatype="n" />
+                                                <script type="text/javascript">
+                                                    function changeYF(val){
+                                                        document.getElementById('youfei').value=val;
+                                                    }
+                                                </script>
+                                            </em>
+                                            元作为运费押金，任务完成后运费押金将全部退还给商家
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="step-3" class="step step-complete step-complete-cur">
+                        <div class="step-complete-title">
+                            3.订单留言:
+                            <em class="complete-three">
+                                您可以指定多个留言内容，系统会随机指定买手下单时进行订单留言，以便区分正常订单 (15个字以内)
+                            </em>
+                            <em class="complete-two">
+                                必选
+                            </em>
+                        </div>
+                        <div class="publish-st5-box-inner">
+                                <div class="publish-st5-box-inner-input">
+                                <notempty name="msgs">
+	                                 <volist name="msgs" id="vo" key="k">
+	                                 	<if condition="$vo neq null">
+	                                 		<p>
+	                                        	留言
+	                                        <em>
+	                                        {$k}
+	                                        </em>
+	                                        	:
+	                                        <input name="msg[]" type="text" class="set_comments_txt"
+	                                        value="{$vo}" size="50" maxlength="50">
+											<if condition="$k gt 1">
+											<a class="J-comments-del" href="javascript:;"> 删除 </a>
+											</if>	                                        
+	                                    	</p>
+	                                 	</if>
+	                                 </volist>
+                                 <else/>
+                                 	<p>留言<em>1</em>：
+									<input name="msg[]" type="text" class="set_comments_txt"
+									value="" size="50" maxlength="50">
+									</p>
+                                 </notempty>
+                                 
+                                </div>
+                                <p class="set-comments-txt-add">
+                                    <a id="J-comments-add" href="javascript:;">
+                                        + 继续增加留言
+                                    </a>
+                                    	（最多可添加10条内容）
+                                </p>
+                                <div class="set_comments_txt_bak">
+                                    <p>
+                                       	 留言<em>2</em>：
+                                        <input name="msg[]" type="text" class="set_comments_txt"
+                                        value="" size="50" maxlength="30">
+                                        <a href="javascript:;" class="J-comments-del">
+                                                                                                删除
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="checkout-btnbox">
+                        <div class="publish-btnbox">
+                            <span class="sk-arrange-gray mo-t">
+                            	<!-- onClick="goto_step_th();" -->
+                                <a class="sk-arrange-next to-prev" href="#" >
+                                   	<input type="button" onclick='location.href="{:U('go?step=1&id='.$tk['id'])}"' value="上一步"/>
+                                </a>
+                            </span>
+                            <span class="sk-arrange-gray mo-t">
+                                <a class="sk-arrange-next J_FIVE_NEXT disabled" href="#">
+                                    <input type="submit" value="下一步"/>
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+        </div>
+</form>        
+</block>
+
+<block name="ext_css">
+<style>
+	/* the style for layer or mask */
+	body{_height:100%;}
+	#mask, #layer{
+		display: none;
+		position:fixed;
+		_position:absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 44;
+	}
+	#mask{
+		z-index: 33;
+		background-color: #101010;
+		filter: Alpha(opacity=40);
+		opacity: .4;
+	}
+	#layer .bd{
+		text-align:center;
+		position: relative;
+		top: 20%;
+		width: 98%;
+		/* 自己设定了高度 */
+		/*
+		margin: -100px auto 0 auto;
+		height: 200px; 
+		*//* 这个是设定值，与上面的-100px相呼应的 */
+		/* 通过js去做处理的方式 */
+		margin-left: auto;
+		margin-right: auto;
+		/**/
+		background-color: #fff;
+	}
+	
+	#layer .bd table{
+		padding:50px;
+		width:100%;
+		background-color:#fff;
+	}
+	</style>
+</block>	 
+ 
+<block name="ext_js">
+<script>
+	(function(mask){
+		var layer = document.getElementById('layer');
+		// for IE 6
+		if(document.uniqueID && !window.XMLHttpRequest){
+			document.getElementsByTagName('html')[0].style.overflow = 'hidden';
+		}
+		mask.style.display = 'none';
+		layer.style.display = 'none';
+		/* js 获取高度 */
+		var bd = layer.firstChild, h;
+		if(bd.nodeType==3)bd = bd.nextSibling;
+		h = bd.clientHeight;
+		bd.style.height = h + 'px';
+		bd.style.marginTop = -h/2 + 'px';
+		/**/
+	})(document.getElementById('mask'));
+
+	$(function(){
+		
+		$(".show_names").click(function(){
+			$("#mask").css("display","block");
+			$("#layer").css("display","block");
+		});
+		
+		$(".dis_names").click(function(){
+			$("#mask").css("display","none");
+			$("#layer").css("display","none");
+		});
+		
+		
+		$("#img").blur(function(){
+			$("#imgimg").attr("src",this.value);
+		});	
+	});
+</script>
+</block>

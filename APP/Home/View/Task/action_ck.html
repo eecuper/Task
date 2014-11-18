@@ -1,0 +1,1743 @@
+<extend name="pub/base" />
+
+<block name="title">
+商家发布任务-任务复查
+</block>
+<block name="body">
+<form name="theForm" action="{:U('ckEdit')}" method="post" id="frm_step_st">
+{__TOKEN__}
+			<input type="hidden" name="id" value="{$tk.id}">
+            <div class="wrap new-Release-first clearfix">
+                <!--<div class="new-Release-first-hd clearfix">
+                    <img src="__IMG__/publish_title_pub.jpg">
+                    <div class="Process">
+                        <ul class="clearfix">
+                            <li style="width:20%">
+                                <em class="Processing">
+                                    1
+                                </em>
+                                <span>
+                                    选任务类型
+                                </span>
+                            </li>
+                            <li style="width:20%">
+                                <em>
+                                    2
+                                </em>
+                                <span>
+                                    填写商品信息
+                                </span>
+                            </li>
+                            <li style="width:20%">
+                                <em>
+                                    3
+                                </em>
+                                <span>
+                                    选择刷单数量
+                                </span>
+                            </li>
+                            <li style="width:20%">
+                                <em>
+                                    4
+                                </em>
+                                <span>
+                                    设置条件
+                                </span>
+                            </li>
+                            <li style="width:20%">
+                                <em>
+                                    5
+                                </em>
+                                <span>
+                                    支付
+                                </span>
+                            </li>
+                            <li style="width:20%" class="Processlast">
+                                <em>
+                                    6
+                                </em>
+                                <span>
+                                    发布成功
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div> 
+				
+				<div class="new-Release-first-bd">
+                    <div class="new-Release-select-hd clearfix">
+                        <div class="new-Release-select-list-hd  Release-plat">
+                            第一步：选择平台
+                        </div>
+                        <div class="new-Release-select-list-hd  Release-shop">
+                            第二步：选择店铺
+                        </div>
+                        <div class="new-Release-select-list-hd  Release-type">
+                            第三步：选择任务类型
+                        </div>
+                    </div>
+                    <div class="new-Release-select clearfix">
+                        <div class="new-Release-select-list Release-plat">
+                            <ul class="clearfix">
+                            <?php $i=0; ?>
+							<volist name="configs" id="vo"  key="k">
+								<if condition="$vo.type eq 1">
+								<?php  $i=$i+1; ?>
+								<li>
+								<label> 
+								<if condition="($i eq 1) or ($vo['id'] eq $tk['web_id'])">
+									<input name="web_id" type="radio" value="{$vo.id}" checked> 
+									<else/>
+									<input name="web_id" type="radio" value="{$vo.id}"> 
+								</if>
+								<b class="taobao">{$vo.name}</b>
+								</label>
+								</li>
+								</if>
+							</volist>                                
+                            </ul>
+                            <p class="ExpansionP">
+                                <a class="collapse" href="javascript:;">
+                                    展开所有平台
+                                </a>
+                            </p>
+                        </div>
+                        <div class="new-Release-select-list Release-shop store_type_tmall" style="display: block;">
+                            <ul class="clearfix">
+                            	<?php $i=0; ?>
+                            	<volist name="shops" id="vo"  key="k">
+								<if condition="$vo.type eq 2">
+								<?php  $i=$i+1; ?>
+								<li class="cur">
+                                    <i>
+                                    </i>
+                                    <label>
+                                    	<if condition="($i eq 1) or ($vo['id'] eq $tk['shop_id'])">
+                                        	<input type="radio" name="shop_id" value="{$vo.id}" checked>
+                                        	<else/>
+                                        	<input type="radio" name="shop_id" value="{$vo.id}">
+                                        </if>
+                                        <span>
+                                            	{$vo.name}
+                                        </span>
+                                    </label>
+                                </li>
+								</if>
+								</volist>  
+                            </ul>
+                            <p class="Release-shop-tip">
+                                <em>
+                                    (还可绑定N个店铺)
+                                </em>
+                                <if condition="$user.manager eq C('IS_ADMIN')">
+                                <a href="{:U('user/shop')}" target="_blank">
+                                    + 绑定更多店铺
+                                </a>
+                                </if>
+                            </p>
+                        </div>
+                        <div class="new-Release-select-list Release-type Release-type-taobao">
+                            <ul class="clearfix">
+                            	<?php $i=0;?>
+                            	<volist name="configs" id="vo"  key="k">
+								<if condition="$vo.type eq 3">
+								<?php  $i=$i+1; ?>
+								<li class="trade_type trade_type_order cur">
+                                    <label>
+                                    	<if condition="($i eq 1) or ($vo['id'] eq $tk['msg_id'])">
+                                        	<input type="radio" name="msg_id" value="{$vo.id}" checked>
+                                        	<else/>
+                                        	<input type="radio" name="msg_id" value="{$vo.id}">
+                                        </if>
+                                        <em>
+                                            	{$vo.name}
+                                        </em>
+                                        <em style=" float:right; font-weight:normal; color:#999;">
+                                        </em>
+                                    </label>
+                                </li>
+								</if>
+								</volist>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="new-Release-btn">
+                        <div class="publish-btnbox">
+                            <span class="sk-arrange-gray mo-t">
+                                <a class="sk-arrange-next disabled"   href="#">
+                                    	<input type="submit" value="下一步"/>
+                                </a>
+                                <em>
+                                    (填写商品信息)
+                                </em>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+				
+				-->
+                
+				
+				<div class="checkout-steps J_FIVE_CONTENT">
+				
+					<h3 class="f18 clearfix" style="padding-left:20px;padding-top:10px;">
+                        第一步：平台选择
+                    </h3>	
+					<p style="padding-left:20px;padding-top:20px;font-size:16px;">平台：<b>{$tk['web_name']} </b>  店铺: <b>{$tk['shop_name']}</b> 任务类型：<b>{$tk['msg_name']}</b></p>
+					<br />
+				</div>
+				
+				<div class="checkout-steps J_FIVE_CONTENT">
+				
+					<h3 class="f18 clearfix" style="padding-left:20px;padding-top:10px;">
+                        第二步：任务信息填写
+                    </h3>
+					<br/>
+					
+                    <div id="step-1" class="step step-complete step-complete-cur">
+                        <div class="step-complete-title">
+                            1.填写商品信息
+                        </div>
+                        <div class="step-complete-main">
+                            <div class="step-complete-main-1">
+                                <div class="step-complete-list">
+                                  <input type="hidden" value="0" name="item_id[]">
+                                    <input type="hidden" value="1" name="search_type[]">
+                                    <input type="hidden" name="item_keyword[]" class="item_keyword">
+                                    <div class="step-complete-Writ">
+                                        <div class="step-complete-Writ-box">
+                                            <div class="step-complete-Writ-box-1">
+	                                            <?php $name = json_decode($tk['name']);
+	                                            	  $url  = json_decode($tk['url']);
+													  $pro_id = json_decode($tk['pro_id']);
+                                                      $img = json_decode($tk['img']);
+	                                            ?>	
+                                            	<div class="step-item">
+                                                    <strong>
+                                                        	商品名称：
+                                                    </strong>
+                                                    <input type="text" name="name[]" class="text w360"
+                                                     value="{$name[0]}" datatype="*" nullmsg="请填写商品名" errormsg="请填写商品名">
+                                                     	【<a href="#" class="show_names">我要发布组合产品</a>】
+                                                </div>
+                                                
+                                                <div class="step-item">
+                                                    <strong>
+                                                        	商品链接：
+                                                    </strong>
+                                                    <input type="text" name="url[]" class="text w550 J_URL_INPUT"  
+                                                    trade="tmall" value="{$url[0]}" datatype="url" nullmsg="请填写商品链接" errormsg="填写商品链接错误">
+                                                    <input type="hidden" value="" name="item_key[]" class="J_ITEM_INPUT">
+                                                    <span class="newtips">	
+                                                    </span>
+                                                </div>
+                                                
+                                                <div class="step-item">
+                                                    <strong>
+                                                        	商品编号ID：
+                                                    </strong>
+                                                    <input type="text" name="pro_id[]" class="text w550 J_URL_INPUT"  
+                                                    trade="tmall" value="{$pro_id[0]}" datatype="*" nullmsg="请填写商品链接" errormsg="填写商品链接错误">
+                                                    <input type="hidden" value="" name="item_key[]" class="J_ITEM_INPUT">
+                                                    <span class="newtips">	
+                                                    </span>
+                                                </div>
+
+                                                <div class="step-item">
+                                                    <strong>
+                                                            商品图片：
+                                                    </strong>
+                                                    <input type="text" class="text w550" name="img[]"  value="{$img[0]}" datatype="*"/>
+                                                    </span>
+                                                </div>     
+                                            </div>
+                                            
+                                            
+                                            
+											<div id="mask"></div>
+											<div id="layer">
+												<div class="bd">
+													<table cellpadding="1" cellspacing="1" >
+														<tr>
+															<th>组合</th><th>名称</th><th>网络地址</th><th>商品ID</th><th>商品图片</th>
+														</tr>
+														<tr>
+															<td>商品名称2</td>
+                                                                <td><input type="text" value="{$name[1]}" class="text w260" name="name[]" placeholder="填写品名称"></td>
+																<td><input type="text" value="{$url[1]}" class="text w260" name="url[]" placeholder="填写商品网页链接" ></td>
+																<td><input type="text" value="{$pro_id[1]}" class="text w260" name="pro_id[]" placeholder="填写商品编号"></td>
+                                                                <td><input type="text" value="{$img[1]}" class="text w260" name="img[]" placeholder="填写商品主图地址"></td>
+														</tr>
+														<tr>
+															<td>商品名称3</td>
+                                                                <td><input type="text" value="{$name[2]}" class="text w260" name="name[]" placeholder="填写品名称"></td>
+																<td><input type="text" value="{$url[2]}" class="text w260" name="url[]" placeholder="填写商品网页链接" ></td>
+																<td><input type="text" value="{$pro_id[2]}" class="text w260" name="pro_id[]" placeholder="填写品编号ID"></td>
+                                                                <td><input type="text" value="{$img[2]}" class="text w260" name="img[]" placeholder="填写商品主图地址"></td>
+														</tr>
+														<tr>
+															<td>商品名称4</td>
+                                                                <td><input type="text" value="{$name[3]}" class="text w260" name="name[]" placeholder="填写品名称"></td>
+																<td><input type="text" value="{$url[3]}" class="text w260" name="url[]" placeholder="填写商品网页链接" ></td>
+																<td><input type="text" value="{$pro_id[3]}" class="text w260" name="pro_id[]" placeholder="填写品编号ID"></td>
+                                                                <td><input type="text" value="{$img[3]}" class="text w260" name="img[]" placeholder="填写商品主图地址"></td>
+														</tr>
+														<tr>
+															<td>商品名称5</td>
+                                                                <td><input type="text" value="{$name[4]}" class="text w260" name="name[]" placeholder="填写品名称"></td>
+																<td><input type="text" value="{$url[4]}" class="text w260" name="url[]" placeholder="填写商品网页链接" ></td>
+																<td><input type="text" value="{$pro_id[4]}" class="text w260" name="pro_id[]" placeholder="填写品编号ID"></td>
+                                                                <td><input type="text" value="{$img[4]}" class="text w260" name="img[]" placeholder="填写商品主图地址"></td>
+														</tr>
+														
+														<tr>
+															<td colspan="5" align="center">
+																<br>
+																<a class="business-mess-sent-btn dis_names">
+                                                                    <span>确&nbsp;&nbsp;定</span>
+                                                                </a>
+                                                                <span>提示:组合任务需支付</span><span class="font_red">{$sysConfig['num_more_db']}</span>D币
+                                                                <br><br>
+															</td>
+														</tr>
+													</table>
+												</div>
+											</div>
+
+
+
+                                            <div class="step-complete-Writ-box-2 clearfix">
+                                                <div class="setprice">
+                                                </div>
+                                                <div class="step-item">
+                                                    <strong>
+                                                        规格：
+                                                    </strong>
+                                                    <input type="text" name="color" placeholder="如：颜色" class="text w50"
+                                                    value="{$tk.color}">
+                                                    <input type="text" name="size" placeholder="如：尺码" class="text w50"
+                                                    value="{$tk.size}">
+                                                    <span class="newtips nonewtips">
+                                                        非必填
+                                                    </span>
+                                                </div>
+                                                <div class="step-item">
+                                                    <strong>
+                                                        单品售价：
+                                                    </strong>
+                                                    <input disabled="disabled" type="text" name="price" class="text w50 J_MONEY_INPUT J_total_money"
+                                                    reg="price" datatype="f|n" value="{$tk.price}">
+                                                    元
+                                                    <!-- </span> -->
+                                                    <span class="newtips">
+                                                        必填
+                                                    </span>
+                                                    <strong>
+                                                        每单拍：
+                                                    </strong>
+                                                    <input disabled="disabled" type="text" name="cnt" class="text w50 J_AMOUNT_INPUT J_total_money"
+                                                    reg="number" datatype="n" value="{$tk.cnt}">
+                                                    件
+                                                    <span class="newtips">
+                                                        必填
+                                                    </span>
+                                                    <span class="total_money">
+                                                        下单总金额
+                                                        <em style=" color:red;">
+                                                            {$tk.money}
+                                                        </em>
+                                                        元
+                                                    </span>
+                                                </div>
+                                                <div class="step-item">
+                                                    <strong>
+                                                        搜索页面展示价格：
+                                                    </strong>
+                                                    <input type="text" name="show_price" class="text w50 J_MONEY_INPUT"
+                                                    value="{$tk.show_price}">
+                                                    <span class="newtips nonewtips">
+                                                        非必填，如该商品有满减、促销、多规格等情况，请填写此金额
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="step-complete-Writ-box">
+                                            <p class="stepKey-title">
+                                                <em class="stepKey-title-em">
+                                                    如何找到您的商品：
+                                                </em>
+                                                请添加几个订单来源方式，任务发布时系统将会随机安排买手通过不同的方式模拟真实购物流程
+                                            </p>
+                                            <style type="text/css">
+                                                .stepKey{height: 14px;font-size: 14px;line-height: 14px;padding: 10px
+                                                0;border-top: 1px solid #E0E0E0; color:#1f9cd8;} .stepKey input{margin-right:
+                                                6px;vertical-align:middle;}
+                                            </style>
+                                            
+                                            <div class="stepKey-box stepKey-box-TB">
+                                                <div class="stepKey-box-list-inner">
+                                                    <div class="stepKey-box-list keywords_info">
+                                                        <p class="stepKey-box-list-hd">
+                                                            关键字来源1：
+                                                        </p>
+                                                        <p>
+                                                            <a href="javascript:;" class="fr color1F9">
+                                                                如何选择关键词？
+                                                            </a>
+                                                            让买手在
+                                                            <em class="red taobaourl">
+                                                                taobao.com
+                                                            </em>
+                                                            搜索关键字进入“搜索列表”
+                                                            <input type="text" name="key_words" class="text w130" reg="keyword"
+                                                            value="{$tk.key_words}" datatype="*">
+                                                            <span class="newtips">
+                                                                必填
+                                                            </span>
+                                                        </p>
+                                                        <p class="J_typelist">
+                                                            在当前列表中，告诉买手通过筛选分类找到商品
+                                                            <?php $cate = json_decode($tk['key_cate']); ?>
+                                                            <input type="text" name="key_cate[]"  class="text w70 J_typelist_input"
+                                                            value="{$cate['0']}">
+                                                            <input type="text" name="key_cate[]" class="text w70 J_typelist_input"
+                                                            value="{$cate['1']}">
+                                                            <input type="text" name="key_cate[]" class="text w70 J_typelist_input"
+                                                            value="{$cate['2']}">
+                                                            <input type="text" name="key_cate[]" class="text w70 J_typelist_input"
+                                                            value="{$cate['3']}">
+                                                            <input type="hidden" name="item_category[]" class="item_category">
+                                                            <span class="newtips nonewtips">
+                                                                最多四个分类
+                                                            </span>
+                                                            <span class="newtips nonewtips">
+                                                                非必填
+                                                            </span>
+                                                        </p>
+                                                        <div class="step-table clearfix" style="display:none;">
+                                                            <div class="step-table-pic">
+                                                                <div class="upimgDiv_1">
+                                                                </div>
+                                                            </div>
+                                                            <div class="step-table-text">
+                                                                <span class="step-table-1">
+                                                                    来源关键字
+                                                                    <em class="show-num">
+                                                                        1
+                                                                    </em>
+                                                                    ：
+                                                                    <em class="show-work">
+                                                                    </em>
+                                                                </span>
+                                                                <span class="step-table-2">
+                                                                    所在分类：
+                                                                    <em class="show-cate">
+                                                                    </em>
+                                                                </span>
+                                                                <span class="step-table-3">
+                                                                    价格：
+                                                                    <em class="show-price-l">
+                                                                    </em>
+                                                                    -
+                                                                    <em class="show-price-h">
+                                                                    </em>
+                                                                    元
+                                                                </span>
+                                                                <span class="step-table-4">
+                                                                    所在地：
+                                                                    <em class="show-city">
+                                                                    </em>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="step-complete-Writ-box">
+                                            <p class="stepKey-title">
+                                                <em class="stepKey-title-em">
+                                                    缩小搜索范围：
+                                                </em>
+                                            </p>
+                                            <div class="stepSearch">
+                                                <p class="stepSearch-title">
+                                                    让买手用列表筛选中“
+                                                    <em class="red">
+                                                        价格筛选
+                                                    </em>
+                                                    ”、“
+                                                    <em class="red">
+                                                        商品所在地
+                                                    </em>
+                                                    ”缩小范围
+                                                    <span class="newtips nonewtips">
+                                                        非必填，买手可通过筛选价格或所在地更方便的找到您的商品
+                                                    </span>
+                                                </p>
+                                                <div style="margin-bottom:16px;">
+                                                    <strong>
+                                                        价格：
+                                                    </strong>
+                                                    <input type="text" class="text w70 J_price_low" name="price_low" value="{$tk.price_low}">
+                                                    <span class="stepSearch-right">
+                                                        元 -
+                                                    </span>
+                                                    <input type="text" class="text w70 J_price_high" name="price_high" value="{$tk.price_high}">
+                                                    元
+                                                    <span class="newtips nonewtips">
+                                                        非必填
+                                                    </span>
+                                                    <span class="stepSearch-line">
+                                                        |
+                                                    </span>
+                                                    <strong>
+                                                        商品所在地：
+                                                    </strong>
+                                                    <span class="ie7_areaHack_area">
+                                                        <div class="sel-loc-box">
+                                                            <div class="fake-select sel-loc">
+                                                                <ul class="selected">
+                                                                    <li>
+                                                                        <s class="sel_position">
+                                                                            <s class="i">
+                                                                            </s>
+                                                                        </s>
+                                                                        <input type="hidden" name="position" class="position" value="{$tk.position}">
+                                                                        <a href="javascript:;">
+                                                                            {$tk.position}
+                                                                        </a>
+                                                                    </li>
+                                                                </ul>
+                                                                <div style="display: none;" class="toselect">
+                                                                    <ul class="loc1">
+                                                                        <li >
+                                                                            <a _val="全国" href="javascript:;">
+                                                                                全国
+                                                                            </a>
+                                                                        </li>
+                                                                    </ul>
+                                                                    <ul class="loc2 split">
+                                                                        <li>
+                                                                            <a trace="location" _val="江苏,浙江,上海">
+                                                                                江浙沪
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location" _val="广州,深圳,中山,珠海,佛山,东莞,惠州">
+                                                                                珠三角
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location" _val="香港,澳门,台湾">
+                                                                                港澳台
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location" _val="美国,英国,法国,瑞士,澳洲,新西兰,加拿大,奥地利,韩国,日本,德国,意大利,西班牙,俄罗斯,泰国,印度,荷兰,新加坡,其它国家">
+                                                                                海外
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                北京
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                上海
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                广州
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                深圳
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location" _val="北京,天津">
+                                                                                京津
+                                                                            </a>
+                                                                        </li>
+                                                                    </ul>
+                                                                    <ul class="loc3">
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                杭州
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                温州
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                宁波
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                南京
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                苏州
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                济南
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                青岛
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                大连
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                无锡
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                合肥
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                天津
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                长沙
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                武汉
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                石家庄
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                郑州
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                成都
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                重庆
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                西安
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                昆明
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                南宁
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                福州
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                厦门
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                南昌
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                东莞
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                沈阳
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                长春
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                哈尔滨
+                                                                            </a>
+                                                                        </li>
+                                                                    </ul>
+                                                                    <ul class="loc4 split">
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                河北
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                河南
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                湖北
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                湖南
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                福建
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                江苏
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                江西
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                广东
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                广西
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                海南
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                浙江
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                安徽
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                吉林
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                辽宁
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                黑龙江
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                山东
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                山西
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                陕西
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                新疆
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                云南
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                贵州
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                四川
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                甘肃
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                宁夏
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                西藏
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                香港
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                澳门
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                台湾
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a trace="location">
+                                                                                内蒙古
+                                                                            </a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="step-list-add">&nbsp;
+                                
+                            </p>
+                        </div>
+                    </div>
+                    <div id="step-4" class="step step-complete step-complete-2 step-complete-cur">
+                        <div class="step-complete-title">
+                            2.设置商品收取运费的方式
+                            <em class="complete-two">
+                                必选
+                            </em>
+                        </div>
+                        <div class="step-complete-main">
+                            <a class="fr blue-arrange-down" id="J_reset_step-" href="javascript:;"
+                            style="display:none;">
+                                修改
+                            </a>
+                            <div class="step-complete-show">
+                            </div>
+                            <div class="step-complete-Writ">
+                                <ul class="clearfix">
+                                    <li>
+                                            <if condition="$tk['transport'] eq 0">
+                                            <input type="radio" class="transport" name="transport" value="0" checked="checked">
+                                            <else/>
+                                            <input type="radio" class="transport" name="transport" value="0">
+                                            </if>
+                                            商品本身包邮，买手按照商品实际金额下单
+                                    </li>
+                                    <li class="last">
+                                        	<if condition="$tk['transport'] eq 0">
+                                            <input class="transport" id="youfei" type="radio" name="transport" value="10" >
+                                            <else/>
+                                            <input class="transport" id="youfei" type="radio" name="transport" checked="checked" value="<?php echo floatval($tk['transport'])==0?'10':$tk['transport']; ?>">
+                                            </if>
+                                            商品不包邮，无需买手联系客服。商家每单额外支出
+                                            <em>
+                                                <input type="text" datatype="f|n" style="width:30px;border:solid 1px #ccc;" value="<?php echo floatval($tk['transport'])==0?'10':$tk['transport']; ?>" onblur="changeYF(this.value);" datatype="n" />
+                                                <script type="text/javascript">
+                                                    function changeYF(val){
+                                                        document.getElementById('youfei').value=val;
+                                                    }
+                                                </script>
+                                            </em>
+                                            元作为运费押金，任务完成后运费押金将全部退还给商家
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="step-3" class="step step-complete step-complete-cur">
+                        <div class="step-complete-title">
+                            3.订单留言:
+                            <em class="complete-three">
+                                您可以指定多个留言内容，系统会随机指定买手下单时进行订单留言，以便区分正常订单 (15个字以内)
+                            </em>
+                            <em class="complete-two">
+                                必选
+                            </em>
+                        </div>
+                        <div class="publish-st5-box-inner">
+                                <div class="publish-st5-box-inner-input2">
+                                <notempty name="msgs">
+	                                 <volist name="msgs" id="vo" key="k">
+	                                 	<if condition="$vo neq null">
+	                                 		<p>
+	                                        	留言
+	                                        <em>
+	                                        {$k}
+	                                        </em>
+	                                        	:
+	                                        <input name="msg[]" type="text" class="set_comments_txt"
+	                                        value="{$vo}" size="50" maxlength="50">
+											<if condition="$k gt 1">
+											<a class="J-comments-del" href="javascript:;"> 删除 </a>
+											</if>	                                        
+	                                    	</p>
+	                                 	</if>
+	                                 </volist>
+                                 <else/>
+                                 	<p>留言<em>1</em>：
+									<input name="msg[]" type="text" class="set_comments_txt"
+									value="" size="50" maxlength="50">
+									</p>
+                                 </notempty>
+                                 
+                                </div>
+                                <p class="set-comments-txt-add">
+                                    <a id="J-comments-add2" href="javascript:;">
+                                        + 继续增加留言
+                                    </a>
+                                    	（最多可添加10条内容）
+                                </p>
+                                <div class="set_comments_txt_bak2" style="display:none;">
+                                    <p>
+                                       	 留言<em>2</em>：
+                                        <input name="msg[]" type="text" class="set_comments_txt"
+                                        value="" size="50" maxlength="30">
+                                        <a href="javascript:;" class="J-comments-del">
+                                                                                                删除
+                                        </a>
+                                    </p>
+                                </div>
+                      </div>
+                    </div>
+  </div>
+				<div class="wrap publish-checkin clearfix">
+            
+                <input name="is_check" type="hidden" value="">
+                <input name="is_repeat" type="hidden" value="">
+                <div class="publish-checkin-content">
+                    <h3 class="f18 clearfix">
+                        第三步：选择刷单数量
+                    </h3>
+                    <div class="publish-st4-box-new-title">
+                        1.请选择服刷单数量
+                    </div>
+                    <div class="ns-task-area">
+                        <p class="J_FV_STATE">
+                        	<?php $i=0; $flag=0; ?>
+                        	<volist name="configs" id="vo"  key="k">
+								<if condition="$vo.type eq 100">
+									<if condition="($i eq 1) or ($vo['val'] eq $tk['taocan'])">
+										<if condition="$vo['val'] eq $tk['taocan']">
+											<?php $flag=1; ?>
+										</if>
+											<label class="J_fdpm_show_la">
+			                                <input disabled="disabled" name="taocan" type="checkbox" class="tc-name " data-enable="{$vo.val}"
+			                                 value="{$vo.val}" checked>
+			                                {$vo.name}
+			                                </label>
+		                                <else/>
+			                                <label class="J_fdpm_show_la">
+			                                <input disabled="disabled" name="taocan" type="checkbox" class="tc-name " data-enable="{$vo.val}"
+			                                  value="{$vo.val}">
+			                                {$vo.name}
+		                            		</label>
+	                            	</if>
+								</if>
+							</volist>   
+							
+							
+							
+                            <label class="J_fdpm_show_la">
+                            	<if condition="$flag eq 0">
+									 <input name="taocan" type="checkbox" class="tc-name custom" data-enable="0"
+                                			  value="0" checked>
+                                	<else/>
+                                	 <input disabled="disabled" name="taocan" type="checkbox" class="tc-name custom" data-enable="0"
+                                			  value="0">
+								</if>
+                               
+                                	自定义
+                            </label>
+	                            <input disabled="disabled" type="text" name="taocan_number" class="data-enable" value="{$tk.taocan_number}"
+	                            maxlength="3" onKeyUp="this.value=this.value.replace(/\D/g,&#39;&#39;)"
+	                            onafterpaste="this.value=this.value.replace(/\D/g,&#39;&#39;)">
+                            	单
+                            <span style="color:#999;">
+                                (3-500单)
+                            </span>
+                        </p>
+                    </div>
+                <div class="publish-st4-box-new-title">
+                        2.请设置订单分布
+                        <span class="pt15">
+                            注：电脑端、手机端/Pad端订单总数需要为
+                            <!--
+                            <em class="font_red J_total">
+                            	<if condition="$flag eq 0">
+                            		{$tk.taocan_number}
+                            		<else/>
+                            		{$tk.taocan}
+                            	</if>
+                            </em> 
+                             -->
+                            <b>{$tk.taocan_number}</b>
+                            单
+                        </span>
+                  </div>
+                    <div class="ns-task-area">
+                        <p>
+                            电脑端
+                            <input disabled="disabled" type="text" name="issue_pc" class="J_allCC" value="{$tk.issue_pc}" datatype="n">
+                            单
+                            <span style="margin-left:20px;">
+                                手机|Pad客户端
+                            </span>
+                            <input disabled="disabled" type="text" value="{$tk.issue_phone}" class="J_allCC" name="issue_phone" datatype="n">
+                            单（手机订单+电脑端必须同刷单总数一致)
+                            <input type="hidden" reg="empty" class="J_regTotal">
+                        </p>
+                    </div>
+                </div>
+                <input type="hidden" value="0" name="item_id[]">
+				</div>
+				<input name="trade_id" type="hidden" value="21810">
+                <div class="publish-checkin-content">
+                    <h3 class="f18 clearfix">
+                        第四步：条件设置
+                    </h3>
+                    <div class="publish-st5-box">
+                        <!-- <ul class="business-tabs">
+                        <li class="not_li">您当前选择的店铺为天猫店：<i class="font_red">尤尚家居专营店</i>，只能添加此店铺商品</li>
+                        </ul> -->
+                        <div class="J-tabs-content">
+                            <h3 class="f16">
+                                安全优化
+                            </h3>
+                            <div class="publish-st5-box-inner">
+                                <h4 class="h4title">
+                                    1.任务发布间隔：
+                                </h4>
+                                <p class="pcontent Ra_checkboxlist_mine">
+                                    <label>
+                                        <input disabled="disabled" name="issue_interval_check" pvalue="5" type="checkbox" 
+                                        <?php if(intval($tk['issue_interval'])==1){ echo 'checked="checked"'; } ?>>
+                                    </label>
+                                    <input type="hidden" style="border:1px solid red;" name="issue_interval" value="{$tk['issue_interval']|intval}"/>
+                                    <span>
+                                        每隔&nbsp;&nbsp;&nbsp;
+                                    </span>
+                                    <select disabled="disabled" name="issue_interval_time">
+                                    	<volist name="configs" id="vo">
+											<if condition="$vo.type eq 101">
+												<if condition="($i eq 1) or ($vo['val'] eq $tk['issue_interval_time'])">
+													<option value="{$vo.val}" selected>
+			                                            {$vo.name}
+			                                        </option>
+					                                <else/>
+					                                <option value="{$vo.val}">
+			                                            {$vo.name}
+			                                        </option>
+				                            	</if>
+											</if>
+										</volist>   
+                                    </select>
+                                    <span>
+                                        发布
+                                    </span>
+                                    <select disabled="disabled" name="issue_interval_number">
+                                        <option value="1">
+                                            1单
+                                        </option>
+                                    </select>
+                                    <span>
+                                        任务
+                                    </span>
+                                    <span class="tk_db_intval font_red">
+                                        <if condition="$tk['issue_interval'] eq 1">
+                                            {$sysConfig['num_intval_db']}
+                                            <else/>
+                                            0
+                                        </if>
+                                    </span>
+                                    <span >
+                                        D币
+                                    </span>
+                                </p>
+                                <p class="pcontent font_555">
+                                    选择此项服务后，会将您的任务分批发布，以避免订单过于集中：为了安全性建议选择此项服务
+                                </p>
+                            </div>
+                            <div class="publish-st5-box-inner">
+                                <h4 class="h4title">
+                                    2.延长买家购物周期：
+                                    <i style="text-indent:0em;font-size:12px;color:#666;">
+                                        仅推荐 重复购买率低的商品使用，如家居，家电，高单价的商品等；其他品类不推荐使用
+                                    </i>
+                                </h4>
+                                <p class="pcontent Ra_checkboxlist_mine">
+                                	<volist name="configs" id="vo"  key="k">
+										<if condition="$vo.type eq 102">
+											<if condition="($i eq 1) or ($vo['val'] eq $tk['repurchar_cycle'])">
+												<label class="J_fdpm_show_la jjt">
+			                                        <input disabled="disabled" name="repurchar_cycle" class="J_accessTotal"   type="checkbox"
+			                                        value="{$vo.val}"  checked>
+			                                        {$vo.name}
+			                                    </label>
+				                                <else/>
+				                                <label class="J_fdpm_show_la jjt">
+			                                        <input disabled="disabled" name="repurchar_cycle" class="J_accessTotal"   type="checkbox"
+			                                        value="{$vo.val}" >
+			                                        {$vo.name}
+			                                    </label>
+			                            	</if>
+										</if>
+									</volist> 
+                                </p>
+                                <p class="pcontent font_555">
+                                    选择此项服务后，购买过任务商品的买家
+                                    <em class="tit font_red">
+                                        1个月
+                                    </em>
+                                    内，将不能再接手包含本任务商品的任务；
+                                </p>
+                            </div>
+
+
+                            <div class="publish-st5-box-inner">
+                                <h4 class="h4title">
+                                    3.任务佣金消费：
+                                    <i style="text-indent:0em;font-size:12px;color:#666;">
+                                        
+                                    </i>
+                                </h4>
+                                <p class="pcontent Ra_checkboxlist_mine">
+                                    <volist name="configs" id="vo"  key="k">
+                                        <if condition="$vo.type eq 103">
+                                            <if condition="($i eq 1) or ($vo['val'] eq $tk['db_yongjin'])">
+                                                <label class="J_fdpm_show_la jjt">
+                                                    <input disabled="disabled" name="db_yongjin" class="J_accessTotal"   type="radio"
+                                                    value="{$vo.val}"  checked>
+                                                    {$vo.name}
+                                                </label>
+                                                <else/>
+                                                <label class="J_fdpm_show_la jjt">
+                                                    <input disabled="disabled" name="db_yongjin" class="J_accessTotal"   type="radio"
+                                                    value="{$vo.val}" >
+                                                    {$vo.name}
+                                                </label>
+                                            </if>
+                                        </if>
+                                    </volist> 
+                                </p>
+                                <p class="pcontent font_555">
+                                    选择此项服；该功能是提升订单任务效率的设置，消费越高，系统将提升订单的优先级，进行任务执行操作
+                                </p>
+
+                                <p>
+                                    <?php 
+                                        //判断是否是组合任务
+                                        $is_more = encodeMore(json_decode($tk['name']));
+                                        $tk_db_more = $is_more?$sysConfig['num_more_db']:0;
+                                    ?>
+                                    <input type="hidden" name="tk_db_more" value="{$tk_db_more}"/>
+                                </p>
+                                <p class="pcontent font_555 period">
+                                    合计规则：(组合币 + 间隔币 + 佣金消费) X 订单数=总支付
+                                </p>
+                                <p class="pcontent font_555 period" >
+                                    合计收费：
+                                    (
+                                    <em class="tit_f font_red tk_db_more">
+                                        {$tk_db_more}
+                                    </em>
+                                    +
+                                    <em class="tit_f font_red tk_db_intval2">
+                                        <if condition="$tk['issue_interval'] eq 1">
+                                            {$sysConfig['num_intval_db']}
+                                            <else/>
+                                            0
+                                        </if>
+                                    </em>
+                                    +
+                                    <em class="font_red tk_db_yongjin">
+                                        {$tk['db_yongjin']}  
+                                    </em>
+                                    )
+                                    X
+                                    <em class="font_red tk_cnt_sum">
+                                        {$tk.taocan_number}
+                                    </em>
+                                    单
+                                    <!--
+                                     X
+                                    <em class="font_red">
+                                        1
+                                    </em>
+                                    个商品链接
+                                    -->
+                                     =
+                                    <em class="tit_t font_red tk_db_pay">
+                                        {$tk.db_pay}
+                                    </em>
+                                    <input type="hidden" name="db_pay"/>
+                                    D币；
+                                </p>
+
+                            </div>
+
+
+                            <div class="publish-st5-box-inner">
+                                <h4 class="h4title">
+                                    4.押金支付：
+                                    <i style="text-indent:0em;font-size:12px;color:#666;">
+                                        
+                                    </i>
+                                </h4>
+                                <p class="pcontent font_555 period">
+                                    合计规则：单价 X 数量 X 订单数+邮费 X 订单数=总押金
+                                </p>
+                                <p class="pcontent font_555 period" >
+                                    合计押金：
+                                    <em class="tit_f font_red ">
+                                        {$tk.price}
+                                    </em>
+                                    元 X
+                                    <em class="tit_f font_red ">
+                                        {$tk.cnt}
+                                    </em>
+                                    件 X 
+                                    <em class="font_red">
+                                        {$tk.taocan_number}
+                                    </em>
+                                    单
+                                    +
+                                    <em class="font_red">
+                                        {$tk['transport']}
+                                    </em>
+                                    X 
+                                    <em class="font_red">
+                                        {$tk['taocan_number']}
+                                    </em>
+                                     =
+                                    <em class="tit_t font_red">
+                                        {$tk[price]*$tk['cnt']*$tk['taocan_number']+$tk['transport']*$tk['taocan_number']}
+                                    </em>
+                                    <input type="hidden" name="yj_pay" value="{$tk[price]*$tk['cnt']*$tk['taocan_number']+$tk['transport']*$tk['taocan_number']}"/>
+                                    元；
+                                </p>
+
+                            </div>
+
+
+                            <h3 class="f16">
+                                优质好评
+                                <i style="text-indent:0em;font-size:12px;color:#666;">
+                                    将有助于提升评价质量并优化您商品评价映像关键词
+                                    <a href="#"
+                                    target="_blank" class="font_blue"></a>
+                                </i>
+                            </h3>
+                            <div class="publish-st5-box-inner">
+                                <!--h4 class="h4title">1.优质好评：</h4-->
+                                <!--<p class="pcontent Ra_checkboxlist_mine">
+                                    <label>
+                                        <input name="set_comments" pvalue="1" type="checkbox" value="1">
+                                    1.设置你希望的商品好评内容的范围</label>
+                                </p>
+                                <div class="publish-st5-box-inner-tips">
+                                    请根据您发布任务的商品设定
+                                    <span class="font_red">
+                                        几个关键字
+                                    </span>
+                                    作为买手的
+                                    <span class="font_red">
+                                        评价范围
+                                    </span>
+                                    独自发挥撰写评价，例如“
+                                    <span class="font_red">
+                                        手感面料很舒服，款式也很漂亮，包装很讲究，物流很快，性价比高
+                                    </span>
+                                    ”等... 注意：请不要填写完整的评价内容，避免所有买手评价商品的内容一模一样
+                                </div> -->
+                                <div class="publish-st5-box-inner-input">
+                                <if condition="$comments neq null">
+                                 <volist name="comments" id="vo" key="k">
+                                 	<if condition="$vo neq null">
+                                 		<p>
+                                        	关键字
+                                        <em>
+                                            {$k}
+                                        </em>
+                                        	：
+                                        <input name="set_comments_txt[]" type="text" class="set_comments_txt"
+                                        value="{$vo}" size="50" maxlength="100">
+                                    	</p>
+                                 	</if>
+                                 </volist>
+                                 <else/>
+                                 	<p>
+									关键字
+									<em>
+									1
+									</em>
+									：
+									<input name="set_comments_txt[]" type="text" class="set_comments_txt"
+									value="" size="50" maxlength="100">
+									</p>
+                                 </if>
+                                 
+                                </div>
+                                <p class="set-comments-txt-add">
+                                    <a id="J-comments-add" href="javascript:;">
+                                        + 继续增加关键字
+                                    </a>
+                                    	（最多可添加10条内容）
+                                </p>
+                                <div class="set_comments_txt_bak">
+                                    <p>
+                                        关键字
+                                        <em>
+                                            4
+                                        </em>
+                                        ：
+                                        <input name="set_comments_txt[]" type="text" class="set_comments_txt"
+                                        value="" size="50" maxlength="100">
+                                        <a href="javascript:;" class="J-comments-del">
+                                            删除
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="business-vip clearfix">
+                      <input type="hidden" name="id" value="{$tk.id}">
+
+                      <table width="95%" border="1" align="center" cellpadding="0" cellspacing="1">
+                        <tr height="30">
+                          <td width="9%" align="center" bgcolor="#FFFFFF">分类</td>
+                          <td width="17%" align="center" bgcolor="#FFFFFF">费用明细</td>
+                          <td width="14%" align="center" bgcolor="#FFFFFF">小计</td>
+                          <td width="20%" align="center" bgcolor="#FFFFFF">套餐</td>
+                          <td width="17%" align="center" bgcolor="#FFFFFF">优惠价格</td>
+                          <td width="23%" align="center" bgcolor="#FFFFFF">合计</td>
+                        </tr>
+                        <tr height="30">
+                          <td bgcolor="#FFFFFF" align="center">押金</td>
+                          <td bgcolor="#FFFFFF" align="center">{$tk.price}元 x {$tk.cnt}<br></td>
+                          <td bgcolor="#FFFFFF" align="center">{$tk.money}</td>
+                          <td bgcolor="#FFFFFF" align="center">无</td>
+                          <td bgcolor="#FFFFFF" align="center">100%</td>
+                          <td bgcolor="#FFFFFF" align="center">{$tk.money} x 
+                          {$tk.taocan_number} = {$total}<input type="hidden" name="total" value="{$total}"></td>
+                        </tr>
+                        <if condition="$tk.transport gt 0">
+                          <tr height="30">
+                            <td bgcolor="#FFFFFF" align="center">邮费</td>
+                            <td bgcolor="#FFFFFF" align="center">{$tk.transport}元 x 1</td>
+                            <td bgcolor="#FFFFFF" align="center">{$tk['transport']}</td>
+                            <td bgcolor="#FFFFFF" align="center">无</td>
+                            <td bgcolor="#FFFFFF" align="center">100%</td>
+                            <td bgcolor="#FFFFFF" align="center">{$tk.transport} x 
+                            {$tk.taocan_number} = {$tp_total}<input type="hidden" name="tp_total" value="{$tp_total}"></td>
+                          </tr>
+                        </if>
+                      </table>
+                      <table width="95%" border="0" align="center" cellpadding="0" cellspacing="1">
+                        <tr>
+                          <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td align="right">押金合计：<strong>{$tk['yj_pay']}</strong>元</td>
+                        </tr>
+                      </table>
+
+                      <br>
+
+                      <table width="95%"   border="1" align="center" cellpadding="0" cellspacing="1">
+                        <tr height="30">
+                          <td width="9%" align="center" bgcolor="#FFFFFF">分类</td>
+                          <td width="17%" align="center" bgcolor="#FFFFFF">费用明细</td>
+                          <td width="14%" align="center" bgcolor="#FFFFFF">小计</td>
+                          <td width="20%" align="center" bgcolor="#FFFFFF">套餐</td>
+                          <td width="17%" align="center" bgcolor="#FFFFFF">优惠价格</td>
+                          <td width="23%" align="center" bgcolor="#FFFFFF">合计</td>
+                        </tr>
+
+                        <?php 
+                            //判断是否是组合任务
+                            $is_more = encodeMore(json_decode($tk['name']));
+                            $tk_db_more = $is_more?$sysConfig['num_more_db']:0;
+                        ?>
+
+                        <if condition="$tk_db_more">
+                          <tr height="30">
+                            <td bgcolor="#FFFFFF" align="center">组合任务</td>
+                            <td bgcolor="#FFFFFF" align="center">{$sysConfig['num_more_db']}D币 x {$tk.taocan_number}</td>
+                            <td bgcolor="#FFFFFF" align="center">
+                              {$sysConfig['num_more_db']*$tk.taocan_number}
+                            </td>
+                            <td bgcolor="#FFFFFF" align="center">无</td>
+                            <td bgcolor="#FFFFFF" align="center">100%</td>
+                            <td bgcolor="#FFFFFF" align="center">
+                            {$sysConfig['num_more_db']} x {$tk.taocan_number} = 
+                              {$sysConfig['num_more_db']*$tk.taocan_number}
+                            </td>
+                          </tr>
+                        </if>
+
+                        <if condition="$tk.issue_interval eq 1">
+                          <tr height="30">
+                            <td bgcolor="#FFFFFF" align="center">间隔任务</td>
+                            <td bgcolor="#FFFFFF" align="center">{$sysConfig['num_intval_db']}D币 x {$tk.taocan_number}</td>
+                            <td bgcolor="#FFFFFF" align="center">
+                              {$sysConfig['num_intval_db']*$tk.taocan_number}
+                            </td>
+                            <td bgcolor="#FFFFFF" align="center">无</td>
+                            <td bgcolor="#FFFFFF" align="center">100%</td>
+                            <td bgcolor="#FFFFFF" align="center">
+                            {$sysConfig['num_intval_db']} x {$tk.taocan_number} = 
+                              {$sysConfig['num_intval_db']*$tk.taocan_number}
+                            </td>
+                          </tr>
+                        </if>
+
+                         
+                        <if condition="$tk.db_yongjin gt 0">
+                          <tr height="30">
+                            <td bgcolor="#FFFFFF" align="center">佣金</td>
+                            <td bgcolor="#FFFFFF" align="center">{$tk.db_yongjin}D币x {$tk.taocan_number} </td>
+                            <td bgcolor="#FFFFFF" align="center">
+                              {$tk['db_yongjin']*$tk.taocan_number}
+                            </td>
+                            <td bgcolor="#FFFFFF" align="center">无</td>
+                            <td bgcolor="#FFFFFF" align="center">100%</td>
+                            <td bgcolor="#FFFFFF" align="center"> 
+                                {$tk['db_yongjin']}x {$tk.taocan_number} = {$tk['db_yongjin']*$tk.taocan_number}
+                            </td>
+                          </tr>
+                        </if>
+                      </table>
+                      <table width="95%" border="0" align="center" cellpadding="0" cellspacing="1">
+                        <tr>
+                          <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td align="right">佣金合计：<strong>{$tk.db_pay}</strong>D币
+                            <br>
+                            <span class="font_red pay_msg">
+                            <if condition="$tk.db_pay_flag eq 1">
+                                已经支付
+                            </if>
+                            </span>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td class="pay_msg_success" style="font-weight:600;color:red;" align="center">
+
+                          </td>
+                        </tr>
+
+                      </table>
+ 
+                        <div class="publish-btnbox">
+                            <span class="sk-arrange-gray mo-t">
+                                <a class="sk-arrange-next J_FIVE_NEXT disabled" href="#">
+                                    <input type="submit" value="完成"/>
+                                </a>
+                            </span>
+                        </div>
+                  </div>
+				
+            </div>
+    </form>
+</block>
+ 
+
+
+
+<block name="ext_css">
+<style>
+    /* the style for layer or mask */
+    body{_height:100%;}
+    #mask, #layer{
+        display: none;
+        position:fixed;
+        _position:absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 44;
+    }
+    #mask{
+        z-index: 33;
+        background-color: #101010;
+        filter: Alpha(opacity=40);
+        opacity: .4;
+    }
+    #layer .bd{
+        text-align:center;
+        position: relative;
+        top: 20%;
+        width: 98%;
+        /* 自己设定了高度 */
+        /*
+        margin: -100px auto 0 auto;
+        height: 200px; 
+        *//* 这个是设定值，与上面的-100px相呼应的 */
+        /* 通过js去做处理的方式 */
+        margin-left: auto;
+        margin-right: auto;
+        /**/
+        background-color: #fff;
+    }
+    
+    #layer .bd table{
+        padding:50px;
+        width:100%;
+        background-color:#fff;
+    }
+    </style>
+</block>     
+ 
+<block name="ext_js">
+<script>
+    (function(mask){
+        var layer = document.getElementById('layer');
+        // for IE 6
+        if(document.uniqueID && !window.XMLHttpRequest){
+            document.getElementsByTagName('html')[0].style.overflow = 'hidden';
+        }
+        mask.style.display = 'none';
+        layer.style.display = 'none';
+        /* js 获取高度 */
+        var bd = layer.firstChild, h;
+        if(bd.nodeType==3)bd = bd.nextSibling;
+        h = bd.clientHeight;
+        bd.style.height = h + 'px';
+        bd.style.marginTop = -h/2 + 'px';
+        /**/
+    })(document.getElementById('mask'));
+
+    $(function(){
+        
+        $(".show_names").click(function(){
+            $("#mask").css("display","block");
+            $("#layer").css("display","block");
+        });
+        
+        $(".dis_names").click(function(){
+            $("#mask").css("display","none");
+            $("#layer").css("display","none");
+        });
+        
+        
+        $("#img").blur(function(){
+            $("#imgimg").attr("src",this.value);
+        }); 
+
+
+        //系统设置间隔发布D币值
+        var tk_db_intval=$(".tk_db_intval").html();
+        //组合D币值
+        var tk_db_more  =$("input[name=tk_db_more]").val();
+        //订单单数
+        var tk_cnt_sum  =$(".tk_cnt_sum").html();
+        //佣金消费
+        var tk_db_yongjin=$('input[name="db_yongjin"]:checked').val();
+        if(tk_db_yongjin=='undefined' || tk_db_yongjin=='' || tk_db_yongjin==null){
+            tk_db_yongjin=0;
+        }
+        //最终支付值
+        var total = (parseInt(tk_db_more)+parseInt(tk_db_intval))*parseInt(tk_cnt_sum)+parseInt(tk_db_yongjin)*parseInt(tk_cnt_sum);
+        $(".tk_db_pay").html(total);
+        $("input[name=db_pay]").val(total);
+
+        //间隔支付变动控制
+        $("input[name=issue_interval_check]").click(function(){
+            if($(this).attr('checked')=='checked'){
+                tk_db_intval = "{$sysConfig['num_intval_db']}";
+                $("input[name=issue_interval]").val(1);
+                $(this).attr('checked','checked');
+                $(".tk_db_intval").html(tk_db_intval);
+                $(".tk_db_intval2").html(tk_db_intval);
+            }else{
+                tk_db_intval = 0;
+                $("input[name=issue_interval]").val(0);
+                $(this).attr('checked',false);
+                $(".tk_db_intval").html(tk_db_intval);
+                $(".tk_db_intval2").html(tk_db_intval);
+            }
+
+            tk_db_yongjin=$('input[name="db_yongjin"]:checked').val();
+            if(tk_db_yongjin=='undefined' || tk_db_yongjin=='' || tk_db_yongjin==null){
+                tk_db_yongjin=0;
+            }
+
+             total = (parseInt(tk_db_more)+parseInt(tk_db_intval))*parseInt(tk_cnt_sum)+parseInt(tk_db_yongjin)*parseInt(tk_cnt_sum);
+            $(".tk_db_yongjin").html(tk_db_yongjin);
+            $(".tk_db_pay").html(total);
+            $("input[name=db_pay]").val(total);
+
+        });
+
+        //佣金变动控制
+        $("input[name=db_yongjin]").each(function(){
+            $(this).bind('click',function(){
+                 tk_db_intval=$(".tk_db_intval").html();
+                 tk_db_yongjin=$(this).val();
+                 if(tk_db_yongjin=='undefined' || tk_db_yongjin=='' || tk_db_yongjin==null){
+                    tk_db_yongjin=0;
+                 }
+
+                total = (parseInt(tk_db_more)+parseInt(tk_db_intval))*parseInt(tk_cnt_sum)+parseInt(tk_db_yongjin)*parseInt(tk_cnt_sum);
+                $(".tk_db_yongjin").html(tk_db_yongjin);
+                $(".tk_db_pay").html(total);
+                $("input[name=db_pay]").val(total);
+
+            });
+        });
+
+
+
+        $(".zhifu-btn").click(function(){
+
+         var obj = $(this);
+
+         var user_db = "{$user_db['cg_amount']}";
+         var db_pay  = "{$tk['db_pay']}";
+
+         var user_yj = "{$user_db['cg_deposit']}";
+         var yj_pay  = "{$tk['yj_pay']}";
+
+         var pay_flag = false;
+
+         //d币判断
+         if(!db_pay.isEmpty()){
+            if(parseFloat(db_pay)>parseFloat(user_db)){
+                alert("您的D币余额["+user_db+"]不足["+db_pay+"],请充值后继续支付");
+                pay_flag = false;
+                if(confirm('是否立刻进行D币充值？')){
+                  location.href="{:U('pay/charge?id='.$tk['id'])}";
+                }
+                  return false;
+             }else{
+                pay_flag = true;
+             }
+         }else{
+            db_pay=0;
+            pay_flag=true;
+         } 
+
+         //押金判断
+         if(!yj_pay.isEmpty()){
+            if(parseFloat(yj_pay)>parseFloat(user_yj)){
+                alert("您的押金余额["+user_yj+"]不足["+yj_pay+"],请充值后继续支付");
+                pay_flag = false;
+                if(confirm('是否立刻进行押金充值？')){
+                  location.href="{:U('pay/charge?ctype=yjpay&yj_pay='.$tk['yj_pay'].'&id='.$tk['id'])}";
+                }
+                return false;
+             }else{
+                pay_flag = true;
+             }
+         }else{
+            yj_pay=0;
+            pay_flag=true;
+         }
+         
+         if(pay_flag){
+             var url = "{:U('dbPay?id='.$tk['id'].'&db_pay='.$tk['db_pay'].'&yj_pay='.$tk['yj_pay'])}";
+             //alert(url);
+             //return false;
+             //location.href=url;
+             //return false;
+
+             if(confirm('是否继续支付？')){
+                $.ajax({
+                  type:'get',
+                  url:url,
+                  //data:"id={$tk['id']}&db_pay={$tk['db_pay']}",
+                  dataType:'json',
+                  success: function(msg){
+                    if(msg.success){
+                       obj.css('display','none');
+                       $(".back-last").css('display','none');
+                       $(".comp-btn").css('display','block');
+                       $(".pay_msg").html(msg.msg);
+                       $(".pay_msg_success").html("恭喜你，支付成功！,点击'完成'进行任务发布");
+                    }else{
+                       alert(msg.msg);
+                    }
+                  }
+                });
+             }
+         }
+         return false;
+       });
+
+      $(".comp-btn").click(function(){
+         if(confirm('确认提交复查资料？')){
+            theForm.submit();
+         }
+      });
+    });
+</script>
+</block>

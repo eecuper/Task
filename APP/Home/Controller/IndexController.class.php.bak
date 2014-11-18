@@ -1,0 +1,528 @@
+<?php
+
+namespace Home\Controller;
+
+class IndexController extends BaseController {
+ 
+	
+	
+	public function go(){
+		$id = I('id');
+		$this->isComplete($id);
+		
+		$step = I('step');
+		$tk = parent::task($id);
+		if($tk){
+			if(empty($step)){
+				$step = $tk['step'];
+			}
+			$this->redirect('action_step'.$step.'?id='.$id);
+		}else{
+			$this->action_step1();
+		}	
+	}
+	
+	
+	//选择平台
+	public function action_step1(){
+		
+		$userInfo = $this->isLogin();
+		if($userInfo){
+			if($userInfo['manager']==0){
+				$this->error('您的权限为普通买家，不允许发布任务，申请商家账号,联系我们');
+			}
+		}
+		
+		$id = I('id');
+		$this->isComplete($id);
+		
+		if(IS_POST ){
+			$tk = D('TaskInfo');
+			$info = $tk->create();
+			if(empty($info['shop_id'])){
+				//店铺为空
+				$this->error('店铺选择不允许为空,请先绑定店铺',U('User/shop'),2);
+			}
+
+			$info['step']=2;
+			$info['create_user_id']=$userInfo['id'];
+			if(isset($id) && $id>0){
+				//修改
+				$tk->where('id='.$id)->save($info);
+			}else{
+				//新增
+				$id=$tk->add($info);
+				if(empty($id)){
+					$this->error('操作失败'.$tk->getError());
+				}
+			}
+			$this->redirect('go?id='.$id);
+		}else{
+			parent::task($id);	
+		}
+		parent::shopConfig();
+		$this->display('action_step1');
+	}
+	
+	public function action_step2(){
+		$id = I('id');
+		$this->isComplete($id);
+		if(IS_POST){
+			$tk = D('TaskInfo');
+			$info = $tk->create();
+			$info['step']=3;
+			$info['money']=floatval($info['price'])*floatval($info['cnt']);
+			$info['key_cate']=json_encode(I('key_cate'));
+			$info['name']=json_encode(I('name'));
+			$info['url']=json_encode(I('url'));
+			$info['pro_id']=json_encode(I('pro_id'));
+			$info['img']=json_encode(I('img'));
+			$info['msg']=json_encode(I('msg'));
+			
+			if(isset($id) && $id>0){
+				$tk->where('id='.$id)->save($info);
+			}
+			$this->redirect('go?id='.$id);
+		}else{
+			$tk = parent::task($id);	
+			if($tk){
+				$msgs = json_decode($tk['msg']);
+				$this->assign('msgs',$msgs);
+			}
+		}
+		$this->display('action_step2');
+	}
+	
+	public function action_step3(){
+		$id = I('id');
+		$this->isComplete($id);
+		if(IS_POST ){
+			$tk = D('TaskInfo');
+			$info = $tk->create();
+			$info['step']=4;
+			if(isset($id) && $id>0){
+				$tk->where('id='.$id)->save($info);
+			}
+			$this->redirect('go?id='.$id);
+		}else{
+			$tk = parent::task($id);	
+			if($tk){
+				$web = parent::config($tk['web_id']);
+				$shop = parent::config($tk['shop_id']);
+				$msg = parent::config($tk['msg_id']);
+				$this->assign('web',$web);
+				$this->assign('shop',$shop);
+				$this->assign('msg',$msg);
+			}
+		}
+		
+		parent::typeConfig();
+		$this->display('action_step3');
+	}
+	
+	public function action_step4(){
+		$id = I('id');
+		$this->isComplete($id);
+		if(IS_POST){
+			$tk = D('TaskInfo');
+			$info = $tk->create();
+			$info['step']=5;
+			$info['set_comments_txt']=json_encode(I('set_comments_txt'));
+			if(isset($id) && $id>0){
+				$tk->where('id='.$id)->save($info);
+			}
+			$this->redirect('go?id='.$id);
+		}else{
+			$tk = parent::task($id);
+			if($tk){
+				$comments = json_decode($tk['set_comments_txt']);
+				$this->assign('comments',$comments);
+			}	
+		}
+		parent::typeConfig();
+		$this->display('action_step4');
+	}
+	
+	public function action_step5(){
+		$userInfo = $this->isLogin();
+		if($userInfo){
+			if($userInfo['manager']==0){
+				$this->error('您的权限为普通买家，不允许发布任务，请申请商家账号');
+			}
+		}
+		$id = I('id');
+		$this->isComplete($id);
+		if(IS_POST ){
+			$tk = D('TaskInfo');
+			$info = $tk->create();
+			$info['step']=6;
+			$info['is_complete']=1;
+			$info['create_date']=time();
+			if(isset($id) && $id>0){
+				$tk->where('id='.$id)->save($info);
+				
+				$task = $tk->find($id);
+				$list_num = intval($task['issue_pc'])+intval($task['issue_phone']);
+				if(isset($list_num) && $list_num>0){
+					
+					//生成PC端清单
+					for ($i=0;$i<intval($task['issue_pc']);$i++){
+						$d[] = array('tid'=>$id,'create_user_id'=>$userInfo['id'],'create_date'=>time(),'list_type'=>'PC','state'=>1);
+					}
+					
+					//生成手机端清单
+					for ($i=0;$i<intval($task['issue_phone']);$i++){
+						$d[] = array('tid'=>$id,'create_user_id'=>$userInfo['id'],'create_date'=>time(),'list_type'=>'Mobile','state'=>1);
+					}
+					
+					if(!empty($d)){
+						$list = M('TaskList');
+						$list->addAll($d);
+					}
+				}
+			}
+			
+			$this->redirect('main');
+		}else{
+			$tk=parent::task($id);	
+			if($tk){
+				$tp_total=floatval($tk['transport'])*1*floatval($tk['taocan_number']);
+				$total=floatval($tk['price'])*floatval($tk['cnt'])*floatval($tk['taocan_number']);
+				$this->assign('tp_total',$tp_total);
+				$this->assign('total',$total);
+			}
+		}
+		
+		$this->display('action_step5');
+	}
+	
+	public function index(){
+		 $m   = 'TaskInfo';
+		 $t   = 'v_task_info_ext_cnt as a';
+		 $f   = '*';
+		 $w   = 'a.status=1';
+		 
+		 $web_id= I('web_id');
+		 if(!empty($web_id)){$w=$w.' and a.web_id='.$web_id;}
+		 $shop_id= I('shop_id');
+		 if(!empty($shop_id)){$w=$w.' and a.shop_id='.$shop_id;}
+		 $msg_id= I('msg_id');
+		 if(!empty($msg_id)){$w=$w.' and a.msg_id='.$msg_id;}
+		 $action_user_id= I('action_user_id');
+		 if(!empty($action_user_id)){$w=$w.' and a.action_user_id='.$action_user_id;}
+		 $zd = I('zd');
+		 if(!empty($zd)){
+		 	switch ($zd){
+		 		case 1: $w=$w.' and a.issue_pc>0'; break;
+		 		case 2: $w=$w.' and a.issue_phone>0'; break;
+		 	}
+		 }
+		 
+		 $query_key= I('query_key');
+		 $query_detail=I('query_detail');
+		 if(!empty($query_key) && !empty($query_detail)){
+		 	switch ($query_key){
+		 		//case 1: $w=$w.' and a.list_id='.$query_detail; break;
+		 		case 2: $w=$w.' and a.id='.$query_detail; break;
+		 	}
+		 }
+		 
+		 if($_SESSION['user_auth']['manager']!=C('IS_ADMIN')){
+		 	$w=$w.' and a.create_user_id='.$_SESSION['user_auth']['id'];
+		 }
+		 $tks = $this->lists($m,$t,$w,'',$f);
+		 
+// 		 $tk = M('TaskList');
+// 		 $tks= $tk->table('task_task_list as a , 
+// 		 				   task_task_info as b,
+// 		 				   task_type_config as c,
+// 		 				   task_type_config as d,
+// 		 				   task_type_config as e')
+// 		 		  ->field('a.*,b.*,c.name as web_name,d.name as shop_name,e.name as msg_name')
+// 		 		  ->where('a.tid=b.id 
+// 		 		  		   and b.status=1 
+// 		 		  		   and b.step=6
+// 		 		  		   and b.web_id=c.id
+// 		 		  		   and b.shop_id=d.id
+// 		 		  		   and b.shop_id=e.id')
+// 		 		  //->limit(1,2)
+// 		 		  ->select();
+		 $this->assign('tks',$tks);
+		 
+		 //所有任务
+		 $where['status']=1;
+		 if($_SESSION['user_auth']['manager']!=C('IS_ADMIN')){
+		 	$where['create_user_id']=$_SESSION['user_auth']['id'];
+		 }
+		 $allTaskCnt = $this->taskCnt('',$where);
+		 $this->assign('allTaskCnt',$allTaskCnt);
+		 
+		 //成功发布任务
+		 $where1['status']=1;
+		 $where1['is_complete']=1;
+		 if($_SESSION['user_auth']['manager']!=C('IS_ADMIN')){
+		 	$where1['create_user_id']=$_SESSION['user_auth']['id'];
+		 }
+		 $compTaskCnt = $this->taskCnt('',$where1);
+		 $this->assign('compTaskCnt',$compTaskCnt);
+		 
+		 //所有清单
+		 $where2['status']=1;
+		 if($_SESSION['user_auth']['manager']!=C('IS_ADMIN')){
+		 	$where2['create_user_id']=$_SESSION['user_auth']['id'];
+		 }
+		 $allListCnt = $this->taskCnt('v_task_list_ext_user',$where2);
+		 $this->assign('allListCnt',$allListCnt);
+		 
+		 $t = M('taskInfo');
+		 $sql = "select count(id) tasks,sum(dfk) dfk,sum(dfh) dfh,sum(dqr) dqr,sum(wc) wc from v_task_info_cnt";
+		 if($_SESSION['user_auth']['manager']!=C('IS_ADMIN')){
+		 	$sql=$sql.' where create_user_id='.$_SESSION['user_auth']['id'];
+		 }
+		 $taskInfoCnt = $t->query($sql);
+		 $this->assign('taskInfoCnt',$taskInfoCnt);
+		 $this->display('task:main');
+	}
+	
+	//待付款
+	public function dfk(){
+		$list_id = I('list_id');
+		$this->doFlag();
+		$this->redirect('Task/order_info?list_id='.$list_id);
+	}
+	
+	//待发货
+	public function dfh(){
+		$list_id = I('list_id');
+		$this->sendFlag();
+		$this->redirect('Task/order_info?list_id='.$list_id);
+	}
+	
+	//待确认
+	public function dqr(){
+		$list_id = I('list_id');
+		$this->sureFlag();
+		$this->redirect('Task/order_info?list_id='.$list_id);
+	}
+	
+	//确认
+	public function wc(){
+		$list_id = I('list_id');
+		$this->compFlag();
+		$this->redirect('Task/order_info?list_id='.$list_id);
+	}
+	
+	
+	//订单列表
+	public function order_list(){
+		$state = I('state');
+		$this->assign('state',intval($state));
+		
+		$m   = 'TaskList';
+		$t   = 'v_task_list_ext_user as a';
+		$f   = 'a.*';
+		$w   = '1=1';
+		
+		$web_id= I('web_id');
+		if(!empty($web_id)){$w=$w.' and a.web_id='.$web_id;}
+		$shop_id= I('shop_id');
+		if(!empty($shop_id)){$w=$w.' and a.shop_id='.$shop_id;}
+		
+		$search_keys= I('search_keys');
+		$search_words= I('search_words');
+		
+		if(!empty($search_words)){
+			$this->assign('search_words',$search_words);
+			if($search_keys=='list_id'){
+				$w=$w.' and list_id='.intval($search_words);
+			}else if($search_keys=='action_user_nc'){
+				$w=$w.' and action_nc=\''.$search_words.'\'';
+			}else{
+				$w=$w.' and tid='.intval($search_words);
+			}
+		}
+		
+		if($_SESSION['user_auth']['manager']!=C('IS_ADMIN')){
+			$w=$w.' and a.create_user_id='.$_SESSION['user_auth']['id'];
+		}
+		
+		if(intval($state)>0){
+			$w.=' and a.state='.intval($state);
+		}else{
+			$w.='';
+		}
+		
+		//全部订单
+		$tks = $this->lists($m,$t,$w,'',$f);
+		$this->assign('tks',$tks);
+		$this->display();
+	}
+	
+	//订单详情
+	public function order_info(){
+		$list_id = I('list_id');
+		$t = M('taskList');
+		$list = $t->table('v_task_list_ext_user')->where(array('list_id'=>$list_id))->find();
+		$this->assign('list',$list);
+		$this->display();
+	}
+	
+	
+	//任务列表
+	public function task_list(){
+		$m   = 'TaskInfo';
+		$t   = 'v_task_info_ext as a';
+		$f   = 'a.*';
+		$w   = '1=1';
+
+		$web_id= I('web_id');
+		if(!empty($web_id)){$w=$w.' and a.web_id='.$web_id;}
+		$shop_id= I('shop_id');
+		if(!empty($shop_id)){$w=$w.' and a.shop_id='.$shop_id;}
+		
+		if($_SESSION['user_auth']['manager']!=C('IS_ADMIN')){
+			$w=$w.' and create_user_id='.$_SESSION['user_auth']['id'];
+		}
+		
+		$tks = $this->lists($m,$t,$w,'',$f);
+		$this->assign('tks',$tks);
+		$this->display();
+	}
+	
+	public function task_list_m($tid=0){
+		$m   = 'TaskList';
+		$t   = 'v_task_list_ext_user as a';
+		$f   = 'a.*';
+		$w   = 'a.tid='.$tid;
+		//全部订单
+		$tks = $this->lists($m,$t,$w,'',$f);
+		$this->assign('tks',$tks);
+		$this->display('task_list_m');
+	}
+	
+	//任务详情
+	public function task_info(){
+		$t = M('TaskInfo');
+		$id = I('id');
+		$tk = $t->table('v_task_info_ext')->where(array('id'=>$id))->find();
+		$this->assign('tk',$tk);
+		
+		$t = M('taskInfo');
+		$taskInfoCnt = $t->query("select count(id) tasks,sum(dfk) dfk,sum(dfh) dfh,sum(dqr) dqr,sum(wc) wc from v_task_info_cnt where id=".$id);
+		$this->assign('taskInfoCnt',$taskInfoCnt);
+		
+		$this->display();
+	}
+	
+	
+	//任务订单修改
+	public function modify(){
+		$tl = D('TaskList');
+		$tlist['list_id']=I('list_id');
+		$tlist['transport_name']=I('transport_name');
+		$tlist['transport_id']=I('transport_id');
+		$tlist['is_send']=1;
+		$tlist['send_date']=time();
+		$tlist['state']=3;
+		$where['list_id']=$tlist['list_id'];
+		if($tlist && intval($tlist['list_id'])>0){
+			$res = $tl->where($where)->save($tlist);
+			$json['obj']=$res;
+			if($res){
+				$json['msg']='更新成功';
+				$json['success']=true;
+			}else{
+				$json['msg']='更新失败';
+				$json['success']=false;
+			}
+		}else{
+			$json['msg']='操作失败,'.$tl->getError();
+			$json['success']=false;
+		}
+		$this->ajaxReturn($json);
+	}
+	
+	//任务伪删除 status=0
+	public function delTask($id=0){
+		if(intval($id)>0){
+			$tk = D('taskInfo');
+			$d['status']  =0; 
+			$where['id']=$id;
+			$re = $tk->where($where)->save($d);
+			if($re){
+				$this->redirect('main');
+			}else{
+				$this->error('删除失败'.$tk->getError());
+			}
+		}else{
+			$this->error('未选择删除任务');
+		}
+	}
+
+	//复制任务
+	public function cpyTask($id=0){
+		$json['msg']='操作失败';
+		$json['success']=false;
+		if(intval($id)>0){
+			$tk = D('taskInfo');
+			$info = $tk->find($id);
+
+			$b = $info;
+			$b['is_complete']=0;
+			$b['step']=5;
+			$b['create_date']=null;
+			$b['id']=null;
+			$re = $tk->add($b);
+
+			if($re){
+				$json['msg']='复制成功';
+				$json['success']=true;
+			}else{
+				$json['msg']=$tk->getError();
+			}
+		}
+		$this->ajaxReturn($json,'json');
+	}
+
+	//订单管理
+	public function order_mg(){
+		$m   = 'TaskList';
+		$t   = 'v_task_list_ext_user as a';
+		$f   = 'a.*';
+		$w   = '1=1';
+		
+		$web_id= I('web_id');
+		if(!empty($web_id)){$w=$w.' and a.web_id='.$web_id;}
+		$shop_id= I('shop_id');
+		if(!empty($shop_id)){$w=$w.' and a.shop_id='.$shop_id;}
+		
+		$search_keys= I('search_keys');
+		$search_words= I('search_words');
+		
+		if(!empty($search_words)){
+			$this->assign('search_words',$search_words);
+			if($search_keys=='list_id'){
+				$w=$w.' and list_id='.intval($search_words);
+			}else if($search_keys=='action_user_nc'){
+				$w=$w.' and action_nc=\''.$search_words.'\'';
+			}else{
+				$w=$w.' and tid='.intval($search_words);
+			}
+		}
+		
+		if($_SESSION['user_auth']['manager']!=C('IS_ADMIN')){
+			$w=$w.' and a.create_user_id='.$_SESSION['user_auth']['id'];
+		}
+	 
+		//全部订单
+		$tks = $this->lists($m,$t,$w,'',$f);
+		$this->assign('tks',$tks);
+
+		//店铺信息
+		$this->shopConfig();
+
+		$this->display();
+	}
+}
+
+?>

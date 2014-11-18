@@ -1,0 +1,172 @@
+.business-vip{ padding:25px;}
+.business-vip .radiolist{ padding:10px 0 20px; border-bottom:1px dotted #F2F2F2; height:15px; line-height:15px;}
+.business-vip .radiolist label{ float:left; margin-right:42px; font-size:14px;}
+.business-vip .radiolist label input{ vertical-align:middle; margin-top:-2px;}
+.business-vip .radiolist label i{color:#999; font-style:normal;}
+.business-vip .radiolist label i.w100{display: inline-block;width: 100px;margin-left: 20px;}
+.business-vip .radiolist label em{color:#999; font-style:normal;}
+.business-vip .radiolist label em strong{color: red;font-size: 12px;}
+.business-vip h3{ padding:8px 0;padding-top: 18px;}
+
+.business-vip .payres{height:44px; padding:0 10px; line-height:44px; background-color:#F7FCEB; margin-bottom:15px; font-size:14px; border-bottom:1px solid #F2F2F2;}
+
+
+.business-vip .pay-des{height:55px; line-height:55px; font-size:14px; padding-left:10px; padding-right:10px;  color:#999; border-bottom:1px dotted #F2F2F2;}
+.business-vip .pay-des em{ color:#999;}
+.business-vip .pay-des .fr{ display:none;}
+.business-vip .pay-des.active{ background-color:#FFFEEE; color:#555; border-bottom:1px dotted #E5DAB7;}
+.business-vip .pay-des.ac-other{ color:#555; display:none;}
+.business-vip .pay-des.active em{ color:#f50000;}
+.business-vip .pay-des input{  vertical-align:middle; margin-right:5px;}
+.business-vip .pay-des.active .fr{ display:inline-block;}
+.business-vip-arrange-down-gray{height:15px; line-height:15px; padding-right:15px; display:inline-block; background:url(file:///C|/Users/Administrator/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/images/business/arrange-down.gif) right center no-repeat;font-size:12px; margin-left:5px;color:#00A7E8; cursor:pointer;}
+.business-vip-arrange-down-gray.active{ display:none;}
+.business-vip .btn-box{ padding:30px 0 40px; border-bottom:1px solid #F2F2F2;}
+
+
+.business-vip .pay-des.disabled .dis{ display:inline-block;}
+.business-vip .pay-des.disabled .normal{ display: none;}
+.business-vip .pay-des .dis{ display: none;}
+
+.business-vip .leval-radio{height: auto;padding-top: 0;padding-bottom: 10px;}
+.business-vip .leval-radio label{width: 100%;height:15px; line-height:15px;padding-top:6px;padding-bottom: 10px;}
+
+
+.business-vip-box .business-vip-title{height: 40px;line-height: 30px;border-bottom: 1px solid #E3E3E3;padding-top: 10px;}
+.business-vip-box .business-vip-title span{margin-left: 20px;float: left;line-height:200px;width: 198px;height: 30px;overflow: hidden;background: url(file:///C|/Users/Administrator/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/images/members/purchae-vip.png) no-repeat;}
+.business-vip-box .business-vip-title span.register-b-title{background-position: 0 2px;}
+.business-vip-box .business-vip-title span.register-c-title{background-position: 0 -78px;}
+.business-vip-box .business-vip-title span.register-b-title-xf{background-position: 0 -39px;}
+.business-vip-box .business-vip-title span.register-c-title-xf{background-position: 0 -118px;}
+
+
+
+/* ----- levi 04.19 ---- */
+.business-vip-box .business-vip-title {
+    height: auto;
+    padding: 15px 30px 20px;
+}
+
+.business-vip-title:before, .business-vip-title:after, .business-vip .radiolist:before, .business-vip .radiolist:after {
+	content:"";
+	display:table;
+ }
+
+#payto2 {
+    font-size: 14px;
+    padding: 15px 20px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    background: #fff;
+    z-index: 10000;
+    width: 722px;
+    margin-left: -361px;
+    border-radius: 6px;
+    box-shadow: 3px 3px 10px #666;
+    line-height: 1.8;
+}
+
+#payto2 a {
+    color: #17baf5;
+}
+
+#payto2 p {
+    padding: 0 15px;
+}
+
+#payto2 .btn {
+    text-align: center;
+    padding: 20px;
+}
+
+#payto2 .autobtn, #payto2 .autobtn span {
+    background-image: url(file:///C|/Users/Administrator/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/images/business/auto-btns.png);
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 42px;
+    line-height: 42px;
+    font-size: 18px;
+    color: #fff;
+}
+
+#payto2 .autobtn {
+    background-position: right -50px;
+    padding-right: 4px;
+    cursor: pointer;
+    margin-right: 15px;
+}
+
+#payto2 .autobtn span {
+    background-position: left 0;
+    padding: 0 11px 0 15px;
+}
+        
+#payto2 h3 {
+    font-size: 20px;
+    height: 20px;
+    line-height: 20px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+        
+#payto2 strong {
+    font-size: 15px;
+    font-weight: bold;
+}
+        
+#payto2 h3 a {
+    width: 15px;
+    height: 15px;
+    overflow: hidden;
+    display: inline-block;
+    background: url(file:///C|/Users/Administrator/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/images/common/popup-close.gif) no-repeat;
+    float: right;
+    margin-top: 2px;
+}
+
+.business-vip-title:after, .business-vip .radiolist:after{clear:both;}
+.business-vip-title, .business-vip .radiolist {
+	*zoom:1;	/*IE/7/6*/
+}
+
+.business-vip-box .business-vip-title span {
+    border-bottom: none;
+    padding: 0;
+    margin: 0;
+}
+
+.business-vip h3 {
+    padding: 13px 0px 13px;
+}
+
+.business-vip .leval-radio label {
+    padding: 5px;
+}
+
+.business-vip .radiolist label {
+    margin-bottom: 15px;
+}
+
+.business-vip .radiolist {
+    height: auto;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.business-vip .btn-box {
+    padding: 40px 0px 100px;
+}
+
+.business-notice {
+    height: auto;
+    line-height: 28px;
+    text-align: left;
+    padding: 10px;
+    margin-bottom: 30px;
+}
+
+.business-notice font {
+    color: #f00;
+}

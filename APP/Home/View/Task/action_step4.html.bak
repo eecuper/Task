@@ -1,0 +1,282 @@
+<extend name="pub/base" />
+
+<block name="title">
+商家发布任务-条件设置
+</block>
+
+<block name="body">
+<form name="theForm" action="{:U('action_step4')}" method="post">
+<input type="hidden" name="id" value="{$tk.id}">
+<div class="wrap publish-checkin clearfix">
+            <div class="checkout-title clearfix">
+                <img src="__IMG__/publish_title_pub.jpg">
+                <div class="Process">
+                    <ul class="clearfix">
+                        <li style="width:20%" class="cur">
+                            <em class="Processyes">
+                                1
+                            </em>
+                            <span>
+                                选任务类型
+                            </span>
+                        </li>
+                        <li style="width:20%" class="cur">
+                            <em class="Processyes">
+                                2
+                            </em>
+                            <span>
+                                填写商品信息
+                            </span>
+                        </li>
+                        <li style="width:20%" class="cur">
+                            <em class="Processyes">
+                                3
+                            </em>
+                            <span>
+                                选择刷单数量
+                            </span>
+                        </li>
+                        <li style="width:20%">
+                            <em class="Processyes">
+                                4
+                            </em>
+                            <span>
+                                设置条件
+                            </span>
+                        </li>
+                        <li style="width:20%">
+                            <em>
+                                5
+                            </em>
+                            <span>
+                                支付
+                            </span>
+                        </li>
+                        <li style="width:20%" class="Processlast">
+                            <em>
+                                6
+                            </em>
+                            <span>
+                                发布成功
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <form action="http://www.renqifu.com/trade/issue_task_sv?trade_id=21810"
+            method="post" id="frm_step_sx">
+                <input name="trade_id" type="hidden" value="21810">
+                <div class="publish-checkin-content">
+                    <h3 class="f18 clearfix">
+                        第四步：条件设置
+                        <span class="fr f18">
+                            已选择：
+                            <span class="f14 font_oy">
+                                天猫 | 尤尚家居专营店 | 订单 | 新手3单套餐
+                            </span>
+                        </span>
+                    </h3>
+                    <div class="publish-st5-box">
+                        <!-- <ul class="business-tabs">
+                        <li class="not_li">您当前选择的店铺为天猫店：<i class="font_red">尤尚家居专营店</i>，只能添加此店铺商品</li>
+                        </ul> -->
+                        <div class="J-tabs-content">
+                            <h3 class="f16">
+                                安全优化
+                            </h3>
+                            <div class="publish-st5-box-inner">
+                                <h4 class="h4title">
+                                    1.任务发布间隔：
+                                </h4>
+                                <p class="pcontent Ra_checkboxlist_mine">
+                                    <label>
+                                        <input name="issue_interval" pvalue="5" type="checkbox" checked="checked"
+                                        value="1">
+                                    </label>
+                                    <span>
+                                        每隔&nbsp;&nbsp;&nbsp;
+                                    </span>
+                                    <select name="issue_interval_time">
+                                    	<volist name="configs" id="vo">
+											<if condition="$vo.type eq 101">
+												<if condition="($i eq 1) or ($vo['val'] eq $tk['issue_interval_time'])">
+													<option value="{$vo.val}" selected>
+			                                            {$vo.name}
+			                                        </option>
+					                                <else/>
+					                                <option value="{$vo.val}">
+			                                            {$vo.name}
+			                                        </option>
+				                            	</if>
+											</if>
+										</volist>   
+                                    </select>
+                                    <span>
+                                        发布
+                                    </span>
+                                    <select name="issue_interval_number">
+                                        <option value="1">
+                                            1单
+                                        </option>
+                                    </select>
+                                    <span>
+                                        任务
+                                    </span>
+                                </p>
+                                <p class="pcontent font_555">
+                                    选择此项服务后，会将您的任务分批发布，以避免订单过于集中：为了安全性建议选择此项服务
+                                </p>
+                            </div>
+                            <div class="publish-st5-box-inner">
+                                <h4 class="h4title">
+                                    2.延长买家购物周期：
+                                    <i style="text-indent:0em;font-size:12px;color:#666;">
+                                        仅推荐 重复购买率低的商品使用，如家居，家电，高单价的商品等；其他品类不推荐使用
+                                    </i>
+                                </h4>
+                                <p class="pcontent Ra_checkboxlist_mine">
+                                	<volist name="configs" id="vo"  key="k">
+										<if condition="$vo.type eq 102">
+											<if condition="($i eq 1) or ($vo['val'] eq $tk['repurchar_cycle'])">
+												<label class="J_fdpm_show_la jjt">
+			                                        <input name="repurchar_cycle" class="J_accessTotal"   type="checkbox"
+			                                        value="${vo.val}"  checked>
+			                                        {$vo.name}
+			                                    </label>
+				                                <else/>
+				                                <label class="J_fdpm_show_la jjt">
+			                                        <input name="repurchar_cycle" class="J_accessTotal"   type="checkbox"
+			                                        value="${vo.val}" >
+			                                        {$vo.name}
+			                                    </label>
+			                            	</if>
+										</if>
+									</volist> 
+                                </p>
+                                <p class="pcontent font_555">
+                                    选择此项服务后，购买过任务商品的买家
+                                    <em class="tit font_red">
+                                        1个月
+                                    </em>
+                                    内，将不能再接手包含本任务商品的任务；
+                                </p>
+                                <p class="pcontent font_555 period" style="display:none;">
+                                    合计收费：
+                                    <em class="tit_f font_red">
+                                        1
+                                    </em>
+                                    符点 X
+                                    <em class="font_red">
+                                        3
+                                    </em>
+                                    单 X
+                                    <em class="font_red">
+                                        1
+                                    </em>
+                                    个商品链接 =
+                                    <em class="tit_t font_red">
+                                        9
+                                    </em>
+                                    符点；
+                                </p>
+                            </div>
+                            <h3 class="f16">
+                                优质好评
+                                <i style="text-indent:0em;font-size:12px;color:#666;">
+                                    将有助于提升评价质量并优化您商品评价映像关键词
+                                    <a href="#"
+                                    target="_blank" class="font_blue"></a>
+                                </i>
+                            </h3>
+                            <div class="publish-st5-box-inner">
+                                <!--h4 class="h4title">1.优质好评：</h4-->
+                                <p class="pcontent Ra_checkboxlist_mine">
+                                    <label>
+                                        <input name="set_comments" pvalue="1" type="checkbox" value="1">
+                                    1.设置你希望的商品好评内容的范围</label>
+                                </p>
+                                <div class="publish-st5-box-inner-tips">
+                                    请根据您发布任务的商品设定
+                                    <span class="font_red">
+                                        几个关键字
+                                    </span>
+                                    作为买手的
+                                    <span class="font_red">
+                                        评价范围
+                                    </span>
+                                    独自发挥撰写评价，例如“
+                                    <span class="font_red">
+                                        手感面料很舒服，款式也很漂亮，包装很讲究，物流很快，性价比高
+                                    </span>
+                                    ”等... 注意：请不要填写完整的评价内容，避免所有买手评价商品的内容一模一样
+                                </div>
+                                <div class="publish-st5-box-inner-input">
+                                <if condition="$comments neq null">
+                                 <volist name="comments" id="vo" key="k">
+                                 	<if condition="$vo neq null">
+                                 		<p>
+                                        	关键字
+                                        <em>
+                                            {$k}
+                                        </em>
+                                        	：
+                                        <input name="set_comments_txt[]" type="text" class="set_comments_txt"
+                                        value="{$vo}" size="50" maxlength="50">
+                                    	</p>
+                                 	</if>
+                                 </volist>
+                                 <else/>
+                                 	<p>
+									关键字
+									<em>
+									1
+									</em>
+									：
+									<input name="set_comments_txt[]" type="text" class="set_comments_txt"
+									value="" size="50" maxlength="20">
+									</p>
+                                 </if>
+                                 
+                                </div>
+                                <p class="set-comments-txt-add">
+                                    <a id="J-comments-add" href="javascript:;">
+                                        + 继续增加关键字
+                                    </a>
+                                    	（最多可添加10条内容）
+                                </p>
+                                <div class="set_comments_txt_bak">
+                                    <p>
+                                        关键字
+                                        <em>
+                                            4
+                                        </em>
+                                        ：
+                                        <input name="set_comments_txt[]" type="text" class="set_comments_txt"
+                                        value="" size="50" maxlength="30">
+                                        <a href="javascript:;" class="J-comments-del">
+                                            删除
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="publish-btnbox">
+                    <span class="sk-arrange-gray mo-t">
+                    	<!-- onClick="goto_step_fv();" -->
+                        <a class="sk-arrange-next to-prev"  href="{:U('go&step=3&id='.$tk['id'])}" >
+                            上一步
+                        </a>
+                    </span>
+                    <span class="sk-arrange-gray mo-t">
+                        <a class="sk-arrange-next to-next" href="javascript:theForm.submit();">
+                            下一步
+                        </a>
+                        (进入支付)
+                    </span>
+                </div>
+            </form>
+        </div>
+</form>
+</block>

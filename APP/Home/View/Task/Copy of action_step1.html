@@ -1,0 +1,178 @@
+<extend name="pub/base" />
+
+<block name="title">
+商家发布任务-任务类型
+</block>
+<block name="body">
+<form name="theForm" action="{:U('action_step1')}" method="post" id="frm_step_st">
+{__TOKEN__}
+			<input type="hidden" name="id" value="{$tk.id}">
+            <div class="wrap new-Release-first clearfix">
+                <div class="new-Release-first-hd clearfix">
+                    <img src="__IMG__/publish_title_pub.jpg">
+                    <div class="Process">
+                        <ul class="clearfix">
+                            <li style="width:20%">
+                                <em class="Processing">
+                                    1
+                                </em>
+                                <span>
+                                    选任务类型
+                                </span>
+                            </li>
+                            <li style="width:20%">
+                                <em>
+                                    2
+                                </em>
+                                <span>
+                                    填写商品信息
+                                </span>
+                            </li>
+                            <li style="width:20%">
+                                <em>
+                                    3
+                                </em>
+                                <span>
+                                    选择刷单数量
+                                </span>
+                            </li>
+                            <li style="width:20%">
+                                <em>
+                                    4
+                                </em>
+                                <span>
+                                    设置条件
+                                </span>
+                            </li>
+                            <li style="width:20%">
+                                <em>
+                                    5
+                                </em>
+                                <span>
+                                    支付
+                                </span>
+                            </li>
+                            <li style="width:20%" class="Processlast">
+                                <em>
+                                    6
+                                </em>
+                                <span>
+                                    发布成功
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="new-Release-first-bd">
+                    <div class="new-Release-select-hd clearfix">
+                        <div class="new-Release-select-list-hd  Release-plat">
+                            第一步：选择平台
+                        </div>
+                        <div class="new-Release-select-list-hd  Release-shop">
+                            第二步：选择店铺
+                        </div>
+                        <div class="new-Release-select-list-hd  Release-type">
+                            第三步：选择任务类型
+                        </div>
+                    </div>
+                    <div class="new-Release-select clearfix">
+                        <div class="new-Release-select-list Release-plat">
+                            <ul class="clearfix">
+                            <?php $i=0; ?>
+							<volist name="shops" id="vo"  key="k">
+								<if condition="$vo.type eq 1">
+								<?php  $i=$i+1; ?>
+								<li>
+								<label> 
+								<if condition="($i eq 1) or ($vo['id'] eq $tk['web_id'])">
+									<input name="web_id" type="radio" value="{$vo.id}" checked> 
+									<else/>
+									<input name="web_id" type="radio" value="{$vo.id}"> 
+								</if>
+								<b class="taobao">{$vo.name}</b>
+								</label>
+								</li>
+								</if>
+							</volist>                                
+                            </ul>
+                            <p class="ExpansionP">
+                                <a class="collapse" href="javascript:;">
+                                    展开所有平台
+                                </a>
+                            </p>
+                        </div>
+                        <div class="new-Release-select-list Release-shop store_type_tmall" style="display: block;">
+                            <ul class="clearfix">
+                            	<?php $i=0; ?>
+                            	<volist name="shops" id="vo"  key="k">
+								<if condition="$vo.type eq 2">
+								<?php  $i=$i+1; ?>
+								<li class="cur">
+                                    <i>
+                                    </i>
+                                    <label>
+                                    	<if condition="($i eq 1) or ($vo['id'] eq $tk['shop_id'])">
+                                        	<input type="radio" name="shop_id" value="{$vo.id}" checked>
+                                        	<else/>
+                                        	<input type="radio" name="shop_id" value="{$vo.id}">
+                                        </if>
+                                        <span>
+                                            	{$vo.name}
+                                        </span>
+                                    </label>
+                                </li>
+								</if>
+								</volist>  
+                            </ul>
+                            <p class="Release-shop-tip">
+                                <em>
+                                    (还可绑定N个店铺)
+                                </em>
+                                <if condition="$user.manager eq C('IS_ADMIN')">
+                                <a href="{:U('configAction')}" target="_blank">
+                                    + 绑定更多店铺
+                                </a>
+                                </if>
+                            </p>
+                        </div>
+                        <div class="new-Release-select-list Release-type Release-type-taobao">
+                            <ul class="clearfix">
+                            	<?php $i=0;?>
+                            	<volist name="shops" id="vo"  key="k">
+								<if condition="$vo.type eq 3">
+								<?php  $i=$i+1; ?>
+								<li class="trade_type trade_type_order cur">
+                                    <label>
+                                    	<if condition="($i eq 1) or ($vo['id'] eq $tk['msg_id'])">
+                                        	<input type="radio" name="msg_id" value="{$vo.id}" checked>
+                                        	<else/>
+                                        	<input type="radio" name="msg_id" value="{$vo.id}">
+                                        </if>
+                                        <em>
+                                            	{$vo.name}
+                                        </em>
+                                        <em style=" float:right; font-weight:normal; color:#999;">
+                                        </em>
+                                    </label>
+                                </li>
+								</if>
+								</volist>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="new-Release-btn">
+                        <div class="publish-btnbox">
+                            <span class="sk-arrange-gray mo-t">
+                                <a class="sk-arrange-next disabled"   href="#">
+                                    	<input type="submit" value="下一步"/>
+                                </a>
+                                <em>
+                                    (填写商品信息)
+                                </em>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </form>
+</block>

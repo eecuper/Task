@@ -1,0 +1,173 @@
+<extend name="pub/base" />
+
+<block name="title">
+系统设置-更新
+</block>
+
+
+
+<block name="ext_css">
+  <style type="text/css">
+     td{padding:3px 10px;font-size: 11pt;}
+     input select{width:200px;}
+     frameset{border:0px;border-top:dashed 1px #DDD;}
+     ol{margin-left:-10px;}
+  </style>
+</block>
+
+<block name="page_index">
+  <div class="breadcrumbs">
+    <div class="wrap">
+      <a href="javascript:;"> 系统设置 </a> &gt; 配置更新
+    </div>
+  </div>
+</block>
+
+<block name="body">
+<input type="hidden" name="id" value="{$sysConfig.id}">
+  <div class="wrap publish-checkin clearfix">
+                <div class="publish-checkin-content">
+                    <h3 class="f18 clearfix">
+                        设置更新
+                    </h3>
+                    <div class="business-vip clearfix">
+                      <frameset>
+                        <form name="theForm" action="{:U('config')}" method="post">
+                        <legend>常用配置</legend>
+                        <table width="98%" border="0" cellpadding="5" cellspacing="5">
+                        <tr height="30">
+                          <td width="15%" align="right">上次更新时间</td>
+                          <td align="left">{$sysConfig['modify_date']}</td>
+                        </tr>
+
+                        <tr height="30">
+                          <td width="15%" align="right">运行模式</td>
+                          <td align="left">
+                            <select name="is_debug">
+                                <option value="0">上线模式</option>
+                                <option value="1">调试模式</option>
+                            </select>
+                          </td>
+                        </tr>
+
+                        <tr height="30">
+                          <td width="15%" align="right">验证模式</td>
+                          <td align="left">
+                            <select name="is_loging">
+                                <option value="1">验证模式</option>
+                                <option value="0">通用模式</option>
+                            </select>
+                          </td>
+                        </tr>
+
+                        <tr height="30">
+                          <td width="15%" align="right">组合D币值</td>
+                          <td align="left">
+                            <input type="text" name="num_more_db" value="{$sysConfig['num_more_db']}"/>
+                          </td>
+                        </tr>
+
+                        <tr height="30">
+                          <td width="15%" align="right">间隔D币值</td>
+                          <td align="left">
+                            <input type="text" name="num_intval_db" value="{$sysConfig['num_intval_db']}"/>
+                          </td>
+                        </tr>
+
+                        <tr height="30">
+                          <td width="15%" align="right">状态</td>
+                          <td align="left">生效</td>
+                        </tr>
+                      </table>
+
+                        <div class="publish-btnbox">
+                            <span class="sk-arrange-gray mo-t">
+                            <a class="sk-arrange-next to-next comp-btn">
+                                 完成
+                            </a>
+                          </span>
+                        </div>
+                      </form>
+                      </frameset>
+                      <br>
+
+                      <frameset>
+                        <legend>任务配置</legend>
+                        <table width="600" height="100%" border=0   cellpadding="1" cellspacing="1" style="margin-left:100px;">
+                                  <tr>
+                                  <th>平台
+                                  <form name="forma" action="{:U('configAction')}" method="post">
+                                  <input type="hidden" name="type" value="1"/>
+                                  <input type="text" name="name" />
+                                  <a href="javascript:forma.submit();">添加+</a> 
+                                  </form>
+                                  </th>
+                                   
+                                  <th>类型
+                                  <form name="formc" action="{:U('configAction')}" method="post">
+                                  <input type="hidden" name="type" value="3"/>
+                                  <input type="text" name="name" />
+                                  <a href="javascript:formc.submit();">添加+</a> 
+                                  </form>
+                                   </th>
+                                  </tr>
+
+                                  <tr>
+                                  <td valign="top">
+                                  <ol>
+                                  <volist name="configs" id="vo"  key="k">
+                                  <if condition="$vo.type eq 1">
+                                  <li>{$vo.name}
+                                  &nbsp;&nbsp;<a href="{:U('configAction?del=1&id='.$vo['id'])}">删除</a> 
+                                  <form name="form{$vo.id}" action="{:U('configAction')}" method="post">
+                                  <input type="text" name="name" />
+                                  <input type="hidden" name="id" value="{$vo.id}">
+                                  <a href="javascript:form{$vo.id}.submit();">修改</a>
+                                  </form>
+                                  </li>
+                                  </if>
+                                  </volist> 
+                                  </ol>       
+                                  </td>
+
+                                  <td valign="top">
+                                  <ol>
+                                  <volist name="configs" id="vo"  key="k">
+                                  <if condition="$vo.type eq 3">
+                                  <li>{$vo.name}
+                                  &nbsp;&nbsp;<a href="{:U('configAction?del=1&id='.$vo['id'])}">删除</a> 
+                                  <form name="form{$vo.id}" action="{:U('configAction')}" method="post">
+                                  <input type="text" name="name" />
+                                  <input type="hidden" name="id" value="{$vo.id}">
+                                  <a href="javascript:form{$vo.id}.submit();">修改</a>
+                                  </form>
+                                  </li>
+                                  </if>
+                                  </volist> 
+                                  </ol>       
+                                  </td>
+
+                                  </tr>
+                                  </table>
+                      </frameset>
+                         
+                        
+                  </div>
+                </div>
+            </div>
+
+</block>
+
+<block name="ext_js">
+  <script type="text/javascript">
+
+    $(function(){
+      $(".comp-btn").click(function(){
+         if(confirm('最新配置仅对后续数据生效，确定继续更改?')){
+            theForm.submit();
+         }
+      });
+    });
+
+  </script>
+</block>

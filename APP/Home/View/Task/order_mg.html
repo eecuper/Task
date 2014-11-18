@@ -1,0 +1,235 @@
+<extend name="pub/base" />
+
+<block name="title">
+订单管理
+</block>
+
+<block name="ext_css">
+  <style type="text/css">
+    input{border:solid 1px #ccc; border-radius: 3px;heigt:25px;padding: 5px;width:90%;}
+    select{border:solid 1px #ccc; border-radius: 3px;heigt:25px;padding: 5px;width:90%;}
+
+    .content-place input{width:120px;padding:1px;}
+    .content-place select{width:120px;padding: 1px;}
+  </style>
+</block>
+
+<block name="page_index">
+	<div class="breadcrumbs">
+		<div class="wrap">
+			<a href="/"> 首页 </a> &gt; <a
+				href="/userinfo"> 订单信息 </a> &gt; 订单管理
+		</div>
+	</div>
+</block>
+
+<block name="body">
+
+   <form action="{:U('api/order_mg')}"
+            method="post" id="frm_batch" name="theForm">
+
+<div class="wrap clearfix">
+<div class="business-right-comm clearfix">
+    <div class="business-bind">
+      <!--<div class="business-notice">
+          在这里可以修改用户的基本信息。
+      </div>-->
+      <div class="business-bind-wrap clearfix">
+        <div class="old-bind-box">
+            
+            <div class="content-place">
+              <div>
+                  <font color=red>{$delMsg}</font>
+              </div>
+              <span class=" f14">平台：</span> 
+              <select class="J-binding-type" name="web_id" style="width: 100px">
+                <option value="">全部</option>
+                <volist name="configs" id="vo"  key="k">
+                  <if condition="$vo.type eq 1">
+                    <option value="{$vo.id}">{$vo.name}</option>
+                  </if>
+                </volist>   
+              </select> 
+              <span class=" f14" style="margin-left: 16px;">店铺：</span> 
+              <select class="J-binding-name" name="shop_id">
+                  <option  value="">全部</option>
+                  <volist name="shops" id="vo"  key="k">
+                    <if condition="$vo.type eq 2">
+                      <option value="{$vo.id}">{$vo.name}</option>
+                    </if>
+                  </volist>  
+              </select>
+
+              <span class=" f14">关 键 字：</span> 
+              <select name="search_keys">
+                <option value="tid">任务号</option>
+                <option value="list_id">订单号</option>
+                <option value="action_user_nc">买家账号</option>
+              </select> 
+              <input type="text" class="se-text" name="search_words" value="{$search_words}">
+              <input type="hidden" name="state" value="{$state}"/>
+              <a class="business-mess-sent-btn" onclick="javascript:theForm.submit();"><span>搜&nbsp;&nbsp;索</span></a>
+              <a class="business-mess-sent-btn del_datas" onclick="javascript:;"><span>删除选择项</span></a>
+              <input type="hidden" value="0" name="del_datas"/>
+            </div>
+           
+          
+
+          <table class="old-bind-table">
+            <tbody>
+              <tr>
+                <th >选择</th>
+                <th > 订单号</th>
+                <th > 任务号</th>
+                <th>用户ID</th>
+                <th >买号</th>
+                <th >店铺</th>
+                <th >平台</th>
+                <th >任务类型</th>
+                <th >终端</th>
+                <th >订单状态</th>
+                <th width="150">操作</th>
+              </tr>
+              <notempty name="tks">
+                <volist name="tks" id="lst">
+                    <tr>
+                    <td>
+                      <input type="checkbox" name="list_ids[]" value="{$lst['list_id']}"/>
+                    </td>
+                    <td>
+                      <input type="hidden" name="list_id" value="{$lst['list_id']}"/>
+                      {$lst['list_id']}
+                    </td>
+                    <td>
+                      {$lst['tid']}
+                    </td>
+
+                    <td>
+                      {$lst['create_nc']}
+                    </td>
+
+                    <td><input type="text" name="action_user_name" value="{$lst['action_user_name']}"/></td>
+
+                    <td> 
+                      <select class="J-binding-name" name="web_id" disabled=true>
+                          <volist name="configs" id="vo"  key="k">
+                            <if condition="$vo.type eq 1">
+                              <option value="{$vo.id}" {$lst['web_id']==$vo['id']?'selected':''}>{$vo.name}</option>
+                            </if>
+                          </volist>  
+                      </select>
+                    </td>
+
+                    <td>
+                       <select class="J-binding-name" name="shop_id" disabled=true>
+                        
+                          <volist name="shops" id="vo"  key="k">
+                            <if condition="$vo.type eq 2">
+                              <option value="{$vo.id}" {$lst['shop_id']==$vo['id']?'selected':''}>{$vo.name}</option>
+                            </if>
+                          </volist>  
+                      </select>               
+                    </td>
+
+                    <td>
+                       <select class="J-binding-name" name="msg_id" disabled=true>
+                          
+                          <volist name="configs" id="vo"  key="k">
+                            <if condition="$vo.type eq 3">
+                              <option value="{$vo.id}" {$lst['msg_id']==$vo['id']?'selected':''}>{$vo.name}</option>
+                            </if>
+                          </volist>  
+                      </select>               
+                    </td>
+
+                    <td>
+                       <select class="J-binding-name" name="list_type">
+                          <option value="PC">PC</option> 
+                          <option value="Mobile">Mobile</option> 
+                      </select>               
+                    </td>
+
+                    <td>
+                       <select class="J-binding-name" name="state">
+                          <option value="1">待接单</option> 
+                          <option value="2">待付款</option>
+                          <option value="3">待确认</option>
+                          <option value="4">已确认</option>
+                      </select>               
+                    </td>
+
+                    <td>
+                      <a class="modify2" href="javascript:alert('尚未添加');" id="{$lst['list_id']}">修改</a> |
+                      <a class="delData" href="javascript:;" id="{$lst['list_id']}">删除</a>|
+                      <a class="modify2" href="javascript:alert('尚未添加');">初始化</a>
+                    </td>
+                    </tr>
+                </volist>
+              </notempty>
+            </tbody>
+          </table>
+          {$_page}
+        </div>
+      </div>
+    </div>
+     
+</div>
+<!-- </div> -->
+</div>
+<br><br><br>
+
+</form>
+</block>
+
+
+<block name="ext_js">
+  <script type="text/javascript">
+  $(function(){
+
+    $(".delData").click(function(){
+       var list_id = $(this).attr('id');
+       if(list_id.isEmpty()){
+          alert('未指定订单');
+          return false;
+       }
+
+       if(confirm('是否继续删除?')){
+          location.href="{:U('api/delList?1=1')}/list_id/"+list_id;
+       }
+    });
+
+    $(".modify").click(function(){
+        var form = 'form'+$(this).attr('id');
+        $('#'+form).submit();
+        // $.ajax({
+        //   type:'POST',
+        //   url:url,
+        //   dataType:'json',
+        //   data:$('#'+form).serialize(),
+        //   success: function(msg){
+        //     if(msg.success){
+        //        alert(msg.msg);
+        //     }else{
+        //        alert(msg.msg);
+        //     }
+        //   }
+        // });
+    });
+
+    $(".del_datas").click(function(){
+        
+        var list_ids = $("input[type=checkbox]:checked");
+        if(list_ids.length>0){
+            $("input[name=del_datas]").val(1);
+            if(confirm('是否确认删除已选择数据行?不可恢复')){
+              theForm.submit();
+            }
+        }else{
+          alert('请选择需要删除的数据行');
+          return;
+        }
+    });
+
+  });
+  </script>
+</block>  

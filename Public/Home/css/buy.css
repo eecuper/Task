@@ -1,0 +1,210 @@
+@charset "utf-8";
+/* CSS Document */
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, form, input, textarea, p,th, td ,img, a {padding:0;margin:0;}
+body{font-size:12px;background-color:#F2F2F2; margin:0 auto;}
+table{border-collapse:collapse;border-spacing:0;}
+img{border:0;}
+ol, ul, li{list-style:none outside;}
+a{text-decoration:none; color: inherit;}
+
+em{font-style:normal;}
+h1, h2, h3, h4, h5, h6, th{font-weight:bold; }
+
+/* capital start */
+body{ font-family:"microsoft YaHei";}
+.buy_content{width:1000px; margin:0 auto;}
+.breadcrumbs{height:45px; line-height:45px; font-size:16px; color:#565656;}
+.breadcrumbs a{color:#565656;}
+
+.content{overflow:hidden; margin:3px auto;}
+/* buy_left start */
+.left{overflow:hidden; border:1px solid #E0E0E0; background:#fff; border-radius:5px; width:150px; float:left;}
+.left h3{width:130px; margin:5px auto; color:#121212; font-size:14px; height:40px; line-height:40px; font-weight:bold; }
+.left dl{width:150px; margin:5px auto; padding:5px 0; border-top:1px solid #E0E2E6;}
+.left dl dt{color:#020202; font-size:15px; font-weight:bold; height:30px; padding-left:10px; line-height:30px;}
+.left dl dd{color:#383838; padding-left:13px; padding-right:10px; font-size:14px; height:30px; line-height:30px; font-weight:bold;}
+#left_list_dd{background:#eee; color:#f07a1d;}
+#left_list_dd a{color:#f07a1d;}
+.left .left_list_dd{color:#f07a1d;}
+.left .left_list_dd a{color:#f07a1d;}
+
+.left dl span{color:#F07A1D; font-weight:normal; display:inline-block; float:right;}
+.left dl em a{color:#00A6EC; font-weight:normal; display:inline-block; float:right;}
+.buy_add{color:#10ACEE; display:block; height:35px; line-height:35px; width:120px; margin:0 auto; font-size:14px;}
+.left a{color:#383838; text-decoration:none;}
+/* buy_left end */
+
+/* buy_right start */
+.right{overflow:hidden; width:840px; float:right;}
+/* buy_right end */
+
+
+/* person_center start */
+.righttop{width:778px; border:1px solid #e0e0e0; background:#fff; border-radius:5px; padding:10px 30px;}
+
+
+.user_grade{color:#505050; border-bottom:1px solid #E0E2E6; padding-bottom:10px; height:41px; line-height:41px; font-family:"微软雅黑";}
+.user_gradel{width:535px; float:left; color:#4E4E4E; font-size:14px;}
+.user_gradel .span1{color:#F90000; background:url(../images/vip.jpg) no-repeat; display:inline-block; padding-right:20px; background-position:95% 50%;}
+.user_gradel .span2{color:#B2B2B2; padding:0 5px; font-size:12px; display:inline-block;}
+.user_gradel a{display:inline-block; color:#00A7E9;}
+.user_gradel .span100{color:#F90000;}
+
+.user_grader{width:235px; float:right; font-size:14px;}
+.user_grader span{color:#565656; display:inline-block; float:left;}
+.user_grader a{display:inline-block; margin:0 5px; float:left;}
+
+.point{color:#505050; font-size:16px; font-weight:bold; margin-top:20px;}
+.point span{color:#F98800; font-size:14px;}
+.point span b{font-size:24px;}
+.czpoint{display:inline-block; background:url(../images/recharge.jpg) no-repeat; width:70px; height:29px; text-align:center; line-height:29px; margin-right:10px;}
+.txpoint{display:inline-block; background:url(../images/button_bg.jpg) no-repeat; color:#FEFAF5; width:83px; height:29px; line-height:29px; text-align:center; margin:0 10px;}
+.point div{display:inline-block; color:#999; font-size:12px;}
+.pointinfo{color:#505050; font-size:14px; padding:20px 0; border-bottom:1px dashed #ddd;}
+.pointinfo span{color:#F95800; margin-right:20px; display:inline-block;}
+.deposit{color:#505050; font-size:16px; font-weight:bold; margin-top:20px;}
+.deposit span{color:#F98800; font-size:16px;}
+.deposit span b{font-size:24px;}
+
+.capital{color:#505050; font-size:14px; margin:10px 0;}
+.capital span{color:#F95800;}
+.capital .look{color:#00A6EC; padding:0 10px; display:inline-block;}
+.cap_pro{display:inline-block; width:15px; height:20px; background:url(../images/point.jpg) no-repeat; background-position:0 50%; margin:0 5px;}
+
+.record{margin-top:30px; border-top:1px dashed #ddd; padding:20px 0; color:#505050; font-size:14px;}
+.record span{display:block; float:left; height:20px; line-height:20px;}
+
+.record .records{display:block; float:left; position:relative; z-index:91; height:20px;}
+.record .yongj,.record .benj,.record .zij{display:block; float:left; padding:2px 0 2px 25px; height:20px; margin-right:10px;}
+.record .yongj{background:url(../images/record1.jpg) no-repeat; background-position:5% 50%; position:relative; z-index:93;}
+.record .records .yongj_div{position: absolute; z-index:92; width:610px; min-height:338px; left:-99px; top:25px; overflow:hidden; background:#fff; border:1px solid #6F859E;}
+.record .records .benj_div{position: absolute; z-index:92; width:610px; min-height:338px; left:-200px; top:25px; overflow:hidden; background:#fff; border:1px solid #6F859E;}
+.record .records .zij_div{position: absolute; z-index:92; width:610px; min-height:338px; left:-200px; top:25px; overflow:hidden; background:#fff; border:1px solid #6F859E;}
+
+.recordposition{border:1px solid #808487; border-bottom:1px solid #fff; }
+.records .records_position a{display:block; float:right;  width:19px; height:19px; padding:0; background:url(../images/record_close.png) no-repeat;}
+.record_close{ position:relative; top:10px; left:-10px; text-decoration:none; }
+.record_close:hover{ text-decoration:none; }
+.records table{color:#505050; width:95%; margin:0 auto; margin-top:10px;}
+.records table tr{border-bottom:1px dashed #ddd;}
+.records table th{height:45px; text-align:center; line-height:45px; font-weight:normal; border-bottom:1px solid #ddd;}
+.records table td{height:45px; text-align:center; line-height:45px;}
+.records table td em{color:#F11010;}
+.records table .bgcolor td{background:#fff;}
+
+.records .records_position .all_records{display:block; width:100px; background:none; float:right; color:#10ACED; margin:10px 20px;}
+
+.record .benj{background:url(../images/record2.jpg) no-repeat; background-position:5% 45%; position:relative; z-index:93;}
+.record .zij{background:url(../images/record3.jpg) no-repeat; background-position:5% 60%; position:relative; z-index:93;}
+.record div a{color:#00A6EC; display:inline-block; background:url(../images/record.jpg) no-repeat; background-position:98% 50%; padding-right:20px;}
+
+
+/*** seller start ***/
+.available{overflow:hidden;}
+.available_left{width:630px; float:left;}
+.available_right{width:143px; float:right; margin-top:40px;}
+.available_right a{width:143px; height:50px; background:url(../images/avilable_right.jpg) no-repeat; display:block;}
+.available_yj{color:#505050; margin-top:20px; font-size:14px;}
+.available_yj span{display:inline-block; margin-right:5px; color:#F98800;}
+.available_yj span strong{font-size:22px;}
+.available_yj a{color:#00A6EC;}
+/*** seller end ***/
+
+
+	/* pending_tasks start */
+.pending_tasks{overflow:hidden; width:778px; border:1px solid #e0e0e0; background:#fff; border-radius:5px; padding:10px 30px; margin:10px 0;}
+.pending_tasks h1{color:#363636; border-bottom:1px solid #E0E2E6; height:50px; line-height:50px;}
+.taskinfo{padding:20px 0;}
+.taskinfo h3{color:#505050; font-size:18px; font-weight:500;}
+.taskinfo h3 span{color:#999; font-size:14px; padding-left:20px;}
+.taskinfo div p{/*width:130px;*/ width:100%; padding-left:10px; display:inline-block; margin-top:20px; font-size:14px; color:#505050; line-height:25px;}
+.taskinfo div p a{color:#00A5EC;}
+.taskinfo div p span{color:#F07A1D;}
+	/* pending_tasks end */
+	
+	
+	/* tasklist start */
+.tasklist{overflow:hidden; width:778px; border:1px solid #e0e0e0; background:#fff; border-radius:5px; padding:10px 30px; margin:10px 0;}
+.tasklist h1{color:#363636; border-bottom:1px solid #E0E2E6; height:50px; line-height:50px;}
+	/* tasklist end */
+/* person_center end */
+
+
+.right h1{color:#505050; border-bottom:1px solid #E0E2E6; padding-bottom:10px; height:35px; line-height:35px; font-weight:bold;}
+/* capital start */
+.capitalcon{overflow:hidden; width:778px; border:1px solid #e0e0e0; background:#fff; border-radius:5px; padding:10px 30px;}
+.buy_info{height:60px; padding:20px 0; border-bottom:1px dashed #DDD;}
+.buy_info div{color:#505050; height:30px; line-height:30px; font-size:14px; font-weight:bold;}
+.buy_info div span{color:#f00;}
+.buy_info div a{display:inline-block; float:right; color:#00A6ED; font-size:13px;}
+.buy_infos{color:#333; font-size:16px; height:50px; font-weight:bold; margin-top:15px;}
+.buy_infos div{font-size:12px; }
+.buy_infos span{color:#f00;}
+
+	/* comlist start */
+.comlist{margin:5px auto; min-height:50px; padding-bottom:30px; border-bottom:1px dashed #ddd;}
+.comlist_top{height:33px; background:url(../images/comlist_top.jpg) repeat-x; line-height:33px;}
+.comlist_top input{display:inline-block; float:left; margin-top:10px; width:5%;}
+.comlist_top span{display:inline-block; float:left;}
+
+.comlist_div{overflow:hidden; border:1px solid #C8E7F8; margin-top:10px; padding-bottom:10px;}
+.comlist_div table{width:100%;}
+.comlist_div table th{height:30px; line-height:30px; color:#585858; width:100%;}
+.comlist_div table th span{display:inline-block; /*background:url(../images/icon-taobao.png) no-repeat; padding-left:20px;*/ float:left; margin-left:12px; /*background-position:0 50%;*/}
+.comlist_div table th a{color:#0C9CDB;}
+.comlist_div table td{color:#8A8A8A;}
+.comlist_div table td p{height:45px; line-height:15px; overflow:hidden; font-weight:bold;}
+.comlist_div table td span{color:#FF1010; font-size:14px; font-weight:bold;}
+
+.number{width:280px; float:right;}
+	/* comlist end */
+.depositinfo{border-bottom:1px solid #DBDBDB; margin:30px 0; padding-bottom:50px;}
+/*
+.depositinfo div{color:#444; font-size:14px; margin-bottom:30px; font-weight:bold;}
+.depositinfo div span{color:#FD0000;}
+.depositinfo div input{width:185px; padding-left:5px; line-height:30px; height:30px; border:1px solid #ccc; border-radius:2px; margin-right:10px;}
+.depositinfo div a{color:#00A6EC;}
+*/
+.tixian_zhanghu_info{color:#444; font-size:14px; margin-bottom:30px; font-weight:bold;}
+.tixian_zhanghu_info span{color:#FD0000;}
+.rqf_zhifu_pwd input{width:185px; padding-left:5px; line-height:30px; height:30px; border:1px solid #ccc; border-radius:2px; margin-right:10px;}
+.rqf_zhifu_pwd a{color:#00A6EC;}
+.deposit_button{display:block; width:119px; height:46px; text-align:center; line-height:46px; margin:60px auto; color:#fff; font-size:16px; font-weight:bold; cursor:pointer; border:none; background:url(../images/deposit_button.jpg) no-repeat;}
+
+
+.deposit_record{margin:30px 0; overflow:hidden;}
+.deposit_record h3{color:#363636; font-size:16px;}
+.deposit_record table{width:100%;}
+.deposit_record table tr{height:59px; border-bottom:1px solid #DBDBDB; color:#565656; font-size:14px; font-weight:bold;}
+
+.deposit_record table th, .deposit_record table td{color:#565656; text-align:center;}
+.deposit_record table td span{color:#F00000;}
+.deposit_record a{display:inline-block; float:right; color:#00A6ED; font-size:14px; margin:20px 0; font-weight:bold;}
+
+.reminder{margin:20px 0;}
+.reminder p{height:25px; line-height:25px; color:#444; /*font-weight:bold;*/ font-size:14px;}
+/* capital end */
+
+
+/* buy_right end */
+
+
+/* capital_record start */
+.capital_record_top{height:33px; line-height:33px;}
+.capital_record_top span{display:inline-block; float:left; color:#555; text-align:center; font-size:14px;}
+.capitallist_top{ margin-top:10px;}
+.capitallist_tops{border:none; background:url(../images/capitallist_top.jpg) no-repeat; background-position:bottom;}
+.capitallist_top td{color:#555;font-size:12px;text-align:center; padding-bottom:5px;}
+.capitallist_top td a{display:inline-block; width:60px; color:#00A6EC; text-align:center; font-size:12px; background:url(../images/capitallist_topa.jpg) no-repeat; background-position:80%;}
+.capitallist_center td{}
+/* capital_record end */
+
+.meiyou_zhanghao{ margin:20px 0; font-size:14px; font-weight:bold; }
+.quxiao_btn{ font-size:20px; font-weight:bold; color:#00A6EC; position:relative; top:15px; left:40px; }
+.quxiao_btn:hover{ color:#00A6EC; }
+.genghuan_tixian{ color:#00A6EC;}
+.genghuan_tixian:hover{ color:#00A6EC; }
+
+/*#zuijin_yongjin_record_tbl{ height:auto; }*/
+.txpoint:hover{ color:#FEFAF5; text-decoration:none; }
+.czpoint:hover{ text-decoration:none;  }

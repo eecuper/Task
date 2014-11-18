@@ -1,0 +1,466 @@
+﻿<extend name="pub/base" />
+
+<block name="title">
+商家发布任务-条件设置
+</block>
+
+<block name="body">
+<form name="theForm" action="{:U('action_step4')}" method="post">
+<input type="hidden" name="id" value="{$tk.id}">
+<input type="hidden" name="db_id" value="{$tk.db_id}">
+<div class="wrap publish-checkin clearfix">
+            <div class="checkout-title clearfix">
+                <img src="__IMG__/publish_title_pub.jpg">
+                <div class="Process">
+                    <ul class="clearfix">
+                        <li style="width:20%" class="cur">
+                            <em class="Processyes">
+                                1
+                            </em>
+                            <span>
+                                选任务类型
+                            </span>
+                        </li>
+                        <li style="width:20%" class="cur">
+                            <em class="Processyes">
+                                2
+                            </em>
+                            <span>
+                                填写商品信息
+                            </span>
+                        </li>
+                        <li style="width:20%" class="cur">
+                            <em class="Processyes">
+                                3
+                            </em>
+                            <span>
+                                选择刷单数量
+                            </span>
+                        </li>
+                        <li style="width:20%">
+                            <em class="Processyes">
+                                4
+                            </em>
+                            <span>
+                                设置条件
+                            </span>
+                        </li>
+                        <li style="width:20%">
+                            <em>
+                                5
+                            </em>
+                            <span>
+                                支付
+                            </span>
+                        </li>
+                        <li style="width:20%" class="Processlast">
+                            <em>
+                                6
+                            </em>
+                            <span>
+                                发布成功
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <form action="http://www.renqifu.com/trade/issue_task_sv?trade_id=21810"
+            method="post" id="frm_step_sx">
+                <input name="trade_id" type="hidden" value="21810">
+                <div class="publish-checkin-content">
+                    <h3 class="f18 clearfix">
+                        第四步：条件设置
+                    </h3>
+                    <div class="publish-st5-box">
+                        <!-- <ul class="business-tabs">
+                        <li class="not_li">您当前选择的店铺为天猫店：<i class="font_red">尤尚家居专营店</i>，只能添加此店铺商品</li>
+                        </ul> -->
+                        <div class="J-tabs-content">
+                            <h3 class="f16">
+                                安全优化
+                            </h3>
+                            <div class="publish-st5-box-inner">
+                                <h4 class="h4title">
+                                    1.任务发布间隔：
+                                </h4>
+                                <p class="pcontent Ra_checkboxlist_mine">
+                                    <label>
+                                        <input name="issue_interval_check" pvalue="5" type="checkbox" 
+                                        <?php if(intval($tk['issue_interval'])==1){ echo 'checked="checked"'; } ?>>
+                                    </label>
+                                    <input type="hidden" style="border:1px solid red;" name="issue_interval" value="{$tk['issue_interval']|intval}"/>
+                                    <span>
+                                        每隔&nbsp;&nbsp;&nbsp;
+                                    </span>
+                                    <select name="issue_interval_time">
+                                    	<volist name="configs" id="vo">
+											<if condition="$vo.type eq 101">
+												<if condition="($i eq 1) or ($vo['val'] eq $tk['issue_interval_time'])">
+													<option value="{$vo.val}" selected>
+			                                            {$vo.name}
+			                                        </option>
+					                                <else/>
+					                                <option value="{$vo.val}">
+			                                            {$vo.name}
+			                                        </option>
+				                            	</if>
+											</if>
+										</volist>   
+                                    </select>
+                                    <span>
+                                        发布
+                                    </span>
+                                    <select name="issue_interval_number">
+                                        <option value="1">
+                                            1单
+                                        </option>
+                                    </select>
+                                    <span>
+                                        任务
+                                    </span>
+                                    <span class="tk_db_intval font_red">
+                                        <if condition="$tk['issue_interval'] eq 1">
+                                            {$sysConfig['num_intval_db']}
+                                            <else/>
+                                            0
+                                        </if>
+                                    </span>
+                                    <span >
+                                        D币
+                                    </span>
+                                </p>
+                                <p class="pcontent font_555">
+                                    选择此项服务后，会将您的任务分批发布，以避免订单过于集中：为了安全性建议选择此项服务
+                                </p>
+                            </div>
+                            <div class="publish-st5-box-inner">
+                                <h4 class="h4title">
+                                    2.延长买家购物周期：
+                                    <i style="text-indent:0em;font-size:12px;color:#666;">
+                                        仅推荐 重复购买率低的商品使用，如家居，家电，高单价的商品等；其他品类不推荐使用
+                                    </i>
+                                </h4>
+                                <p class="pcontent Ra_checkboxlist_mine">
+                                	<volist name="configs" id="vo"  key="k">
+										<if condition="$vo.type eq 102">
+											<if condition="($i eq 1) or ($vo['val'] eq $tk['repurchar_cycle'])">
+												<label class="J_fdpm_show_la jjt">
+			                                        <input name="repurchar_cycle" class="J_accessTotal"   type="checkbox"
+			                                        value="{$vo.val}"  checked>
+			                                        {$vo.name}
+			                                    </label>
+				                                <else/>
+				                                <label class="J_fdpm_show_la jjt">
+			                                        <input name="repurchar_cycle" class="J_accessTotal"   type="checkbox"
+			                                        value="{$vo.val}" >
+			                                        {$vo.name}
+			                                    </label>
+			                            	</if>
+										</if>
+									</volist> 
+                                </p>
+                                <p class="pcontent font_555">
+                                    选择此项服务后，购买过任务商品的买家
+                                    <em class="tit font_red">
+                                        1个月
+                                    </em>
+                                    内，将不能再接手包含本任务商品的任务；
+                                </p>
+                            </div>
+
+
+                            <div class="publish-st5-box-inner">
+                                <h4 class="h4title">
+                                    3.任务佣金消费：
+                                    <i style="text-indent:0em;font-size:12px;color:#666;">
+                                        
+                                    </i>
+                                </h4>
+                                <p class="pcontent Ra_checkboxlist_mine">
+                                    <volist name="configs" id="vo"  key="k">
+                                        <if condition="$vo.type eq 103">
+                                            <if condition="($i eq 1) or ($vo['val'] eq $tk['db_yongjin'])">
+                                                <label class="J_fdpm_show_la jjt">
+                                                    <input name="db_yongjin" class="J_accessTotal"   type="radio"
+                                                    value="{$vo.val}"  checked>
+                                                    {$vo.name}
+                                                </label>
+                                                <else/>
+                                                <label class="J_fdpm_show_la jjt">
+                                                    <input name="db_yongjin" class="J_accessTotal"   type="radio"
+                                                    value="{$vo.val}" >
+                                                    {$vo.name}
+                                                </label>
+                                            </if>
+                                        </if>
+                                    </volist> 
+                                </p>
+                                <p class="pcontent font_555">
+                                    选择此项服；该功能是提升订单任务效率的设置，消费越高，系统将提升订单的优先级，进行任务执行操作
+                                </p>
+
+                                <p>
+                                    <?php 
+                                        //判断是否是组合任务
+                                        $is_more = encodeMore(json_decode($tk['name']));
+                                        $tk_db_more = $is_more?$sysConfig['num_more_db']:0;
+                                    ?>
+                                    <input type="hidden" name="tk_db_more" value="{$tk_db_more}"/>
+                                </p>
+                                <p class="pcontent font_555 period">
+                                    合计规则：(组合币 + 间隔币 + 佣金消费) X 订单数=总支付
+                                </p>
+                                <p class="pcontent font_555 period" >
+                                    合计收费：
+                                    (
+                                    <em class="tit_f font_red tk_db_more">
+                                        {$tk_db_more}
+                                    </em>
+                                    +
+                                    <em class="tit_f font_red tk_db_intval2">
+                                        <if condition="$tk['issue_interval'] eq 1">
+                                            {$sysConfig['num_intval_db']}
+                                            <else/>
+                                            0
+                                        </if>
+                                    </em>
+                                    +
+                                    <em class="font_red tk_db_yongjin">
+                                        {$tk['db_yongjin']}  
+                                    </em>
+                                    )
+                                    X
+                                    <em class="font_red tk_cnt_sum">
+                                        {$tk.taocan_number}
+                                    </em>
+                                    单
+                                    <!--
+                                     X
+                                    <em class="font_red">
+                                        1
+                                    </em>
+                                    个商品链接
+                                    -->
+                                     =
+                                    <em class="tit_t font_red tk_db_pay">
+                                        {$tk.db_pay}
+                                    </em>
+                                    <input type="hidden" name="db_pay"/>
+                                    D币；
+                                </p>
+
+                            </div>
+
+
+                            <div class="publish-st5-box-inner">
+                                <h4 class="h4title">
+                                    4.押金支付：
+                                    <i style="text-indent:0em;font-size:12px;color:#666;">
+                                        
+                                    </i>
+                                </h4>
+                                <p class="pcontent font_555 period">
+                                    合计规则：单价 X 数量 X 订单数+邮费 X 订单数=总押金
+                                </p>
+                                <p class="pcontent font_555 period" >
+                                    合计押金：
+                                    <em class="tit_f font_red ">
+                                        {$tk.price}
+                                    </em>
+                                    元 X
+                                    <em class="tit_f font_red ">
+                                        {$tk.cnt}
+                                    </em>
+                                    件 X 
+                                    <em class="font_red">
+                                        {$tk.taocan_number}
+                                    </em>
+                                    单
+                                    +
+                                    <em class="font_red">
+                                        {$tk['transport']}
+                                    </em>
+                                    X 
+                                    <em class="font_red">
+                                        {$tk['taocan_number']}
+                                    </em>
+                                     =
+                                    <em class="tit_t font_red">
+                                        {$tk[price]*$tk['cnt']*$tk['taocan_number']+$tk['transport']*$tk['taocan_number']}
+                                    </em>
+                                    <input type="hidden" name="yj_pay" value="{$tk[price]*$tk['cnt']*$tk['taocan_number']+$tk['transport']*$tk['taocan_number']}"/>
+                                    元；
+                                </p>
+
+                            </div>
+
+
+                            <h3 class="f16">
+                                优质好评
+                                <i style="text-indent:0em;font-size:12px;color:#666;">
+                                    将有助于提升评价质量并优化您商品评价映像关键词
+                                    <a href="#"
+                                    target="_blank" class="font_blue"></a>
+                                </i>
+                            </h3>
+                            <div class="publish-st5-box-inner">
+                                <!--h4 class="h4title">1.优质好评：</h4-->
+                                <p class="pcontent Ra_checkboxlist_mine">
+                                    <label>
+                                        <input name="set_comments" pvalue="1" type="checkbox" value="1">
+                                    1.设置你希望的商品好评内容的范围</label>
+                                </p>
+                                <div class="publish-st5-box-inner-tips">
+                                    请根据您发布任务的商品设定
+                                    <span class="font_red">
+                                        几个关键字
+                                    </span>
+                                    作为买手的
+                                    <span class="font_red">
+                                        评价范围
+                                    </span>
+                                    独自发挥撰写评价，例如“
+                                    <span class="font_red">
+                                        手感面料很舒服，款式也很漂亮，包装很讲究，物流很快，性价比高
+                                    </span>
+                                    ”等... 注意：请不要填写完整的评价内容，避免所有买手评价商品的内容一模一样
+                                </div>
+                                <div class="publish-st5-box-inner-input">
+                                <if condition="$comments neq null">
+                                 <volist name="comments" id="vo" key="k">
+                                 	<if condition="$vo neq null">
+                                 		<p>
+                                        	关键字
+                                        <em>
+                                            {$k}
+                                        </em>
+                                        	：
+                                        <input name="set_comments_txt[]" type="text" class="set_comments_txt"
+                                        value="{$vo}" size="50" maxlength="100">
+                                    	</p>
+                                 	</if>
+                                 </volist>
+                                 <else/>
+                                 	<p>
+									关键字
+									<em>
+									1
+									</em>
+									：
+									<input name="set_comments_txt[]" type="text" class="set_comments_txt"
+									value="" size="50" maxlength="100">
+									</p>
+                                 </if>
+                                 
+                                </div>
+                                <p class="set-comments-txt-add">
+                                    <a id="J-comments-add" href="javascript:;">
+                                        + 继续增加关键字
+                                    </a>
+                                    	（最多可添加10条内容）
+                                </p>
+                                <div class="set_comments_txt_bak">
+                                    <p>
+                                        关键字
+                                        <em>
+                                            4
+                                        </em>
+                                        ：
+                                        <input name="set_comments_txt[]" type="text" class="set_comments_txt"
+                                        value="" size="50" maxlength="100">
+                                        <a href="javascript:;" class="J-comments-del">
+                                            删除
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="publish-btnbox">
+                    <span class="sk-arrange-gray mo-t">
+                    	<!-- onClick="goto_step_fv();" -->
+                        <a class="sk-arrange-next to-prev"  href="{:U('go?step=3&id='.$tk['id'])}" >
+                            上一步
+                        </a>
+                    </span>
+                    <span class="sk-arrange-gray mo-t">
+                        <a class="sk-arrange-next to-next" href="javascript:theForm.submit();">
+                            下一步
+                        </a>
+                        (进入支付)
+                    </span>
+                </div>
+            </form>
+        </div>
+</form>
+</block>
+
+<block name="ext_js">
+<script type="text/javascript">
+    $(function(){
+
+    //系统设置间隔发布D币值
+    var tk_db_intval=$(".tk_db_intval").html();
+    //组合D币值
+    var tk_db_more  =$("input[name=tk_db_more]").val();
+    //订单单数
+    var tk_cnt_sum  =$(".tk_cnt_sum").html();
+    //佣金消费
+    var tk_db_yongjin=$('input[name="db_yongjin"]:checked').val();
+    if(tk_db_yongjin=='undefined' || tk_db_yongjin=='' || tk_db_yongjin==null){
+        tk_db_yongjin=0;
+    }
+    //最终支付值
+    var total = (parseInt(tk_db_more)+parseInt(tk_db_intval))*parseInt(tk_cnt_sum)+parseInt(tk_db_yongjin)*parseInt(tk_cnt_sum);
+    $(".tk_db_pay").html(total);
+    $("input[name=db_pay]").val(total);
+
+    //间隔支付变动控制
+    $("input[name=issue_interval_check]").click(function(){
+        if($(this).attr('checked')=='checked'){
+            tk_db_intval = "{$sysConfig['num_intval_db']}";
+            $("input[name=issue_interval]").val(1);
+            $(this).attr('checked','checked');
+            $(".tk_db_intval").html(tk_db_intval);
+            $(".tk_db_intval2").html(tk_db_intval);
+        }else{
+            tk_db_intval = 0;
+            $("input[name=issue_interval]").val(0);
+            $(this).attr('checked',false);
+            $(".tk_db_intval").html(tk_db_intval);
+            $(".tk_db_intval2").html(tk_db_intval);
+        }
+
+        tk_db_yongjin=$('input[name="db_yongjin"]:checked').val();
+        if(tk_db_yongjin=='undefined' || tk_db_yongjin=='' || tk_db_yongjin==null){
+            tk_db_yongjin=0;
+        }
+
+         total = (parseInt(tk_db_more)+parseInt(tk_db_intval))*parseInt(tk_cnt_sum)+parseInt(tk_db_yongjin)*parseInt(tk_cnt_sum);
+        $(".tk_db_yongjin").html(tk_db_yongjin);
+        $(".tk_db_pay").html(total);
+        $("input[name=db_pay]").val(total);
+
+    });
+
+    //佣金变动控制
+    $("input[name=db_yongjin]").each(function(){
+        $(this).bind('click',function(){
+             tk_db_intval=$(".tk_db_intval").html();
+             tk_db_yongjin=$(this).val();
+             if(tk_db_yongjin=='undefined' || tk_db_yongjin=='' || tk_db_yongjin==null){
+                tk_db_yongjin=0;
+             }
+
+            total = (parseInt(tk_db_more)+parseInt(tk_db_intval))*parseInt(tk_cnt_sum)+parseInt(tk_db_yongjin)*parseInt(tk_cnt_sum);
+            $(".tk_db_yongjin").html(tk_db_yongjin);
+            $(".tk_db_pay").html(total);
+            $("input[name=db_pay]").val(total);
+
+        });
+    });
+
+    });
+</script>
+</block>

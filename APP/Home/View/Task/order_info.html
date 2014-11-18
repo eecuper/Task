@@ -1,0 +1,309 @@
+<extend name="pub/base" />
+
+<block name="title">
+订单详细
+</block>
+
+
+<block name="ext_css">
+<link rel="stylesheet" href="__CSS__/business-task-detail.css">
+
+<style type="text/css">.WPA3-SELECT-PANEL { z-index:2147483647; width:463px; height:292px; margin:0; padding:0; border:1px solid #d4d4d4; background-color:#fff; border-radius:5px; box-shadow:0 0 15px #d4d4d4;}.WPA3-SELECT-PANEL * { position:static; z-index:auto; top:auto; left:auto; right:auto; bottom:auto; width:auto; height:auto; max-height:auto; max-width:auto; min-height:0; min-width:0; margin:0; padding:0; border:0; clear:none; clip:auto; background:transparent; color:#333; cursor:auto; direction:ltr; filter:; float:none; font:normal normal normal 12px "Helvetica Neue", Arial, sans-serif; line-height:16px; letter-spacing:normal; list-style:none; marks:none; overflow:visible; page:auto; quotes:none; -o-set-link-source:none; size:auto; text-align:left; text-decoration:none; text-indent:0; text-overflow:clip; text-shadow:none; text-transform:none; vertical-align:baseline; visibility:visible; white-space:normal; word-spacing:normal; word-wrap:normal; -webkit-box-shadow:none; -moz-box-shadow:none; -ms-box-shadow:none; -o-box-shadow:none; box-shadow:none; -webkit-border-radius:0; -moz-border-radius:0; -ms-border-radius:0; -o-border-radius:0; border-radius:0; -webkit-opacity:1; -moz-opacity:1; -ms-opacity:1; -o-opacity:1; opacity:1; -webkit-outline:0; -moz-outline:0; -ms-outline:0; -o-outline:0; outline:0; -webkit-text-size-adjust:none; font-family:Microsoft YaHei,Simsun;}.WPA3-SELECT-PANEL a { cursor:auto;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-TOP { height:25px;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-CLOSE { float:right; display:block; width:47px; height:25px; background:url(http://combo.b.qq.com/crm/wpa/release/3.3/wpa/views/SelectPanel-sprites.png) no-repeat;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-CLOSE:hover { background-position:0 -25px;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-MAIN { padding:23px 20px 45px;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-GUIDE { margin-bottom:42px; font-family:"Microsoft Yahei"; font-size:16px;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-SELECTS { width:246px; height:111px; margin:0 auto;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-CHAT { float:right; display:block; width:88px; height:111px; background:url(http://combo.b.qq.com/crm/wpa/release/3.3/wpa/views/SelectPanel-sprites.png) no-repeat 0 -80px;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-CHAT:hover { background-position:-88px -80px;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-AIO-CHAT { float:left;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-QQ { display:block; width:76px; height:76px; margin:6px; background:url(http://combo.b.qq.com/crm/wpa/release/3.3/wpa/views/SelectPanel-sprites.png) no-repeat -50px 0;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-QQ-ANONY { background-position:-130px 0;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-LABEL { display:block; padding-top:10px; color:#00a2e6; text-align:center;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-BOTTOM { padding:0 20px; text-align:right;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-INSTALL { color:#8e8e8e;}</style><style type="text/css">.WPA3-CONFIRM { z-index:2147483647; width:285px; height:141px; margin:0; background:url(data:image/png; no-repeat;}.WPA3-CONFIRM { *background-image:url(http://combo.b.qq.com/crm/wpa/release/3.3/wpa/views/panel.png);}.WPA3-CONFIRM * { position:static; z-index:auto; top:auto; left:auto; right:auto; bottom:auto; width:auto; height:auto; max-height:auto; max-width:auto; min-height:0; min-width:0; margin:0; padding:0; border:0; clear:none; clip:auto; background:transparent; color:#333; cursor:auto; direction:ltr; filter:; float:none; font:normal normal normal 12px "Helvetica Neue", Arial, sans-serif; line-height:16px; letter-spacing:normal; list-style:none; marks:none; overflow:visible; page:auto; quotes:none; -o-set-link-source:none; size:auto; text-align:left; text-decoration:none; text-indent:0; text-overflow:clip; text-shadow:none; text-transform:none; vertical-align:baseline; visibility:visible; white-space:normal; word-spacing:normal; word-wrap:normal; -webkit-box-shadow:none; -moz-box-shadow:none; -ms-box-shadow:none; -o-box-shadow:none; box-shadow:none; -webkit-border-radius:0; -moz-border-radius:0; -ms-border-radius:0; -o-border-radius:0; border-radius:0; -webkit-opacity:1; -moz-opacity:1; -ms-opacity:1; -o-opacity:1; opacity:1; -webkit-outline:0; -moz-outline:0; -ms-outline:0; -o-outline:0; outline:0; -webkit-text-size-adjust:none;}.WPA3-CONFIRM * { font-family:Microsoft YaHei,Simsun;}.WPA3-CONFIRM .WPA3-CONFIRM-TITLE { height:40px; margin:0; padding:0; line-height:40px; color:#2b6089; font-weight:normal; font-size:14px; text-indent:80px;}.WPA3-CONFIRM .WPA3-CONFIRM-CONTENT { height:55px; margin:0; line-height:55px; color:#353535; font-size:14px; text-indent:29px;}.WPA3-CONFIRM .WPA3-CONFIRM-PANEL { height:30px; margin:0; padding-right:16px; text-align:right;}.WPA3-CONFIRM .WPA3-CONFIRM-BUTTON { position:relative; display:inline-block!important; display:inline; zoom:1; width:99px; height:30px; margin-left:10px; line-height:30px; color:#000; text-decoration:none; font-size:12px; text-align:center;}.WPA3-CONFIRM .WPA3-CONFIRM-BUTTON-FOCUS { width:78px;}.WPA3-CONFIRM .WPA3-CONFIRM-BUTTON .WPA3-CONFIRM-BUTTON-TEXT { line-height:30px; text-align:center; cursor:pointer;}.WPA3-CONFIRM-CLOSE { position:absolute; top:7px; right:7px; width:10px; height:10px; cursor:pointer;}</style>
+</block>
+
+<block name="page_index">
+	<div class="breadcrumbs">
+		<div class="wrap">
+			<a href="#"> 首页 </a> &gt; 订单详细
+		</div>
+	</div>
+</block>
+
+<block name="body">
+
+
+<?php 
+	$list_state = intval($list['state']);
+?>
+
+<div class="wrap makes-task-box clearfix">
+	<div class="makes-task-tit"></div>
+	<div class="sk-bat-checkin-content">
+		<div class="Process" style="width: 860px; height: 56px;">
+			<ul class="clearfix">
+				<li class="{$list_state>1?'cur':''}" style="width: 16%"><em class="{$list_state>=2?'Processyes':''}{$list_state==1?'Processing':''}">1</em>
+					<span>未付款</span><b>
+						<if condition="$list.action_create_date neq null">
+							{$list.action_create_date|date="Y-m-d H:i:s",###}
+						</if></b></li>
+				<li class="{$list_state>2?'cur':''}" style="width: 17%"><em class="{$list_state>=3?'Processyes':''}{$list_state==2?'Processing':''}">2</em>
+					<span>待发货</span><b>
+						<if condition="$list.send_date neq null">
+							{$list.send_date|date="Y-m-d H:i:s",###}
+						</if></b></li>
+				<li class="{$list_state>3?'cur':''}" style="width: 17%"><em class="{$list_state>=4?'Processyes':''}{$list_state==3?'Processing':''}">3</em>
+					<span>待确认</span><b>
+						<if condition="$list.sure_date neq null">
+							{$list.sure_date|date="Y-m-d H:i:s",###}
+						</if></b></li>
+				<li class="{$list_state>=4?'cur':''}" style="width: 17%"><em class="{$list_state>=4?'Processyes':''}{$list_state>4?'Processing':''}"">4</em>
+					<span>已确认</span><b>
+						<if condition="$list.comp_date neq null">
+							{$list.comp_date|date="Y-m-d H:i:s",###}
+						</if></b>
+				</li>
+				<li class="cur">
+					<em class="{$list_state>=4?'Processyes':''}">结束</<em>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<i class="box-angle lt"></i> <i class="box-angle rt"></i> <i
+		class="box-angle bl"></i> <i class="box-angle br"></i>
+</div>
+
+
+
+<div class="wrap business-task-detail clearfix">
+	<div class="business-task-detail-left">
+		<div class="business-task-detail-left-content">
+			<h3 class="c-title">订单信息</h3>
+			<div class="business-task-detail-left-da">
+				<p>订单编号：{$list.list_id}</p>
+				<p>买手账号：{$list.action_user_name}</p>
+				<p>用户ID：{$list.create_nc}</p>
+			</div>
+		</div>
+		<i class="box-angle lt"></i> <i class="box-angle rt"></i> <i
+			class="box-angle bl"></i> <i class="box-angle br"></i>
+	</div>
+
+
+	<div class="business-task-detail-right">
+		<div class="business-task-detail-right-state dengdaifukuang">
+			<h4 class="f20">
+				<if condition="$list.action_user_name eq null">
+					尚未接单，请先指认接单人<br>
+				</if>
+				<if condition="$user.manager eq C('IS_ADMIN')">
+					<i class=""></i>订单状态：
+						<if condition="$list.state eq 1">
+							未付款<a href="{:U('dfk?list_id='.$list['list_id'])}">付款</a>
+							<elseif condition="$list.state eq 2"/>
+								待发货<a href="{:U('dfh?list_id='.$list['list_id'])}">发货</a>
+								<a href="{:U('dfk?mg=1&list_id='.$list['list_id'])}">返回未付款</a>
+							<elseif condition="$list.state eq 3"/>
+								待确认<a href="{:U('dqr?list_id='.$list['list_id'])}">确认</a>
+								<a href="{:U('dfh?mg=1&list_id='.$list['list_id'])}">返回待发货</a>
+							<elseif condition="$list.state eq 4"/>
+								已确认<!--<a href="{:U('comp&id='.$list['list_id'])}">完成</a>-->
+								<a href="{:U('dqr?mg=1&list_id='.$list['list_id'])}">返回待确认</a>
+							<else/>
+								已完成
+								<a href="{:U('dqr?mg=1&list_id='.$list['list_id'])}">返回待确认</a>
+						</if>
+				<else/>
+					<i class=""></i>订单状态：
+						<if condition="$list.state eq 0">
+							进行中..<a href="javascript:alert('没有足够权限,联系管理员');" >接单付款</a>
+							<elseif condition="$list.state eq 1"/>
+								已付款<a href="{:U('dfh?list_id='.$list['list_id'])}">发货</a>
+							<elseif condition="$list.state eq 2"/>
+								已发货<a href="javascript:alert('没有足够权限,联系管理员');">确认</a>
+							<elseif condition="$list.state eq 3"/>
+								已确认<a href="javascript:alert('没有足够权限,联系管理员');">确认完成</a>
+							<else/>
+								已完成
+						</if>
+			    </if>
+			 
+			
+
+			</h4>
+			<p class="main-f J_copy_p">&nbsp;</p>
+			<p class="main-s" style="padding-left: 40px; padding-bottom: 25px;">&nbsp;</p>
+		</div>
+		<i class="box-angle lt"></i> <i class="box-angle rt"></i> <i
+			class="box-angle bl"></i> <i class="box-angle br"></i>
+	</div>
+</div>
+
+<div class="wrap business-task-detail">
+	<div class="business-task-detail-underbox">
+		<h3 class="c-title">商品信息</h3>
+		<div class="business-tabs-detail-mater-table">
+			<table class="business-task-detail-underbox-table" cellpadding="0"
+				cellspacing="0">
+				<tbody>
+					<tr>
+						<th width="260">商品</th>
+						<th width="100">链接/商品ID</th>
+						<th width="170">单价（元）</th>
+						<th width="170">数量</th>
+						<th>运费（元）</th>
+					</tr>
+					<?php $names = json_decode($list['name']);
+						  $urls  = json_decode($list['url']);
+						  $pros  = json_decode($list['pro_id']);
+					?>
+					<empty name="names">
+						未找到相关信息
+						<else/>
+						<volist name="names" id="n" key="k">
+							<notempty name="n">
+							<tr>
+							<td style="width: 360px;">
+								<img src="<?php $imgs = json_decode($list['img']); echo $imgs[0];?>" class="img">
+								<p class="text">{$n}</p>
+							</td>
+							<td style="width: 360px;">
+								<p class="text">{$urls[$k-1]}
+											<BR>ID：{$pros[$k-1]}</p>
+							</td>
+							<td style="width: 145px;">
+								<p class="u-m-5">{$list.price}</p>
+							</td>
+							<td style="width: 145px;">
+								<p class="u-m-5">{$list.cnt}</p>
+							</td>
+							<td rowspan="1" align="center">
+								<p class="u-m-5">{$list.transport|intval}元( 快递 )</p>
+							</td>
+							</tr>
+							</notempty>
+						</volist>
+					</empty>
+				</tbody>
+			</table>
+			<div class="business-task-detail-underbox-foot">
+				实付款：<em class="font_red f18">{$list.money}元</em>
+			</div>
+		</div>
+		<i class="box-angle lt"></i> <i class="box-angle rt"></i> <i
+			class="box-angle bl"></i> <i class="box-angle br"></i>
+	</div>
+</div>
+
+
+<br><br> 
+<!--
+<div class="wrap business-task-detail">
+	<div class="business-task-detail-underbox">
+		<h3 class="c-title">订单详情</h3>
+		<div class="business-task-detail-underbox-td">
+			<table class="business-task-detail-underbox-table" cellpadding="0"
+				cellspacing="0">
+				<tbody>
+					<tr>
+						<th width="260px">属性名称</th>
+						<th>属性值</th>
+					</tr>
+					<tr>
+						<td><p class="u-1">平台</p></td>
+						<td><p class="u-2">{$list.web_name}</p></td>
+					</tr>
+					<tr>
+						<td><p class="u-1">店铺</p></td>
+						<td><p class="u-2">{$list.shop_name}</p></td>
+					</tr>
+					<tr>
+						<td><p class="u-1">任务类型</p></td>
+						<td><p class="u-2">{$list.msg_name}</p></td>
+					</tr>
+					<tr>
+						<td><p class="u-1">规格/颜色</p></td>
+						<td><p class="u-2">{$list.size}/{$list.color}</p></td>
+					</tr>
+					<tr>
+						<td><p class="u-1">单价</p></td>
+						<td><p class="u-2">{$list.price}</p></td>
+					</tr>
+					<tr>
+						<td><p class="u-1">每单数量</p></td>
+						<td><p class="u-2">{$list.cnt}</p></td>
+					</tr>
+					<tr>
+						<td><p class="u-1">显示价格</p></td>
+						<td><p class="u-2">{$list.show_price}</p></td>
+					</tr>
+					<tr>
+						<td><p class="u-1">淘宝商品主图</p></td>
+						<td><p class="u-2"><img src="{$list.img}" style="width:100px;height:100px;"/></p></td>
+					</tr>
+					<tr>
+						<td><p class="u-1">搜索关键字</p></td>
+						<td><p class="u-2">{$list.key_words}</p></td>
+					</tr>
+					<tr>
+						<td><p class="u-1">分类</p></td>
+						<td><p class="u-2">
+							<?php $key_cates = json_decode($list['key_cate']);?>
+							<volist name="key_cates" id="key_cate">
+								{$key_cate}<br>
+							</volist>
+					</tr>
+					<tr>
+						<td><p class="u-1">价格筛选</p></td>
+						<td><p class="u-2">{$list.price_low}-{$list.price_high}</p></td>
+					</tr>
+					<tr>
+						<td><p class="u-1">邮费</p></td>
+						<td><p class="u-2">{$list.transport}</p></td>
+					</tr>
+					<tr>
+						<td><p class="u-1">留言</p></td>
+						<td><p class="u-2">
+							<?php $msgs = json_decode($list['msg']);?>
+							<volist name="msgs" id="m">
+								{$m}<br>
+							</volist>
+						</p></td>
+					</tr>
+					<tr>
+						<td><p class="u-1">刷单数</p></td>
+						<td><p class="u-2">{$list.taocan_number}</p></td>
+					</tr>
+					<tr>
+						<td><p class="u-1">手机单数</p></td>
+						<td><p class="u-2">{$list.issue_phone}</p></td>
+					</tr>
+					<tr>
+						<td><p class="u-1">电脑单数</p></td>
+						<td><p class="u-2">{$list.issue_pc}</p></td>
+					</tr>
+					<tr>
+						<td><p class="u-1">任务发布间隔</p></td>
+						<td><p class="u-2">{$list.issue_interval_time}</p></td>
+					</tr>
+					<tr>
+						<td><p class="u-1">购买周期</p></td>
+						<td><p class="u-2">{$list.repurchar_cycle}</p></td>
+					</tr>
+					<tr>
+						<td><p class="u-1">评价</p></td>
+						<td><p class="u-2">
+							<?php $cts = json_decode($list['set_comments_txt']);?>
+							<volist name="cts" id="ts">
+								{$ts}<br>
+							</volist>
+						</p></td>
+					</tr>
+					<tr>
+						<td><p class="u-1">总押金</p></td>
+						<td><p class="u-2">{$list.total}</p></td>
+					</tr>
+					
+					<tr>
+						<td><p class="u-1">费用合计</p></td>
+						<td><p class="u-2">押金：<strong>{$list.total}</strong>元 邮费：<strong>{$list.tp_total}</strong>元</p></td>
+					</tr>
+				</tbody>
+			</table>
+		 
+		</div>
+		<i class="box-angle lt"></i> <i class="box-angle rt"></i> <i
+			class="box-angle bl"></i> <i class="box-angle br"></i>
+	</div>
+</div>
+--> 
+</block>

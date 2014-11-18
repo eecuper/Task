@@ -1,0 +1,138 @@
+<extend name="pub/base" />
+
+<block name="title">
+绑定店铺
+</block>
+
+<block name="page_index">
+	<div class="breadcrumbs">
+		<div class="wrap">
+			<a href="/"> 首页 </a> &gt; <a
+				href="/userinfo"> 账号信息 </a> &gt; 绑定店铺
+		</div>
+	</div>
+</block>
+
+<block name="body">
+<form name="theForm" action="{:U('shop')}" method="post" id="frm_binding">
+
+<div class="wrap clearfix">
+	<div class="business-right-comm clearfix">
+		<div class="business-bind">
+			<h2 class="business-bind-innertitle dianpu">绑定店铺</h2>
+			<div class="business-notice">发布任务前，请先绑定店铺</div>
+			
+			<div class="business-bind-wrap clearfix">
+				<div class="business-bind-left business-bind-leftno">
+					 选择平台 
+				</div>
+				<div class="business-bind-right">
+					<div class="register-Binding-shop">
+							<span> <em id="edittext"> 绑定 </em> 新店铺
+							</span>
+						 
+					</div>
+				</div>
+			</div>
+			
+			<div class="business-bind-wrap clearfix">
+				<div class="business-bind-left">
+					<ul class="clearfix J_inputlink">
+						<?php $i=0; ?>
+						<volist name="configs" id="vo"  key="k">
+							<if condition="$vo.type eq 1">	
+								<?php $i=$i+1;?>
+								<li>
+									<input type="radio" name="pid" value="{$vo['id']}" {$i==1?'checked':''}/>
+									<span style="line-height:48px;">{$vo['name']}</span>
+								</li>
+							</if>
+						</volist>
+					</ul>
+					
+					<!-- 
+					<div>
+					<form name="forma" action="{:U('shop')}" method="post">
+					<input type="hidden" name="type" value="1"/>
+					<input type="text" class="text" name="name" /><br><br>
+					<a href="javascript:forma.submit();"> 新增 </a>
+					</form>
+					</div>
+					 -->
+					
+				</div>
+				<div class="business-bind-right">
+					<!--add-->
+					<div class="business-bind-box">
+						<div class="business-bind-list business-bind-new">
+							
+								<input type="hidden" name="type" value="2"/>
+								<input name="binding_type" type="hidden" value="tmall">
+								<div class="item clearfix">
+									<label class="tit"> <i> * </i> 店铺首页网址:
+									</label>
+									<div class="inp">
+										<em class="inpbox"> 
+										<input type="text" class="txt w320" style="margin-top:0px;"
+											name="url" datatype="url">
+										</em> <em class="tips"> (店铺绑定后无法修改) </em>
+									</div>
+								</div>
+								<div class="item clearfix">
+									<label class="tit"> <i> * </i> 店铺名称:
+									</label>
+									<div class="inp">
+										<em class="inpbox"> <input type="text" class="txt" style="margin-top:0px;"
+											checkurl="true" name="name" datatype="*">
+										</em> <em class="tips"> (店铺名称绑定后无法修改) </em>
+									</div>
+								</div>
+								 
+								<a style="margin-left:150px;" class="business-mess-sent-btn" onclick="javascript:theForm.submit();">
+									<span>保&nbsp;&nbsp;存</span>
+								</a>
+						</div>
+					</div>
+					<div class="old-bind-box">
+						<h4>
+							已绑定的店铺 <span class="fr"> 每个平台可绑定6个店铺 </span>
+						</h4>
+						<table class="old-bind-table">
+							<tbody>
+								<tr>
+									<th width="120">店铺名称</th>
+									<!-- <th width="250">发件地址</th> -->
+									<th width="100">店铺网址</th>
+									<th width="100">操作</th>
+								</tr>
+								
+								<volist name="shops" id="vo"  key="k">
+									<if condition="$vo.type eq 2">
+										<tr>
+											<td>{$vo['name']}</td>
+											<td>{$vo['url']}</td>
+											<td><a href="{:U('shop?del=1&id='.$vo['id'])}">删除</a></td>
+										</tr>
+									</if>
+								</volist>
+							</tbody>
+						</table>
+					</div>
+					<!--add-->
+				</div>
+			</div>
+			<div class="business-bind-help">
+				<h4>温馨提示：</h4>
+				<p>1、店铺请填写自己店铺首页地址，不可绑定其他卖家的地址；</p>
+				<p>2、发货地址为打印到快递面单上的地址，请务必填写!</p>
+			</div>
+		</div>
+		<i class="box-angle lt"> </i> <i class="box-angle rt"> </i> <i
+			class="box-angle bl"> </i> <i class="box-angle br"> </i>
+	</div>
+	<!-- </div> -->
+</div>
+
+</form>
+
+</block>

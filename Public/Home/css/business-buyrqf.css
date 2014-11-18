@@ -1,0 +1,37 @@
+.business-buyrqf-state{ height:190px; margin-bottom:35px;
+	background-color: #fff; border:1px solid #E4E4E4;
+	-webkit-box-shadow: 0 0 5px rgba(0,0,0,.09), 0 5px 15px rgba(0,0,0,.05);
+	-moz-box-shadow: 0 0 5px rgba(0,0,0,.09), 0 5px 15px rgba(0,0,0,.05);
+	box-shadow: 0 0 5px rgba(0,0,0,.09), 0 5px 15px rgba(0,0,0,.05); border-radius:3px; position:relative; overflow:hidden;}
+	
+.business-buyrqf-state-successfully{ line-height:190px; text-align:center; font-size:24px; color:#1a1a1a;}
+.business-buyrqf-state .open{width:236px; height:190px; position: relative; cursor: pointer; border-right:1px solid #F2F2F2; float:left;}
+.business-buyrqf-state .open .inner{border:4px  solid #fff; height:182px; float:left;width:228px;}
+.business-buyrqf-state .open .inner-padding{}
+.business-buyrqf-state .open h3,.business-buyrqf-state .open em{ text-align:center;}
+.business-buyrqf-state .open h3{ padding-top:15px; font-size:18px; color:#1f9cd8; padding-bottom:8px;}
+.business-buyrqf-state .open em{ display:block; color:#de0000; font-size:20px;}
+.business-buyrqf-state .open p{ padding:15px 25px; font-size:14px; line-height:28px; color:#555;}
+.business-buyrqf-state .open.active .inner,.business-buyrqf-state .open:hover .inner{border:4px  solid #17BAF5; }
+
+.business-buyrqf-state .open.active b,.business-buyrqf-state .open:hover b{ display:block;width:21px;height:21px; background:url(../../images/business/icon-gou.gif) left top no-repeat; position:absolute; z-index:99; right:3px;bottom:3px;top:auto;left:auto;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

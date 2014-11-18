@@ -1,0 +1,207 @@
+.red{color: #ef0000;}
+.fundformbox{padding: 40px 0 60px 0;}
+.fundformbox .inpbox{padding-left: 0;}
+.fundformbox p.item{padding-left: 230px;}
+.fundformbox .item .tit{width: 220px;}
+.fundformbox .fundbtnp{height: 48px;overflow: hidden;}
+.fundformbox .fundbtnp a.fundbtn{float:left;display:inline-block;width: 99px;height: 48px;line-height: 200px;overflow: hidden;background: url(../../images/common/images/btns.gif) no-repeat;background-position: -491px -573px;vertical-align: middle;}
+.fundformbox .fundbtnp a.fundbtn:hover{background-position: -491px -633px;}
+.fundformbox .item .inp strong{margin-left: 15px;color: #999;}
+.fundformbox .item .inp strong a{color: #00a2ee;}
+.w300 .inpbox input.txt {width: 300px;}
+
+
+.fundformbox .item .funtinptip{margin-left: 10px;color: #666;}
+
+.fundformbox .cashbtnp{height: 42px;overflow: hidden;}
+.fundformbox .cashbtnp a.cashbtn{float:left;display:inline-block;width: 119px;height: 42px;line-height: 200px;overflow: hidden;background: url(../../images/common/images/btns.gif) no-repeat;background-position: -328px -406px;vertical-align: middle;}
+.fundformbox .cashbtnp a.cashbtn:hover{background-position: -328px -460px;}
+.fundformbox .cashbtnp a.cashbtn.disabled{background-position: -328px -515px;}
+#cashbtn{background-position: -328px -515px;}
+
+
+.business-fund{padding: 10px 20px 65px;}
+.business-fund h3{ height:40px; font-size:22px; color:#555; border-bottom:2px solid #E8E8E8; line-height:40px;padding-bottom: 8px;}
+.business-fund h4{color: #555555;font-size: 22px;height: 40px;line-height: 40px;}
+
+
+/*提现/退款账户管理*/
+.business-fund .business-notice{ margin-bottom:10px;}
+.business-fund-tips{border-top: 2px solid #E8E8E8}
+.business-fund-tips h5{font-size: 14px;color: #555;padding-top: 6px;height: 30px;line-height: 30px;}
+.business-fund-tips .business-fund-tips-main{color: #666;}
+.business-fund-main p{height: 26px;line-height: 26px;}
+.business-fund-hd{height: 90px;padding: 15px 0 20px;border-bottom:1px solid #E8E8E8;overflow: hidden;}
+.business-fund-hd ul {width: 740px;}
+.business-fund-hd ul li{cursor:pointer;float: left;width: 199px;height: 60px;text-align: center;margin-right: 12px;border: 1px solid #cbcbcb;padding: 20px 15px  10px;position: relative;box-shadow: 0 0 3px #aaa}
+.business-fund-hd ul li.cur,.business-fund-hd ul li:hover{border:3px solid #18bbf5;padding: 18px 13px 8px;}
+.business-fund-hd ul li.cur b,.business-fund-hd ul li:hover b{display: block;width: 25px;height: 25px;position: absolute;right: -3px;bottom: -3px;background:url(../../images/common/fund-yes.png) no-repeat; }
+.business-fund-hd ul li span{color: #18bbf5;font-size: 20px;height: 26px;line-height: 24px;overflow: hidden;display: inline-block;}
+.business-fund-hd ul li span i{width: 26px;height: 26px;display: inline-block;background: url(../../images/common/fund-push.png) no-repeat;float:left;margin-right: 6px;}
+.business-fund-hd ul li em{display: block;height: 24px;line-height: 24px;color: #999;font-size: 14px;}
+.business-fund-hd ul li em a{margin-left: 3px;color: #18bbf5;}
+.business-fund-bd{padding-top: 10px;min-height: 80px;}
+.business-fundlist{display: none;}
+
+/*押金充值*/
+.business-blankpay{border-bottom: 1px solid #E8E8E8;padding:20px 0; }
+.business-deposit{padding:20px 0; }
+.business-deposit .fundformbox{padding-top: 10px;}
+.business-deposit .fundformbox .item .inp em{color: #333;}
+.business-deposit .w100  input.txt{width: 100px;}
+.business-deposit .fundformbox .item .itemtext b{font-size: 18px;margin-right: 2px;}
+.fund-title{height:24px; font-size:18px; color:#555; line-height:24px;margin-bottom: 16px;}
+.business-blankpay-list{position: relative;}
+.business-blankpay-list span{position: absolute;right: 10px;top: 18px;font-size: 14px;color: #1F9CD8;height: 30px;line-height: 30px;background:url(../../images/header/arrange-down.gif) no-repeat right center;padding-right: 10px;cursor: pointer;}
+.business-blankpay-list ul{width:650px; }
+.business-blankpay-list ul li{width: 150px;height: 56px;padding:2px;border: 1px solid #e4e4e4;float: left;margin-right: 4px;margin-top: 4px;font-size: 22px;line-height: 56px;text-align: center;color: #1f9cd8;position: relative;cursor: pointer;box-shadow: 0 0 3px #eee}
+.business-blankpay-list ul li i{display: none;width: 25px;height: 25px;position: absolute;right: -3px;bottom: -3px;background:url(../../images/common/fund-yes.png) no-repeat;}
+.business-blankpay-list ul li.cur,.business-blankpay-list ul li:hover{padding: 0;border:3px solid #18bbf5;}
+.business-blankpay-list ul li.cur i,.business-blankpay-list ul li:hover i{display: block;}
+
+/*押金提现*/
+.fundformboxinner{background: #f6fbfe;padding: 20px 0 20px 0;margin-bottom: 20px;}
+.fundformboxinner .item{position: relative;margin: 0 0 10px;height: auto;}
+.fundformboxinner .item .tit{width: 260px;}
+.fundformboxinner p.item{padding-left: 270px;height: 39px;overflow: hidden;}
+.feeding .fundformboxinner  .item span.error{display: inline-block;margin-left:10px;margin-top:0;}
+/*.cashsub{line-height:200px;overflow:hidden;float: left;width:96px;height: 39px;margin-right: 20px;background: url(../../images/business/cashsub.png) no-repeat;}*/
+/*.cashsub:hover{}*/
+.cashsub{line-height:200px;overflow:hidden;float: left;width:73px;height: 39px;margin-right: 20px;background: url(../../images/common/images/btns.gif) no-repeat;background-position: -304px -692px;}
+.cashsub:hover{background-position: -304px -744px;}
+.cashcancel{line-height:200px;overflow:hidden;float: left;width:68px;height: 39px;margin-right: 20px;background: url(../../images/common/images/btns.gif) no-repeat;background-position: -475px -692px;}
+.cashcancel:hover{background-position: -475px -744px;}
+.bankinfo{display: inline;}
+.bankinfo em{float: left;margin-right: 20px;}
+
+/*设置支付密码*/
+.setpaypassword{background: #f6fbfe;padding: 20px 0 20px 0;margin-bottom: 20px;}
+.setpaypassword .item{position: relative;margin: 0 0 10px;height: auto;}
+.setpaypassword .item .tit{width: 260px;}
+.setpaypassword p.item{padding-left: 270px;height: 39px;overflow: hidden;}
+.feeding .setpaypassword  .item span.error{display: inline-block;margin-left:10px;margin-top:0;}
+
+/*资金记录*/
+.business-Deposit-record-table{width: 718px;margin: 10px auto;font-size: 14px;}
+.business-Deposit-record-table tr th,.business-Deposit-record-table tr td{padding: 12px 4px;text-align: center;color: #555;border-bottom: 1px solid #E0E0E0;}
+.business-Deposit-record-table tr th{font-weight: bold;}
+.business-Deposit-record-table tr td{border-bottom: 1px solid #E0E0E0;}
+.business-Deposit-record-table tr  p{word-wrap:break-word;line-height: 20px;}
+.business-Deposit-record-table tr  .fontred{color: #f00000;}
+.business-Deposit-record-table tr  .tl{text-align: left;}
+.business-Deposit-record-table tr td a{color: #00a3ef}
+.business-Deposit-record-table tr td a:hover{color: #00a3ef}
+.noRecord{padding: 60px;height: 30px;line-height: 30px;text-align: center;font-size: 16px;color: #666;}
+
+
+/**/
+.business-fund-hd ul.customer-Account li{width: 260px;}
+.customer-notice{border: 1px solid #fadfaf;background: #fffedf;color: #dd7d00;font-size: 14px;padding: 12px 210px 12px 20px;position: relative;line-height: 20px;margin-top: 15px;}
+.customer-notice em{color: #f20000;}
+.customer-notice a{position: absolute;right: 10px;top:12px;color: #00a7eb;}
+a.Trad,a.addbank{color:#00A3EF}
+
+/*提现成功*/
+.business-fund-ok{padding: 110px 0;}
+.business-fund-ok em{color: red;}
+.business-fund-ok p{text-align: center;font-size: 14px;padding-bottom: 16px;}
+.business-fund-ok p.business-fund-ok-title{height: 30px;line-height: 30px;font-size: 18px;padding-bottom: 20px;}
+.business-fund-ok p.business-fund-ok-p{padding-bottom: 30px;}
+.business-fund-ok p.business-fund-ok-p333{color: #999;}
+.business-fund-ok p a{color: #00A3EF;}
+
+
+
+
+/*选择*/
+.rqfSelect .rqfSelect-list{position: relative;float: left;border: 1px solid #DDD;padding: 2px;margin-left: 10px;margin-top: 10px;cursor: pointer;width: 100px;height: 40px;box-shadow: 0 0px 5px #ddd;background: #FFF;}
+.rqfSelect .rqfSelect-list:hover,.rqfSelect .rqfSelect-list.active{border:3px solid #17BAF5;padding: 0;}
+.rqfSelect .rqfSelect-list.disabled{cursor: default;}
+.rqfSelect .rqfSelect-list.disabled:hover{border: 1px solid #DDD;padding: 2px;cursor: default;}
+.rqfSelect .rqfSelect-list.disabled:hover b{display: none;}
+.rqfSelect .rqfSelect-list a{width: 100%;height: 100%;display: block;}
+.rqfSelect .rqfSelect-list b{width:21px;height:21px; background:url(../../images/business/icon-gou.gif) left top no-repeat; position:absolute; z-index:99; right:0px;bottom:0px;display: none;}
+.rqfSelect .rqfSelect-list i{width:8px;height:5px; background:url(../../images/business/icon_up.gif) no-repeat; display:inline-block; position:absolute; z-index:999; top:78px;left: 50%;margin-left: -4px;display: none;}
+.rqfSelect .rqfSelect-list.active b,.rqfSelect .rqfSelect-list:hover b{display: block;}
+.rqfSelect .rqfSelect-list.active i{display: block;}
+/*选择=================================*/
+
+/*平台*/
+.platselect .rqfSelect-list{width: 80px;height: 44px;margin-left: 6px;}
+.platselect .rqfSelect-list em{font-size: 18px;color:#17BAF5;line-height: 44px;font-weight: bold;text-align: center;display: block;}
+.platselect .rqfSelect-list i{top:63px;}
+
+
+#payto2 {
+    font-size: 14px;
+    padding: 15px 20px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    background: #fff;
+    z-index: 100000;
+    width: 722px;
+    margin-left: -361px;
+    border-radius: 6px;
+    box-shadow: 3px 3px 10px #666;
+    line-height: 1.8;
+}
+
+#payto2 a {
+    color: #17baf5;
+}
+
+#payto2 p {
+    padding: 0 15px;
+}
+
+#payto2 .btn {
+    text-align: center;
+    padding: 20px;
+}
+
+#payto2 .autobtn, #payto2 .autobtn span {
+    background-image: url(../images/business/auto-btns.png);
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 42px;
+    line-height: 42px;
+    font-size: 18px;
+    color: #fff;
+}
+
+#payto2 .autobtn {
+    background-position: right -50px;
+    padding-right: 4px;
+    cursor: pointer;
+    margin-right: 15px;
+}
+
+#payto2 .autobtn span {
+    background-position: left 0;
+    padding: 0 11px 0 15px;
+}
+        
+#payto2 h3 {
+    font-size: 20px;
+    height: 20px;
+    line-height: 20px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+        
+#payto2 strong {
+    font-size: 15px;
+    font-weight: bold;
+}
+        
+#payto2 h3 a {
+    width: 15px;
+    height: 15px;
+    overflow: hidden;
+    display: inline-block;
+    background: url(../../images/common/popup-close.gif) no-repeat;
+    float: right;
+    margin-top: 2px;
+}

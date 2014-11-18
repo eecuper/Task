@@ -1,0 +1,85 @@
+<extend name="pub/baseUser" />
+
+<block name="title">
+用户登录
+</block>
+
+<block name="ext_css">
+<link rel="stylesheet" href="__CSS__/index.css">
+</block>
+
+<block name="ext_js">
+<script type="text/javascript" charset="utf-8" async src="__JS__/index.js">
+</script>
+</block>
+
+
+<block name="page_index">
+</block>
+
+<block name="body">
+<form class="theForm" action="{:U('User/login')}" method="post">
+
+<DIV class=renqifu_con>
+	<DIV class=renqifu_login>
+		<DIV class=imglist>
+			<DIV id=slider3 class=slider>
+				<DIV class=conbox>
+					<DIV style="Z-INDEX: 9; POSITION: absolute; opacity: 1">
+						<A href="#"><IMG alt=""
+							src="__IMG__/imglist1.jpg" width=631 height=329></A>
+					</DIV>
+				</DIV>
+				<!--div class="switcher">
+                       <a href="#" class="cur"></a>
+                       <a class="" href="#"></a>
+                       <a class="" href="#"></a>
+                  </div-->
+			</DIV>
+		</DIV>
+		
+		<DIV class=login>
+			<DIV class=logintop></DIV>
+			<DIV class=logincen>
+				<H3>登录</H3>
+				<!-- 用户名或密码错误提示 -->
+				<SPAN style="DISPLAY: none" id=login-tpis class=login-tpis></SPAN>
+				<DIV class=login_input>
+					<INPUT onKeyDown="javascript: enterPress(event);" id=username
+						class="txt placebox" name=nc regname="usernameno"
+						cname="one">
+				</DIV>
+				<DIV class=login_input>
+					<INPUT onKeyDown="javascript: enterPress(event);" id=password
+						class="txt placebox" name=pwd type=password
+						regname="loginpasswordno" cname="one" emptyerr="密码不能为空"
+						autocomplete="off">
+				</DIV>
+				<!-- <p id="dianjicishu"><p> -->
+				<!-- 验证码 三次错误提示后需要验证码显示此验证码div 并且将button显示下面的隐藏上面的 -->
+				<DIV style="DISPLAY: none" id=code class=code>
+					<DIV class=code_input>
+						<INPUT onKeyDown="javascript: enterPressCode(event);" id=input1>
+					</DIV>
+					<INPUT id=checkCode class=codes onclick=createCode() type=button>
+				</DIV>
+				<DIV class=login_button>
+					<INPUT id=button class=loginbtn  name=button
+						value=登录 type=submit>
+					<!-- 需要验证码时换为此button  上面的button隐藏 -->
+					<INPUT style="DISPLAY: none" id=Button1 ;
+						name=button value=登录 type=submit>
+
+					<DIV>
+						<A href="{:U('User/register')}">注册账号</A>
+						<P></P>
+						<A href="#">忘记密码</A>
+					</DIV>
+				</DIV>
+			</DIV>
+			<DIV class=loginbott></DIV>
+		</DIV>
+	</DIV>
+</DIV>
+</form>
+</block>

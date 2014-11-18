@@ -1,0 +1,52 @@
+<volist name="tks" id="vo">
+<tr class="J_checkall_exec">
+	<td width="14"></td>
+	<td width="14"><input name="checkbox_name" type="checkbox"
+		value="{$vo.list_id}" checked="checked"></td>
+	<td width="262">
+		<div class="intd-probox">
+			<img src="{$vo.img}"
+				class="img">
+			<p class="text">{$vo.name}</p>
+		</div>
+		<div class="clearfix blue-arrange-up-box">
+			<a class="blue-arrange-up J_hide_intd-probox none" data-trade="0">
+				收起 </a>
+		</div>
+	</td>
+	<td width="80">
+		<p class="w70">{$vo.create_nc}</p>
+	</td>
+	<td width="135">
+		<p class="w115">
+			{$vo.list_id} <br> <a
+				href="{:U('order_info&list_id='.$vo['list_id'])}"
+				target="_self"> 查看详情 &gt; </a>
+		</p>
+	</td>
+	<td width="118">
+		<p class="w70">天天快递</p>
+	</td>
+	<td width="110">
+		<div class="w115 J_copy_p">
+			560140011305 <br> <a data-copy="560140011305"
+				href="javascript:;" class="J_copytext"></a>
+		</div>
+	</td>
+	<td width="128"><p class="w85">
+			<if condition="$vo.state eq 0">
+				<a name="126411" class="J_c_shipping">进行中</a><br>
+				<elseif condition="$vo.state eq 1"/>
+					<a name="126411" class="J_c_shipping">已接手</a><br>
+				<elseif condition="$vo.state eq 2"/>
+					<a name="126411" class="J_c_shipping">已发货</a><br>
+				<elseif condition="$vo.state eq 3"/>
+					<a name="126411" class="J_c_shipping">已确认</a><br>
+				<elseif condition="$vo.state eq 4"/>
+					<a name="126411" class="J_c_shipping">已完成</a><br>
+				<else/>
+			</if>
+			
+		</p></td>
+</tr>
+</volist>

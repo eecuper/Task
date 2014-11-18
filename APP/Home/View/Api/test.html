@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script language="javascript" src="__PUBLIC__/stringUtil.js"></script>
+<title>状态修改</title>
+
+<style type="text/css">
+fieldset {border:0px; border-top:dashed 1px grey;}
+legend{font-weight:600;font-size:15px;}
+
+fieldset table{width:100%;background-color:grey;}
+
+fieldset table th,td{background-color:#fff;}
+
+span{width:50px;}
+
+input[type='text']{width:300px;}
+select{width:300px;}
+input[type='button']{width:100px;height:30px;font-size:14px;}
+
+</style>
+
+</head>
+<body>
+
+
+<fieldset>
+<legend>测试</legend>
+<form name="theForm" action="{:U('server')}" method="post">
+<table border="0" cellpadding=3 cellspacing=1>
+<tr><th width="50%" colspan="2">客户端</th> </tr>
+<tr><td><span>买家ID：</span></td><td><input value="{$action_user_name}" type="text" id="action_user_name" name="action_user_name"/></td> </tr>
+<tr><td><span>总金额：</span></td><td><input value="{$total}" type="text" id="total" name="total"/></td> </tr>
+<tr><td><span>任务编号：</span></td><td><input value="{$id}" type="text" id="id" name="id"/></td> </tr>
+<tr><td><span>订单编号：</span></td><td><input value="{$list_id}" type="text" id="list_id" name="list_id"/></td></tr>
+<tr><td><span>物流名称：</span></td><td><input value="{$list_id}" type="text"  name="transport_name"/></td></tr>
+<tr><td><span>物流编号：</span></td><td><input value="{$list_id}" type="text"  " name="transport_id"/></td></tr>
+<tr><td><span>付款时间：</span></td><td><?php echo date('Y-m-d H:i:s');?></td> </tr>
+
+<tr><td colspan="3" align="center">
+<input type="button" value=" 测 试  " onclick="theForm.submit();"> 
+<input type="button" value=" 重 置 " onclick="theForm.reset();">
+</td></tr>
+</table>
+</form>
+</fieldset>
+
+</body>
+</html>

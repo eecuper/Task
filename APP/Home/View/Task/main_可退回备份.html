@@ -1,0 +1,251 @@
+<extend name="pub/base" />
+
+<block name="title">
+我的任务
+</block>
+
+<block name="page_index">
+	<div class="breadcrumbs">
+		<div class="wrap">
+			<a href="#">
+                   	 首页
+                </a>
+                &gt; 我的任务
+		</div>
+	</div>
+</block>
+
+<block name="body">
+<div class="wrap clearfix">
+  <div class="business-left">
+    <div class="wrap">
+        <div class="business-left-user">
+            <div class="wrap">
+                <div class="business-left-user-header"> <a class="business-left-user-header-box" href="#"> <img src="__IMG__/avatar.php" width="77" height="77"> </a> </div>
+            </div>
+            <div class="wrap center" style="text-align:center;">
+                <a href="{:U('User/userInfo')}">{$user.nc}</a> 
+            </div>
+            
+            <div class="wrap center">
+                <a class="icon-setting visa disabled" href="#"></a>
+				<a class="icon-setting phone" href="#"></a>
+				<a class="icon-setting mess" href="#"></a>
+				<a class="icon-setting money disabled" href="#"></a>
+            </div>
+        
+            <div class="wrap" style="text-align:center;">安全等级 </div> 
+            <div class="business-left-outtime">
+			                <span>会员到期时间：2014-10-23</span>
+                <a href="#" target="_blank">续费会员 &gt;</a>
+			            </div>
+        
+            <i class="box-angle lt"></i>
+            <i class="box-angle rt"></i>
+            <i class="box-angle bl"></i>
+            <i class="box-angle br"></i>
+        </div>         
+    </div>
+    <div class="wrap">
+        <div class="business-left-task">       
+            <h3 class="box-title-blue">任务管理</h3>
+            <ul class="menu-list">
+			<li><a href="#">已完成的任务</a></li>
+			<li><a href="#">我的任务</a></li>
+            <li><a href="{:U('main&action_user_id='.$user['id'])}">我的接单</a></li>
+
+            </ul>
+            <h3 class="box-title-blue">资金信息</h3>
+            <ul class="menu-list">
+                <li><a href="#" target="_blank">押金充值</a>  ｜  <a href="#" target="_blank" class="cur">提现</a></li>
+                <li><a href="#" target="_blank" class="cur">资金记录</a></li>
+            </ul>
+			<h3 class="box-title-blue">账号信息</h3>
+            <ul class="menu-list">
+                <li><a href="#" target="_blank" class="cur">基本信息</a></li>
+                <li><a href="#" target="_blank" class="cur">绑定店铺</a></li>
+            </ul>
+            <h3 class="box-title-blue"><a href="#" target="_blank">消息</a></h3>
+            <i class="box-angle lt"></i>
+            <i class="box-angle rt"></i>
+            <i class="box-angle bl"></i>
+            <i class="box-angle br"></i>
+        </div>
+    </div>
+</div> 
+
+  <div class="business-right">
+    <div class="business-right-comm">
+        <div class="business-right-task-detail">
+            <h2 class="business-right-task-innertitle">实时状态</h2>
+            <ul class="business-tabs noc">
+            </ul>
+            <div class="business-tabs-content">
+                  <table width="728" height="70" border="1" cellpadding="0" cellspacing="0" bordercolor="#CCCCCC">
+                    <tr>
+                      <td width="77" align="center" valign="middle">总任务数</td>
+                      <td width="77" align="center" valign="middle">进行中任务</td>
+                      <td width="77" align="center" valign="middle">总订单数</td>
+                      <td width="78" align="center" valign="middle">待付款订单</td>
+                      <td width="78" align="center" valign="middle">待发货订单</td>
+                      <td width="78" align="center" valign="middle">待确认订单</td>
+                      <td width="85" align="center" valign="middle">已确认订单</td>
+                    </tr>
+                    <tr>
+                      <td align="center" valign="middle">{$allTaskCnt}</td>
+                      <td align="center" valign="middle">{$compTaskCnt}</td>
+                      <td align="center" valign="middle">{$allListCnt}</td>
+                      <td align="center" valign="middle">{$jieListCnt}</td>
+                      <td align="center" valign="middle">{$compListCnt}</td>
+                      <td align="center" valign="middle">{$sendListCnt}</td>
+                      <td align="center" valign="middle">{$sureListCnt}</td>
+                    </tr>
+                  </table>
+          </div>
+        </div>
+        
+    </div>
+    <div class="business-right-comm">
+        <div class="business-right-task-detail business-right-materDetail">
+            <h2 class="business-right-task-innertitle">任务进展</h2>
+            <div class="clearfix" style="padding:18px 2px">
+            <form action="{:U('main')}" method="post" name="queryForm">
+                <span>任务平台：</span>
+                <select class="J-binding-type" name="web_id" style="width: 100px">
+                    <option value="">全部</option>
+                    <volist name="configs" id="vo"  key="k">
+						<if condition="$vo.type eq 1">
+						 	<option value="{$vo.id}">{$vo.name}</option>
+						</if>
+					</volist>   
+                </select>
+                <span style="margin-left:16px;">店铺：</span>
+                <select class="J-binding-name" name="shop_id">
+                    <option  value="">全部</option>
+                    <volist name="configs" id="vo"  key="k">
+						<if condition="$vo.type eq 2">
+						 	<option value="{$vo.id}">{$vo.name}</option>
+						</if>
+					</volist>  
+                </select>
+                <span style="margin-left:16px;">任务类型：</span>
+                <select class="J-trade-type" name="msg_id">
+                    <option  value="">全部</option>
+                    <volist name="configs" id="vo"  key="k">
+						<if condition="$vo.type eq 3">
+						 	<option value="{$vo.id}">{$vo.name}</option>
+						</if>
+					</volist>  
+                </select>
+                <span style="margin-left:16px;">终端：</span>
+                <select class="J-terminal" name="zd">
+                    <option value="">全部</option>
+                    <option value="1">电脑</option>
+                    <option value="2">手机|ipad</option>
+                </select>
+                <br>
+               	 <select name="action_user_id" style="width: 100px;">
+                   <option value="">全部</option>
+                   <option value="{$user.id}">我的</option>
+                </select>
+                <span>高级搜索：</span>
+                <select name="query_key" style="width: 100px;">
+                   <option value="">请选择</option>
+                   <option value="1">订单号</option>
+                   <option value="2">任务号</option>
+                </select>
+                
+                <em style="margin-left:16px;display: inline-block;position: relative;zoom: 1;height: 20px;border: 1px solid #CCCCCC;border-radius: 2px;vertical-align: middle;">
+                <input name="query_detail" type="text" style="height:20px;width:200px;" value="">
+                </em>
+                <a style="margin-left:100px;padding:5px;" href="javascript:queryForm.submit();">
+                <span>查&nbsp;&nbsp;询</span>
+                </a>
+            </form>
+            </div>
+            <div class="business-tabs-content tasklinesheet">
+                <div class="business-tabs-tasklinesheet-more">
+					<volist name="tks" id="vo" key="k" empty="暂无"> 
+					<table border="0" bordercolor="#C9E7F7" cellspacing="0"
+							cellpadding="0">
+							<tbody>
+								<tr>
+									<th colspan="2"><span><i
+											class="plat_small plat_tianmao"></i>{$vo.web_name}|{$vo.shop_name}|{$vo.msg_name}</span> 
+											<span>任务编号：{$vo.list_id}[<a
+											href="{:U('task_info&id='.$vo['id'])}"
+											class="cb" target="_blank">详情</a>]
+									</span> <span></span>
+									<a class="state-btn cancel-trade fr" name="{$vo.id}" href="javascript:;"> 
+										任务状态：
+										<if condition="$vo.state egt 4">
+											已完成
+											<else/>
+											进行中
+										</if>
+									</a>
+									</th>
+								</tr>
+								<tr>
+									<td width="280" class="nb">
+										<div class="intableProList">
+											<img src="{$vo.img}"
+												class="img">
+											<p class="text">{$vo.name}</p>
+										</div>
+									</td>
+									<td>
+									
+									<span>进行中 ：
+									</span> <span class="cb">
+									<if condition="$vo.state egt 1">
+										<a href="#"><font color="red">待付款()</font></a>
+										<else/>
+										<a target="_blank" href="{:U('jiedan&id='.$vo['list_id'].'&action_user_id='.$user['id'])}">待付款</a>
+									</if>
+									</span> <span>
+									<if condition="$vo.state egt 2">
+										<a href="#"><font color="red">待发货()</font></a>
+										<else/>
+										<a target="_blank" href="{:U('send&id='.$vo['list_id'])}">待发货</a>
+									</if>
+									</span> <span class="cb">
+									<if condition="$vo.state egt 3">
+										<a href="#"><font color="red">待确认()</font></a>
+										<else/>
+										<a target="_blank" href="{:U('sure&id='.$vo['list_id'])}">待确认</a>
+									</if>
+									</span> <span>
+									<if condition="$vo.state egt 4">
+										<a href="#"><font color="red">已完成</font></a>
+										<else/>
+										<a target="_blank" href="{:U('comp&id='.$vo['list_id'])}">未完成</a>
+									</if>
+									<!-- 
+									： 
+									<if condition="$vo.mark neq null">
+										<font color="red">已评选</font>
+										<else/>
+										<a href="{:U('comp&id='.$vo['list_id'])}"><spanclass="c999">待评选</span></a>
+									</if>
+									 -->
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</volist>		
+				<div class="pager">
+				<div class="page">
+				{$_page}
+				</div>
+				</div>
+                </div>            
+            </div>
+        </div>
+        <i class="box-angle lt"></i>
+        <i class="box-angle rt"></i>
+        <i class="box-angle bl"></i>
+        <i class="box-angle br"></i>
+    </div>
+</div>
+</block>

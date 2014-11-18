@@ -1,0 +1,448 @@
+<extend name="pub/base" />
+
+<block name="title">
+充值
+</block>
+
+
+
+<block name="page_index">
+    <div class="breadcrumbs">
+        <div class="wrap">
+            <a href="javascript:;">
+                    首页 
+                    <?php $mts = ($ctype=='dbpay'?'D币':'押金');?>
+          </a>
+                &gt;
+                <a href="javascript:;">
+                    资金信息
+                </a>
+                &gt; {$mts}充值
+        </div>
+    </div>
+</block>
+
+<block name="body">
+<div class="wrap clearfix">
+<div class="container">
+            <div class="Shadowbox">
+                <div class="publish-checkin-title">
+                    <!--<img src="./充值_files/goumai_title_pub.png">-->
+                </div>
+                <div class="Shadowboxp">
+                </div>
+                <div class="business-vip clearfix">
+                    <h3 style="padding:0px 0px 10px 20px;" class="f18">
+                        1.充值押金
+                    </h3>
+                    <div class="business-buyrqf-state">
+                        <div style="line-height:190px;text-align:center;">
+                             <font size="4"><strong>还需押金 = 任务押金({$yj_pay}) - 押金余额({$user_db['cg_deposit']}) = <?php echo floatval($yj_pay)-floatval($user_db['cg_deposit']);?>元</strong></font>
+                        </div>
+                    </div>
+                    <div class="payres" style="padding-left:20px;">
+                        <span class="f18 fr">
+                            <?php $cd = date('YmdHis',time()).rand(); ?>
+                            充值单号:
+                            {$cd}
+                            需支付：
+                            <strong class="font_red J_payVal">
+                                <?php echo floatval($yj_pay)-floatval($user_db['cg_deposit']);?>
+                            </strong>
+                            元
+                        </span>
+                    </div>
+                    <h3 class="f18" style="padding:10px 0px 0px 20px;">
+                        2.选择支付方式
+                    </h3>
+
+                    <div class="pay-des J_mainpay J_pay_cut disabled">
+                        <span class="fr">
+                            支付：
+                            <em data-enable="0" class="J_pay_cut_price J_userdeposit">
+                                0
+                            </em>
+                            点
+                        </span>
+                        <label >
+                            <input type="checkbox" name="userdeposit" class="J_pay_cut_check" disabled="disabled">
+                            使用押金支付 (可用押金：
+                            <em>
+                                {$user_db['cg_deposit']}
+                            </em>
+                            元)
+                        </label>
+                    </div>
+
+                    <form method="post" name="payForm2" action="http://dpweb.juqu8.com/yeepay/req.php" target="_blank">
+
+                    <div class="pay-des J_ac_other J_cardlist">
+                        <span class="fr">
+                            支付：
+                            <em class="J_pay_cut_res">
+                                <?php echo floatval($yj_pay)-floatval($user_db['cg_deposit']);?>
+                            </em>
+                            元
+                        </span>
+                        <label class="normal">
+                            <input type="radio" name="pd_FrpId" value="ICBC-NET">
+                            使用
+                            <span class="font_red">
+                                工商银行
+                            </span>
+                            支付
+                        </label>
+                        <a class="business-vip-arrange-down-gray J_showmoreacother normal">
+                            更多
+                        </a>
+                    </div>
+                    <div class="pay-des ac-other J_ac_other J_cardlist">
+                        <span class="fr">
+                            支付：
+                            <em class="J_pay_cut_res">
+                                <?php echo floatval($yj_pay)-floatval($user_db['cg_deposit']);?>
+                            </em>
+                            元
+                        </span>
+                        <label class="normal">
+                            <input type="radio" name="pd_FrpId" value="CCB-NET">
+                            使用
+                            <span class="font_red">
+                                建设银行
+                            </span>
+                            支付
+                        </label>
+                    </div>
+
+                    <div class="pay-des ac-other J_ac_other J_cardlist">
+                        <span class="fr">
+                            支付：
+                            <em class="J_pay_cut_res">
+                                <?php echo floatval($yj_pay)-floatval($user_db['cg_deposit']);?>
+                            </em>
+                            元
+                        </span>
+                         
+                        <label class="normal">
+                            <input type="radio" name="pd_FrpId" value="BOC-NET">
+                            使用
+                            <span class="font_red">
+                                中国银行
+                            </span>
+                            支付
+                        </label>
+                    </div>
+                    <div class="pay-des ac-other J_ac_other J_cardlist">
+                        <span class="fr">
+                            支付：
+                            <em class="J_pay_cut_res">
+                                <?php echo floatval($yj_pay)-floatval($user_db['cg_deposit']);?>
+                            </em>
+                            元
+                        </span>
+                         
+                        <label class="normal">
+                            <input type="radio" name="pd_FrpId" value="ABC-NET">
+                            使用
+                            <span class="font_red">
+                                农业银行
+                            </span>
+                            支付
+                        </label>
+                    </div>
+                    <div class="pay-des ac-other J_ac_other J_cardlist">
+                        <span class="fr">
+                            支付：
+                            <em class="J_pay_cut_res">
+                                <?php echo floatval($yj_pay)-floatval($user_db['cg_deposit']);?>
+                            </em>
+                            元
+                        </span>
+                         
+                        <label class="normal">
+                            <input type="radio" name="pd_FrpId" value="CMBC-NET">
+                            使用
+                            <span class="font_red">
+                                民生银行
+                            </span>
+                            支付
+                        </label>
+                    </div>
+                   
+                   <table width="95%"   border="1" align="center" cellpadding="0" cellspacing="1" style="display:none;">
+                    <tr>
+                      <td align="left" width="20%">&nbsp;&nbsp;订单编号</td>
+                      <td align="left">&nbsp;&nbsp;<input class="input2" size="50" type="text" name="p2_Order" id="p2_Order" value="{$cd}" readonly/><font color="#DDD">同任务编号一致</font>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left">&nbsp;&nbsp;支付金额</td>
+                      <td align="left">&nbsp;&nbsp;<input class="input2" size="50" type="text" name="p3_Amt" id="p3_Amt" value="<?php echo floatval($yj_pay)-floatval($user_db['cg_deposit']);?>" readonly/><font color="#DDD">人民币(元)</font></td>
+                    </tr>
+                    <tr>
+                      <td align="left">&nbsp;&nbsp;商品名称</td>
+                      <td align="left"><input size="50" type="hidden" name="p5_Pid" id="p5_Pid"  value="{$ctype}"/>
+                      
+
+                      <input class="input2" size="50" value="{$mts}充值" readonly/>
+
+                      <input size="50" type="hidden" name="p8_Url" id="p8_Url" value="dpweb.juqu8.com/yeepay/callback.php" />&nbsp;<span style="color:#FF0000;font-weight:100;">
+                      <!--接收支付成功数据的地址-->
+                    </td>
+                    </tr>
+                    
+                    <!--
+                    <tr>
+                      <td align="left">&nbsp;&nbsp;商品种类</td>
+                      <td align="left">&nbsp;&nbsp;<input size="50" type="text" name="p6_Pcat" id="p6_Pcat"  value="{$ctype}"/></td>
+                    </tr>
+                    <tr>
+                      <td align="left">&nbsp;&nbsp;商品描述</td>
+                      <td align="left">&nbsp;&nbsp;<input size="50" type="text" name="p7_Pdesc" id="p7_Pdesc"  value="productdesc"/></td>
+                    </tr>
+                    <tr>
+                      <td align="left">&nbsp;&nbsp;接收支付成功数据的地址</td>
+                      <td align="left">&nbsp;&nbsp;<input size="50" type="text" name="p8_Url" id="p8_Url" value="dpweb.juqu8.com/yeepay3/callback.php" />&nbsp;<span style="color:#FF0000;font-weight:100;">*</span></td>
+                    </tr>
+                    -->
+                    
+                    <tr>
+                      <td align="left">&nbsp;&nbsp;商户扩展信息</td>
+                      <td align="left">&nbsp;&nbsp;<input class="input2" size="50" type="text" name="pa_MP" id="pa_MP"  value="{$user['id']}" readonly/></td>
+                    </tr>
+                   
+                    <!--
+                    <tr>
+                      <td align="left">&nbsp;&nbsp;支付通道编码</td>
+                      <td align="left">&nbsp;&nbsp;<input type="text" name="pd_FrpId" />支付通道编码在易宝支付产品(HTML版)通用接口使用说明中
+                    </tr>
+                    -->
+                    </table>
+                </form>
+
+                    <div class="btn-box tc">
+                        <a class="buttons-vip-confirm buttons">
+                        </a>
+                    </div>
+                    <h3 class="f16" style="padding:0px 0px 10px 20px;">
+                        温馨提示：
+                    </h3>
+                    <p class="f12" style="displan:block;padding-left:20px;">
+                        1、商家发布任务时候需要将任务需要的货款作为押金充入平台。
+                        <br>
+                        2、任务完成后，押金将通过购买物品所需款打回商家；
+                    </p>
+                </div>
+                <div class="Shadowboxb">
+                </div>
+            </div>
+            <div>
+                <div class="business-popup-under">
+                </div>
+                <div id="payto2" style="display: none;">
+                    <h3>
+                        <a href="javascript:;">
+                        </a>
+                        请到打开的新窗口进行银行卡支付：
+                    </h3>
+                    <p>
+                        <strong>
+                            支付小贴士：
+                        </strong>
+                    </p>
+                    <p style="displan:block;padding-left:20px;">
+                        1. 付款未完成前请不要关闭本页面，您在银行端完成付款后本页面会自动刷新。
+                        <br>
+                        2. 如果银行页面没有打开，请您设置您的浏览器为允许弹出，并确保已经安装了银行的 ActiveX 安全控件， 然后点击下面的“返回支付页面，重新选择”按钮，重新支付。
+                    </p>
+                    <p class="btn">
+                        <if condition="$id eq null">
+                            <input type="hidden" name="backUrl" value="{:U('pay/log')}">
+                            <else/>
+                            <input type="hidden" name="backUrl" value="{:U('task/action_step5?id='.$id)}">
+                        </if>
+                            <a class="autobtn compbtn" href="javascript:;">
+                            <span>
+                                已完成付款
+                            </span>
+                            </a>
+
+                        <a class="nook" href="javascript:;">
+                            返回重新选择付款方式
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+</div>
+</block>
+
+<block name="footer">
+    <div class="footer">
+        <div>
+         
+        </div>
+    </div>
+</block>
+
+<block name="ext_js">
+<script type="text/javascript">
+    $(function() {
+        // $('.placebox').placeholder();
+        // $('.userLogin').Validform({
+        //     btncls: '.buttons'
+        // });
+        
+        $(".open").click(function(){
+            $(".open").removeClass('active');
+            $(this).addClass('active');
+            var active_id = $('.open.active').attr('id') ;
+            var money = "<?php echo floatval($yj_pay)-floatval($user_db['cg_deposit']);?>";
+             
+            $('.payres').find('.font_red').html(money);
+            $('.J_pay_cut_res').html(money);
+            $('input[name=p3_Amt]').val(money);
+        });
+
+        //更多
+        $(".J_showmoreacother").click(function(){
+            $(".ac-other").toggle();
+        });
+
+        //完成支付
+        $(".compbtn").click(function(){
+            var cd = "{$cd}";
+            var backUrl = $("input[name=backUrl]").val();
+            $.ajax({
+                type: "POST",
+                url: "{:U('pay/validPay')}",
+                data: 'ext_id='+cd,
+                dataType: "json",
+                async: true,
+                success: function(re) {
+                    if(re.success){
+                        location.href=backUrl;
+                    }else{
+                        alert(re.msg);
+                    }
+                },
+                error: function() {
+                    alert('操作失败，请重试！');
+                }
+            });
+        });
+
+        //选择支付
+        $(".J_cardlist").click(function(){
+            $(".J_cardlist").removeClass('active');
+            $(this).addClass('active');
+            $(this).find('input[name="pd_FrpId"]').attr('checked','checked');
+        });
+
+        var _ajaxisprocess = false;
+        var $payto2 = $('#payto2').on('click', 'a',
+        function() {
+            if ($(this).attr('class') == 'nook') {
+                $('.business-popup-under').fadeOut(200);
+                $payto2.fadeOut(200);
+            }
+        });
+
+
+        $('.buttons').click(function(){
+             var obj = $(this);
+             var p2_Order = $("input[name=p2_Order]").val();
+             if(p2_Order.isEmpty()){
+               alert('订单编号不允许为空');
+               return false;
+             }else{
+                $('.business-popup-under').css({
+                    height: $(document).height()
+                }).fadeIn(200);
+                var $payto2hieght = $('#payto2').outerHeight() / 2;
+                $payto2.css({
+                    'marginTop': "-" + $payto2hieght + 'px'
+                }).fadeIn(200);
+
+                document.payForm2.submit();
+             }
+        });
+
+        $('.buttons2').click(function(e) {
+            if ($('.open.active').length == 0) {
+                alert('请先选择{$mts}体验包!');
+                return false;
+            }
+            console.log(_ajaxisprocess);
+            // if (PayEnd > 0 && $('.J_cardlist input[name="pd_FrpId"]:checked').length < 1) {
+            //    alert('支付总额不足!');
+            //    return false;
+            // }
+
+            //  if($(this).hasClass('disabled')) return;
+            //     $(this).addClass('disabled');
+            //     if(_ajaxisprocess){
+            //     return false;
+            // } 
+            _ajaxisprocess = true;
+
+            var payId = $('input[name="pd_FrpId"]:checked').val() || 50; //（支付ID）银行
+            var pid = $('.open.active').attr('id'); //（购买{$mts}ID）类别
+            var deposit = $('.J_pay_cut_price').text(); //（余额支付）余额
+
+            if ($('input[name="pd_FrpId"]:checked').val()) {
+                var w = window.open(),
+                uurl,
+                unum = 0;
+                $('.business-popup-under').css({
+                    height: $(document).height()
+                }).fadeIn(200);
+                var $payto2hieght = $('#payto2').outerHeight() / 2;
+                $payto2.css({
+                    'marginTop': "-" + $payto2hieght + 'px'
+                }).fadeIn(200);
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "http://dpweb.juqu8.com/yeepay/req.php",
+                data: document.payForm2.serialize(),
+                dataType: "json",
+                async: true,
+                success: function(re) {
+                    if (re.error) {
+                        w.close();
+                        alert(re.msg);
+                    } else {
+                        uurl = 'http://www.renqifu.com' + re.url;
+                        if (payId == 50) {
+                            window.location.href = uurl;
+                        }
+                    }
+                    _ajaxisprocess = false;
+                },
+                error: function() {
+                    w.close();
+                    alert('操作失败，请重试！');
+                    _ajaxisprocess = false;
+                }
+            });
+
+            var utime = setInterval(function() {
+                if (uurl) {
+                    w.location = uurl;
+                    clearInterval(utime);
+                } else if (unum > 20) {
+                    w.close();
+                    clearInterval(utime);
+                }
+
+                unum++;
+            },
+            200);
+        });
+
+    });
+</script>
+</block>
+

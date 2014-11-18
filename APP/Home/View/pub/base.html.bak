@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="description" content="x">
+<meta name="keywords" content="x">
+<title>
+<block name="title">
+商家发布任务
+</block>
+</title>
+
+
+<link rel="stylesheet" href="__STATIC__/validForm/css/style.css">
+
+<link rel="stylesheet" href="__CSS__/common.css">
+
+<link rel="stylesheet" href="__CSS__/release.css">
+<link rel="stylesheet" href="__CSS__/login.css">
+<link rel="stylesheet" href="__CSS__/publish.css">
+<link rel="stylesheet" href="__CSS__/business.css">
+
+<link rel="stylesheet" href="__CSS__/business-bind.css">
+
+<script type="text/javascript" charset="utf-8" async src="__JS__/crmqq.php">
+</script>
+<script type="text/javascript" charset="utf-8" async src="__JS__/contains.js">
+</script>
+<script type="text/javascript" charset="utf-8" async src="__JS__/localStorage.js">
+</script>
+<script type="text/javascript" charset="utf-8" async src="__JS__/Panel.js">
+</script>
+<script language="javascript" src="__JS__/jquery-1.7.2.js">
+</script>
+<script language="javascript" src="__JS__/common.js">
+</script>
+<script language="javascript" src="__JS__/jquery.json-2.4.min.js">
+</script>
+<script language="javascript" src="__JS__/publish-task.js">
+</script>
+<script language="javascript" src="__JS__/checkout.js">
+</script>
+<script language="javascript" src="__JS__/user_main.js">
+</script>
+<script language="javascript" src="__PUBLIC__/stringUtil.js">
+</script>
+
+<script type="text/javascript" src="__STATIC__/validForm/js/Validform_v5.3.2.js"></script>
+
+<script type="text/javascript">
+$(function(){
+	$(".theForm").Validform({
+		tiptype:2
+	});
+})
+</script>
+<block name="ext_css">
+
+</block>
+
+</head>
+<body>
+
+
+<block name="header">
+<!-- 用户登录状态 -->
+	<div class="wrap">
+		<!-- 
+		<span class="fr"> <a
+			href="http://bbs.renqifu.com/forum.php?mod=forumdisplay&fid=47"
+			target="_blank"> 帮助中心 </a>
+		</span> <span class="fr"> <a href="http://www.renqifu.com/message">
+				提醒( <strong> 21 </strong> )
+		</a>
+		</span> <span class="fr"> 人气符: <strong> 0 </strong> 点
+		</span> <span class="fr"> 押金: <strong> 0 </strong> 元
+		</span> <span class="fr"> <a
+			href="#"
+			style="color: #00a3ef;"> 充值人气符 </a> ｜ <a
+			href="#"
+			style="color: #00a3ef;"> 续费会员 </a>
+		</span> <span> 
+		 -->
+		
+		<a href="#"><b><font size=3>{$user.nc}</font></b></a> ｜ <a href="{:U('User/loginOut')}"> 退出
+		</a>
+		</span>
+	</div>
+	<!-- 用户登录状态 -->
+	
+	<!-- top 开始 -->
+        <div class="header">
+            <div class="wrap">
+                <!-- 
+                <a class="logo fl" href="#">
+                     <img src="__IMG__/logo.jpg"> 
+                </a>
+                <menu class="business-menu-info fr">
+              	</menu>
+                 -->
+                <menu class="business-menu fl">
+                	<a href="{:U('Task/main')}">
+                        我的任务
+                    </a>
+                    <a href="{:U('Task/main')}">
+                        个人中心
+                    </a>
+                    <!--
+					<a href="#">
+                        任务列表
+                    </a>
+                	-->
+                    <a href="{:U('Task/order_list')}">
+                        订单列表
+                    </a>
+                    <a href="{:U('Task/action_step1')}">
+                        发布任务
+                    </a>
+                </menu>
+          </div>
+    </div>
+ 	<!-- top 结束 -->
+</block>
+
+<block name="page_index">
+	<div class="breadcrumbs">
+		<div class="wrap">
+			<a href="http://www.renqifu.com/"> 首页 </a> &gt; 商家发布任务
+		</div>
+	</div>
+</block>
+
+<block name="body">
+</block>
+
+
+
+<block name="footer">
+	<div class="footer">
+		<div>
+		<center>Copyright (c) 2014 juqu8.com Inc. All Rights.浙ICP备14016079号-1</center>	
+		</div>
+	</div>
+</block>
+
+
+
+</body>
+
+<block name="ext_js">
+</block>
+</html>

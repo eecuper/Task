@@ -1,0 +1,90 @@
+.business-task-detail{ font-size:14px; margin-top:8px;}
+.business-task-detail-left,.business-task-detail-right,.business-task-detail-underbox{border:1px solid #E0E0E0; position:relative; background-color:#fff;}
+.business-task-detail-left,.business-task-detail-right{ height:367px;}
+.business-task-detail-left{width:292px; float:left; }
+.business-task-detail-right{width:698px; float:right;}
+.business-task-detail-left-content{ padding:6px;}
+.business-task-detail-left-da{ border-top:1px solid #E7E7E7; padding:10px 5px;}
+.business-task-detail-left-da p{ height:28px; line-height:28px;}
+.business-task-detail-left-da p.pb{ padding-bottom:20px;}
+.business-task-detail .c-title{ height:40px; line-height:40px; font-size:16px; text-indent:5px;}
+.business-task-detail-underbox{ margin-top:10px; padding:10px;}
+.business-task-detail-underbox-td{ padding:0 25px;}
+
+.business-task-detail-underbox-table{width:100%; margin-bottom:5px;}
+.business-task-detail-underbox-table th{ background-color:#F9F9F9; line-height:30px;  height:30px; color:#555555; }
+.business-task-detail-underbox-table td{ border-bottom:1px solid #F2F2F2; padding:6px 0;}
+.business-task-detail-underbox-table td p{ line-height:28px; word-break:break-all; overflow:hidden;}
+.business-task-detail-underbox-table .u-1{width:260px;}
+.business-task-detail-underbox-table .u-2{width:240px;}
+.business-task-detail-underbox-table .u-3{width:438px;}
+.icon-successfully{ padding-left:25px; background:url(http://www.renqifu.com/static/images/icon-g.gif) left center no-repeat; display:inline-block;}
+.icon-timer{ padding-left:25px; background:url(http://www.renqifu.com/static/images/icon-timer.gif) left center no-repeat; display:inline-block;}
+.business-task-detail-underbox a{ color:#00A7E9; margin-left:10px;}
+.business-task-detail-underbox-table .info{ margin-left:10px; float:left; display:inline-block;}
+.business-task-detail-underbox-table .info em{ color:#F02200;}
+
+.business-task-detail-underbox-foot{ padding:6px 10px 6px 0; text-align:right;}
+
+.business-tabs-detail-mater-table th{ text-align:center;}
+.business-tabs-detail-mater-table th.tl{ text-align:left;}
+.business-tabs-detail-mater-table th.tl.tc{ text-align:center;}
+.business-tabs-detail-mater-table td{ padding:8px 0;}
+.business-tabs-detail-mater-table td .img{ height:55px; width:55px; float:left; margin-left:5px;}
+.business-tabs-detail-mater-table td .text{padding-top:10px; line-height:18px; text-align: left; padding-left:10px; height:40px; overflow:hidden;}
+.business-tabs-detail-mater-table td p{ text-align:center;}
+.business-tabs-detail-mater-table td .u-m-2{ width:85px;}
+.business-tabs-detail-mater-table td .u-m-3{ width:131px;}
+.business-tabs-detail-mater-table td .u-m-4{ width:160px;}
+.business-tabs-detail-mater-table td .u-m-5{ width:170px;}
+
+.business-task-detail-right-state{text-align:center;}
+.business-task-detail-right-state a{ color:#1f9cd8; padding-left:8px;}
+.business-task-detail-right-state h4{ padding:16px 0;}
+
+.business-task-detail-right-state.dengdaifukuang{ padding-top:120px;}
+.business-task-detail-right-state .main-f{ padding-bottom:25px; line-height:22px;}
+.business-task-detail-right-state .main-s {}
+.business-task-detail-right-state .thebtn{width:82px;height:25px; display:inline-block; background-repeat:no-repeat; margin-left:10px; position:relative; top:6px; cursor:pointer;}
+.business-task-detail-right-state .thebtn.sent{ background-image:url(http://www.renqifu.com/static/images/business/hassent.gif);}
+.business-task-detail-right-state .thebtn.getpay{ background-image:url(http://www.renqifu.com/static/images/business/hasgethaspay.gif);}
+
+
+.business-task-detail .img-v{ vertical-align:middle; margin-top:-2px; margin-right:5px;}
+.business-tabs-detail-mater-table{padding: 0 10px;}
+
+
+.makes-task-box{background-color: #fff;border: 1px solid #E0E0E0;padding: 20px 30px 10px; width: 938px;}
+.makes-task-tit{height: 30px;line-height: 30px;margin-bottom: 18px;font-size: 22px;color: #1f9cd8; padding-bottom: 20px; border-bottom: 1px solid #ddd;}
+
+
+.business-task-detail-right-state { text-align: left; padding-left: 36px; }
+.business-task-detail-right-state h4 i { width: 34px; height: 34px; background: url(http://www.renqifu.com/static/images/business/duibudui.png) no-repeat; display: block; position: absolute; top: 0; left: 0; }
+.business-task-detail-right-state h4 { height: 34px;  line-height: 34px; position: relative; padding: 0; padding-left: 40px; margin: 16px 0 26px; }
+.business-task-detail-right-state h4 i.buduide {}
+.business-task-detail-right-state h4 i.duide { background-position: 0 -56px; }
+.business-task-detail-right-state .main-f { padding-left: 40px; }
+.business-task-detail-right-state.dengdaifukuang { padding-top: 70px; }
+/** 20140712 **/
+.business-task-detail-underbox-table td.business-task-innerbox { padding: 0; }
+.business-task-innerbox .business-task-detail-underbox-table { margin-bottom: 0; }
+.business-task-innerbox td { border-bottom: none; }
+.business-task-tips { font-size: 14px; color: #dd7d00; line-height: 1.8; background: #fffedf; border: #fadfaf solid 1px; border-radius: 4px; padding: 12px; margin-bottom: 20px; }
+.business-task-innerbox dl { line-height: 1.8; overflow: hidden; }
+.business-task-innerbox dd { float: left; clear: left; }
+.business-task-innerbox dt { float: left; }
+.business-task-tips ol { padding-left: 20px; }
+.business-task-tips ol li { list-style: decimal; }
+.business-task-tips font { color: #f00; }
+.business-task-tips .sk-down_list { margin-bottom: 10px; }
+.business-task-tips ul li { padding: 8px; float: left; list-style: none; }
+.business-task-tips .sk-down_list img { width: 68px; height: 68px; border: 3px solid #fff; border-radius: 4px; box-shadow: 0px 0px 6px #ddd; margin: 0; float: none; }
+.business-task-tips .sk-down_list a { margin-left: 0; }
+.business-task-tips .sk-down_list a.down_btn { width: 65px; height: 23px; color: #888; font-size: 12px; line-height: 23px; text-align: center; background: url(../../images/makes-task/btn_down.png); display: block; margin: auto; }
+.business-task-tips a.down_btn:hover { color: #666; text-decoration: none; background-position: 0 -23px; }
+.business-task-up-pic { clear: left; }
+.business-task-up-pic img { max-width: 800px; }
+.business-task-innerbox .u-3 a { position: relative; padding-right: 14px; }
+.business-task-innerbox .u-3 i { width: 0; height: 0; border-width: 5px; border-style: solid; border-color: #1f9cd8 #ffffff #ffffff #ffffff; display: block; right: 0; top: 8px; position: absolute; }
+.business-task-innerbox .u-3 .info_down i { border-color: #ffffff #ffffff #1f9cd8 #ffffff; top: 3px; }
+#business-task-pingjia { display: none; }

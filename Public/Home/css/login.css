@@ -1,0 +1,232 @@
+.itembtnp{height: 39px;overflow: hidden;}
+.itembtnp a.itembtn{display:inline-block;width: 73px;height: 39px;line-height: 200px;overflow: hidden;background: url(../images/btns.gif) no-repeat;background-position: -304px -692px;vertical-align: middle;}
+.itembtnp a.itembtn:hover{background-position: -304px -744px;}
+.itembtn-com{background-position: -36px 0px;}
+.itembtn-com:hover{background-position: -36px 0px;}
+
+
+
+.inputBox .inputBoxhd{border-bottom:  1px solid #e5e5e5;padding-left: 6px;}
+.inputBox .inputBoxhd span{font: 400 16px/50px Microsoft YaHei;color: #ff6f00;}
+.inputBox .inputBoxhd a{float: right;font: 400 14px/50px Microsoft YaHei;color: #1f9cd8;padding-right: 10px;}
+.inputBox .inputMain{padding-top:40px;}
+
+/*登陆界面*/
+.loginMain{padding: 40px;}
+.loginMain p.item{padding-left: 80px;}
+.loginMain .item .tit{width: 70px;}
+.loginMain .userLogin{float: left;width: 540px;border-right:1px solid #DBDBDB;}
+.loginMain .userReg{float: left;margin-left: 75px;display: inline;}
+.loginMain .userReg p{padding-left: 12px;margin-bottom:10px;}
+.loginMain .userReg p.userRegtit{font-size: 14px;height: 24px;}
+.loginMain .userReg p.userRegbtnP{height: 50px;}
+.loginMain .userReg p.userRegbtnP a.userRegbtn{float:left;line-height:200px;display:inline-block;width: 149px;cursor:pointer;height: 50px;overflow: hidden;background: url(../images/btns.gif) no-repeat -155px -796px;margin-right: 20px;text-indent: -9999em;}
+.loginMain .loginsub{height: 50px;overflow: hidden;}
+.loginMain .loginbtn{float:left;line-height:200px;width: 149px;cursor:pointer;height: 50px;overflow: hidden;background: url(../images/btns.gif) no-repeat 0 -796px;margin-right: 20px;}
+.loginMain .loginsub a{float:left;color: #555;font-size: 14px;height: 18px;line-height: 18px;margin-left: 20px;margin-top: 16px;}
+
+/*修改邮箱*/
+.ModifyEmail{padding:5px 18px 40px;}
+.ModifyEmail .item{position: relative;margin: 0 0 20px;}
+.ModifyEmail p.item{padding-left: 340px;}
+.ModifyEmail .item .tit{float: left;width: 330px;text-align: right;font-size: 14px;color: #000;line-height: 32px;}
+.ModifyEmail .Emailsub{height: 42px;overflow: hidden;}
+.ModifyEmail .Emailsubbtn{display:block;width: 110px;height: 42px;line-height: 200px;overflow: hidden;background: url(../images/btns.gif) no-repeat;margin-right: 20px;background-position: -248px -577px;}
+.ModifyEmail .Emailsubbtn:hover{background-position: -248px -633px;}
+.ModifyEmail .Emailsubbtn-com{background-position: -313px -797px;} 
+.ModifyEmail .Emailsubbtn-com:hover{background-position: -313px -853px;}
+
+/*发送*/
+.sendEmail{padding:5px 18px 40px;font-size: 14px;}
+.sendEmail p.timeTips{text-align: center;color: #adadc0;padding-top: 10px;margin-bottom: 40px;}
+.sendEmail .sendEmailtxt{padding-left: 205px;color: #666;}
+.sendEmailtxt p{line-height: 22px;height: 22px;overflow: hidden;}
+.sendEmailtxt p em{float: left;}
+.sendEmailtxt p span.ok{float: left;}
+
+
+/*账户信息*/
+.business-info{padding:15px 15px 40px;}
+.business-info-hd{height: 40px;padding-bottom: 10px;border-bottom: 2px solid #e7e7e7;font: 400 24px/40px Microsoft YaHei;}
+.business-info-bd{padding: 0 8px;}
+.business-info-list{}
+.business-info-list .business-info-list-hd{height: 30px;font-size:14px;line-height: 30px;padding:10px 0px;border-bottom: 1px solid #e7e7e7;}
+.business-info-list .business-info-list-hd-lx{padding-bottom: 0;border-bottom: 0 none}
+.business-info-list .business-info-list-hd span{font-size:16px;float: left;width: 160px;}
+.business-info-list .business-info-list-hd b{float: left;font-style:normal;font-weight:normal;}
+.business-info-list .business-info-list-hd b.set{color: #ff2700;}
+.business-info-list .business-info-list-hd a{color: #1f9cd8;}
+.business-info-list .business-info-list-bd{background: #FFF;padding:20px 0; }
+.business-info-list-small{border-bottom: 1px solid #e7e7e7;padding-bottom: 10px;}
+.business-info-list-small-list{}
+.business-info-list-small-list .business-info-list-small-list-hd{height: 34px;font: 400 14px/34px Microsoft YaHei;}
+.business-info-list-small-list .business-info-list-small-list-hd span{float: left;padding-left: 24px;width: 100px;}
+.business-info-list-small-list .business-info-list-small-list-hd b{float: left;font-style:normal;font-weight:normal;}
+.business-info-list-small-list .business-info-list-small-list-hd a{float: right;color: #1f9cd8;}
+.business-info-list-small-list .business-info-list-small-list-bd{border-top: 1px solid #e7e7e7;margin-top:10px;padding-top: 20px;padding-bottom: 30px;}
+.user-info-form .item{position: relative;margin: 0 0 20px;}
+.user-info-form p.item{padding-left: 240px;}
+.user-info-form .item .tit{float: left;width: 230px;text-align: right;font-size: 14px;color: #000;}
+.user-info-form .setTips{text-align:center;padding-bottom:20px;font-size: 14px;color: #666;}
+
+.business-info-bd .checkemall{font-size: 14px;color: #333;text-align: center;}
+.business-info-bd .send-email{height: 39px;overflow: hidden;text-align: center;margin:16px 0 30px;}
+.business-info-bd .send-email .send-email-btn{display:block;width: 125px;height: 39px;background: url(../images/btns.gif) no-repeat -595px -579px;overflow: hidden;line-height: 200px;margin: 0 auto;}
+.business-info-bd .timeTips{text-align: center;color: #adadc0;padding-top: 10px;margin-bottom: 40px;font-size: 14px;}
+.business-info-bd .timeTips em{color: #ff2600;}
+.business-info-bd .sendEmailtxt{padding-left: 90px;color: #666;font-size: 14px;}
+.business-info-bd .sendEmailtxt p{line-height: 22px;}
+.business-info-bd .setemailok{font-size: 16px;height: 40px;line-height: 40px;padding: 40px 0;text-align: center;}
+.business-info-bd .setemailok em{color: #ff2600;}
+.addressbox .item{height: 40px;}
+.addressbox .item span.error{display: block;margin-left: 0;margin-top: 2px;}
+.addressbox .item .inpbox{padding-left: 0;}
+.w420 .inpbox input.txt{width: 420px;}
+
+
+/*注册页面*/
+.register{}
+.register .register-title{height: 40px;line-height: 30px;border-bottom: 1px solid #E3E3E3;padding-top: 10px;}
+.register .register-title span{margin-left: 20px;float: left;line-height:200px;width: 120px;height: 30px;overflow: hidden;background: url(../../images/members/register-title.png) no-repeat;}
+.register .register-title span.register-title-b1{background-position: 0 -39px;}
+.register .register-title span.register-title-b2{background-position: 0 -113px;}
+.register .register-title span.register-title-b3{background-position: 0 -153px;}
+.register .register-title span.register-title-p1{background-position: -1px 1px;}
+.register .register-title span.register-title-p2{background-position: 0 -78px ;}
+.register .register-title span.register-title-p3{background-position: 0 -153px;}
+.register .register-title span.register-title{background-position: 0 -192px;}
+.register .register-title strong{float: right;margin-right: 20px;font-size: 14px;}
+.register .register-title strong a{color:#0D9BDB;}
+.register .register-main{padding:30px 70px 70px;}
+.register .register-otherbox{padding:30px 26px 70px;}
+.register .register-othervipbox{padding:30px 26px 0px;}
+.register .Process628{width: 628px;margin-bottom: 40px;}
+.register-tabs-main{padding-top: 32px;}
+.register-business-form{float: left;width: 570px;overflow: hidden;}
+.register-business-info{float: right;width: 270px;height:240px;overflow:hidden;background:#fffdef; font-size:14px;}
+.register-business-info p{padding:10px;line-height:30px;}
+.register-business-form .item{position: relative;margin: 0 0 20px;}
+.register-business-form p.item{padding-left: 108px;}
+.register-business-form .item .tit{float: left;width: 70px;text-align:left;font-size: 14px;color: #000;line-height: 32px;padding-left: 30px;}
+.register-business-form .setTips{text-align:center;padding-bottom:20px;font-size: 14px;color: #666;}
+.register-business-form .loginsub{height: 50px;overflow: hidden;}
+.register-business-form .loginbtn{width: 149px;cursor:pointer;height: 50px;overflow: hidden;background: url(../images/btns.gif) no-repeat -465px 0px;margin-right: 20px;float:left;line-height: 200px;}
+.register-business-form .loginbtn:hover{background-position: -465px -63px;}
+.register-business-form .loginbtn.disabled{width: 149px;cursor:pointer;height: 50px;overflow: hidden;background: url(../images/btns.gif) no-repeat -153px -946px;margin-right: 20px;float:left;line-height: 200px;}
+.register-business-form .loginbtn.disabled:hover{background-position: -153px -946px}
+.register-business-form p.item label{float: left;height: 18px;line-height: 18px;margin-left: 20px;margin-top: 16px;width: 200px;}
+.register-business-form p.item label input{margin-right: 3px;vertical-align: middle;}
+/*.register-business-form span.error{position: absolute;top: 6px;width: 230px;}
+*/
+.register-business-form span.ok{vertical-align: middle;}
+
+
+.register-name{height: 20px;line-height: 20px;font-size: 14px;margin-bottom: 16px;}
+.register-name em{color: #ee0000;}
+.register-name b{padding-right: 12px;margin:0 3px;cursor:pointer;background:url(../../images/business/arrange-down-gray.gif) right center no-repeat;cursor: pointer;color:#00A7E8;}
+.register-Binding{width: 700px;margin:0 auto;padding-top: 10px;}
+.register-vip{padding: 16px 20px;background: #f6fbfe;}
+.register-main .register-vip .register-tabs-hd li.cur{border: 1px solid #DDD;border-bottom:1px solid #f6fbfe;}
+.Binding-list{margin-top: 10px;font-size: 14px;color: #555555;}
+.Binding-list li{height: 20px;line-height: 20px;padding-top: 6px;}
+.Binding-list li span{float: left;width: 280px;margin-right: 10px;}
+.Binding-list li span em{font-weight: bold;}
+.Binding-list-p li span{width: 150px;}
+.register-Binding-shop{padding: 0 25px;}
+.register-Binding-shop h5{height: 30px;line-height: 30px;font-size: 14px;margin-bottom: 20px;padding-top: 20px;color: #555;}
+.register-Binding-shop h5 span{font-size: 16px;color: #333;}
+.register-Binding-shop ul li{padding-left: 10px;float: left;width: 315px;}
+.register-Binding-shop ul li .item .inpbox input.w80{width:80px;}
+.register-Binding-shop ul li.lineone{width: 260px;}
+.register-Binding-shop ul li.linetwo{width: 370px;}
+.register-Binding-shop ul li.linetwo .linetwo-tips{line-height: 32px;color: #999;margin-left: 20px;}
+.register-Binding-shop .item .inpbox{padding-left: 0;}
+.register-Binding-shop-btnp{height: 42px;overflow: hidden;padding-left: 80px;}
+.register-Binding-shop-btnp a.Bindingshopbtn{display:block;width: 110px;height: 42px;line-height: 200px;overflow: hidden;background: url(../images/btns.gif) no-repeat;margin-right: 20px;background-position: -248px -577px;}
+.register-Binding-shop-btnp a.Bindingshopbtn:hover{background-position: -248px -633px;}
+.register-Binding-shop-list{padding-bottom: 10px;}
+
+
+/*.business-vip{ padding:25px;}
+.business-vip .radiolist{ padding:10px 0 28px; border-bottom:1px dotted #F2F2F2; height:15px; line-height:15px;}
+.business-vip .radiolist label{ float:left; margin-right:42px; font-size:14px;}
+.business-vip .radiolist label input{ vertical-align:middle; margin-top:-2px;}
+.business-vip .radiolist label i{color:#999; font-style:normal;}
+.business-vip .radiolist label em{color: red;font-size: 12px;}
+.business-vip h3{ padding:8px 0;}
+
+.business-vip .payres{height:44px; padding:0 10px; line-height:44px; background-color:#F7FCEB; margin-bottom:15px; font-size:14px; border-bottom:1px solid #F2F2F2;}
+
+
+.business-vip .pay-des{height:55px; line-height:55px; font-size:14px; padding-left:10px; padding-right:10px;  color:#999; border-bottom:1px dotted #F2F2F2;}
+.business-vip .pay-des em{ color:#999;}
+.business-vip .pay-des .fr{ display:none;}
+.business-vip .pay-des.active{ background-color:#FFFEEE; color:#555; border-bottom:1px dotted #E5DAB7;}
+.business-vip .pay-des.ac-other{ color:#555; display:none;}
+.business-vip .pay-des.active em{ color:#f50000;}
+.business-vip .pay-des input{  vertical-align:middle; margin-right:5px;}
+.business-vip .pay-des.active .fr{ display:inline-block;}
+.business-vip-arrange-down-gray{height:15px; line-height:15px; padding-right:15px; display:inline-block; background:url(../../images/business/arrange-down.gif) right center no-repeat;font-size:12px; margin-left:5px;color:#00A7E8;}
+.business-vip-arrange-down-gray.active{ display:none;}
+
+.business-vip .pay-des.disabled .dis{ display:inline-block;}
+.business-vip .pay-des.disabled .normal{ display: none;}
+.business-vip .pay-des .dis{ display: none;}
+.business-vip .btn-box{ padding:30px 0 40px;}*/
+
+.buttons-vip-confirm{vertical-align: middle;}
+.Jumping{margin-left: 10px;font-size: 14px;vertical-align: middle;}
+.Jumping a{color: #1f9cd8;}
+
+.business-vip .pay-des.ac-other{  color: #555555;
+    display: none;}
+
+.business-bind-btn{height:17px; padding-left: 80px;padding-bottom: 30px;}
+.business-bind-btn .nbtn{ height:17px; line-height:17px; font-size:14px; color:#3FB0F1; background-image:url(../../images/business/icon-add.gif); background-repeat:no-repeat; background-position:0 0; padding-left:20px; display:inline-block; float:left;}
+.business-bind-btn .nbtn.disabled{ background-position:0 -53px; color:#AAAAAA; display:none;}
+
+
+
+.business-popup-rank{padding: 10px 20px;border: 1px solid #f2f2f2;position: absolute;left:50%;top:10px;background: #FFF;z-index: 10000;width: 920px;margin-left: -480px;border-radius: 2px;}    
+.business-popup-rank .business-popup-rank-hd{height: 30px;line-height: 30px;font-size: 16px;} 
+.business-popup-rank-main{font-size: 14px;color: #555;padding: 10px 0;}  
+.business-popup-rank-main table{position: relative;zoom: 1;}
+.business-popup-rank-main th,.business-popup-rank-main td{border: 1px solid #f2f2f2;text-align: center;padding: 12px 5px;height: 24px;line-height: 24px;}
+.business-popup-rank-main th{background: #fbfbfb;padding: 22px 0;} 
+.business-popup-rank-main th .rank-tit{font-size: 16px;color: #1f9cd8;}
+.business-popup-rank-main th.pr{position: relative;zoom: 1;}
+.business-popup-rank-main th i.hot{position: absolute;width: 45px;height: 42px;display: inline-block;top:-19px;left: 1px;background: url(../../images/members/hot.png) no-repeat;}
+.business-popup-rank-main td.tl{text-align: left;padding-left: 7px;padding-right: 3px;}
+.business-popup-rank-main td .red{color: #ec0000;}
+.business-popup-rank-main tr.welfare td,.business-popup-rank-main tr.welfare th{background: #fefff3;}
+
+
+
+
+.radiocheck  .inpbox{border:0 none;line-height:32px;padding-left:0;}
+.radiocheck  .inpbox label{float: left;width: 80px;}
+.radiocheck  .inpbox label input{margin-right:5px;vertical-align: middle;float: none;}
+
+
+/* ----- levi 04.19 ---- */
+/* Shadowboxp: h-5px */
+.register .register-title {
+    height: auto;
+    padding: 15px 30px 20px;
+}
+
+.register .register-title:before, .register .register-title:after {
+	content:"";
+	display:table;
+ }
+
+.register .register-title:after{clear:both;}
+.register .register-title {
+	*zoom:1;	/*IE/7/6*/
+}
+
+.register .register-title span {
+    border-bottom: none;
+    padding: 0;
+    margin: 0;
+}

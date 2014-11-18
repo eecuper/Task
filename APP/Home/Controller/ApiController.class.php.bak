@@ -1,0 +1,190 @@
+<?php
+
+namespace Home\Controller;
+
+class ApiController extends BaseController { 
+	
+	public function test(){
+		$this->display();
+	}
+	
+	public function server(){
+		
+		$list_id = I('list_id');
+		$this->assign('list_id',$list_id);
+		
+		if(IS_POST){
+			$action_user_name = I('POST.action_user_name');
+			$this->assign('action_user_name',$action_user_name);
+			
+			$total = I('POST.total');
+			$this->assign('total',$total);
+			
+			$id = I('POST.id');
+			$this->assign('id',$id);
+			
+			$transport_name = I('POST.transport_name');
+			$this->assign('transport_name',$transport_name);
+			
+			$transport_id = I('POST.transport_id');
+			$this->assign('transport_id',$transport_id);
+		}
+		
+		$l = M('taskList');
+		$list = $l->table('v_task_list_ext_user')
+				  ->where('list_id='.$list_id)
+				  ->limit(0,1)
+				  ->select();
+		$this->assign('list',$list[0]);
+		$this->display();
+	}
+
+	
+	
+	//更改接单
+	public function jd(){
+		$list_id = I('list_id');
+		$list = $this->doAction($list_id);
+		if($list){
+			echo 'a|1';
+			// $this->redirect('server&list_id='.$list_id);
+		}else{
+			// $this->error('操作失败');
+			echo 'a|0';
+		}
+	}
+
+	//更改待付款
+	public function dfk(){
+		$list_id = I('list_id');
+		$list = $this->doFlag($list_id);
+		if($list){
+			echo 'a|1';
+			// $this->redirect('server&list_id='.$list_id);
+		}else{
+			// $this->error('操作失败');
+			echo 'a|0';
+		}
+	}
+	
+	//更改更改小号
+	public function modify(){
+		$list_id = I('list_id');
+		$action_user_name=I('action_user_name');
+		if(intval($list_id)>0){
+			if(!empty($action_user_name)){
+					$data['action_user_name'] = $action_user_name;
+					$t = D('taskList');
+					$res = $t->where('list_id='.$list_id)->save($data);
+					//dump($res);
+					//echo '<br>';
+					//echo $t->getLastSql();
+					if($res){
+						echo 'a|1';
+						exit;
+					}
+			}
+		}
+		echo 'a|0';
+		exit;
+	}
+	
+	//更改待发货
+	public function dfh(){
+		//$list_id = I('list_id');
+		//$list = $this->sendFlag($list_id);
+		//if($list){
+		//	echo 'a|1';
+			// $this->redirect('server&list_id='.$list_id);
+		//}else{
+			echo 'a|0';
+			// $this->error('操作失败');
+		//}
+		exit;
+	}
+	
+	//更改待确认
+	public function dqr(){
+		$list_id = I('list_id');
+		$list = $this->sureFlag($list_id);
+		if($list){
+			echo 'a|1';
+			// $this->redirect('server&list_id='.$list_id);
+		}else{
+			echo 'a|0';
+			// $this->error('操作失败');
+		}
+		exit;
+	}
+	
+	
+	//更改确认
+	public function wc(){
+		$list_id = I('list_id');
+		$list = $this->compFlag($list_id);
+		if($list){
+			echo 'a|1';
+			// $this->redirect('server&list_id='.$list_id);
+		}else{
+			echo 'a|0';
+			// $this->error('操作失败');
+		}
+		exit;
+	}
+	
+	//随机取订单列表
+	public function randList(){
+		$t = M();
+		$sql = 'SELECT * FROM v_task_list_ext_user WHERE is_complete=1 AND step=6 and status=1 and state=1 and action_user_name is null ORDER BY RAND() LIMIT '.C('RAND_DATA_NUMBER');
+		$list = $t->query($sql);
+		$i=1;
+		foreach ($list as $key => $value) {
+			if(is_array($value)){
+				echo $i.'|'.$value['tid'].'|'.$value['list_id'].'|'.$value['web_id'].'|'.$value['shop_name'].'|'.$this->array2string(json_decode($value['name'])).'|'.$this->array2string(json_decode($value['url'])).'|'.$this->array2string(json_decode($value['pro_id'])).'|'.$this->array2string(json_decode($value['img'])).'|'.$this->array2string(json_decode($value['set_comments_txt']),'$').'|'.$value['transport'].'|'.$value['total'].'|'.$value['key_words'].'|'.$value['list_type'];
+			}
+			echo '<br/>';
+			$i++;
+		}
+		die;
+	}
+	
+	//待接单数据
+	public function djd($page=0){
+		$p = intval($page);
+		$min = ($p-1)*20;
+		$max = $min+20;
+			
+		$t = M();
+		$sql = 'SELECT * FROM v_task_list_ext_user WHERE status=1 and state=1 order by list_id limit '.$min.','.$max;
+		$list = $t->query($sql);
+		$i=1;
+		foreach ($list as $key => $value) {
+			if(is_array($value)){
+				echo $i.'|'.$value['tid'].'|'.$value['list_id'].'|'.$value['web_id'].'|'.$value['shop_name'].'|'.$this->array2string(json_decode($value['name'])).'|'.$this->array2string(json_decode($value['url'])).'|'.$this->array2string(json_decode($value['pro_id'])).'|'.$this->array2string(json_decode($value['img'])).'|'.$this->array2string(json_decode($value['set_comments_txt']),'$').'|'.$value['transport'].'|'.$value['total'].'|'.$value['key_words'].'|'.$value['list_type'];
+			}
+			echo '<br/>';
+			$i++;
+		}
+		//die;
+	}
+ 
+ 	private function array2string($arr=null,$sp=','){
+ 		$tmp = '';
+ 		if(is_array($arr)){
+ 			$i=0;
+ 			foreach ($arr as $key => $value) {
+ 				if(!empty($value)){
+ 					if($i<count($arr)){
+ 						$tmp.= $value.$sp;
+	 				}else{
+	 					$tmp.= $value;
+	 				}
+ 				}
+ 				++$i;
+ 			}
+ 		}
+ 		return $tmp;
+ 	}
+}
+
+?>

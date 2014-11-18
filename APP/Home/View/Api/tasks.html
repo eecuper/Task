@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>
+            任务列表
+        </title>
+        <meta name="description" content="x">
+        <meta name="keywords" content="x">
+        <link rel="stylesheet" href="__CSS__/sk-task-list.css">
+        <style type="text/css">
+            .task_ping{position:relative; display:inline-block; top:5px;} .task_ping
+            span{background: url(/static/images/makes-task/task_info.png) no-repeat;
+            font-size:14px; display:inline-block; width:675px; height:65px; color:#363636;
+            padding-left:30px; line-height:70px; position:absolute; top:18px; left:-75px;
+            z-index:999;} .task_ping span em{color:#F10000;} .task_ping span a{color:#1EA1D0;
+            padding-left:10px;}
+        </style>
+    </head>
+    
+    <body ryt12659="1">
+        <link rel="stylesheet" href="__CSS__/buy.css">
+        <!-- 用户登录状态 -->
+        <div class="sk-task-options sk-types">
+            <div class="sk-task-databox clearfix">
+            <div class="sk-task-title sk-task-title-phone">
+				<p>完成订单付款，平台会每隔3小时自动返款。</p>
+				</div>
+                <div class="sk-task-data-table must">
+                    <table cellpadding="0" cellspacing="0" border="0">
+                        <tbody>
+                            <tr>
+                                <th>
+                                    <p>
+                                        任务类别
+                                    </p>
+                                </th>
+                                <th>&nbsp;</th>
+                                <th>
+                                    <p>
+                                        购买件数
+                                    </p>
+                                </th>
+                                <th>
+                                    <p>
+                                        垫付资金
+                                    </p>
+                                </th>
+                                <th>
+                                    <p>
+                                        佣金
+                                    </p>
+                                </th>
+                                <th>
+                                    <p>
+                                        任务总数
+                                    </p>
+                                </th>
+                                <th>
+                                    <p>
+                                        领取进度
+                                    </p>
+                                </th>
+                                <th>
+                                    <p>
+                                        接手状态
+                                    </p>
+                                </th>
+                            </tr>
+                            <volist name="tks"  id="vo">
+                                <tr class="zc">
+                                <td colspan="2">
+                                    <p class="f14">
+                                         {$vo['id']}</p>
+                                    <p>
+                                    [{$vo['web_name']}]
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>
+                                        <b>
+                                            {$vo['cnt']}
+                                        </b>
+                                        件
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>
+                                        <b>
+                                            {$vo['yj_pay']}
+                                        </b>
+                                        元
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>
+                                        <b>{$vo['db_pay']} D币</b>
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>
+                                        <b>
+                                            {$vo['taocan_number']}
+                                        </b>
+                                        单
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>
+                                        <strong class="ui-progressbar-mid ui-progressbar-mid-86">
+                                            <em>
+                                                <?php echo floor(intval(($vo['taocan_number'])-intval($vo['djd']))/intval($vo['taocan_number'])*100); ?>%
+                                            </em>
+                                        </strong>
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>
+                                        <a href="{:U('api/task_rand_list?id='.$vo['id'].'&MID='.$mid.'&GID='.$gid)}">我要接受</a>
+                                    </p>
+                                </td>
+                            </tr>
+                            </volist>
+                        </tbody>
+                    </table>
+          </div>
+            {$_page}
+            </div>
+        </div>
+
+    </body>
+
+</html>

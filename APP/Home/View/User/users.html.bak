@@ -1,0 +1,128 @@
+<extend name="pub/base" />
+
+<block name="title">
+用户列表
+</block>
+
+<block name="ext_css">
+  <style type="text/css">
+    input{border:solid 1px #ccc; border-radius: 3px;heigt:25px;padding: 5px;width:90%;}
+    select{border:solid 1px #ccc; border-radius: 3px;heigt:25px;padding: 5px;width:90%;}
+  </style>
+</block>
+
+<block name="page_index">
+	<div class="breadcrumbs">
+		<div class="wrap">
+			<a href="/"> 首页 </a> &gt; <a
+				href="/userinfo"> 账号信息 </a> &gt; 用户列表
+		</div>
+	</div>
+</block>
+
+<block name="body">
+<form name="theForm" action="{:U('shop')}" method="post" id="frm_binding">
+
+<div class="wrap clearfix">
+<div class="business-right-comm clearfix">
+    <div class="business-bind">
+      <!--<div class="business-notice">
+          在这里可以修改用户的基本信息。
+      </div>-->
+      <div class="business-bind-wrap clearfix">
+        <div class="old-bind-box">
+          <h4>&nbsp;</h4>
+          <table class="old-bind-table">
+            <tbody>
+              <tr>
+                <th width="100">用户名</th>
+                <th width="100"> 密码 </th>
+                <th width="150">手机</th>
+                <th width="100">邮箱</th>
+                <th width="100">状态</th>
+                <th width="100">发布</th>
+                <th width="100">操作</th>
+              </tr>
+              <notempty name="users">
+                <volist name="users" id="u">
+                  <form id="form{$u['id']}" action="{:U('modify')}" method="post">
+                    <tr>
+                    <td>
+                      <input type="hidden" name="id" value="{$u['id']}"/>
+                      <input type="text" name="nc" value="{$u['nc']}"/>
+                    </td>
+                    <td>
+                      <input type="password" name="pwd" value="{$u['pwd']}"/>
+                    </td>
+                    <td> <input type="text" name="phone" value="{$u['phone']}"/></td>
+                    <td> <input type="text" name="email" value="{$u['email']}"/></td>
+                    <td>
+                      <select name="status">
+                        <if condition="$u['status'] eq 1">
+                          <option value="1">正常</option>
+                          <option value="0">失效</option>
+                          <else/>
+                          <option value="0">失效</option>
+                          <option value="1">正常</option>
+                        </if>
+                      </select>
+                    </td>
+                    <td>
+                      <select name="manager">
+                        	<option value="100" {$u['manager']==100?'checked':''}>管理员</option>
+                          <option value="1" {$u['manager']==1?'checked':''}>商家</option>
+                          <option value="0" {$u['manager']==0?'checked':''}>新注册</option>
+                      </select>
+                    </td>
+                    <td>
+                      <a class="modify" href="javascript:;" id="{$u['id']}">修改</a> |
+                      <a href="{:U('delete?id='.$u['id'])}">删除</a>
+                    </td>
+                    </tr>
+                  </form>
+                </volist>
+              </notempty>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <i class="box-angle lt">
+    </i>
+    <i class="box-angle rt">
+    </i>
+    <i class="box-angle bl">
+    </i>
+    <i class="box-angle br">
+    </i>
+</div>
+<!-- </div> -->
+</div>
+</form>
+<br><br><br>
+</block>
+
+
+<block name="ext_js">
+  <script type="text/javascript">
+  $(function(){
+    $(".modify").click(function(){
+        var form = 'form'+$(this).attr('id');
+        $('#'+form).submit();
+        // $.ajax({
+        //   type:'POST',
+        //   url:url,
+        //   dataType:'json',
+        //   data:$('#'+form).serialize(),
+        //   success: function(msg){
+        //     if(msg.success){
+        //        alert(msg.msg);
+        //     }else{
+        //        alert(msg.msg);
+        //     }
+        //   }
+        // });
+    });
+  });
+  </script>
+</block>  

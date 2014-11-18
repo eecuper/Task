@@ -1,0 +1,171 @@
+.business-bind{ padding:10px 20px 25px 20px;}
+.business-bind .business-bind-innertitle{ padding:8px 0 12px 0; font-size:18px;border-bottom: 1px solid #DDD;}
+
+.business-bind-dplist{ padding:15px; background-color:#F6FBFE; overflow:hidden; margin-top:15px; font-size:14px;}
+.business-bind-dplist ul{ padding:10px 0; }
+.business-bind-dplist ul li{ padding-bottom:10px; height:16px; overflow:hidden;color: #999;}
+.business-bind-dplist .f555{ color:#555;}
+.business-bind-dplist .f999{ color:#999; font-size:12px; display:none; float: left;}
+.business-bind-dplist ul li:hover .f999{ display:inline-block; cursor:pointer;}
+.business-bind-dplist ul li span{float: left;width: 290px;}
+.business-bind-dplist ul li span em{float: left;width: 140px;overflow: hidden;}
+.business-bind-help{ border-top:1px solid #EDEDED; margin-top:50px; overflow:hidden; padding-top:10px;}
+.business-bind-help h4{ font-size:16px; padding-bottom:10px;}
+
+.business-bind-main{ padding:15px;}
+/*.business-bind-main ul{ overflow:hidden; padding-bottom:10px;}
+.business-bind-main li{ padding-bottom:10px; font-size:14px;}
+.business-bind-main li,.business-bind-main li span{ height:32px; line-height:32px;}
+.business-bind-main li .inputbox{ height:30px; line-height:30px; border:1px solid #C5C5C5; margin-right:15px;}
+.business-bind-main li span,.business-bind-main li .inputbox{ float:left;}
+.business-bind-main li span{ padding-right:10px;width:70px; display:inline-block;}
+.business-bind-main li .inputbox.w280{width:280px;}
+.business-bind-main li .inputbox.w175{width:175px;}*/
+.business-bind-main .item .tit{width: 100px;}
+.business-bind-main .nbtnbox{ padding-bottom:20px; padding-left:80px;}
+.business-bind-main .nbtn{ height:17px; line-height:17px; font-size:14px; color:#3FB0F1; background-image:url(../../images/business/icon-add.gif); background-repeat:no-repeat; background-position:0 0; padding-left:20px; display:inline-block; float:left;}
+.business-bind-main .nbtn.disabled{ background-position:0 -53px; color:#AAAAAA; display:none;}
+.business-bind-main-notice{ padding:20px; font-size:16px; text-align:center;} 
+
+
+.register-Binding-shop h5{height: 30px;line-height: 30px;font-size: 14px;color: #555;}
+.register-Binding-shop h5 span{font-size: 16px;color: #333;}
+.register-Binding-shop ul li{float: left;}
+.register-Binding-shop ul li .item .inpbox input.w80{width:80px;}
+.register-Binding-shop ul li.lineone{}
+.register-Binding-shop ul li.linetwo{}
+.register-Binding-shop ul li.linetwo .linetwo-tips{line-height: 32px;color: #999;margin-left: 20px;}
+.register-Binding-shop .item .inpbox{padding-left: 0;}
+/*.register-Binding-shop .item span.error{line-height: 18px;float: none;width: 100%;font-size: 12px;}*/
+.register-Binding-shop-btnp{height: 42px;overflow: hidden;padding-left: 110px;}
+.register-Binding-shop-btnp a.Bindingshopbtn{display:block;width: 119px;height: 42px;line-height: 200px;overflow: hidden;background: url(../../images/common/images/btns.gif) no-repeat;margin-right: 20px;background-position: -0px -593px;}
+.register-Binding-shop-btnp a.Bindingshopbtn:hover{background-position: 0px -649px;}
+.business-bind-btn{height:17px; padding-left: 110px;padding-bottom: 30px;}
+.business-bind-btn .nbtn{ height:17px; line-height:17px; font-size:14px; color:#3FB0F1; background-image:url(../../images/business/icon-add.gif); background-repeat:no-repeat; background-position:0 0; padding-left:20px; display:inline-block; float:left;}
+.business-bind-btn .nbtn.disabled{ background-position:0 -53px; color:#AAAAAA; display:none;}
+.register-Binding-shop-list{padding-bottom: 10px;}
+
+
+
+.business-bind-wrap{overflow: hidden;}
+.business-bind-wrap .business-bind-left{float: left;width: 136px;padding-right: 18px;;border-right: 1px solid #DDD;height: 100%;display: block;padding-bottom: 2000px;margin-bottom: -2000px;}
+.business-bind-wrap .business-bind-leftno{border-right:0 none;}
+.business-bind-wrap .business-bind-left h3{height: 30px;line-height: 30px;font-size: 16px;color: #555;padding-left: 12px;}
+.business-bind-wrap .business-bind-left ul  li{line-height: 18px;border-bottom: 1px solid #DDD;position: relative;height: 50px;}
+.business-bind-wrap .business-bind-left ul  li input{vertical-align: middle;margin-right: 5px;}
+.business-bind-wrap .business-bind-left ul  li a{display: block;padding: 16px 0;padding-left: 12px;}
+.business-bind-wrap .business-bind-left ul  li a:hover{text-decoration: none;}
+.business-bind-wrap .business-bind-left ul  li i{width: 5px;height: 8px; background: url(../../images/business/icon_left.gif) no-repeat;position: absolute;right: -19px;top:21px;display: none}
+.business-bind-wrap .business-bind-left ul  li.active i{display: block;}
+.business-bind-wrap .business-bind-right{float: right;width: 735px;;padding-bottom: 2000px;margin-bottom: -2000px;padding-left:20px;padding-right: 20px; }
+.business-bind .business-notice{text-align: left;margin: 20px 0;padding-left: 16px;color:#dd7d00;}
+.business-bind .business-notice{line-height: 24px;}
+.business-bind .business-notice em{color:red;}
+
+
+.business-bind-box{padding: 20px 0 0 0;}
+.business-bind-full{ cursor:pointer;}
+.business-bind-full p{text-align: left;line-height: 20px;height: 20px;overflow: hidden; color:#00A3EF; font-size:16px;}
+.business-bind-full p span{color:#666; font-size:12px;}
+
+.business-bind-list h5{height: 30px;line-height: 30px;font-size: 14px;color: #555;}
+.business-bind-list h5 span{font-size: 16px;color: #333;}
+
+.business-bind-list .business-notice{ font-size:12px;}
+
+.business-bind-list .item .tit{width: 110px;}
+.business-bind-list .item .inpbox{padding-left: 0;}
+.business-bind-list .item .inpbox input.txt.w380{width: 380px;}
+.business-bind-list .item .inpbox input.txt.w320{width: 320px;}
+.business-bind-list .item em.tips{margin-left: 5px;color:#999;}
+.business-bind-list p.item{padding-left: 120px;}
+.savebtn{display:block;width: 119px;height: 42px;line-height: 200px;overflow: hidden;background: url(../../images/common/images/btns.gif?v=1) no-repeat;margin-right: 20px;background-position: -441px -796px;}
+.disabled{background-position:-442px -853px}
+
+.old-bind-box{}
+.old-bind-box h4{height: 24px;line-height: 24px;margin-bottom: 20px;font-size: 16px;font-weight: bold;color:#666;}
+.old-bind-box h4 span{color:#999;font-size: 14px;font-weight: 100;}
+.old-bind-box .old-bind-table{width: 100%;}
+
+.old-bind-box .business-bind-edit{ background:#fffedf;cursor: default;}
+.old-bind-box .business-bind-edit .savebtn{float:left;}
+.old-bind-box .business-bind-edit .cancel{height:42px;width:119px;float:left;line-height:42px;font-size:16px;}
+.old-bind-box .business-bind-edit .cancel-close{float:right;background: url(../../images/common/cancel.gif) no-repeat;width:30px;height:30px;}
+
+
+
+.old-bind-box .old-bind-table tr th,.old-bind-box .old-bind-table tr td{padding: 4px 0;line-height: 24px;text-align: center;}
+.old-bind-box .old-bind-table tr:hover{background: #fffedf;cursor: pointer;}
+.old-bind-box .old-bind-table tr th{background: #F9F9F9;}
+.old-bind-box .old-bind-table tr td{padding: 10px 0;border-bottom: 1px solid #eff1f0;}
+.old-bind-box .old-bind-table tr td em.line{margin: 0 3px;}
+.old-bind-box .old-bind-table tr td a{color:#1F9CD8;}
+.old-bind-box .old-bind-table tr td p.shopurl{word-wrap:break-word;width: 160px;}
+
+
+
+
+.register-tabs .register-tabs-hd{padding-left: 120px;}
+.register-tabs .register-tabs-hd li span{line-height: 20px;}
+.register-tabs .register-tabs-hd li.cur span{color:#2c66c0;}
+.bindingtab-bd{padding-top: 20px;}
+.binding-old-list{padding-bottom: 50px;}
+.binding-old-list ul{margin-left: -20px;}
+.binding-old-list li{float: left;width: 227px;height: 106px;margin-left: 20px;cursor: pointer;background: url(../../images/business/old-address.png) no-repeat -246px 0;}
+.binding-old-list li.cur{background-position: 0 0;}
+
+.adressbox{width: 200px;margin: 10px auto 0;}
+.adressbox p{overflow: hidden;height: 20px;line-height: 20px;}
+.adressbox p.name{margin: 4px 0;}
+.adressbox p.adress{border-top: 1px solid #DDD;padding-top: 6px;}
+.adressbox p.phone{}
+
+
+/*删除*/
+.J_Confirmation{position: absolute;width: 200px;border: 1px solid #DDD;left: 100px;top: 100px;background: #FFF;border-radius: 3px;box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.1);display: none;margin-left: -102px;}	
+.J_Confirmation span{position: absolute;color: #DDD;top:-6px;font:14px/10px Simsun;height: 12px;left: 50%;margin-left: -7px;height: 10px;}	
+.J_Confirmation span i{color: #FFF;top: 2px;position: absolute;left:0px;}
+.J_Confirmation_Main{text-align: center;line-height: 20px;padding: 15px 0 12px 0;}
+.J_Confirmation_Main p{font-size: 14px;}
+.J_Confirmation_Main_Btn{height: 39px;padding-top: 10px;}
+.J_Confirmation_Main_Btn a{display: inline-block;width: 68px;height: 39px;background-image:url(../../images/common/images/btns.gif);line-height: 300px;overflow: hidden;}
+.J_Confirmation_Main_Btn a.Confirm{margin-right: 10px;background-position:-224px -692px;}
+.J_Confirmation_Main_Btn a.Confirm:hover{background-position:-224px -744px;}
+.J_Confirmation_Main_Btn a.Close{background-position:-392px -692px;}
+.J_Confirmation_Main_Btn a.Close:hover{background-position:-392px -744px;}
+
+.business-bind {
+    padding: 20px 30px;
+}
+
+.business-bind .business-bind-innertitle {
+    height: 30px;
+    line-height: 3000px;
+    background: url(../../images/business/banmaihao.png) no-repeat;
+    overflow: hidden;
+    padding: 0;
+    padding-bottom: 20px;
+}
+
+.business-bind .business-notice {
+    padding: 6px 15px;
+    line-height: 1.8;
+    height: auto;
+}
+
+.business-bind .business-notice p {
+    padding-left: 14px;
+}
+
+.business-bind .dianpu {
+    background: url(../../images/business/bangdianpu.png) no-repeat;
+}
+
+.business-tabs-bgy{ height:auto;overflow:hidden;}
+.business-tabs-bgy .business-tabs-bgy-title{color:#F78700; font-size:16px; font-weight:bold; padding:0 10px; text-align:left;}
+.business-tabs-bgy .business-tabs-bgy-title span{color:#555; font-size:14px; font-weight: normal; float:right;}
+.business-tabs-bgy .business-tabs-bgy-co{font-size:14px; font-weight:normal; padding:5px 0 0 20px;color:#F78700; text-align:left;}
+.business-tabs-bgy .business-tabs-bgy-co p{ height:28; line-height:28px;}
+.business-tabs-bgy .business-tabs-bgy-co a.cancel-task-btn{width:122px; height:42px; color:#00A3EF;font-size:16px;}
+.business-tabs-bgy .business-tabs-bgy-co .edit-task-btn{width:122px; height:42px;background-image:url(/static/images/business/edit-bing.gif);background-repeat:no-repeat; display:inline-block;cursor:pointer;}
+
