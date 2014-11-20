@@ -1,0 +1,383 @@
+<extend name="base" />
+
+<block name="title">
+提现
+</block>
+
+<block name="page_index">
+    <div class="breadcrumbs">
+        <div class="wrap">
+            <a href="#">
+                     首页
+                </a>
+                &gt; 提现
+        </div>
+    </div>
+</block>
+
+
+<block name="body">
+	<div class="wrap clearfix"><script>
+                $(document).ready(function() {
+                    $(".left dl dd").mouseover(function() {
+                        $(this).attr('id', 'left_list_dd');
+                        $(this).siblings().attr("id", "");
+                        $(this).parents().siblings("dl").children("dd").attr("id", "");
+                    });
+                    $(".left dl dd").mouseout(function() {
+                        $(this).attr('id', '');
+                    });
+                    /*$(".left dl dd").click(function(){
+		$(this).attr('id','left_list_dd');
+		$(this).siblings().attr("id","");
+		$(this).parents().siblings("dl").children("dd").attr("id","");
+	})*/
+                });
+            </script>
+            <div class="business-right">
+                <div class="business-right-comm">
+                    <div class="business-fund">
+                        <h3>
+                            提现
+                        </h3>
+                        <div class="business-fund-main">
+                            <div class="fundformbox feeding cashbox">
+                                <div class="item clearfix linetext">
+   <table width="95%" height="35" border="0" align="center" cellpadding="1" cellspacing="1">
+  <tbody><tr>
+    <td align="center" bgcolor="#FFFFFF" class="title">申请提现前，请先在支付宝发起收款操作！收款账号：418535300</td>
+    </tr>
+</tbody></table>
+   <p>&nbsp;</p>
+
+                                </div>
+                                <div class="item clearfix linetext">
+                                    <label class="tit">
+                                        财付通信息:　
+                                    </label>
+                                    <div><strong>收款人：柳挺 　账号：15233477　电话：905889998</strong></div>
+                                </div>
+                                <div class="fundformbox fundformboxinner" style="display:none;">
+                                    <form id="fundformboxinner">
+                                        <div class="item clearfix">
+                                            <label class="tit">
+                                                开户名:
+                                            </label>
+                                            <div class="inp">
+                                                <em class="inpbox">
+                                                    <input type="text" name="khmname" class="txt innerinput" regname="khmname" id="khmname" emptyerr="开户名不能为空">
+                                                </em>
+                                            </div>
+                                        </div>
+                                        <div class="item clearfix">
+                                            <label class="tit">
+                                                选择省份:
+                                            </label>
+                                            <div class="inp">
+                                                <select class="select innerinput" branchname="one" regname="prov" emptyerr="请选择省份" id="prov">
+                                                    <option value="">
+                                                        请选择省份
+                                                    </option>
+                                                    <option value="2">
+                                                        北京市
+                                                    </option>
+                                                    <option value="3">
+                                                        天津市
+                                                    </option>
+                                                    <option value="4">
+                                                        河北省
+                                                    </option>
+                                                    <option value="5">
+                                                        山西省
+                                                    </option>
+                                                    <option value="6">
+                                                        内蒙古
+                                                    </option>
+                                                    <option value="7">
+                                                        辽宁省
+                                                    </option>
+                                                    <option value="8">
+                                                        吉林省
+                                                    </option>
+                                                    <option value="9">
+                                                        黑龙江省
+                                                    </option>
+                                                    <option value="10">
+                                                        上海市
+                                                    </option>
+                                                    <option value="11">
+                                                        江苏省
+                                                    </option>
+                                                    <option value="12">
+                                                        浙江省
+                                                    </option>
+                                                    <option value="13">
+                                                        安徽省
+                                                    </option>
+                                                    <option value="14">
+                                                        福建省
+                                                    </option>
+                                                    <option value="15">
+                                                        江西省
+                                                    </option>
+                                                    <option value="16">
+                                                        山东省
+                                                    </option>
+                                                    <option value="17">
+                                                        河南省
+                                                    </option>
+                                                    <option value="18">
+                                                        湖北省
+                                                    </option>
+                                                    <option value="19">
+                                                        湖南省
+                                                    </option>
+                                                    <option value="20">
+                                                        广东省
+                                                    </option>
+                                                    <option value="21">
+                                                        广西省
+                                                    </option>
+                                                    <option value="22">
+                                                        海南省
+                                                    </option>
+                                                    <option value="23">
+                                                        重庆市
+                                                    </option>
+                                                    <option value="24">
+                                                        四川省
+                                                    </option>
+                                                    <option value="25">
+                                                        贵州省
+                                                    </option>
+                                                    <option value="26">
+                                                        云南省
+                                                    </option>
+                                                    <option value="27">
+                                                        西藏省
+                                                    </option>
+                                                    <option value="28">
+                                                        陕西省
+                                                    </option>
+                                                    <option value="29">
+                                                        甘肃省
+                                                    </option>
+                                                    <option value="30">
+                                                        青海省
+                                                    </option>
+                                                    <option value="31">
+                                                        宁夏省
+                                                    </option>
+                                                    <option value="32">
+                                                        新疆省
+                                                    </option>
+                                                    <option value="3674">
+                                                        香港特别行政区
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="item clearfix">
+                                            <label class="tit">
+                                                选择城市:
+                                            </label>
+                                            <div class="inp">
+                                                <select branchname="one" class="select city innerinput" regname="city" emptyerr="请选择城市" id="city">
+                                                    <option value="">
+                                                        请选择城市
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="item clearfix">
+                                            <label class="tit">
+                                                选择银行:
+                                            </label>
+                                            <div class="inp">
+                                                <select class="select innerinput" regname="bankfor" emptyerr="请选择银行" id="bankfor">
+                                                    <option value="">
+                                                        请选择银行
+                                                    </option>
+                                                    <option value="2">
+                                                        工商银行
+                                                    </option>
+                                                    <option value="3">
+                                                        建设银行
+                                                    </option>
+                                                    <option value="5">
+                                                        中国银行
+                                                    </option>
+                                                    <option value="6">
+                                                        农业银行
+                                                    </option>
+                                                    <option value="12">
+                                                        民生银行
+                                                    </option>
+                                                    <option value="1">
+                                                        快钱
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="item clearfix">
+                                            <label class="tit">
+                                                开户支行:
+                                            </label>
+                                            <div class="inp">
+                                                <em class="inpbox">
+                                                    <input type="text" class="txt innerinput" name="bankforlast" regname="bankforlast" id="bankforlast" emptyerr="支行不能为空">
+                                                </em>
+                                            </div>
+                                        </div>
+                                        <div class="item clearfix">
+                                            <label class="tit">
+                                                银行卡号:
+                                            </label>
+                                            <div class="inp">
+                                                <em class="inpbox">
+                                                    <input type="text" class="txt innerinput" confirmationpass="bank" id="bank" name="bank" regname="bank" emptyerr="银行卡号不能为空">
+                                                </em>
+                                            </div>
+                                        </div>
+                                        <div class="item clearfix">
+                                            <label class="tit">
+                                                确认卡号:
+                                            </label>
+                                            <div class="inp">
+                                                <em class="inpbox">
+                                                    <input type="text" class="txt placebox innerinput" name="confirmationbank" confirmation="bank" emptyerr="确认卡号不能为空" confirmationerr="确认卡号不一致,请重新填写">
+                                                </em>
+                                            </div>
+                                        </div>
+                                        <p class="item">
+                                            <a class="cashsub" href="javascript:;">
+                                                提交
+                                            </a>
+                                            <a class="cashcancel" href="javascript:;">
+                                                取消
+                                            </a>
+                                        </p>
+                                        <input id="res" name="res" type="reset" style="display:none;">
+                                    </form>
+                                </div>
+                                <form action="" method="post" id="from-account">
+                                    <input type="hidden" name="account_id" value="3306">
+                                    <div class="item clearfix">
+                                        <label class="tit">
+                                            <i>
+                                                *
+                                            </i>
+                                            提现金额:
+                                        </label>
+                                        <div class="inp">
+                                            <em class="inpbox">
+                                                <input type="text" checkurl="true" class="txt" name="money" regname="money" emptyerr="提现金额不能为空" old="">
+                                            </em>
+                                            <strong>
+                                                单次最少300元，每笔封顶2000元，内测免手续费。
+                                            </strong>
+                                            <span class="error">
+                                                提现金额不能为空
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="item clearfix">
+                                        <label class="tit"><i>* </i>提现类型： </label>
+                                        <div class="inp">
+                                          <p id="alert_text" style="font-size: 12px;color: red; height:50px; line-height:20px;">&nbsp;</p>
+                                        </div>
+                                      <span class="pcontent Ra_checkboxlist_mine">
+                                      <label class="J_fdpm_show_la jjt">
+                                          <input name="repurchar_cycle" class="J_accessTotal" pvalue="3" type="checkbox" value="31" tit="1个月" tit_f="1">
+                                          提现D币 　</label>
+                                      <label class="J_fdpm_show_la jjt">
+                                          <input name="repurchar_cycle" class="J_accessTotal" pvalue="6" type="checkbox" value="62" tit="2个月" tit_f="2">
+                                          提现押金</label>
+                                    </span>                                    [<strong>可用资金</strong>&nbsp;&nbsp;<span class="red">D币：1000&nbsp;&nbsp;押金：500&nbsp;&nbsp;冻结：500</span>]</div>
+                                  <div class="item clearfix">
+                                      <label class="tit"> <i> * </i>财付通订单交易号: </label>
+                                    <div class="inp"> <em class="inpbox">
+                                        <input type="text" checkurl="true" class="txt" name="money2" regname="money" emptyerr="提现金额不能为空" old="">
+                                      </em> <strong>提现的金额需与财付通收款信息一致。【<span class="J_copytextok">我要帮助</span>】 </strong></div>
+                                    </div>
+                                    <div class="item clearfix">
+                                      <label class="tit"> <i> * </i>收款理由: </label>
+                                      <div class="inp"><span class="J_copytextok"><strong>MID-柳挺</strong></span><strong>  [将该文字信息复制到财付通收款的收款理由]</strong></div>
+                                    </div>
+<input type="hidden" name="returndepositfee" value="0.3">
+                                    <!-- <div class="item clearfix linetext">
+                                    <label class="tit">提现类型:</label>
+                                    <div class="inp">
+                                    <em>
+                                    <input 
+                                    type="radio" 
+                                    name="returndepositfee" 
+                                    value="0.1" 
+                                    checked="checked" 
+                                    detail_text="预计7个工作日内（国家法定假日和双休日顺延）平台完成提现操作。"
+                                    >普通提现（0.1%提现手续费）
+                                    &nbsp;&nbsp;&nbsp;&nbsp;                                           
+                                    <input 
+                                    type="radio" 
+                                    name="returndepositfee"  
+                                    value="0.3"
+                                    detail_text="预计2个工作日内（国家法定假日和双休日顺延）平台完成提现操作。"
+                                    >快递提现（0.3%提现手续费）
+                                    </em>
+                                    <p id="alert_text" style="font-size: 12px;color: red;">
+                                    预计7个工作日内（国家法定假日和双休日顺延）平台完成提现操作。
+                                    </p>
+                                    </div>
+                                    </div> 
+                                    <br/> -->
+                                    <div class="item clearfix linetext">
+                                        <label class="tit">
+                                      实际到账金额（费率：0%）</label>
+                                        <div class="inp">
+                                            <b id="returndeposit" class="red">
+                                                0
+                                            </b>
+                                            元
+                                        </div></div></form>
+                                <p class="item cashbtnp">
+                                    <a class="cashbtn   disabled" href="javascript:;">
+                                        提交
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="business-fund-tips">
+                            <h5>
+                                温馨提示
+                            </h5>
+                            <div class="business-fund-tips-main">
+                                <p>
+                                    1.提现目前平台只支持财付通提现申请。
+                                </p>
+                                <p>
+                                    2.如果您填写的提现信息不正确也可能会导致提现失败，由此产生的提现费用将不予返还。
+                                </p>
+                                <p>
+                                    3.在国家法定假日和双休日期间，用户可以申请提现，平台会在工作日内进行处理。由此造成的不便，请多多谅解!
+                                </p>
+                                <p>
+                                    4.平台禁止洗钱、信用卡套现、虚假交易等行为，一经发现并确认，将终止该账号的使用。
+                                </p>
+                                <p>
+                                    5.申请提现的资金，平台在未进行处理时显示在冻结内，请不要重复操作。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <i class="box-angle lt">
+                    </i>
+                    <i class="box-angle rt">
+                    </i>
+                    <i class="box-angle bl">
+                    </i>
+                    <i class="box-angle br">
+                    </i>
+                </div>
+            </div>
+        </div>
+</block>

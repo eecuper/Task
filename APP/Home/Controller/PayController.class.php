@@ -30,6 +30,7 @@ class PayController extends BaseController {
 
 		$aw['task_user_acc.user_id']=$_SESSION['user_auth']['id'];
 		$aw['task_user_acc.status']=1;
+		$aw['task_user_acc.use_type']=0;
 		$acces = $t->where($aw)
 				   ->order('task_user_acc.create_date desc')
 				   ->join('task_type_config on task_user_acc.acc_type=task_type_config.id')

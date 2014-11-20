@@ -421,17 +421,6 @@ $(function(){
 	});	
 	$('.J_NF_TAB div').eq(0).trigger('click');*/
 	
-	//添加留言
-	$('#J-comments-add2').click(function(event) {
-        //$('.publish-st5-box-inner-input').find('.set_comments_txt').each(function(){
-			
-        //});
-		var _length = $('.publish-st5-box-inner-input2').find('.set_comments_txt').length+1;
-        var $clone = $('.set_comments_txt_bak2').find('p');
-		$clone.find('em').text(_length);
-        $('.publish-st5-box-inner-input2').append($clone.clone(true));
-        if($('.publish-st5-box-inner-input2').find('.set_comments_txt').length==10) $(this).parent().hide();
-    });
 	
 	
     //添加评价
@@ -445,8 +434,6 @@ $(function(){
         $('.publish-st5-box-inner-input').append($clone.clone(true));
         if($('.publish-st5-box-inner-input').find('.set_comments_txt').length==10) $(this).parent().hide();
     });
-
-
 	
     $('.J-comments-del').click(function(event) {
 		$(this).parent().remove();

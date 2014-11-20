@@ -1,0 +1,79 @@
+<extend name="base" />
+
+<block name="title">
+基本信息
+</block>
+
+<block name="page_index">
+	<div class="breadcrumbs">
+		<div class="wrap">
+			<a href="/"> 首页 </a>&gt; 基本信息
+		</div>
+	</div>
+</block>
+
+<block name="body">
+<form name="theForm" action="{:U('shop')}" method="post" id="frm_binding">
+
+<div class="wrap clearfix">
+<div class="business-right-comm clearfix">
+    <div class="business-bind">
+      <!--<div class="business-notice">
+          在这里可以修改用户的基本信息。
+      </div>-->
+      <div class="business-bind-wrap clearfix">
+        <div class="old-bind-box">
+          <h4>&nbsp;</h4>
+          <table class="old-bind-table">
+            <tbody>
+              <tr>
+                <th width="120">类型</th>
+                <th width="250"> 显示 </th>
+                <th width="100"></th>
+              </tr>
+               <tr>
+                <td>用户名 </td>
+                <td> {$user['nc']} </td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>登录密码 </td>
+                <td> ***** </td>
+                <td> </td>
+              </tr>
+              <tr>
+                <td> QQ </td>
+                <td> 123123123 </td>
+                <td> </td>
+              </tr>
+              <tr>
+                <td> 手机</td>
+                <td> {$user['phone']}</td>
+                <td> </td>
+              </tr>
+              <tr>
+                <td> 电子邮箱 </td>
+                <td> {$user['email']} </td>
+                <td> </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <i class="box-angle lt">
+    </i>
+    <i class="box-angle rt">
+    </i>
+    <i class="box-angle bl">
+    </i>
+    <i class="box-angle br">
+    </i>
+</div>
+<!-- </div> -->
+</div>
+
+
+</form>
+
+</block>

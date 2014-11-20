@@ -1,0 +1,114 @@
+<extend name="base" />
+
+<block name="title">
+绑定提现账户
+</block>
+
+<block name="ext-css">
+    <style type="text/css">
+        input {border:0px;}
+        select{height:30px;}
+    </style>
+</block>
+
+<block name="page_index">
+    <div class="breadcrumbs">
+        <div class="wrap">
+            <a href="javascript:;">首页</a>&gt;绑定提现账户
+        </div>
+    </div>
+</block>
+
+<block name="body">
+<div class="wrap clearfix">
+
+<div class="business-right">    
+      <div class="business-right-comm">
+           <div class="business-fund">
+            <h3>财付通绑定</h3>
+            <div class="business-fund-main">
+                <div class="business-fund-bd">
+                    <div class="business-fundlist" style="display: block;">
+                      <form name="bindForm" action="{:U('pay_bind')}" method="post">
+                        <input type="hidden" name="acc_id" value="{$acc['acc_id']}"/>
+                        <div class="fundformbox yhkbankbox">
+                          <div class="item clearfix">
+                            <label class="tit">平台:</label>
+
+                            <div class="inp">                          
+                              <em class="inpbox">
+                                  <select class="select">
+                                  	<option>财付通</option>
+                                  </select>
+                              </em></div>
+                                 
+                          </div>                           
+                          <div class="item clearfix">
+                            <label class="tit">账号:</label>
+                            <div class="inp">                          
+                              <em class="inpbox">
+                                  <input type="text" class="txt" name="acc_card" value="{$accInfo['acc_card']}" regname="bankforlast" id="bankforlast" emptyerr="账号不能为空">
+                              </em></div>                            
+                          </div>                           
+                          
+                          <div class="item clearfix">
+                            <label class="tit">姓名:</label>
+                            <div class="inp"> 
+                              <em class="inpbox">         
+                                <input type="text" class="txt placebox" name="user_name" value="{$accInfo['user_name']}"  emptyerr="确认姓名不能为空" >
+                              </em>                                                 
+                            </div>
+                          </div>
+
+                          <div class="item clearfix">
+                            <label class="tit">手机号码:</label>
+                            <div class="inp"> 
+                              <em class="inpbox">         
+                                  <input type="text" class="txt" confirmationpass="bank"  value="{$accInfo['acc_phone']}"id="bank" name="acc_phone" regname="bank" emptyerr="手机号码不能为空">
+                              </em>                                                 
+                            </div>
+                          </div> 
+
+                                                                                                      
+                          <if condition="$accInfo eq null">
+                          		<p class="item">
+	                            <a class="business-mess-sent-btn" href="javascript:bindForm.submit();"><span>提&nbsp;&nbsp;交</span></a>
+	                          </p>
+                          </if>
+                      </div>  
+                      </form>
+                    </div>                                       
+                </div>
+            </div> 
+		 
+		
+            <div class="business-fund-tips">
+                <h5>温馨提示:</h5>
+                <div class="business-fund-tips-main">
+                <p>1、目前仅对财付通账户使用，且仅绑定1个不更改账户，请谨慎填写</p>
+                </div>
+            </div>  
+        </div>
+    </div>
+  
+  </div>
+	
+</div>
+ 
+ 
+</block>
+  
+  
+<block name="ext_js">
+<script type="text/javascript">
+    
+</script>
+</block>
+
+<block name="footer">
+    <div class="footer">
+        <div>
+         
+        </div>
+    </div>
+</block>

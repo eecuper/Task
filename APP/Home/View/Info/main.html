@@ -1,0 +1,244 @@
+<extend name="base" />
+
+<block name="title">
+我的任务
+</block>
+
+<block name="page_index">
+    <div class="breadcrumbs">
+        <div class="wrap">
+            <a href="#">
+                     首页
+                </a>
+                &gt; 我的任务
+        </div>
+    </div>
+</block>
+
+<block name="body">
+<div class="wrap clearfix">
+  <div class="business-left">
+    <div class="wrap">
+        <div class="business-left-user">
+            <div class="wrap">
+                <div class="business-left-user-header"> <a class="business-left-user-header-box" href="#"> <img src="__IMG__/avatar.php" width="77" height="77"> </a> </div>
+            </div>
+            <div class="wrap center" style="text-align:center;">
+                <a href="{:U('User/userInfo')}">{$user.nc}</a> 
+            </div>
+            
+            <div class="wrap center">
+                <a class="icon-setting visa disabled" href="#"></a>
+                <a class="icon-setting phone" href="#"></a>
+                <a class="icon-setting mess" href="#"></a>
+                <a class="icon-setting money disabled" href="#"></a>
+            </div>
+        
+            <div class="wrap" style="text-align:center;">安全等级 </div> 
+             
+            <div class="business-left-outtime">
+                            <span>会员到期时间：2018-01-01</span>
+                <a href="#" target="_blank">续费会员 &gt;</a>
+                        </div>
+             
+        
+            <i class="box-angle lt"></i>
+            <i class="box-angle rt"></i>
+            <i class="box-angle bl"></i>
+            <i class="box-angle br"></i>
+        </div>         
+    </div>
+    <div class="wrap">
+        <div class="business-left-task">       
+            <h3 class="box-title-blue">任务管理</h3>
+            <ul class="menu-list">
+            <li><a href="{:U('Info/order_list')}">我的订单</a></li>
+
+            </ul>
+            <h3 class="box-title-blue">资金信息</h3>
+            <ul class="menu-list">       
+                <li><a href="{:U('Info/bao_amt')}" target="_self" class="cur">保证金充值</a>
+                   | <a href="{:U('Info/ti_amt')}" target="_self" class="cur">提现</a>
+                </li>         
+                <li><a href="{:U('Info/pay_log')}" target="_bank">资金记录</a>  
+                </li>
+            </ul>
+            <h3 class="box-title-blue">账号信息</h3>
+            <ul class="menu-list">
+                
+                <li><a href="{:U('Info/basicInfo')}" class="cur">基本信息</a></li>
+                <li><a href="{:U('Info/pay_bind')}">收款账户绑定</a></li>
+            </ul>        
+        </div>
+    </div>
+</div> 
+
+  <div class="business-right">
+    <div class="business-right-comm">
+        <div class="business-right-task-detail">
+            <h2 class="business-right-task-innertitle">实时状态</h2>
+            <ul class="business-tabs noc">
+            </ul>
+            <div class="business-tabs-content">
+                  <table width="728" height="70" border="1" cellpadding="0" cellspacing="0" bordercolor="#CCCCCC">
+                    <tr>
+                      <td width="77" align="center" valign="middle">总任务数</td>
+                      <td width="77" align="center" valign="middle">成功发布任务</td>
+                      <td width="77" align="center" valign="middle">总订单数</td>
+                      <td width="78" align="center" valign="middle">待付款订单</td>
+                      <td width="78" align="center" valign="middle">待发货订单</td>
+                      <td width="78" align="center" valign="middle">待确认订单</td>
+                      <td width="85" align="center" valign="middle">已确认</td>
+                    </tr>
+                    <tr>
+                      <td align="center" valign="middle">{$allTaskCnt}</td>
+                      <td align="center" valign="middle">{$compTaskCnt}</td>
+                      <td align="center" valign="middle"><a href="{:U('order_list')}">{$allListCnt}</a></td>
+                      <td align="center" valign="middle"><a href="{:U('order_list?state=1')}">{$taskInfoCnt[0].dfk}</a></td>
+                      <td align="center" valign="middle"><a href="{:U('order_list?state=2')}">{$taskInfoCnt[0].dfh}</a></td>
+                      <td align="center" valign="middle"><a href="{:U('order_list?state=3')}">{$taskInfoCnt[0].dqr}</a></td>
+                      <td align="center" valign="middle"><a href="{:U('order_list?state=4')}">{$taskInfoCnt[0].wc}</a></td>
+                    </tr>
+                  </table>
+          </div>
+        </div>
+        
+    </div>
+    <div class="business-right-comm">
+        <div class="business-right-task-detail business-right-materDetail">
+            <h2 class="business-right-task-innertitle">系统公告</h2>
+            <div class="business-tabs-content tasklinesheet">
+                <div class="business-tabs-tasklinesheet-more">
+                  <table style="margin-top: 4px; width: 100%">
+                    <tbody>
+                      <tr style="height:28px;">
+                        <td style="color:#17baf5;"><a href="#" target="_blank" style="color:#17baf5;"> 双11期间快递可能出现爆仓、配送延迟，请商家、买手知悉 </a></td>
+                        <td style="width:90px;text-align:center;">2014-11-08</td>
+                      </tr>
+                      <tr style="height:28px;">
+                        <td style="color:#17baf5;"><a href="#" target="_blank" style="color:#17baf5;"> 双11订单本金返款的公告 </a></td>
+                        <td style="width:90px;text-align:center;">2014-11-08</td>
+                      </tr>
+                      <tr style="height:28px;">
+                        <td style="color:#17baf5;"><a href="#" target="_blank" style="color:#17baf5;"> 双11当天不限刷单数量，请买手准备好周转资金 </a></td>
+                        <td style="width:90px;text-align:center;">2014-11-08</td>
+                      </tr>
+                      <tr style="height:28px;">
+                        <td style="color:#17baf5;"><a href="#" target="_blank" style="color:#17baf5;"> 【紧急公告】：人气符官方VIP买手群整顿通知； </a></td>
+                        <td style="width:90px;text-align:center;">2014-11-06</td>
+                      </tr>
+                      <tr style="height:28px;">
+                        <td style="color:#17baf5;"><a href="#" target="_blank" style="color:#17baf5;"> TT快递、快捷快递、查询准确物流信息的官网链接 </a></td>
+                        <td style="width:90px;text-align:center;">2014-11-02</td>
+                      </tr>
+                      <tr style="height:28px;">
+                        <td style="color:#17baf5;"><a href="#" target="_blank" style="color:#17baf5;"> 请各位买手注意区分系统随机分配到的必做任务类型！ </a></td>
+                        <td style="width:90px;text-align:center;">2014-10-20</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class="pager">
+                <div class="page">
+                <div>  <span class="current">1</span>&nbsp;<a class="num" href="http://dpweb.juqu8.com/Task/main/p/2">2</a>&nbsp;&nbsp;<a class="num" href="http://dpweb.juqu8.com/Task/main/p/3">3</a>&nbsp;&nbsp;<a class="num" href="http://dpweb.juqu8.com/Task/main/p/4">4</a>&nbsp;&nbsp;<a class="num" href="http://dpweb.juqu8.com/Task/main/p/5">5</a>&nbsp;&nbsp;<a class="num" href="http://dpweb.juqu8.com/Task/main/p/6">6</a>&nbsp;&nbsp;<a class="num" href="http://dpweb.juqu8.com/Task/main/p/7">7</a>&nbsp;&nbsp;<a class="num" href="http://dpweb.juqu8.com/Task/main/p/8">8</a>&nbsp;&nbsp;<a class="num" href="http://dpweb.juqu8.com/Task/main/p/9">9</a>&nbsp;&nbsp;<a class="num" href="http://dpweb.juqu8.com/Task/main/p/10">10</a>&nbsp;&nbsp;<a class="num" href="http://dpweb.juqu8.com/Task/main/p/11">11</a>&nbsp; <a class="next" href="http://dpweb.juqu8.com/Task/main/p/2">&gt;&gt;</a>  <span class="rows">共 106 条记录</span></div>                </div>
+                </div>
+              </div>            
+            </div>
+        </div>
+
+
+        <i class="box-angle lt"></i>
+        <i class="box-angle rt"></i>
+        <i class="box-angle bl"></i>
+        <i class="box-angle br"></i>
+    </div>
+</div>
+</block>
+
+<block name="ext_js">
+<script type="text/javascript">
+    
+        $(function(){
+            $(".fangqi").click(function(){
+               var id  = $(this).attr('id');
+               var url = "{:U('delTask')}/id/"+id;
+               if(confirm('是否确认继续放弃任务?')){
+                    location.href=url;
+               }
+            });
+
+
+            $(".copy").click(function(){
+               var id  = $(this).attr('id');
+               var url = "{:U('cpyTask')}/id/"+id;
+               if(confirm('是否确认继续复制任务【'+id+'】?')){
+                    $.ajax({
+                        type:'get',
+                        url:url,
+                        dataType:'json',
+                        success: function(msg){
+                            if(msg.success){
+                                alert(msg.msg);
+                                location.reload();
+                            }else{
+                                alert('错误：'+msg.msg);
+                            }
+                        }
+                    });
+               }
+            });
+
+            $(".check").click(function(){
+                
+                var obj = $(this);
+                var id  = $(this).attr('id');
+                var url = "{:U('checkTask')}/id/"+id;
+                var check_flag = $('#ck'+id).val();
+
+                var ckEdit = $('#ckEdit'+id);
+                
+                var conmsg = '是否确认通过审核【'+id+'】?';
+                if(check_flag==1){
+                    conmsg = '是否继续撤销审核【'+id+'】?';
+                }
+
+                if(confirm(conmsg)){
+                    $.ajax({
+                        type:'get',
+                        url:url,
+                        dataType:'json',
+                        success: function(msg){
+                            if(msg.success){
+                                //alert(msg.msg);
+                                var html = '<font color=red>撤销审核</font>';
+                                if(check_flag==1){
+                                    html = '<font color=red>审核通过</font>';
+                                    $('#ck'+id).val(0)
+                                    ckEdit.css('display','block');
+                                }else{
+                                    $('#ck'+id).val(1)
+                                    ckEdit.css('display','none');
+                                }
+                                obj.html(html);
+                            }else{
+                                alert('错误：重复执行操作');
+                            }
+                        },
+                        error:function(){
+                            alert('操作错误');
+                        }
+                    });
+               }
+            });
+
+        });
+
+</script>
+</block>
+
+<block name="footer">
+    <div class="footer">
+        <div>
+         
+        </div>
+    </div>
+</block>

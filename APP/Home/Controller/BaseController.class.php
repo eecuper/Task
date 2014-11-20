@@ -197,6 +197,7 @@ class BaseController extends AdminController {
 		$task  = D('taskList');
 		$tk    = $task->find($list_id);
 		if($tk){
+			$tk['action_get_date']=time();
 			$tk['action_user_id']=$action_user_id;
 			$tk['action_user_name']=(empty($action_user_name)?I('action_user_name'):$action_user_name) ;
 			return $this->edit('taskList',array('list_id'=>$list_id),$tk);

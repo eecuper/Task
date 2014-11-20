@@ -10,7 +10,7 @@
 <meta name="keywords" content="x">
 <title>
 <block name="title">
-商家发布任务
+我的任务
 </block>
 </title>
 
@@ -56,9 +56,9 @@
 
 <script type="text/javascript">
 $(function(){
-	$(".theForm").Validform({
-		tiptype:2
-	});
+  $(".theForm").Validform({
+    tiptype:2
+  });
 })
 </script>
 
@@ -76,37 +76,37 @@ $(function(){
 
 <block name="header">
 <!-- 用户登录状态 -->
-	<div class="wrap">
-		<!-- 
-		<span class="fr"> <a
-			href="http://bbs.renqifu.com/forum.php?mod=forumdisplay&fid=47"
-			target="_blank"> 帮助中心 </a>
-		</span> <span class="fr"> <a href="http://www.renqifu.com/message">
-				提醒( <strong> 21 </strong> )
-		</a>
-		</span> <span class="fr"> 人气符: <strong> 0 </strong> 点
-		</span> <span class="fr"> 押金: <strong> 0 </strong> 元
-		</span> <span class="fr"> <a
-			href="#"
-			style="color: #00a3ef;"> 充值人气符 </a> ｜ <a
-			href="#"
-			style="color: #00a3ef;"> 续费会员 </a>
-		</span> <span> 
-		 -->
-		 <span class="fr">
-		 	&nbsp;&nbsp;<a href="{:U('pay/charge?ctype=dbpay')}"><b>D币充值</b></a>
-		 	&nbsp;&nbsp;DP:{$user_db['cg_amount']|floatval}
-		 	<!--<a href="{:U('pay/charge?ctype=yjpay')}"><b>押金充值</b></a>-->
-		 	&nbsp;&nbsp;押金:{$user_db['cg_deposit']|floatval}元
-		 </span>
-		
-		<a href="#"><b><font size=3>{$user.nc}</font></b></a> ｜ <a href="{:U('User/loginOut')}"> 退出
-		</a>
-		</span>
-	</div>
-	<!-- 用户登录状态 -->
-	
-	<!-- top 开始 -->
+  <div class="wrap">
+    <!-- 
+    <span class="fr"> <a
+      href="http://bbs.renqifu.com/forum.php?mod=forumdisplay&fid=47"
+      target="_blank"> 帮助中心 </a>
+    </span> <span class="fr"> <a href="http://www.renqifu.com/message">
+        提醒( <strong> 21 </strong> )
+    </a>
+    </span> <span class="fr"> 人气符: <strong> 0 </strong> 点
+    </span> <span class="fr"> 押金: <strong> 0 </strong> 元
+    </span> <span class="fr"> <a
+      href="#"
+      style="color: #00a3ef;"> 充值人气符 </a> ｜ <a
+      href="#"
+      style="color: #00a3ef;"> 续费会员 </a>
+    </span> <span> 
+     -->
+     <span class="fr">
+      &nbsp;&nbsp;<a href="{:U('pay/charge?ctype=dbpay')}"><b>D币充值</b></a>
+      &nbsp;&nbsp;DP:{$user_db['cg_amount']|floatval}
+      <!--<a href="{:U('pay/charge?ctype=yjpay')}"><b>押金充值</b></a>-->
+      &nbsp;&nbsp;押金:{$user_db['cg_deposit']|floatval}元
+     </span>
+    
+    <a href="#"><b><font size=3>{$user.nc}</font></b></a> ｜ <a href="{:U('User/loginOut')}"> 退出
+    </a>
+    </span>
+  </div>
+  <!-- 用户登录状态 -->
+  
+  <!-- top 开始 -->
         <div class="header">
             <div class="wrap">
                 <!-- 
@@ -114,39 +114,36 @@ $(function(){
                      <img src="__IMG__/logo.jpg"> 
                 </a>
                 <menu class="business-menu-info fr">
-              	</menu>
+                </menu>
                  -->
                 <menu class="business-menu fl">
-                	<a href="{:U('Task/main')}">
-                        我的任务
-                    </a>
+                 
+                    <if condition="$user['manager'] eq C('IS_ADMIN')">
                     <a href="{:U('Task/main')}">
+                        首页
+                    </a>                      
+                    </if>
+
+                    <a href="{:U('Info/main')}">
                         个人中心
                     </a>
- 
-                    <!--
-					<a href="#">
-                        任务列表
-                    </a>
-                	-->
-                    <a href="{:U('Task/order_list')}">
+
+                    <a href="{:U('Info/order_list')}">
                         订单列表
                     </a>
-                    <a href="{:U('Task/action_step1')}">
-                        发布任务
-                    </a>
+
                 </menu>
           </div>
     </div>
- 	<!-- top 结束 -->
+  <!-- top 结束 -->
 </block>
 
 <block name="page_index">
-	<div class="breadcrumbs">
-		<div class="wrap">
-			<a href="javascript:;"> 首页 </a> &gt; 商家发布任务
-		</div>
-	</div>
+  <div class="breadcrumbs">
+    <div class="wrap">
+      <a href="javascript:;"> 首页 </a> &gt; 我的任务
+    </div>
+  </div>
 </block>
 
 <block name="body">
@@ -158,11 +155,11 @@ $(function(){
 
 
 <block name="footer">
-	<div class="footer">
-		<div style="color:#535353;">
-			<center>Copyright (c) 2014 juqu8.com Inc. All Rights.浙ICP备14016079号-1</center>	
-		</div>
-	</div>
+  <div class="footer">
+    <div style="color:#535353;">
+      <center>Copyright (c) 2014 juqu8.com Inc. All Rights.浙ICP备14016079号-1</center>  
+    </div>
+  </div>
 </block>
 
 </body>
