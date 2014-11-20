@@ -40,17 +40,6 @@ class BaseController extends AdminController {
 	    //用户DB查询
 	    $this->dbQuery();
 	}
-
-	//用户DB查询
-	public function dbQuery(){
-		if(session('?user_auth')){
-			$t = M('user_charge');
-			$w['user_id']=$_SESSION['user_auth']['id'];
-			$user_db = $t->where($w)->find();
-			$this->assign('user_db',$user_db);
-			return $user_db;
-		}
-	}
 	
 	//指定是否已经完成
 	public function isComplete($id=0){
@@ -73,36 +62,6 @@ class BaseController extends AdminController {
 		}else{
 			return true;
 		}
-	}
-	
-	//加载系统配置
-	public function sysConfig(){
-		$config = M('sysConfig');
-		$sys   = $config->where('status=1')->find();
-		$this->assign('sysConfig',$sys);
-	}
-
-	//平台 店铺 任务类型
-	protected function typeConfig(){
-		$config = M('typeConfig');
-		$list   = $config->where('status=1 and length(name)>0')->select();
-		$this->assign('configs',$list);
-	} 
-	
-	protected function shopConfig($flag=false){
-		$config = M('shopConfig');
-		
-		if($flag){
-			$list   = $config->where('status=1 and LENGTH(NAME)>0 and user_id='.$_SESSION['user_auth']['id'])->select();	
-		}else{
-			if($_SESSION['user_auth']['manager']==C('IS_ADMIN')){
-				$list   = $config->where('status=1 and LENGTH(NAME)>0')->select();	
-			}	else{
-				$list   = $config->where('status=1 and LENGTH(NAME)>0 and user_id='.$_SESSION['user_auth']['id'])->select();
-			}
-		}
-		
-		$this->assign('shops',$list);
 	}
 	
 	//任务列表
@@ -291,22 +250,7 @@ class BaseController extends AdminController {
 		return false;
 	}
 	
-	//任务查询
-	protected  function taskCnt($table='',$where=array()){
-		$tk = M('taskInfo');
-		if(isset($table)){
-			$tk->table($table);
-		}
-		if(!empty($where)){
-			$tk->where($where);
-		}
-		$cnt = $tk->count();
-		if($cnt){
-			return $cnt;
-		}else{
-			return false;
-		}
-	}
+	
 
 	//快递名字
 	public function transPortName($transport_name=''){

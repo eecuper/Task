@@ -11,7 +11,6 @@
         <div class="wrap">
             <a href="javascript:;">
                     首页 
-                    <?php $mts = ($ctype=='dbpay'?'D币':'押金');?>
           </a>
                 &gt;
                 <a href="javascript:;">
@@ -33,13 +32,13 @@
                 </div>
                 <div class="business-vip clearfix">
                     <h3 style="padding:0px 0px 10px 20px;" class="f18">
-                        1.选择{$mts}包
+                        1.选择保证金包
                     </h3>
                     <div class="business-buyrqf-state">
-                            <div class="open active" id="1" num="10{$mts}体验包">
+                            <div class="open active" id="1" num="10保证金体验包">
                             <div class="inner">
                                 <h3>
-                                    50{$mts}
+                                    50保证金
                                     体验包
                                 </h3>
                                 <em class="J_pay">
@@ -54,10 +53,10 @@
                             <b>
                             </b>
                         </div>
-                        <div class="open" id="2" num="500{$mts}基本包">
+                        <div class="open" id="2" num="500保证金基本包">
                             <div class="inner">
                                 <h3>
-                                    50{$mts}
+                                    50保证金
                                 
                                     基本包
                                 </h3>
@@ -73,10 +72,10 @@
                             <b>
                             </b>
                         </div>
-                        <div class="open" id="3" num="1000{$mts}体验包">
+                        <div class="open" id="3" num="1000保证金体验包">
                             <div class="inner">
                                 <h3>
-                                   	50{$mts}
+                                   	50保证金
                                
                                     体验包
                                 </h3>
@@ -92,10 +91,10 @@
                             <b>
                             </b>
                         </div>
-                        <div class="open" id="4" num="2000{$mts}体验包">
+                        <div class="open" id="4" num="2000保证金体验包">
                             <div class="inner">
                                 <h3>
-                                    50{$mts}
+                                    50保证金
                                 
                                     体验包
                                 </h3>
@@ -119,7 +118,7 @@
                             <strong class="font_red">
                                 50
                             </strong>
-                            {$mts}体验包
+                            保证金体验包
                         </i>
                         <span class="f18 fr">
                             <?php $cd = date('YmdHis',time()).rand(); ?>
@@ -198,7 +197,7 @@
                         <span class="fr">
                             支付：
                             <em class="J_pay_cut_res">
-                                10
+                                50
                             </em>
                             元
                         </span>
@@ -257,16 +256,16 @@
                     </tr>
                     <tr>
                       <td align="left">&nbsp;&nbsp;支付金额</td>
-                      <td align="left">&nbsp;&nbsp;<input class="input2" size="50" type="text" name="p3_Amt" id="p3_Amt" value="10" readonly/><font color="#DDD">人民币(元)</font></td>
+                      <td align="left">&nbsp;&nbsp;<input class="input2" size="50" type="text" name="p3_Amt" id="p3_Amt" value="50" readonly/><font color="#DDD">人民币(元)</font></td>
                     </tr>
                     <tr>
                       <td align="left">&nbsp;&nbsp;商品名称</td>
                       <td align="left"><input size="50" type="hidden" name="p5_Pid" id="p5_Pid"  value="{$ctype}"/>
                       
 
-                      <input class="input2" size="50" value="{$mts}充值" readonly/>
+                      <input class="input2" size="50" value="保证金充值" readonly/>
 
-                      <input size="50" type="hidden" name="p8_Url" id="p8_Url" value="dpweb.juqu8.com/yeepay/callback.php" />&nbsp;<span style="color:#FF0000;font-weight:100;">
+                      <input size="50" type="hidden" name="p8_Url" id="p8_Url" value="dpweb.juqu8.com/yeepay/callback_bzj.php" />&nbsp;<span style="color:#FF0000;font-weight:100;">
                       <!--接收支付成功数据的地址-->
                     </td>
                     </tr>
@@ -457,7 +456,7 @@
 
         $('.buttons2').click(function(e) {
             if ($('.open.active').length == 0) {
-                alert('请先选择{$mts}体验包!');
+                alert('请先选择保证金体验包!');
                 return false;
             }
             console.log(_ajaxisprocess);
@@ -474,7 +473,7 @@
             _ajaxisprocess = true;
 
             var payId = $('input[name="pd_FrpId"]:checked').val() || 50; //（支付ID）银行
-            var pid = $('.open.active').attr('id'); //（购买{$mts}ID）类别
+            var pid = $('.open.active').attr('id'); //（购买保证金ID）类别
             var deposit = $('.J_pay_cut_price').text(); //（余额支付）余额
 
             if ($('input[name="pd_FrpId"]:checked').val()) {

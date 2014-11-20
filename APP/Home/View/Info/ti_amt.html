@@ -16,8 +16,8 @@
 </block>
 
 
-<block name="body">
-	<div class="wrap clearfix"><script>
+<block name="body-right">
+<script>
                 $(document).ready(function() {
                     $(".left dl dd").mouseover(function() {
                         $(this).attr('id', 'left_list_dd');
@@ -28,10 +28,10 @@
                         $(this).attr('id', '');
                     });
                     /*$(".left dl dd").click(function(){
-		$(this).attr('id','left_list_dd');
-		$(this).siblings().attr("id","");
-		$(this).parents().siblings("dl").children("dd").attr("id","");
-	})*/
+        $(this).attr('id','left_list_dd');
+        $(this).siblings().attr("id","");
+        $(this).parents().siblings("dl").children("dd").attr("id","");
+    })*/
                 });
             </script>
             <div class="business-right">
@@ -379,5 +379,14 @@
                     </i>
                 </div>
             </div>
+</block>
+
+
+
+<block name="footer">
+    <div class="footer">
+        <div>
+         
         </div>
+    </div>
 </block>

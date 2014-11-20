@@ -1,8 +1,64 @@
 <?php
 
 namespace Home\Controller;
+use Admin\Controller\AdminController;
 
-class InfoController extends BaseController {
+class InfoController extends AdminController {
+
+	/**
+	 * 基类控制器初始化
+	 */
+	protected function _initialize(){ 
+		$CONTROLLER_NAME = $Think.CONTROLLER_NAME;
+		$ACTION_NAME  = $Think.ACTION_NAME;
+		$NO_LOGIN_CONTROLLER = C('NO_LOGIN_CONTROLLER');
+		$NO_LOGIN_METHOD = C('NO_LOGIN_METHOD');
+		
+		if(!(in_array($CONTROLLER_NAME,$NO_LOGIN_CONTROLLER) 
+		  	 || in_array($ACTION_NAME,$NO_LOGIN_METHOD))){
+			$userInfo = $this->isLogin();
+			if($userInfo){
+				//此处不能直接重定向到一个集成本类的控制类方法 否则死循环
+				//$this->redirect('Task/main');
+				$this->assign('user',$userInfo);
+			}else{
+				$this->display('Info:login');
+				exit();
+			}
+		}
+		
+		//加载系统配置
+		$this->sysConfig();
+		
+		//配置信息加载 并且缓存起来
+		$this->typeConfig();
+
+		//加载店铺信息
+		$this->shopConfig();
+
+	    //用户DB查询
+	    $this->dbQuery();
+	}
+
+	//登陆
+	public function login(){
+		if(IS_POST){
+			$userInfo = parent::login();
+			if($userInfo){
+				if($userInfo['status']==0){
+					$this->error('登录失败,失效用户不允许登陆,请联系我们');
+				}else{
+					session('user_auth',$userInfo);
+					$this->assign('user',$userInfo);
+					$this->redirect('Info/main');	
+				}
+			}else{
+				$this->error('登录失败,用户名或密码错误');
+			}
+		}else{
+			$this->display('login');
+		}
+	}
 	
 	public function index(){
 		$this->display('main');
@@ -10,7 +66,39 @@ class InfoController extends BaseController {
 
 	//首页
 	public function main(){
-		$this->display();
+		 //所有任务
+		 $where['status']=1;
+		 if($_SESSION['user_auth']['manager']!=C('IS_ADMIN')){
+		 	$where['action_user_id']=$_SESSION['user_auth']['mid'];
+		 }
+		 $allTaskCnt = $this->taskCnt('',$where);
+		 $this->assign('allTaskCnt',$allTaskCnt);
+		 
+		 //成功发布任务
+		 $where1['status']=1;
+		 $where1['is_complete']=1;
+		 if($_SESSION['user_auth']['manager']!=C('IS_ADMIN')){
+		 	$where1['action_user_id']=$_SESSION['user_auth']['mid'];
+		 }
+		 $compTaskCnt = $this->taskCnt('',$where1);
+		 $this->assign('compTaskCnt',$compTaskCnt);
+		 
+		 //所有清单
+		 $where2['status']=1;
+		 if($_SESSION['user_auth']['manager']!=C('IS_ADMIN')){
+		 	$where2['action_user_id']=$_SESSION['user_auth']['mid'];
+		 }
+		 $allListCnt = $this->taskCnt('v_task_list_ext_user',$where2);
+		 $this->assign('allListCnt',$allListCnt);
+		 
+		 $t = M('taskInfo');
+		 $sql = "select count(id) tasks,sum(dfk) dfk,sum(dfh) dfh,sum(dqr) dqr,sum(wc) wc from v_task_info_cnt";
+		 if($_SESSION['user_auth']['manager']!=C('IS_ADMIN')){
+		 	$sql=$sql.' where action_user_id='.$_SESSION['user_auth']['mid'];
+		 }
+		 $taskInfoCnt = $t->query($sql);
+		 $this->assign('taskInfoCnt',$taskInfoCnt);
+		 $this->display();
 	}
 
 	//我的订单
@@ -70,6 +158,32 @@ class InfoController extends BaseController {
 
 	//资金记录
 	public function pay_log(){
+		$m   = 'chargeLog';
+		$t   = '';
+		$f   = '*';
+
+		$w['type_id']=array('in',array(4,50));
+
+		$typeId = I('type_id');
+		if(intval($typeId)>0){
+			switch ($typeId) {
+				case 1:
+					$w['type_id']=array('in',array(50));
+					break;
+				case 2:
+					$w['type_id']=array('in',array(4));
+					break;
+				case 3:
+					$w['type_id']=array('in',array(4));
+					break;
+				default:
+					break;
+			}
+		}
+		$w['oper_id']=$_SESSION['user_auth']['id'];
+		$logs = $this->lists($m,$t,$w,'charge_date desc',$f);
+		$this->assign('type_id',$typeId);
+		$this->assign("logs",$logs);
 		$this->display();
 	}
 

@@ -132,6 +132,7 @@ class TaskController extends BaseController {
 			$tk = D('TaskInfo');
 			$info = $tk->create();
 			$info['step']=5;
+			$info['buy_yongjin']=5; //暂时默认为5元
 			if(empty($info['db_id'])){
 				$info['db_id']=date('YmdHis',time()).rand();
 			}

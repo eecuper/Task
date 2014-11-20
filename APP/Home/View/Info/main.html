@@ -14,65 +14,10 @@
         </div>
     </div>
 </block>
+  
 
-<block name="body">
-<div class="wrap clearfix">
-  <div class="business-left">
-    <div class="wrap">
-        <div class="business-left-user">
-            <div class="wrap">
-                <div class="business-left-user-header"> <a class="business-left-user-header-box" href="#"> <img src="__IMG__/avatar.php" width="77" height="77"> </a> </div>
-            </div>
-            <div class="wrap center" style="text-align:center;">
-                <a href="{:U('User/userInfo')}">{$user.nc}</a> 
-            </div>
-            
-            <div class="wrap center">
-                <a class="icon-setting visa disabled" href="#"></a>
-                <a class="icon-setting phone" href="#"></a>
-                <a class="icon-setting mess" href="#"></a>
-                <a class="icon-setting money disabled" href="#"></a>
-            </div>
-        
-            <div class="wrap" style="text-align:center;">安全等级 </div> 
-             
-            <div class="business-left-outtime">
-                            <span>会员到期时间：2018-01-01</span>
-                <a href="#" target="_blank">续费会员 &gt;</a>
-                        </div>
-             
-        
-            <i class="box-angle lt"></i>
-            <i class="box-angle rt"></i>
-            <i class="box-angle bl"></i>
-            <i class="box-angle br"></i>
-        </div>         
-    </div>
-    <div class="wrap">
-        <div class="business-left-task">       
-            <h3 class="box-title-blue">任务管理</h3>
-            <ul class="menu-list">
-            <li><a href="{:U('Info/order_list')}">我的订单</a></li>
-
-            </ul>
-            <h3 class="box-title-blue">资金信息</h3>
-            <ul class="menu-list">       
-                <li><a href="{:U('Info/bao_amt')}" target="_self" class="cur">保证金充值</a>
-                   | <a href="{:U('Info/ti_amt')}" target="_self" class="cur">提现</a>
-                </li>         
-                <li><a href="{:U('Info/pay_log')}" target="_bank">资金记录</a>  
-                </li>
-            </ul>
-            <h3 class="box-title-blue">账号信息</h3>
-            <ul class="menu-list">
-                
-                <li><a href="{:U('Info/basicInfo')}" class="cur">基本信息</a></li>
-                <li><a href="{:U('Info/pay_bind')}">收款账户绑定</a></li>
-            </ul>        
-        </div>
-    </div>
-</div> 
-
+<!-- right -->
+<block name="body-right">
   <div class="business-right">
     <div class="business-right-comm">
         <div class="business-right-task-detail">
@@ -153,87 +98,8 @@
     </div>
 </div>
 </block>
-
-<block name="ext_js">
-<script type="text/javascript">
-    
-        $(function(){
-            $(".fangqi").click(function(){
-               var id  = $(this).attr('id');
-               var url = "{:U('delTask')}/id/"+id;
-               if(confirm('是否确认继续放弃任务?')){
-                    location.href=url;
-               }
-            });
-
-
-            $(".copy").click(function(){
-               var id  = $(this).attr('id');
-               var url = "{:U('cpyTask')}/id/"+id;
-               if(confirm('是否确认继续复制任务【'+id+'】?')){
-                    $.ajax({
-                        type:'get',
-                        url:url,
-                        dataType:'json',
-                        success: function(msg){
-                            if(msg.success){
-                                alert(msg.msg);
-                                location.reload();
-                            }else{
-                                alert('错误：'+msg.msg);
-                            }
-                        }
-                    });
-               }
-            });
-
-            $(".check").click(function(){
-                
-                var obj = $(this);
-                var id  = $(this).attr('id');
-                var url = "{:U('checkTask')}/id/"+id;
-                var check_flag = $('#ck'+id).val();
-
-                var ckEdit = $('#ckEdit'+id);
-                
-                var conmsg = '是否确认通过审核【'+id+'】?';
-                if(check_flag==1){
-                    conmsg = '是否继续撤销审核【'+id+'】?';
-                }
-
-                if(confirm(conmsg)){
-                    $.ajax({
-                        type:'get',
-                        url:url,
-                        dataType:'json',
-                        success: function(msg){
-                            if(msg.success){
-                                //alert(msg.msg);
-                                var html = '<font color=red>撤销审核</font>';
-                                if(check_flag==1){
-                                    html = '<font color=red>审核通过</font>';
-                                    $('#ck'+id).val(0)
-                                    ckEdit.css('display','block');
-                                }else{
-                                    $('#ck'+id).val(1)
-                                    ckEdit.css('display','none');
-                                }
-                                obj.html(html);
-                            }else{
-                                alert('错误：重复执行操作');
-                            }
-                        },
-                        error:function(){
-                            alert('操作错误');
-                        }
-                    });
-               }
-            });
-
-        });
-
-</script>
-</block>
+<!-- end right -->
+ 
 
 <block name="footer">
     <div class="footer">

@@ -14,3 +14,97 @@
         </div>
     </div>
 </block>
+  
+
+<!-- right -->
+<block name="body-right">
+   <div class="business-right">
+	    <div class="business-right-comm">
+	        <div class="business-fund">
+	            <h4>
+	                资金记录 
+	            </h4>
+	            <ul class="business-tabs">
+	                <li class="<?php echo ($type_id==null)?'active':''; ?>">
+	                    <a href="{:U('pay_log')}">
+	                        <span>
+	                            交易记录
+	                        </span>
+	                    </a>
+	                </li>
+	                <li class="{$type_id==3?'active':''}">
+	                    <a href="{:U('pay_log?type_id=3')}">
+	                        <span>
+	                            保证金记录
+	                        </span>
+	                    </a>
+	                </li>
+	                <li class="{$type_id==1?'active':''}">
+	                    <a href="{:U('pay_log?type_id=1')}">
+	                        <span>
+	                            提现记录
+	                        </span>
+	                    </a>
+	                </li>
+	                <li class="{$type_id==2?'active':''}">
+	                    <a href="{:U('pay_log?type_id=2')}">
+	                        <span>
+	                            充值记录
+	                        </span>
+	                    </a>
+	                </li>
+	            </ul>
+	            <div class="business-fund-main">
+	              <table border="0" class="business-Deposit-record-table" cellspacing="0" cellpadding="0">
+	                <tbody>
+	                  <tr>
+	                    <th width="120">时间</th>
+	                    <th width="90">收入</th>
+	                    <th width="90">支出</th>
+	                    <th width="90">类型</th>
+	                    <th>备注</th>
+	                  </tr>
+	                  <volist name="logs" id="log">
+	                        <tr>
+	                        <td>{$log['charge_date']|date="Y-m-d H:i",###}</td>
+	                        <td><p class="fontred">
+	                            <?php if(floatval($log['charge'])>0){echo $log['charge'];}?>
+	                        </p></td>
+	                        <td><p class="fontred">
+	                            <?php if(floatval($log['charge'])<0){echo $log['charge'];}?>
+	                        </p></td>
+	                        <td><p class="fontred">{$log.type_id|feeType}</p></td>
+	                        <td><p class="tl">{$log.remark}</p></td>
+	                      </tr>
+	                  </volist>
+	                  
+	                </tbody>
+	              </table>
+	              <div class="pager">
+	                    <div class="page">
+	                       {$_page}
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	        <i class="box-angle lt">
+	        </i>
+	        <i class="box-angle rt">
+	        </i>
+	        <i class="box-angle bl">
+	        </i>
+	        <i class="box-angle br">
+	        </i>
+	    </div>
+	</div>
+</block>
+<!-- end right -->
+ 
+
+<block name="footer">
+    <div class="footer">
+        <div>
+         
+        </div>
+    </div>
+</block>

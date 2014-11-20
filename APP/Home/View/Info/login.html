@@ -1,7 +1,7 @@
 <extend name="pub/baseUser" />
 
 <block name="title">
-商家登录
+买家登录
 </block>
 
 <block name="ext_css">
@@ -18,8 +18,7 @@
 </block>
 
 <block name="body">
-<form class="theForm" action="{:U('User/login')}" method="post">
-
+<form class="theForm" action="{:U('Info/login')}" method="post">
 <DIV class=renqifu_con>
 	<DIV class=renqifu_login>
 		<DIV class=imglist>
@@ -41,7 +40,7 @@
 		<DIV class=login>
 			<DIV class=logintop></DIV>
 			<DIV class=logincen>
-				<H3>商家登录</H3>
+				<H3>买家登录</H3>
 				<!-- 用户名或密码错误提示 -->
 				<SPAN style="DISPLAY: none" id=login-tpis class=login-tpis></SPAN>
 				<DIV class=login_input>
@@ -69,12 +68,6 @@
 					<!-- 需要验证码时换为此button  上面的button隐藏 -->
 					<INPUT style="DISPLAY: none" id=Button1 ;
 						name=button value=登录 type=submit>
-
-					<DIV>
-						<A href="{:U('User/register')}">注册账号</A>
-						<P></P>
-						<A href="#">忘记密码</A>
-					</DIV>
 				</DIV>
 			</DIV>
 			<DIV class=loginbott></DIV>
