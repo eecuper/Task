@@ -29,7 +29,7 @@ return array(
     'DATA_AUTH_KEY' => 'eo~bcx01lS@6K_94aO|BH{QrJ=u2Z-?<%}&/":zi', //默认数据加密KEY
 
     /* 调试配置 */
-    'SHOW_PAGE_TRACE' => true,
+    'SHOW_PAGE_TRACE' => false,
     'SHOW_ERROR_MSG'  =>  false,    // 显示错误信息
 		
 	'DEFAULT_CHARSET'=>'utf-8', // 默认输出编码

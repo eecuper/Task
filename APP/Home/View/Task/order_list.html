@@ -84,9 +84,9 @@
 
 					<td width="82">买号</td>
 					<td width="120">订单号</td>
-					<td width="95">件数</td>
-					<td width="114">物流信息</td>
-					<td width="98">货款+邮费</td>
+					<td width="50">件数</td>
+					<td width="134">物流信息</td>
+					<td width="118">金额信息</td>
 					<!--
           <td>操作</td>
 		  <td width="10"></td>
@@ -130,10 +130,10 @@
 					<td width="72"><p class="w70" style="width: 100%; padding: 0;">&nbsp;{$vo.action_user_name}</p></td>
 					<td width="110"><p class="w115"
 							style="width: 100%; padding: 0;">{$vo.list_id}</p></td>
-					<td width="85"><p class="w70" style="width: 100%;">{$vo.cnt}</p></td>
+					<td width="50"><p class="w70" style="width: 100%;">{$vo.cnt}</p></td>
 
 					<if condition="$vo.state eq 2">
-						<td width="110" style="vertical-align: top;">
+						<td width="134" style="vertical-align: top;">
 							<div class="w115 J_copy_p" style="width: 100%; padding-left: 5px;" id="transport_{$vo.list_id}">
 								<select name="transport_name">
 									<?php 
@@ -155,7 +155,7 @@
 							</div>
 						</td>
 					<else/>
-						<td width="110" style="vertical-align: top;">
+						<td width="134" style="vertical-align: top;">
 						<div class="w115 J_copy_p" style="width: 100%; padding-left: 5px;">
 							快递名称：<if condition="$vo.transport_id neq null">
 										{:R('base/transPortName',array($vo['transport_name']))}
@@ -166,10 +166,22 @@
 						</td>
 					</if>
 
-					<td width="92"><p class="w70" style="width: 100%;">
+					<td width="118"><p class="w70" style="width: 100%;">
 							<span class="font_red">
-								<?php echo (intval($vo['transport'])+intval($vo['money']));?>
+								货款+邮费：<?php echo (floatval($vo['transport'])+floatval($vo['money']));?>
 							</span>元
+							<br>
+							<font id="yj_{$vo.list_id}"  style="display:<?php echo empty($vo['send_date'])?'none':'block'; ?>;">
+								<span class="font_red">
+									押金：<?php echo floatval($vo['price'])*floatval($vo['cnt']);?>
+								</span>元
+							</font>
+							<font id="buy_{$vo.list_id}" style="display:<?php echo empty($vo['send_date'])?'none':'block'; ?>;">
+								<span class="font_red">
+								佣金：<?php echo floatval($vo['buy_yongjin']);?>
+								</span>元
+							</font>
+
 						</p></td>
 					<!--
           <td width="77">
@@ -297,6 +309,8 @@
 		 
 	  $(".fh").click(function(){
 		    var div_id = '#transport_'+$(this).attr('id');
+		    var buy_id = '#buy_'+$(this).attr('id');
+		    var yj_id = '#yj_'+$(this).attr('id');
 		  	var transport_name = $(div_id+" select[name=transport_name]").val();
 			var transport_id   = $(div_id+" input[name=transport_id]").val();
 
@@ -311,14 +325,20 @@
 
 			var list_id        = this.id;
 			var url = "{:U('modify')}"+'/list_id/'+list_id+'/transport_name/'+transport_name+'/transport_id/'+transport_id;
-			//location.href=url;
+			 
 			$.ajax({
 				type:'get',
 				url:url,
 			    dataType:'json',
 			    success: function(msg){
-			    	$("#"+list_id).html('<font color=red>发货成功</font>');
-			    	$("#"+list_id).unbind();
+			    	if(msg.success){
+			    		$(buy_id).css('display','block');
+				    	$(yj_id).css('display','block');
+				    	$("#"+list_id).html('<font color=red>'+msg.msg+'</font>');
+				    	$("#"+list_id).unbind();
+			    	}else{
+			    		$("#"+list_id).html('<font color=red>'+msg.msg+'</font>');
+			    	}
 			    }
 			});
 	  });	

@@ -1,0 +1,84 @@
+<extend name="base" />
+
+<block name="title">
+提现工单
+</block>
+
+<block name="page_index">
+    <div class="breadcrumbs">
+        <div class="wrap">
+            <a href="#">
+                     首页
+                </a>
+                &gt; 提现工单
+        </div>
+    </div>
+</block>
+  
+
+<!-- right -->
+<block name="body-right">
+  <div class="business-right">
+    <div class="business-right-comm">
+        <div class="business-right-task-detail">
+            <h2 class="business-right-task-innertitle">提现工单</h2>
+            <ul class="business-tabs noc">
+            </ul>
+            <div class="business-tabs-content">
+                  <table width="728" height="70" border="1" cellpadding="0" cellspacing="0" bordercolor="#CCCCCC">
+                    <tr>
+                      <td width="77" align="center" valign="middle">序号</td>
+                      <td width="77" align="center" valign="middle">MID</td>
+                      <td width="77" align="center" valign="middle">卡号</td>
+                      <td width="78" align="center" valign="middle">提现类型</td>
+                      <td width="78" align="center" valign="middle">财付通账号</td>
+                      <td width="78" align="center" valign="middle">交易单号</td>
+                      <td width="85" align="center" valign="middle">收款理由</td>
+                      <td width="85" align="center" valign="middle">金额</td>
+                      <td width="85" align="center" valign="middle">收费</td>
+                      <td width="85" align="center" valign="middle">提现时间</td>
+                      <td width="85" align="center" valign="middle">操作</td>
+                    </tr>
+                    
+                    <volist name="logs" id="log" key="k">
+                      <tr>
+                      <td width="77" align="center" valign="middle">{$_num+$k}</td>
+                      <td width="77" align="center" valign="middle">{$log['mid']}</td>
+                      <td width="77" align="center" valign="middle">{$log['amt_card']}</td>
+                      <td width="78" align="center" valign="middle">{$log['amt_type']}</td>
+                      <td width="78" align="center" valign="middle">{$log['amt_zfh']}</td>
+                      <td width="78" align="center" valign="middle">{$log['amt_code']}</td>
+                      <td width="85" align="center" valign="middle">{$log['amt_remark']}</td>
+                      <td width="85" align="center" valign="middle">{$log['amt_num']}</td>
+                      <td width="85" align="center" valign="middle">{$log['amt_fee']}</td>
+                      <td width="85" align="center" valign="middle">{$log['amt_date']|date='Y-m-d H:i',###}</td>
+                      <td width="85" align="center" valign="middle">
+                        <!--<a href="">撤销</a><br>-->
+                        <if condition="$log['amt_state'] eq 0">
+                          <a href="{:U('Info/ti_log?id='.$log['id'])}">完成</a><br>
+                          <else />
+                          <b>已完成</b>
+                        </if>
+                        <!--<a href="">修改</a>-->
+                      </td>
+                    </tr>
+                    </volist>
+                  </table>
+
+                  {$_page}
+          </div>
+        </div>
+    </div>
+    </div>
+</div>
+</block>
+<!-- end right -->
+ 
+
+<block name="footer">
+    <div class="footer">
+        <div>
+         
+        </div>
+    </div>
+</block>

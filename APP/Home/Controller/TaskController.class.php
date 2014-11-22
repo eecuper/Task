@@ -5,7 +5,7 @@ namespace Home\Controller;
 class TaskController extends BaseController {
 	
 	public function index(){
-		$this->display('action_step1');
+		$this->redirect('task/main');
 	}
 	
 	
@@ -536,13 +536,43 @@ class TaskController extends BaseController {
 		$tlist['is_send']=1;
 		$tlist['send_date']=time();
 		$tlist['state']=3;
+
 		$where['list_id']=$tlist['list_id'];
 		if($tlist && intval($tlist['list_id'])>0){
+
+			//查找订单信息
+			$dlist = $tl->table('v_task_list_ext_user')->where($where)->find();
+			if(empty($dlist)){
+				$json['msg']='未检索到订单';
+				$this->ajaxReturn($json,'json');
+				die;
+			}
+
+			$charge['list_id']=$tlist['list_id'];
+			$charge['db_yongjin']=$dlist['db_yongjin'];
+			$charge['db_yj']=floatval($dlist['price'])*floatval($dlist['cnt']);
+			$charge['ext_id']=date('YmdHis',time()).rand();
+			 
+			$userInfo['mid']=$dlist['action_user_id'];
+			$userInfo['oper_id']=$_SESSION['user_auth']['id'];
+			 
 			$res = $tl->where($where)->save($tlist);
 			$json['obj']=$res;
 			if($res){
-				$json['msg']='更新成功';
-				$json['success']=true;
+
+				//更新刷客账户信息和资金记录
+				$re = $this->modify_charge_bySend($charge,$userInfo);
+				//dump($re);
+				
+				if($re['flag']){
+					$json['msg']='更新成功';
+					$json['success']=true;
+				}else{
+					$json['msg']='更新成功,佣金支付故障';
+					$json['success']=true;
+				}
+			//	dump($json);
+				//die;
 			}else{
 				$json['msg']='更新失败';
 				$json['success']=false;
@@ -551,6 +581,7 @@ class TaskController extends BaseController {
 			$json['msg']='操作失败,'.$tl->getError();
 			$json['success']=false;
 		}
+		 
 		$this->ajaxReturn($json);
 	}
 	

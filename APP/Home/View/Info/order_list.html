@@ -50,7 +50,7 @@
 				<select name="search_keys">
 					<option value="tid">任务号</option>
 					<option value="list_id">订单号</option>
-					<!--<option value="action_user_nc">买家账号</option>-->
+					<option value="action_user_nc">买家账号</option>
 				</select> 
 				<input type="text" class="se-text" name="search_words" value="{$search_words}">
 				<input type="hidden" name="state" value="{$state}"/>
@@ -84,9 +84,9 @@
 
 					<td width="82">买号</td>
 					<td width="120">订单号</td>
-					<td width="95">件数</td>
-					<td width="114">物流信息</td>
-					<td width="98">货款+邮费</td>
+					<td width="50">件数</td>
+					<td width="134">物流信息</td>
+					<td width="118">金额信息</td>
 					<!--
           <td>操作</td>
 		  <td width="10"></td>
@@ -106,12 +106,9 @@
 							class="plat_small plat_tianmao"></i>{$vo.shop_name}</a> 
 							<span class="fr" style="float: left; margin-left: 10px;">任务{$vo.tid}：订单:
 							 {$vo.list_id} 类型:{$vo.list_type}</span> 
-							 <!--
-							 <a style="float: left;"
-								href="{:U('task/order_info?list_id='.$vo['list_id'])}"
-								class="fr mr15 font_blue" target="_blank">查看详情 &gt;</a> 
-							-->
-							<span
+							<a style="float: left;"
+								href="{:U('order_info?list_id='.$vo['list_id'])}"
+								class="fr mr15 font_blue" target="_blank">查看详情 &gt;</a> <span
 								style="float: right">发布订单时间：{$vo.create_date|date="Y-m-d H:i:s",###}</span></th>
 				</tr>
 
@@ -133,24 +130,57 @@
 					<td width="72"><p class="w70" style="width: 100%; padding: 0;">&nbsp;{$vo.action_user_name}</p></td>
 					<td width="110"><p class="w115"
 							style="width: 100%; padding: 0;">{$vo.list_id}</p></td>
-					<td width="85"><p class="w70" style="width: 100%;">{$vo.cnt}</p></td>
+					<td width="50"><p class="w70" style="width: 100%;">{$vo.cnt}</p></td>
 
-					 
-					<td width="110" style="vertical-align: top;">
-					<div class="w115 J_copy_p" style="width: 100%; padding-left: 5px;">
-						快递名称：<if condition="$vo.transport_id neq null">
-									{:R('base/transPortName',array($vo['transport_name']))}
-								  </if>
-								   <br> 
-						快递单号：{$vo.transport_id}<br>  
-					</div>
-					</td>
-					 
+					<if condition="$vo.state eq 2">
+						<td width="134" style="vertical-align: top;">
+							<div class="w115 J_copy_p" style="width: 100%; padding-left: 5px;" id="transport_{$vo.list_id}">
+								<select name="transport_name">
+									<?php 
+										$wl_info = C('WL_INFO');
+										foreach($wl_info as $key=>$val){
+											if($key==$vo['transport_name']){
+												echo '<option value="'.$key.'" selected>'.$val.'</option>';
+											}else{
+												echo '<option value="'.$key.'">'.$val.'</option>';
+											}
+										}
+									?>
+								</select><br> 
+								<input type="text" class="se-text" name="transport_id" id="trans{$vo.list_id}" value="{$vo.transport_id}">
+								<!-- 
+								<br><br> 
+								<span id="{$vo.list_id}" style="color: grey;padding:5 8px;" class="modify_kd"><a>修改快递</a></span>
+								 -->
+							</div>
+						</td>
+					<else/>
+						<td width="134" style="vertical-align: top;">
+						<div class="w115 J_copy_p" style="width: 100%; padding-left: 5px;">
+							快递名称：<if condition="$vo.transport_id neq null">
+										{:R('base/transPortName',array($vo['transport_name']))}
+									  </if>
+									   <br> 
+							快递单号：{$vo.transport_id}<br>  
+						</div>
+						</td>
+					</if>
 
-					<td width="92"><p class="w70" style="width: 100%;">
+					<td width="118"><p class="w70" style="width: 100%;">
 							<span class="font_red">
-								<?php echo (intval($vo['transport'])+intval($vo['money']));?>
+								货款+邮费：<?php echo (floatval($vo['transport'])+floatval($vo['money']));?>
 							</span>元
+							<br>
+							<span class="font_red">
+								押金：<?php echo floatval($vo['yj_pay']);?>
+							</span>元
+							<br>
+							<font id="buy_{$vo.list_id}" class="buy_yongji" >
+								<span class="font_red">
+								佣金：<?php echo floatval($vo['buy_yongjin']);?>
+								</span>元
+							</font>
+
 						</p></td>
 					<!--
           <td width="77">
@@ -169,7 +199,7 @@
 									<!-- 可修改为:<a target="_blank" href="{:U('jiedan&id='.$vo['list_id'].'&action_user_id='.$user['id'])}">待付款</a> -->
 								<elseif condition="$vo.state eq 2"/>
 									待发货&nbsp;&nbsp;&nbsp;&nbsp;
-									 
+									 可执行:<a class="fh" id="{$vo['list_id']}"  href="javascript:;">&nbsp;&nbsp;发货</a>
 								<elseif condition="$vo.state eq 3"/>
 									待确认&nbsp;&nbsp;&nbsp;&nbsp;
 									<!-- 可修改为:<a  onclick=dqr("{:U('sure&id='.$vo['list_id'])}","trans{$vo.list_id}","{$vo.list_id}");>待确认</a> -->
@@ -194,6 +224,7 @@
 	</div>
 </div>
 </block>
+
 
 
 <block name="ext_js">
@@ -278,6 +309,7 @@
 		 
 	  $(".fh").click(function(){
 		    var div_id = '#transport_'+$(this).attr('id');
+		    var buy_id = '#buy_';+$(this).attr('id');
 		  	var transport_name = $(div_id+" select[name=transport_name]").val();
 			var transport_id   = $(div_id+" input[name=transport_id]").val();
 
@@ -298,8 +330,10 @@
 				url:url,
 			    dataType:'json',
 			    success: function(msg){
+			    	$(buy_id).css('display','block');
 			    	$("#"+list_id).html('<font color=red>发货成功</font>');
 			    	$("#"+list_id).unbind();
+
 			    }
 			});
 	  });	

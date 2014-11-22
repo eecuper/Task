@@ -90,14 +90,14 @@
                                 <td>
                                     <p>
                                         <b>
-                                            {$vo['yj_pay']}
+                                            <?php echo floatval($vo['price'])*floatval($vo['cnt']);?>
                                         </b>
                                         元
                                     </p>
                                 </td>
                                 <td>
                                     <p>
-                                        <b>{$vo['db_pay']} D币</b>
+                                        <b>{$vo['buy_yongjin']} D币</b>
                                     </p>
                                 </td>
                                 <td>

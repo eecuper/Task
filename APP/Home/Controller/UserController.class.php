@@ -75,6 +75,8 @@ class UserController extends BaseController {
 		if($userInfo){
 			if($userInfo['status']==0){
 				$this->error('登录失败,失效用户不允许登陆,请联系我们');
+			}else if($userInfo['manager']==0){
+				$this->error('该账号为刷客号，无商家主页权限');
 			}else{
 				session('user_auth',$userInfo);
 				$this->assign('user',$userInfo);

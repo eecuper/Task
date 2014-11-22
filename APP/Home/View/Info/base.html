@@ -94,18 +94,19 @@ $(function(){
     </span> <span> 
      -->
      <span class="fr">
-      &nbsp;&nbsp;<a href="{:U('Info/bao_amt')}"><b>保证金充值</b></a>
-      &nbsp;&nbsp;保证金:{$user_db['cg_baozj']|floatval}
-      <!--<a href="{:U('pay/charge?ctype=yjpay')}"><b>押金充值</b></a>
-      &nbsp;&nbsp;押金:{$user_db['cg_deposit']|floatval}元
-      -->
+      &nbsp;&nbsp;<a href="{:U('Info/bao_amt')}">保证金充值</a>
+      &nbsp;&nbsp;保证金：<b>{$user_db['cg_baozj']|floatval}</b>
+      &nbsp;&nbsp;D币：<b>{$user_db['cg_amount']|floatval}</b>
+      &nbsp;&nbsp;押金：<b>{$user_db['cg_deposit']|floatval}</b>
+      &nbsp;&nbsp;冻结D币：<b>{$user_db['cg_dong_db']|floatval}</b>
+      &nbsp;&nbsp;冻结押金：<b>{$user_db['cg_dong_yj']|floatval}</b>
      </span>
     
     
     <a href="#"><b><font size=3>{$user.nc}</font></b></a> 
-    <!--｜ <a href="{:U('User/loginOut')}"> 退出
+    ｜ <a href="{:U('Info/loginOut')}"> 退出
     </a>
-    -->
+    
     </span>
   </div>
   <!-- 用户登录状态 -->
@@ -163,7 +164,13 @@ $(function(){
                 <div class="business-left-user-header"> <a class="business-left-user-header-box" href="#"> <img src="__IMG__/avatar.php" width="77" height="77"> </a> </div>
             </div>
             <div class="wrap center" style="text-align:center;">
-                <a href="{:U('User/userInfo')}">{$user.nc}</a> 
+                <a href="{:U('Info/basicInfo')}">{$user.nc}
+                  <notempty name="user_db['cg_baozj']">
+                    <b>VIP会员</b>
+                    <else />
+                    普通会员
+                  </notempty>
+                </a> 
             </div>
             
             <div class="wrap center">
@@ -177,7 +184,7 @@ $(function(){
              
             <div class="business-left-outtime">
                             <span>会员到期时间：2015-06-01</span>
-                <a href="#" target="_blank">续费会员 &gt;</a>
+                <a href="{:U('Info/bao_amt')}" target="_blank">续费会员 &gt;</a>
                         </div>
              
         
@@ -198,8 +205,10 @@ $(function(){
             <ul class="menu-list">       
                 <li><a href="{:U('Info/bao_amt')}" target="_self" class="cur">保证金充值</a>
                    | <a href="{:U('Info/ti_amt')}" target="_self" class="cur">提现</a>
-                </li>         
-                <li><a href="{:U('Info/pay_log')}" target="_bank">资金记录</a>  
+                </li>  
+                <li><a href="{:U('Info/ti_log')}" target="_self">提现记录</a>  
+                </li>       
+                <li><a href="{:U('Info/pay_log')}" target="_self">资金记录</a>  
                 </li>
             </ul>
             <h3 class="box-title-blue">账号信息</h3>

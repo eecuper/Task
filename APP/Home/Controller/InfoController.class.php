@@ -59,6 +59,13 @@ class InfoController extends AdminController {
 			$this->display('login');
 		}
 	}
+
+	//退出
+	public function loginOut(){
+		session('user_auth',null);
+		session(null);
+		$this->display('login');
+	}
 	
 	public function index(){
 		$this->display('main');
@@ -151,9 +158,64 @@ class InfoController extends AdminController {
 		$this->display();
 	}
 
+	//提现工单
+	public function ti_log($id=0){
+		$m   = M('amtLog');
+
+		if(intval($id)>0){
+			$amtLog = $m->find($id);
+			$amtLog['amt_oper_id']=$_SESSION['user_auth']['id'];
+			$re = $this->modify_charge_ti_comp($amtLog);
+			if($re['flag']){
+				$this->redirect('info/ti_log');
+			}else{
+				$this->error($re['msg']);
+			}
+		}
+
+		$t   = 'task_amt_log as a';
+		$f   = '*';
+		$w   = 'a.amt_status=1';
+		$o   = 'a.amt_date desc';
+
+		if($_SESSION['user_auth']['manager']!=C('IS_ADMIN')){
+		 	$w=$w.' and a.user_id='.$_SESSION['user_auth']['id'];
+		}
+
+		$logs = $this->lists($m,$t,$w,$o,$f);
+		$this->assign('logs',$logs);
+		$this->display();
+	}
+
 	//提现
 	public function ti_amt(){
-		$this->display();
+		if(IS_POST){
+			$t = D('amtLog');
+			$amtLog = $t->create();
+			$amtLog['amt_date']=time();
+			
+			$re = $this->modify_charge_ti($amtLog);
+			//die;
+
+			if($re['flag']){
+				$this->redirect('info/ti_log');
+			}else{
+				$this->error($re['msg']);
+			}
+		}else{
+			$t = D('userAcc');
+			//查询是否已经绑定
+			$w['use_type']=1;
+			$w['user_id']=$_SESSION['user_auth']['id'];
+			$q = $t->where($w)->find();
+			if(empty($q)){
+				$this->error('尚未绑定财富通账号');
+				die;
+			}
+			$this->assign('userAcc',$q);
+			$this->display();
+		}
+		
 	}
 
 	//资金记录
@@ -197,6 +259,7 @@ class InfoController extends AdminController {
 		$t = D('userAcc');
 
 		//查询是否已经绑定
+		$w['use_type']=1;
 		$w['user_id']=$_SESSION['user_auth']['id'];
 		$q = $t->where($w)->find();
 
@@ -214,7 +277,7 @@ class InfoController extends AdminController {
 					$acc['acc_id']=$acc_id;
 				}
 				if($acc_id){
-					$this->redirect('pay_bind',3,'绑定成功');
+					$this->redirect('info/pay_bind');
 				}
 			}else{
 				$this->error('该用户已经绑定过提现账户，不允许多次绑定，详细请咨询管理员');

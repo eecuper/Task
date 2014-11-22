@@ -19,6 +19,10 @@ class BaseController extends AdminController {
 		  	 || in_array($ACTION_NAME,$NO_LOGIN_METHOD))){
 			$userInfo = $this->isLogin();
 			if($userInfo){
+				if($userInfo['manager']==0){
+					$this->error('提示：该账号无商家权限');
+					die;
+				}
 				//此处不能直接重定向到一个集成本类的控制类方法 否则死循环
 				//$this->redirect('Task/main');
 				$this->assign('user',$userInfo);
@@ -271,5 +275,7 @@ class BaseController extends AdminController {
 		}
 		return $name;
 	}
+
+	
 }	
 ?>

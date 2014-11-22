@@ -226,6 +226,12 @@ class ApiController extends BaseController {
  	    header('content-type: text/html; charset=gb2312');
  		$mid = I('MID'); //2014001
 		$gid = I('GID'); //22
+
+		$userCharge = $this->dbQuery();
+		if(floatval($userCharge['cg_baozj'])<=0){
+			$this->error('该账号为普通会员，请充值保证金升级为VIP会员,<a href="'.U('Info/bao_amt').'"><font color=red>进入充值保证金?</font></a>');
+		}
+
 		if(intval($mid)>0 && intval($gid)>0){
 			if(intval($id)>0){
 	 			$t = M();
