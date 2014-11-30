@@ -27,8 +27,7 @@
             <div class="business-tabs-content">
                   <table width="728" height="70" border="1" cellpadding="0" cellspacing="0" bordercolor="#CCCCCC">
                     <tr>
-                      <td width="77" align="center" valign="middle">总任务数</td>
-                      <td width="77" align="center" valign="middle">成功发布任务</td>
+                      <td width="77" align="center" valign="middle">全网排名</td>
                       <td width="77" align="center" valign="middle">总订单数</td>
                       <td width="78" align="center" valign="middle">待付款订单</td>
                       <td width="78" align="center" valign="middle">待发货订单</td>
@@ -36,13 +35,12 @@
                       <td width="85" align="center" valign="middle">已确认</td>
                     </tr>
                     <tr>
-                      <td align="center" valign="middle">{$allTaskCnt}</td>
-                      <td align="center" valign="middle">{$compTaskCnt}</td>
-                      <td align="center" valign="middle"><a href="{:U('order_list')}">{$allListCnt}</a></td>
-                      <td align="center" valign="middle"><a href="{:U('order_list?state=1')}">{$taskInfoCnt[0].dfk}</a></td>
-                      <td align="center" valign="middle"><a href="{:U('order_list?state=2')}">{$taskInfoCnt[0].dfh}</a></td>
-                      <td align="center" valign="middle"><a href="{:U('order_list?state=3')}">{$taskInfoCnt[0].dqr}</a></td>
-                      <td align="center" valign="middle"><a href="{:U('order_list?state=4')}">{$taskInfoCnt[0].wc}</a></td>
+                      <td align="center" valign="middle">{$infoCnt['pm']}</td>
+                      <td align="center" valign="middle"><a href="{:U('order_list')}">{$infoCnt['jd']}</a></td>
+                      <td align="center" valign="middle"><a href="{:U('order_list?state=1')}">{$infoCnt['dfk']}</a></td>
+                      <td align="center" valign="middle"><a href="{:U('order_list?state=2')}">{$infoCnt['dfh']}</a></td>
+                      <td align="center" valign="middle"><a href="{:U('order_list?state=3')}">{$infoCnt['dqr']}</a></td>
+                      <td align="center" valign="middle"><a href="{:U('order_list?state=4')}">{$infoCnt['wc']}</a></td>
                     </tr>
                   </table>
           </div>

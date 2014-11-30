@@ -199,7 +199,7 @@
 									<!-- 可修改为:<a target="_blank" href="{:U('jiedan&id='.$vo['list_id'].'&action_user_id='.$user['id'])}">待付款</a> -->
 								<elseif condition="$vo.state eq 2"/>
 									待发货&nbsp;&nbsp;&nbsp;&nbsp;
-									 可执行:<a class="fh" id="{$vo['list_id']}"  href="javascript:;">&nbsp;&nbsp;发货</a>
+									 <!-- 可执行:<a class="fh" id="{$vo['list_id']}"  href="javascript:;">&nbsp;&nbsp;发货</a>-->
 								<elseif condition="$vo.state eq 3"/>
 									待确认&nbsp;&nbsp;&nbsp;&nbsp;
 									<!-- 可修改为:<a  onclick=dqr("{:U('sure&id='.$vo['list_id'])}","trans{$vo.list_id}","{$vo.list_id}");>待确认</a> -->

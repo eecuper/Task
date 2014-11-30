@@ -228,8 +228,8 @@ class ApiController extends BaseController {
 		$gid = I('GID'); //22
 
 		$userCharge = $this->dbQuery();
-		if(floatval($userCharge['cg_baozj'])<=0){
-			$this->error('该账号为普通会员，请充值保证金升级为VIP会员,<a href="'.U('Info/bao_amt').'"><font color=red>进入充值保证金?</font></a>');
+		if(floatval($userCharge['cg_baozj'])<0){
+			$this->error('未缴纳保证金，请去个人中心充值,<a href="'.U('Info/bao_amt').'" target="_bank"><font color=red>进入充值保证金?</font></a>');
 		}
 
 		if(intval($mid)>0 && intval($gid)>0){
@@ -270,22 +270,30 @@ class ApiController extends BaseController {
 					//echo '返回结果:' . $re.'<br>';
 					$flag = substr($re,0,1);
 					//echo '判断:' .$flag.'<br>';
+
 					$action_user_name=substr($re,2);
 					//echo '买号:' . $action_user_name.'<br>';
 					//echo 'DP端状态:'.$flag.',买号:'.$action_user_name.'订单号：'.$vo['list_id'].'<br>';
+					//die;
 
 					if($flag==1){
+						//正常接单
 						$re = $this->doAction($vo['list_id'],$action_user_name,$mid);
 						if($re){
 							$this->redirect('api/tasks', array('MID' => $mid,'GID'=>$gid),3, '提示： 买号：'.$action_user_name.' 已经接受任务，订单号：'.$vo['list_id'].',页面跳转中..');
 						}else{
-							$this->error('<font color=red>接单人信息更新失败</font>');
+							$this->error('<font color=red>【'.$vo['list_id'].'】接单人信息更新失败</font>');
 						}
 					}else{
-						$this->error('已接单,不重复进行接单同步');
+						echo '已经接单';
+						//DP已经有接单 ， 本地接单数据为空则同步即可不做新接单人信息更新
+						//$re = false; //$this->doAction_process($vo['list_id'],$action_user_name,$mid);
+						//if($re){
+						//	$this->redirect('api/tasks', array('MID' => $mid,'GID'=>$gid),3, '提示： 【'.$vo['list_id'].'】已接单，任务系统同步买号：'.$action_user_name.'，订单号：'.$vo['list_id'].',页面跳转中..');
+						//}else{
+						//	$this->error('【'.$vo['list_id'].'】已接单,任务系统同步失败');
+						//}
 					}
-				 
-
 				}else{
 					$this->error('获取随机订单失败，请重试');
 				}
@@ -422,9 +430,12 @@ class ApiController extends BaseController {
 			$userInfo['nc']=I('nc');
 			$userInfo['phone']=I('phone');
 			$userInfo['mid']=I('mid');
+			$userInfo['create_date']=time();
+			$pwd =I('pwd');
+			$userInfo['pwd']=md5($pwd);
 		 
-			if(empty($userInfo) || empty($userInfo['nc']) || empty($userInfo['phone']) || empty($userInfo['mid'])){
-				echo '0|请确保昵称、手机、mid不为空';
+			if(empty($userInfo) || empty($userInfo['nc']) || empty($userInfo['pwd']) || empty($userInfo['phone']) || empty($userInfo['mid'])){
+				echo '0|请确保昵称、密码、手机、mid不为空';
 				die;
 			}
 
@@ -441,8 +452,8 @@ class ApiController extends BaseController {
 			}
 			if($userInfo){
 				if(empty($userInfo['id'])){
-					$userInfo['ext']=$userInfo['OOoo0000'];
-					$userInfo['pwd']=md5('OOoo0000');
+					$userInfo['ext']=$pwd;
+					$userInfo['pwd']=md5($pwd);
 
 					$id = $user->add($userInfo);
 					if($id){

@@ -202,6 +202,7 @@ class AdminController extends Controller {
             $w['user_id']=$_SESSION['user_auth']['id'];
             $user_db = $t->where($w)->find();
             $this->assign('user_db',$user_db);
+            C('user_db',$user_db);
             return $user_db;
         }
         return false;

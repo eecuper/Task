@@ -72,13 +72,13 @@ class PayController extends BaseController {
 		if(intval($typeId)>0){
 			switch ($typeId) {
 				case 1:
-					$w['type_id']=array('in',array(1,10));
+					$w['type_id']=array('in',array(1,10,6,60,601));
 					break;
 				case 2:
 					$w['type_id']=array('in',array(1,3));
 					break;
 				case 3:
-					$w['type_id']=array('in',array(3,30));
+					$w['type_id']=array('in',array(3,30,5,50,501));
 					break;
 				default:
 					break;
@@ -95,6 +95,7 @@ class PayController extends BaseController {
 	public function validPay(){
 		$ext_id = I('ext_id');
 		$msg['success']=false;
+		$msg['msg']='操作失败';
 		if(!empty($ext_id)){
 			$t = M('chargeLog');
 			$w['ext_id']=$ext_id;

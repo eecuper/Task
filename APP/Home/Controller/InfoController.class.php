@@ -5,6 +5,8 @@ use Admin\Controller\AdminController;
 
 class InfoController extends AdminController {
 
+	private $db_query;
+
 	/**
 	 * 基类控制器初始化
 	 */
@@ -37,7 +39,7 @@ class InfoController extends AdminController {
 		$this->shopConfig();
 
 	    //用户DB查询
-	    $this->dbQuery();
+	     $this->dbQuery();
 	}
 
 	//登陆
@@ -74,37 +76,27 @@ class InfoController extends AdminController {
 	//首页
 	public function main(){
 		 //所有任务
-		 $where['status']=1;
-		 if($_SESSION['user_auth']['manager']!=C('IS_ADMIN')){
-		 	$where['action_user_id']=$_SESSION['user_auth']['mid'];
+		 $tk = M('taskList');
+		 if($_SESSION['user_auth']['manager']==C('IS_ADMIN')){
+		 	$sql = 'SELECT SUM(jd) jd, SUM(dfk) dfk, SUM(dfh) dfh, SUM(dqr) dqr, SUM(wc) wc FROM v_task_info_rpt';
+		 	$infoCnt_tmp = $tk->query($sql);
+		 	$infoCnt = $infoCnt_tmp[0];
+		 	$infoCnt['pm']='全部';
+		 }else{
+		 	$sql = 'SELECT @row:=@row+1 AS pm,action_user_id,jd,dfk,dfh,dqr,wc FROM v_task_info_rpt,(SELECT  @row:=0) AS it ORDER BY jd DESC';
+			 $allTaskCnt = $tk->query($sql);
+			 if(is_array($allTaskCnt)){
+			 	foreach ($allTaskCnt as $k => $v) {
+			 		if(is_array($v)){
+			 			if($v['action_user_id']==$_SESSION['user_auth']['mid']){
+			 				$infoCnt = $v;
+			 			}
+			 		}
+			 	}
+			 }
 		 }
-		 $allTaskCnt = $this->taskCnt('',$where);
-		 $this->assign('allTaskCnt',$allTaskCnt);
 		 
-		 //成功发布任务
-		 $where1['status']=1;
-		 $where1['is_complete']=1;
-		 if($_SESSION['user_auth']['manager']!=C('IS_ADMIN')){
-		 	$where1['action_user_id']=$_SESSION['user_auth']['mid'];
-		 }
-		 $compTaskCnt = $this->taskCnt('',$where1);
-		 $this->assign('compTaskCnt',$compTaskCnt);
-		 
-		 //所有清单
-		 $where2['status']=1;
-		 if($_SESSION['user_auth']['manager']!=C('IS_ADMIN')){
-		 	$where2['action_user_id']=$_SESSION['user_auth']['mid'];
-		 }
-		 $allListCnt = $this->taskCnt('v_task_list_ext_user',$where2);
-		 $this->assign('allListCnt',$allListCnt);
-		 
-		 $t = M('taskInfo');
-		 $sql = "select count(id) tasks,sum(dfk) dfk,sum(dfh) dfh,sum(dqr) dqr,sum(wc) wc from v_task_info_cnt";
-		 if($_SESSION['user_auth']['manager']!=C('IS_ADMIN')){
-		 	$sql=$sql.' where action_user_id='.$_SESSION['user_auth']['mid'];
-		 }
-		 $taskInfoCnt = $t->query($sql);
-		 $this->assign('taskInfoCnt',$taskInfoCnt);
+		 $this->assign('infoCnt',$infoCnt);
 		 $this->display();
 	}
 
@@ -155,7 +147,12 @@ class InfoController extends AdminController {
 
 	//保证金充值
 	public function bao_amt(){
-		$this->display();
+		$user_db = C('user_db');
+		if(floatval($user_db['cg_baozj'])<0){
+			$this->error('已经缴纳保证金');
+		}else{
+			$this->display();
+		}
 	}
 
 	//提现工单

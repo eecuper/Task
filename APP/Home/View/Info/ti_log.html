@@ -55,7 +55,11 @@
                       <td width="85" align="center" valign="middle">
                         <!--<a href="">撤销</a><br>-->
                         <if condition="$log['amt_state'] eq 0">
-                          <a href="{:U('Info/ti_log?id='.$log['id'])}">完成</a><br>
+                            <if condition="$user['manager'] neq C('IS_ADMIN')">
+                              等待对账..<br>
+                              <else />
+                              <a href="{:U('Info/ti_log?id='.$log['id'])}">完成</a><br>
+                            </if>
                           <else />
                           <b>已完成</b>
                         </if>

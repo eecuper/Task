@@ -377,7 +377,7 @@
             var active_id = $('.open.active').attr('id') ;
             var money = 0;
             if(active_id==1){
-                money = 500;
+                money = 0.1;
             }else if(active_id==2){
                 money = 500;
             }else if(active_id==3){
@@ -399,6 +399,7 @@
         $(".compbtn").click(function(){
             var cd = "{$cd}";
             var backUrl = $("input[name=backUrl]").val();
+
             $.ajax({
                 type: "POST",
                 url: "{:U('pay/validPay')}",
@@ -407,7 +408,10 @@
                 async: true,
                 success: function(re) {
                     if(re.success){
-                        location.href=backUrl;
+                        alert('充值完成');
+                        $('.business-popup-under').css('display','none');
+                        $("#payto2").css('display','none');
+                        //location.href=backUrl;
                     }else{
                         alert(re.msg);
                     }

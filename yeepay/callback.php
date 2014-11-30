@@ -1,5 +1,5 @@
 <?php
-
+header('content-type: text/html; charset=utf-8');
 error_reporting(0);
 //Òþ²Ø¾¯¸æÐÅÏ¢
 error_reporting(E_ALL^E_NOTICE);

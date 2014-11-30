@@ -45,7 +45,8 @@
                                 <div class="item clearfix linetext">
                                    <table width="95%" height="35" border="0" align="center" cellpadding="1" cellspacing="1">
                                   <tbody><tr>
-                                    <td align="center" bgcolor="#FFFFFF" class="title">申请提现前，请先在支付宝发起收款操作！收款账号：418535300</td>
+                                    <td align="center" bgcolor="#FFFFFF" class="title">
+                                        <!--申请提现前，请先在支付宝发起收款操作！-->收款账号：418535300</td>
                                     </tr>
                                 </tbody></table>
                                    <p>&nbsp;</p>
@@ -147,7 +148,7 @@
                                     </div>
                                     </div> 
                                     <br/> -->
-                                    <div class="item clearfix linetext">
+                                    <div class="item clearfix linetext" style="display:none;">
                                         <label class="tit">
                                       实际到账金额（费率：0%）</label>
                                         <div class="inp">
@@ -235,7 +236,7 @@ $(function(){
             return false;
         }
 
-        if(amt_num<300 || amt_num>2000){
+        if(amt_num<0 || amt_num>2000){
             $(".error").html('允许300-2000范围金额');
             return false;
         }
@@ -276,7 +277,7 @@ $(function(){
             return false;
         }
 
-        if(amt_num<300 || amt_num>2000){
+        if(amt_num<0 || amt_num>2000){
             $(".error").html('允许300-2000范围金额');
             return false;
         }

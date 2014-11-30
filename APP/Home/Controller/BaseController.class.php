@@ -168,6 +168,20 @@ class BaseController extends AdminController {
 		return false;
 	}
 
+	//接单进度更改
+ 	protected  function doAction_process($list_id=0,$action_user_name='',$action_user_id=''){
+		$task  = D('taskList');
+		$tk    = $task->find($list_id);
+		//如果DP已经接单 并且本地接单接单人又为空则完善信息 否则 不做更改
+		if($tk && empty($tk['action_user_name']) && empty($tk['action_user_id'])){
+			$tk['action_get_date']=time();
+			$tk['action_user_id']=$action_user_id;
+			$tk['action_user_name']=(empty($action_user_name)?I('action_user_name'):$action_user_name) ;
+			return $this->edit('taskList',array('list_id'=>$list_id),$tk);
+		}
+		return false;
+	}
+
 	//待付款
 	protected  function doFlag(){
 		$list_id=I('list_id');
